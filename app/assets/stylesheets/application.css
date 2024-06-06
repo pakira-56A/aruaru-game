@@ -13,3 +13,51 @@
  *= require_tree .
  *= require_self
  */
+/*　6/7 3:50時点で反映せず*/
+body { background-color: #fdea2e;}
+
+
+.header-container {
+    background-color: #fdea2e;
+    position: relative;
+    text-align: right;
+}
+    
+.header-container .toggle-button {
+    position: absolute;
+    text-align: right;
+    right: 0; /* 右寄せのために追加 */
+}
+    
+.header-container .toggle-content {
+    position: absolute;
+    text-align: right;
+    right: 0; /* 右寄せのために追加 */
+    flex
+}
+
+.toggle-content li {
+    margin: 10px 0; /* 各項目の上下に10pxのマージンを追加 */
+    padding-left: 25px; /* アイコンのスペースを確保 */
+    background: url('app/assets/images/矢印青.png') no-repeat left center; /* アイコン画像を左に配置 */
+    background-size: 20px 20px; /* アイコン画像のサイズを調整 */
+}
+
+.toggle-list{
+    list-style: none; /* デフォルトのリストマーカーを消す */
+    padding: 0;
+    padding-left: 30px;
+    line-height: 30px;
+    background: url(app/assets/images/矢印青.png) no-repeat;
+}
+
+.top-inner-text {
+    text-align: center;
+}
+
+.footer-bottom{
+    bottom: 0;
+}
+.copyright {
+    text-align: center;
+}

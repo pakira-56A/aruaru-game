@@ -1,0 +1,37 @@
+<%# 6/6ナビゲーションバー:トグル %>
+<header>
+<nav>
+<div>
+<%# 6/6トグルタイトル %>
+<span id="toggle-button">
+<%= image_tag '吹き出し.png', class: 'rounded-circle mr15', width: '40', height: '40' %>
+○○がバレた界隈</span>
+
+
+<%# 6/6トグルの中身 %>
+<%# <div id="toggle-content" class="toggle-content" style="display: block;"> %>
+
+<div id="toggle-content" class="toggle-content">
+  <ul>
+    <div class="toggle-list" >
+    <li><a href="/">界隈をシェアする</a></li>
+    <li><a href="/about">シェアされた界隈</a></li>
+    <li><a href="/contact">投稿された界隈</a></li>
+    <li><a href="/users_likes">お気に入りの界隈</a></li>
+    </div>
+  </ul>
+</div>
+</div>
+
+    <%# 6/6トグルを開ける時の動き？ %>
+<script>
+document.getElementById('toggle-button').addEventListener('click', function() {
+  var content = document.getElementById('toggle-content');
+  if (content.style.display === 'none' || content.style.display === '') {
+    content.style.display = 'block';
+  } else {
+    content.style.display = 'none';
+  }});
+</script>
+</nav>
+</header>
