@@ -1,16 +1,30 @@
+<%# 6/6 ナビゲーションバートグルに変更 %>
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Myapp</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
-  </head>
+<html lang="ja">
+<head>
+<%# stylesheetのcssファイルと紐付けされる %>
+<%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BR1</title>
+  <style>
+    .toggle-content {
+      display: none;}
+  </style>
+</head>
+
+
+<%# 6/6 ナビゲーションバートグルに変更 %>
   <body>
+    <%# ヘッダーを表示、全ページで共通のレイアウトを定義 %>
+    <%# クラス名をつけた %>
+    <div class="header-container">
+    <%= render 'shared/header' %>
+    </div>
     <%= yield %>
+    <%# フッターを表示、全ページで共通のレイアウトを定義 %>
+    <%= render 'shared/footer' %>
   </body>
 </html>
