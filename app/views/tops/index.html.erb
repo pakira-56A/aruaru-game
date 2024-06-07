@@ -1,7 +1,52 @@
 <%# トップページのメインコンテンツを構成 %>
-<%# このクラスはCSSフレームワークであるBootstrap5でのスタイリングが適用 %>
-<div class="top-wrapper">
-  <div class="top-inner-text">
+    <div class="logo-title">
     <%= image_tag '仮ロゴ.png', class: 'rounded-circle mr15', width: '400', height: '400' %>
-  </div>
-</div>
+    </div>
+
+
+<%# 入力フォームとスタートボタン %>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>フォーム送信と画面遷移</title>
+</head>
+<body>
+    <form id="myForm" class="myForm">
+        <label for="inputData">お題は？🤔</label>
+        <div class="inputform">
+        <input type="text" id="inputData" name="inputData">
+        </div>
+        <div class="buttons">
+        <button type="button" onclick="handleSubmit()">START1</button>
+        <button type="button" onclick="handleSubmit()">START2</button>
+        </div>
+    </form>
+
+    <script>
+        function handleSubmit() {
+            // フォームデータを取得
+            const inputData = document.getElementById('inputData').value;
+
+            // AIにデータを送信する一旦Geminiを登録
+            fetch('https://gemini.google.com/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ data: inputData })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                // データ送信が成功したらゲームスタート画面に遷移
+                window.location.href = '/game-start';
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</body>
+</html>
