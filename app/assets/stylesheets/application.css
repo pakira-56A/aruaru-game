@@ -45,19 +45,54 @@ body { background-color: #fdea2e;}
 
 .toggle-list{
     list-style: none; /* デフォルトのリストマーカーを消す */
-    padding: 0;
     padding-left: 30px;
-    line-height: 30px;
-    background: url(app/assets/images/矢印青.png) no-repeat;
+    line-height: 25px;
 }
 
-.top-inner-text {
+.logo-title {
     text-align: center;
 }
 
-.footer-bottom{
-    bottom: 0;
+/*お題とフォーム*/
+.myForm{
+    font-weight: bolder;
+    padding-top: 30px;
+    padding-bottm: 0px;
+    text-align: center;
 }
+/*入力フォーム*/
+#inputData{
+    padding: 10px;
+    margin-bottom: 20px;
+}
+/*入力フォームを中心に*/
+.inputform{
+    display: flex;
+    justify-content: center;
+}
+/*お題とフォームを二列に*/
+label, input {
+    display: block;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* buttonタグのリセットCSS（不要な場合、セレクタごと削除してください） */
+button {
+    padding: 20px;
+    margin: 20px;
+    font-family: inherit;
+    font-weight: bold;
+    appearance: none;
+    cursor: pointer;
+    background-color: white;
+    /*ブラウザのデフォルトのスタイルを無効*/
+    appearance: none;
+}
+
 .copyright {
-    text-align: center;
+    font-weight: bold;
+    color: orange;
+    text-align: left;
+    bottom: 0;
 }
