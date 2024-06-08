@@ -1,4 +1,3 @@
-<%# 6/6 ナビゲーションバートグルに変更 %>
 <!DOCTYPE html>
 
 <html lang="ja">
@@ -7,6 +6,10 @@
 <%# stylesheetのcssファイルと紐付けされる %>
 <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 
+<%# ナビゲーションバーをトグルに変更 %>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+<%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BR1</title>
@@ -17,7 +20,7 @@
 </head>
 
 
-<%# 6/6 ナビゲーションバートグルに変更 %>
+<%# ナビゲーションバーをトグルに変更 %>
   <body>
     <%# ヘッダーを表示、全ページで共通のレイアウトを定義 %>
     <%# クラス名をつけた %>
