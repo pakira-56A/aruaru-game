@@ -15,23 +15,26 @@
  */
 body { background-color: #fdea2e;}
 
-
 /*　　　　遊び方　　　　　*/
 #popup {
     display: none; /* label でコントロールするので input は非表示に */
-    margin: 0;
-}
-.popup-title{
-    color: rgb(255, 0, 144);
-    font-weight: bold;
-    text-align: center; 
     margin: 0;
 }
 .popup-open {
     cursor: pointer; /* マウスオーバーでカーソルの形状を変える*/
     color: rgb(255, 0, 144);
     font-weight: bold;
+    font-size: large;
     text-align: left;
+    margin-bottom: 0;
+    margin-left: 20px;
+}
+.popup-title{
+    color: rgb(255, 0, 144);
+    font-weight: bold;
+    font-size: large;
+    text-align: center; 
+    margin: 0;
 }
 .popup-overlay {
     display: none; /* input にチェックが入るまでは非表示に */
@@ -47,15 +50,16 @@ body { background-color: #fdea2e;}
     top: 0;
     left: 0;
 }
-
 .popup-window {
+    /* スマホだと幅が窮屈 */
     width: 90vw;
     max-width: 560px;
     padding: 20px;
     background-color: #ffffff;
     border-radius: 6px;
+    /* fixed：親の存在を無視して、画面を基準にする */
     position: fixed;
-    top: 28%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -63,57 +67,81 @@ body { background-color: #fdea2e;}
     text-align: left;
     margin: 0;
     padding: 10px;
-
+    color: rgb(255, 89, 0);
 }
-
 .popup-text:not(:last-of-type) {
     margin-bottom: 1em
 }
-
+.popup-text image{
+    align-items: center;
+}
 .popup-close {
     cursor: pointer;
+     /* popup子 */
     position: absolute;
     top: -26px;
     right: 0;
 }
 
 
-/*トグルメニュー*/
 .header-container {
-    background-color: #fdea2e;
+    /* application.html.erbで設定したクラス（親）*/
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
     position: relative;
-    text-align: right;
-}
-    
-.header-container .toggle-button {
-    position: absolute;
-    text-align: right;
-    right: 0; /* 右寄せ */
-}
-    
-.header-container .toggle-content {
-    position: absolute;
-    text-align: right;
-    right: 0; /* 右寄せ */
-    flex
 }
 
-#toggle-button{
-    cursor: pointer; /* マウスオーバーでカーソルの形状を変える*/
+/*トグルメニュー*/
+#toggle-content1 , #toggle-content2{
+    /* 吹き出しトグルとハートトグルのコンテンツ */
+    display: none;
+    position: fixed;
+    width: 100%;
+    max-width: 300px;
+    top: 40px;
+    right: 0px;
 }
-
-.toggle-content li {
-    margin: 10px 0; /* 各項目の上下に10pxのマージンを追加 */
-    padding-left: 25px; /* アイコンのスペースを確保 */
-    background: url('app/assets/images/矢印青.png') no-repeat left center; /* アイコン画像を左に配置 */
-    background-size: 20px 20px; /* アイコン画像のサイズを調整 */
+#toggle-content2{
+    top: 40px;
+    right: -30px;
 }
-
-.toggle-list{
-    list-style: none; /* デフォルトのリストマーカーを消す */
+.toggles {
+    /* 吹き出しトグルとハートトグルを一括りにしたクラス */
+    position:relative;
+    display: flex;
+    /* toggle1と2の間の距離 */
+    gap: 50px;
+    justify-content: center;
+    cursor: pointer;
+}
+.toggle1 , .toggle2{
+    /* 吹き出しトグルとハートトグル */
+    position: relative;
+    width: 100%;
+}
+.toggle2{
+    top: 5px;
+    right: 20px;
+}
+.toggle-list1 , .toggle-list2{    
+    /* 吹き出しトグルとハートトグルの項目 */
     padding-left: 30px;
     line-height: 25px;
+    list-style: none;
+    width: 100%;
 }
+.toggle-list1 li a, .toggle-list2 li a{
+    /* toggle-listの中のliタグの中のaタグを編集 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* リンク下の線を削除 */
+    text-decoration: none;
+}
+
+/*  */
+
 
 .logo-title {
     text-align: center;
@@ -121,6 +149,7 @@ body { background-color: #fdea2e;}
 
 /*お題とフォーム*/
 .myForm{
+    font-size: large;
     font-weight: bolder;
     padding-top: 30px;
     padding-bottm: 0px;
@@ -143,7 +172,7 @@ label, input {
     text-align: center;
 }
 
-/* buttonタグのリセットCSS（不要な場合、セレクタごと削除してください） */
+/* buttonタグのリセットCSS（不要な場合はセレクタごと削除） */
 button {
     padding: 20px;
     margin: 20px;
