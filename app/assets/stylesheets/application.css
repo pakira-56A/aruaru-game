@@ -13,10 +13,72 @@
  *= require_tree .
  *= require_self
  */
-/*　6/7 3:50時点で反映せず*/
 body { background-color: #fdea2e;}
 
 
+/*　　　　遊び方　　　　　*/
+#popup {
+    display: none; /* label でコントロールするので input は非表示に */
+    margin: 0;
+}
+.popup-title{
+    color: rgb(255, 0, 144);
+    font-weight: bold;
+    text-align: center; 
+    margin: 0;
+}
+.popup-open {
+    cursor: pointer; /* マウスオーバーでカーソルの形状を変える*/
+    color: rgb(255, 0, 144);
+    font-weight: bold;
+    text-align: left;
+}
+.popup-overlay {
+    display: none; /* input にチェックが入るまでは非表示に */
+}
+#popup:checked ~ .popup-overlay {
+    display: block;
+    z-index: 99999;
+    /*　　背景透過　*/
+    background-color: #ffba7070;
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.popup-window {
+    width: 90vw;
+    max-width: 560px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 6px;
+    position: fixed;
+    top: 28%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.popup-text {
+    text-align: left;
+    margin: 0;
+    padding: 10px;
+
+}
+
+.popup-text:not(:last-of-type) {
+    margin-bottom: 1em
+}
+
+.popup-close {
+    cursor: pointer;
+    position: absolute;
+    top: -26px;
+    right: 0;
+}
+
+
+/*トグルメニュー*/
 .header-container {
     background-color: #fdea2e;
     position: relative;
@@ -26,14 +88,18 @@ body { background-color: #fdea2e;}
 .header-container .toggle-button {
     position: absolute;
     text-align: right;
-    right: 0; /* 右寄せのために追加 */
+    right: 0; /* 右寄せ */
 }
     
 .header-container .toggle-content {
     position: absolute;
     text-align: right;
-    right: 0; /* 右寄せのために追加 */
+    right: 0; /* 右寄せ */
     flex
+}
+
+#toggle-button{
+    cursor: pointer; /* マウスオーバーでカーソルの形状を変える*/
 }
 
 .toggle-content li {
@@ -91,6 +157,7 @@ button {
 }
 
 .copyright {
+    cursor: pointer; /* マウスオーバーでカーソルの形状を変える*/
     font-weight: bold;
     color: orange;
     text-align: left;
