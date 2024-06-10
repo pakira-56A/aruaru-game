@@ -13,22 +13,41 @@
  *= require_tree .
  *= require_self
  */
-body { background-color: #fdea2e;}
+body { 
+    background-color: #fdea2e;
+
+}
 
 /*　　　　遊び方　　　　　*/
 #popup {
     display: none; /* label でコントロールするので input は非表示に */
-    margin: 0;
+    position: relative;
 }
 .popup-open {
     cursor: pointer; /* マウスオーバーでカーソルの形状を変える*/
     color: rgb(255, 0, 144);
+    margin-bottom: 0;
     font-weight: bold;
     font-size: large;
     text-align: left;
-    margin-bottom: 0;
-    margin-left: 20px;
+    left: 20px;
+    /* トグル達とヘッダーの高さを揃えられす、topで指定 */
+    top: 10px;
+    position: absolute;
 }
+.popup-open:hover {
+    cursor: pointer; /* マウスオーバーでカーソルの形状を変える*/
+    color: rgb(80, 153, 255);
+    margin-bottom: 0;
+    font-weight: 300;
+    font-size: bold;
+    text-align: left;
+    left: 20px;
+    /* トグル達とヘッダーの高さを揃えられす、topで指定 */
+    top: 10px;
+    position: absolute;
+}
+
 .popup-title{
     color: rgb(255, 0, 144);
     font-weight: bold;
@@ -84,61 +103,98 @@ body { background-color: #fdea2e;}
 }
 
 
+
 .header-container {
     /* application.html.erbで設定したクラス（親）*/
     display: flex; 
     justify-content: space-between; 
-    align-items: center;
+    align-items: center;/* 高さを中央に揃える */
     position: relative;
+    top: 15px;
+}
+/* ヘッダーを基準にガイドとトグルとの高さを揃える　(揃わなかった) */
+.toggles,.header-container {
+    align-items: center;
+}
+.popup,.header-container {
+    align-items: center;
 }
 
+
+
 /*トグルメニュー*/
-#toggle-content1 , #toggle-content2{
-    /* 吹き出しトグルとハートトグルのコンテンツ */
-    display: none;
-    position: fixed;
-    width: 100%;
-    max-width: 300px;
-    top: 40px;
-    right: 0px;
-}
-#toggle-content2{
-    top: 40px;
-    right: -30px;
-}
 .toggles {
     /* 吹き出しトグルとハートトグルを一括りにしたクラス */
     position:relative;
     display: flex;
     /* toggle1と2の間の距離 */
     gap: 50px;
-    justify-content: center;
+    justify-content: flex-end; /* 追加：親要素に追加すると子が右寄せになる */
     cursor: pointer;
+    width: 100%; /* 追加：親要素の幅を100%に */
 }
 .toggle1 , .toggle2{
     /* 吹き出しトグルとハートトグル */
     position: relative;
-    width: 100%;
+    width: auto; /* 修正：100%からautoに変更 */
 }
 .toggle2{
-    top: 5px;
     right: 20px;
 }
 .toggle-list1 , .toggle-list2{    
     /* 吹き出しトグルとハートトグルの項目 */
-    padding-left: 30px;
+    /* padding-left: 30px; */
+    /* width: 100%; */
     line-height: 25px;
-    list-style: none;
-    width: 100%;
+    list-style: none; /*先頭の・を非表示*/
+    background-color: rgb(254, 255, 240);
+    padding: 15px; /* 追加 */
+    /* 追加：画面が縮んでも改行しない指示 */
+    white-space: nowrap;
+    /* 追加：画面が縮んでも背景が変わらない */
+    width: fit-content;
 }
 .toggle-list1 li a, .toggle-list2 li a{
     /* toggle-listの中のliタグの中のaタグを編集 */
+    font-weight: bold;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* リンク下の線を削除 */
-    text-decoration: none;
+    text-decoration: none;  /* リンク下の線を削除 */
+    /*gap: 40px;*/ /*矢印との距離が離れる*/ 
 }
+ /* 追加 */
+.toggle-list1 li , .toggle-list2 li {
+    margin-bottom: 10px;
+}
+ /* 追加 */
+.toggle-list1 li a{
+    color: #008C80;
+}
+#toggle-button1:hover #image-toggle {
+    content: url('吹き出し緑.png');
+}
+.toggle-list2 li a{
+    color: #DF5656;
+}
+#toggle-button2:hover #image-toggle {
+    content: url('ハート赤.png');
+}
+
+#toggle-content1 , #toggle-content2{
+    /* 吹き出しトグルとハートトグルのコンテンツ */
+    /*display: none; */  /* 追加 */
+    position: fixed;
+    /*width: 100%;*/
+    max-width: 30%; /* 元は300 */
+    right: 20px;  /* リストの位置 */
+}
+#toggle-content2{
+    top: 69px;
+}
+
+
+
 
 /*  */
 
@@ -151,7 +207,7 @@ body { background-color: #fdea2e;}
 .myForm{
     font-size: large;
     font-weight: bolder;
-    padding-top: 30px;
+    padding-top: 20px; /*追加*/
     padding-bottm: 0px;
     text-align: center;
 }
@@ -168,14 +224,21 @@ body { background-color: #fdea2e;}
 /*お題とフォームを二列に*/
 label, input {
     display: block;
-    margin-bottom: 20px;
+    margin-bottom: 10px; /* 元は20 */
     text-align: center;
 }
 
+
+/* 追加：　2つのボタンの並べ方 */
+.buttons{
+    display: flex;
+    justify-content:center;
+}
 /* buttonタグのリセットCSS（不要な場合はセレクタごと削除） */
 button {
     padding: 20px;
     margin: 20px;
+    margin-top: 0;    /*追加*/
     font-family: inherit;
     font-weight: bold;
     appearance: none;
@@ -183,12 +246,35 @@ button {
     background-color: white;
     /*ブラウザのデフォルトのスタイルを無効*/
     appearance: none;
+    /* 追加：画面が縮んでも改行しない指示 */
+    white-space: nowrap;
+
 }
 
-.copyright {
-    cursor: pointer; /* マウスオーバーでカーソルの形状を変える*/
-    font-weight: bold;
-    color: orange;
+/* フラッシュメッセージ */
+#flashMessage{
+    font-size:medium
+    font-weight: small;
+    padding-bottom: 20px;
+}
+
+
+
+/* お問い合わせ */
+.copyright a{
+    cursor: pointer; /* マウスオーバーでカーソルの形状を変える */
+    font-weight: lighter;
+    color: rgb(255, 140, 0);
     text-align: left;
     bottom: 0;
+    text-decoration: none;  /* リンク下の線を削除 */
+    
+}
+.copyright a:hover{
+    cursor: pointer; /* マウスオーバーでカーソルの形状を変える */
+    font-weight:bolder;
+    color: rgb(255, 0, 0);
+    text-align: left;
+    bottom: 0;
+    text-decoration: none;  /* リンク下の線を削除 */
 }
