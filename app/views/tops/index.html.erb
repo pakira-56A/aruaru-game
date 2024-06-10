@@ -10,7 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>フォーム送信と画面遷移</title>
+    <title>リスト一覧？</title>
 </head>
 <body>
     <form id="myForm" class="myForm">
@@ -18,6 +18,12 @@
         <div class="inputform">
         <input type="text" id="inputData" name="inputData">
         </div>
+
+        <%# ★★★★★★ 未入力の場合の処理：フラッシュメッセージの表示 %>
+        <div id="flashMessage" style="display:none; color:red;"></div>
+
+        <%# ★★★★★★ 入力済み場合の処理：フラッシュメッセージ用の要素を取得 %>
+        <div id="flashMessage" style="display:none; color:green;"></div>
         <div class="buttons">
         <button type="button" onclick="handleSubmit()">とにかく知りたいモード</button>
         <button type="button" onclick="handleSubmit()">早く言いたいモード</button>
@@ -28,6 +34,23 @@
         function handleSubmit() {
             // フォームデータを取得
             const inputData = document.getElementById('inputData').value;
+
+            //  ★★★★★★ フラッシュメッセージ用の要素を取得
+            const flashMessage = document.getElementById('flashMessage');
+
+            //  ★★★★★★ 未入力の場合の処理
+            if (!inputData) {
+                flashMessage.textContent = 'どの界隈のあるあるが知りたいか教えてね👀';
+                flashMessage.style.display = 'block';
+                return;
+            } else {
+                flashMessage.style.display = 'none';
+            }
+
+            // ★★★★★★ 入力された場合のフラッシュメッセージ
+            flashMessage.textContent = 'まだ遊べないんだぁ、待っててね😀';
+            flashMessage.style.display = 'block';
+            
 
             // AIにデータを送信する一旦Geminiを登録
             fetch('https://gemini.google.com/', {
