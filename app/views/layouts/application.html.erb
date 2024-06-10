@@ -28,7 +28,11 @@
     <%= render 'shared/header' %>
     </div>
     <%= yield %>
+
     <%# フッターを表示、全ページで共通のレイアウトを定義 %>
+    <div class="footer-container">
     <%= render 'shared/footer' %>
   </body>
+
+</div>
 </html>

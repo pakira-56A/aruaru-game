@@ -7,19 +7,21 @@
                     <p class="popup-text">
                         クラスタをほんのすこし攻略できるゲームだよ
                         <br>
-                        <br>❶ お題にあるあるを知りたい界隈を入力しよう！
+                        <br>① お題にあるあるを知りたい界隈を入力しよう！
                         <br>　 ＡＩがあるあるを生成してくれるよ
                         <br><%= image_tag 'AI虫眼鏡.png', class: 'rounded-circle mr15', width: '80', height: '80' %>
-                        <%= image_tag 'セリフ.jpeg', class: 'rounded-circle mr15', width: '250', height: '150' %>
+                        <%= image_tag 'セリフ.jpeg', class: 'rounded-circle mr15', width: '300', height: '60' %>
                         <br>
-                        <br>❷ 好きなモードで神経衰弱スタート！
+                        <br>② 好きなモードで神経衰弱スタート！
                         <br>　 札をめくるまで、どんなあるあるが有るか分からないよ
                         <br>
                         <br><%= image_tag 'トランプ背面.png', class: 'rounded-circle mr15', width: '60', height: '80' %>
                         <%= image_tag 'トランプジョーカー.png', class: 'rounded-circle mr15', width: '60', height: '80' %>
                         <%= image_tag 'トランプ背面.png', class: 'rounded-circle mr15', width: '60', height: '80' %>
                         <br>
-                        <br>❸ 左上の <%= image_tag '吹き出し.png', class: 'rounded-circle mr15', width: '30', height: '30' %> から、あるあるを自作してシェアすることもできるよ！
+                        <br>③ 左上の <%= image_tag '吹き出し.png', class: 'rounded-circle mr15', width: '30', height: '30' %> や
+                        <%= image_tag 'ハート.png', class: 'rounded-circle mr15', width: '25', height: '25' %>から
+                        <br>あるあるを自作してシェアすることもできるよ！
                     </p>
                     <label class="popup-close" for="popup">
                         <svg width="18" height="18" xmlns="http://www.w3.org/2000/svg">
@@ -37,7 +39,7 @@
 
         <div class="toggle1">
         <span id="toggle-button1">
-                <%= image_tag '吹き出し.png', class: 'rounded-circle mr15', width: '40', height: '40' %>
+                <%= image_tag '吹き出し.png', class: 'rounded-circle mr15', width: '40', height: '40' ,id:'image-toggle' %>
         </span>
             <div id="toggle-content1" class="toggle-content1">
                 <ul class="toggle-list1">
@@ -49,7 +51,7 @@
         </div>
         <div class="toggle2">
         <span id="toggle-button2">
-                <%= image_tag 'ハート.png', class: 'rounded-circle mr15', width: '35', height: '35' %>
+                <%= image_tag 'ハート.png', class: 'rounded-circle mr15', width: '33', height: '33',id:'image-toggle'  %>
         </span>
             <div id="toggle-content2" class="toggle-content2">
                 <ul class="toggle-list2">

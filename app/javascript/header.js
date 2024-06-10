@@ -1,10 +1,22 @@
+// ページがロードされたときにトグルの初期状態を設定
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('toggle-content1').style.display = 'none';
+    document.getElementById('toggle-content2').style.display = 'none';
+});
 
-// app/views/shered/_header.html.erb内の<script>内を移動
+// トグル内の項目をクリックしても、ページ移動させない指示
+document.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function(event) {
+        event.preventDefault();
+        alert("まだできないよ！待っててね🙇‍♀️");
+    });
+});
 
-// 吹き出しトグルの指示
+
+// 吹き出しトグル(トグル1)の指示
 document.getElementById('toggle-button1').addEventListener('click', function() {
     let content = document.getElementById('toggle-content1');
-    // トグル1を開いてる時に、トグル2は開かない指示
+        // トグル1を開いてる時に、トグル2は開かない指示
     let content2 = document.getElementById('toggle-content2');
     if (content.style.display === 'none' || content.style.display === '') {
         content.style.display = 'block';
@@ -12,10 +24,12 @@ document.getElementById('toggle-button1').addEventListener('click', function() {
         content2.style.display = 'none';
     } else {
         content.style.display = 'none';
+
     }
 });
 
-// ハートトグルの指示
+
+// ハートトグル(トグル2)の指示
 document.getElementById('toggle-button2').addEventListener('click', function() {
     let content = document.getElementById('toggle-content2');
         // トグル2を開いてる時に、トグル1は開かない指示
@@ -28,4 +42,3 @@ document.getElementById('toggle-button2').addEventListener('click', function() {
         content.style.display = 'none';
     }
 });
-
