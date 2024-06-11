@@ -1,3 +1,4 @@
+
 // ページがロードされたときにトグルの初期状態を設定
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('toggle-content1').style.display = 'none';
@@ -12,22 +13,20 @@ document.querySelectorAll('a').forEach(function(link) {
     });
 });
 
-
 // 吹き出しトグル(トグル1)の指示
 document.getElementById('toggle-button1').addEventListener('click', function() {
     let content = document.getElementById('toggle-content1');
         // トグル1を開いてる時に、トグル2は開かない指示
     let content2 = document.getElementById('toggle-content2');
+    
     if (content.style.display === 'none' || content.style.display === '') {
         content.style.display = 'block';
         // トグル1を開いてる時に、トグル2は開かない指示
         content2.style.display = 'none';
     } else {
         content.style.display = 'none';
-
     }
 });
-
 
 // ハートトグル(トグル2)の指示
 document.getElementById('toggle-button2').addEventListener('click', function() {
@@ -42,3 +41,5 @@ document.getElementById('toggle-button2').addEventListener('click', function() {
         content.style.display = 'none';
     }
 });
+
+
