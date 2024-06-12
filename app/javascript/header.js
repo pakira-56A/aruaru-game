@@ -28,6 +28,7 @@ document.getElementById('toggle-button1').addEventListener('click', function() {
     }
 });
 
+
 // ハートトグル(トグル2)の指示
 document.getElementById('toggle-button2').addEventListener('click', function() {
     let content = document.getElementById('toggle-content2');
@@ -41,5 +42,3 @@ document.getElementById('toggle-button2').addEventListener('click', function() {
         content.style.display = 'none';
     }
 });
-
-
