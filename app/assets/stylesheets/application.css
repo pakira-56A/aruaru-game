@@ -13,11 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+
 body { 
     background-color: #fdea2e;
 }
-
-
 
 /*　　　　遊び方　　　　　*/
 #popup-1 {
@@ -29,7 +29,7 @@ body {
     margin-bottom: 10px; /* 6/11 要素間にスペを追加 */
 
     cursor: pointer; /* マウスオーバーでカーソルの形状を変える*/
-    color: rgb(255, 0, 144);
+    color: #F50968;
     font-weight: bold;
     font-size: large;
     text-align: left;
@@ -43,7 +43,7 @@ body {
     color: rgb(80, 153, 255);
     margin-bottom: 0;
     font-weight: 300;
-    font-size: bold;
+    font-weight: bold;
     text-align: left;
     left: 20px;
     /* トグル達とヘッダーの高さを揃えられす、topで指定 */
@@ -98,10 +98,9 @@ body {
     transform: translate(-50%, -50%);
 }
 .popup-text-1 {
-    line-height: 180%;
+    line-height: 200%;
     text-align: left;
-    margin-bottom: 5px;
-    padding: 10px;
+    padding: 0px 10px 10px 0px;
     color: rgb(255, 89, 0);
     /* 追加：画面が縮んでも改行しない指示 */
     white-space: nowrap;
@@ -122,6 +121,10 @@ body {
     right: 0;
 }
 
+.custom-border {
+    border: 3px solid rgb(255, 238, 46);  /* 縁の太さと色を指定 */
+    border-radius: 4%;  /* 角を丸める */
+}
 
 /*　　　　モード説明　　基本遊び方のコピペ　　　*/
 #popup-2 {
@@ -134,7 +137,7 @@ body {
     margin-bottom: 10px; /* 6/11 要素間にスペを追加 */
 
     cursor: pointer; /* マウスオーバーでカーソルの形状を変える*/
-    color: rgb(255, 0, 144);
+    color: #F50968;
     font-weight: bold;
     font-size: large;
     text-align: left;
@@ -152,7 +155,7 @@ body {
     color: rgb(80, 153, 255);
     margin-bottom: 0;
     font-weight: 300;
-    font-size: bold;
+    font-weight: bold;
     text-align: left;
     left: 100px;  /* 遊び方と被らないようにズラした */
     /* トグル達とヘッダーの高さを揃えられす、topで指定 */
@@ -207,11 +210,14 @@ body {
     transform: translate(-50%, -50%);
 }
 .popup-text-2 {
-    line-height: 180%;
+    line-height: 200%;
     text-align: left;
-    margin-bottom: 5px;
-    padding: 10px;
+    padding: 0px 10px 10px 0px;
     color: rgb(255, 89, 0);
+     /* 追加：画面が縮んでも改行しない指示 */
+    white-space: nowrap;
+    /* 追加：画面が縮んでも背景が変わらない */
+    width: fit-content;
 }
 .popup-text-2:not(:last-of-type) {
     margin-bottom: 1em
@@ -231,7 +237,7 @@ body {
 /* 6/12　スマホ以上の横幅サイズの場合の指示 */
 @media screen and (min-width: 560px) {
     .popup-text-1 , .popup-text-2{
-        margin-left: 17%; /* 左に余白を */
+        margin-left: 15%; /* 左に余白を */
     }
 }
 
@@ -344,10 +350,8 @@ body {
 /*  */
 
 
-
-
 .logo-title {
-    /*　　padding-top: 10px; */
+    padding-top: 10px;
     text-align: center;
 }
 
@@ -355,7 +359,8 @@ body {
 .myForm{
     font-size: large;
     font-weight: bolder;
-    padding-top: 20px; /*追加*/
+    color: #10a7ff;
+    padding-top: 10px;
     padding-bottm: 0px;
     text-align: center;
 }
@@ -394,7 +399,7 @@ label, input {
 html {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    font-size: 62.5%;
+
 }
 .btn,
 a.btn,
@@ -425,6 +430,7 @@ button.btn {
 /* 表面の文字色 */
 .btn-3d-circle-front{
     position: absolute;
+    font-size: 62.5%;
     top: 50%; /* まずは真ん中に */
     left: 50%;
     transform: translate(-50%, -50%); /* 要素の中心を真ん中に */
@@ -483,6 +489,7 @@ button.btn {
 .btn-3d-circle-back {
     position: absolute;
 
+    font-size: 62.5%;
     top: 50%; /* まずは真ん中に */
     left: 50%;
     transform: translate(-50%, -50%); /* 要素の中心を真ん中に */
@@ -495,7 +502,6 @@ button.btn {
 
     opacity: 0;
 }
-
 
 
 
