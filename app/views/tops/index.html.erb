@@ -13,32 +13,37 @@
     <title>リスト一覧？</title>
 </head>
 <body>
-    <form id="myForm" class="myForm">
-        <label for="inputData">お題は？🤔</label>
-        <div class="inputform">
-        <input type="text" id="inputData" name="inputData">
-        </div>
+<form id="myForm" class="myForm">
+<label for="inputData">どのクラスタを攻略する？🤔</label>
+<div class="inputform">
+<input type="text" id="inputData" name="inputData">
+</div>
 
-        <%# ★★★★★★ 未入力の場合の処理：フラッシュメッセージの表示 %>
-        <div id="flashMessage" style="display:none; color:red;"></div>
+<%# ★★★★★★ 未入力の場合の処理：フラッシュメッセージの表示 %>
+<div id="flashMessage" style="display:none; color:red;"></div>
 
-        <%# ★★★★★★ 入力済み場合の処理：フラッシュメッセージ用の要素を取得 %>
-        <div id="flashMessage" style="display:none; color:green;"></div>
+<%# ★★★★★★ 入力済み場合の処理：フラッシュメッセージ用の要素を取得 %>
+<div id="flashMessage" style="display:none; color:green;"></div>
 
-        <%# ーーーーーースタートボタンーーーーーーーー %>
-        
-        <a href="" class="btn btn-3d-circle">
-            <span class="btn-3d-circle-content">
-                <span class="btn-3d-circle-front">とにかく知りたいモード</span>
-            </span>
-            <span class="btn-3d-circle-back">じっくりめくろう！</i></span>
-        </a>
+<%# ーーーーーースタートボタンーーーーーーーー %>
 
-        <a href="" class="btn btn-3d-circle">
-            <span class="btn-3d-circle-content">
-                <span class="btn-3d-circle-front">はやく言いたいモード</span>
-            </span>
-            <span class="btn-3d-circle-back">タイムオーバーあり！</i></span>
+<a href="" class="btn btn-3d-circle">
+    <span class="btn-3d-circle-content">
+        <span class="btn-3d-circle-front">とにかく知りたいモード</span>
+    </span>
+    <span class="btn-3d-circle-back">じっくりめくろう！</i></span>
+</a>
+
+<a href="" class="btn btn-3d-circle">
+    <span class="btn-3d-circle-content">
+        <span class="btn-3d-circle-front">はやく言いたいモード</span>
+    </span>
+    <span class="btn-3d-circle-back">タイムオーバーあり！</i></span>
+</a>
+
+</form>
+    </form>
+    <div id="flashMessage" class="flash-message"></div>
         </a>
 
     </form>
