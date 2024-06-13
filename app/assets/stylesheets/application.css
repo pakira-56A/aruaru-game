@@ -17,6 +17,8 @@
 
 body { 
     background-color: #fdea2e;
+
+    font-family: "Hiragino Sans","ヒラギノ角ゴシック";
 }
 
 /*　　　　遊び方　　　　　*/
@@ -76,7 +78,7 @@ body {
     /*　　背景透過　*/
     background-color: #ffba7070;
     position: fixed;
-    height: 100vh;
+    height: 100%;
     width: 100%;
     top: 0;
     left: 0;
@@ -89,7 +91,7 @@ body {
     /* スマホだと幅が窮屈 */
     width: 90vw;
     max-width: 560px;
-    padding: 20px;
+    padding: 10px;
     background-color: #ffffff;
     /* fixed：親の存在を無視して、画面を基準にする */
     position: fixed;
@@ -100,11 +102,11 @@ body {
 .popup-text-1 {
     line-height: 200%;
     text-align: left;
-    padding: 0px 10px 10px 0px;
+    padding: 0px,10px,10px,0px;
     color: rgb(255, 89, 0);
-    /* 追加：画面が縮んでも改行しない指示 */
+    /* 画面が縮んでも改行しない指示 */
     white-space: nowrap;
-    /* 追加：画面が縮んでも背景が変わらない */
+    /* 画面が縮んでも背景が変わらない */
     width: fit-content;
 }
 .popup-text-1:not(:last-of-type) {
@@ -188,7 +190,7 @@ body {
     /*　　背景透過　*/
     background-color: #ffba7070;
     position: fixed;
-    height: 100vh;
+    height: 100%;
     width: 100%;
     top: 0;
     left: 0;
@@ -201,7 +203,7 @@ body {
     /* スマホだと幅が窮屈 */
     width: 90vw;
     max-width: 560px;
-    padding: 20px;
+    padding: 10px;
     background-color: #ffffff;
     /* fixed：親の存在を無視して、画面を基準にする */
     position: fixed;
@@ -212,11 +214,11 @@ body {
 .popup-text-2 {
     line-height: 200%;
     text-align: left;
-    padding: 0px 10px 10px 0px;
+    padding: 0px,10px,10px,0px;
     color: rgb(255, 89, 0);
-     /* 追加：画面が縮んでも改行しない指示 */
+    /* 画面が縮んでも改行しない指示 */
     white-space: nowrap;
-    /* 追加：画面が縮んでも背景が変わらない */
+    /* 画面が縮んでも背景が変わらない */
     width: fit-content;
 }
 .popup-text-2:not(:last-of-type) {
@@ -234,10 +236,16 @@ body {
 }
 
 
-/* 6/12　スマホ以上の横幅サイズの場合の指示 */
+/* 　幅560px以上の画面で見た場合の説明テキスト */
 @media screen and (min-width: 560px) {
     .popup-text-1 , .popup-text-2{
         margin-left: 15%; /* 左に余白を */
+    }
+}
+/* 　幅560px以下の画面で見た場合の説明テキスト */
+@media screen and (max-width: 560px) {
+    .popup-text-1 , .popup-text-2{
+        margin-left: 10%; /* 左に余白を */
     }
 }
 
@@ -251,7 +259,7 @@ body {
     justify-content: space-between; 
     align-items: center;/* 高さを中央に揃える */
     position: relative;
-    top: 15px;
+    top: 10px;
 }
 /* ヘッダーを基準にガイドとトグルとの高さを揃える　(揃わなかった) */
 .toggles,.header-container {
@@ -271,18 +279,19 @@ body {
 
 /*トグルメニュー*/
 .toggles {
-    /* 吹き出しトグルとハートトグルを一括りにしたクラス */
+    /* header/toggle-1トグルとheader/toggle-2トグルを一括りにしたクラス */
     position:relative;
     display: flex;
     /* toggle1と2の間の距離 */
     gap: 30px;
     justify-content: flex-end; /* 追加：親要素に追加すると子が右寄せになる */
     cursor: pointer;
-    width: 100%; /* 追加：親要素の幅を100%に */
+    width: 100%; /* 親要素の幅を100%に */
     right: 20px;
+
 }
 .toggle1 , .toggle2{
-    /* 吹き出しトグルとハートトグル */
+    /* header/toggle-1トグルとheader/toggle-2トグル */
     position: relative;
     width: auto; /* 修正：100%からautoに変更 */
 }
@@ -291,7 +300,7 @@ body {
 }*/
 
 .toggle-list1 , .toggle-list2{    
-    /* 吹き出しトグルとハートトグルの項目 */
+    /* header/toggle-1トグルとheader/toggle-2トグルの項目 */
     /* padding-left: 30px; */
     /* width: 100%; */
     line-height: 25px;
@@ -320,30 +329,49 @@ body {
 }
 .toggle-list1 li a{ color: #008C80;}
 .toggle-list1 li a:hover{ color: #00e4d1;}
-#toggle-button1:hover #image-toggle {content: url('吹き出し緑.png');}
+#toggle-button1:hover #image-toggle {content: url('header/toggle-1-green.png');}
 
 .toggle-list2 li a{ color: #DF5656;}
 .toggle-list2 li a:hover{ color: #fe9898;}
-#toggle-button2:hover #image-toggle { content: url('ハート赤.png');}
+#toggle-button2:hover #image-toggle { content: url('header/toggle-2-red.png');}
 
 #toggle-content1, #toggle-content2 {
-    /* 吹き出しトグルとハートトグルのコンテンツ */
+    /* header/toggle-1トグルとheader/toggle-2トグルのコンテンツ */
     /*display: none; */  /* 追加 */
     position: fixed;
     /*width: 100%;*/
     max-width: 30%; /* 元は300 */
-    right: 100px;  /*リストの位置 */
-}
-/* 　スマホで見切れない指示 */
-@media screen and (min-width: 480px) {
-    #toggle-content1, #toggle-content2 {
-        right: 20px;
-    }
-}
-#toggle-content2{
-    top: 69px;
+    /*　　right: 20px;  /*リストの位置 */
+    right: 25px;
+
 }
 
+/* 　幅480以上の画面で見た場合 */
+@media screen and (min-width: 480px) {
+    #toggle-content1, #toggle-content2{
+        right: 20px;  /*リストの位置 */
+    }
+}
+/* 　幅480px以下の画面で見た場合 */
+@media screen and (max-width: 480px) {
+    #toggle-button2 {
+        right: 10%;
+    }
+    #toggle-content1, #toggle-content2{
+        right: 10%;
+    }
+}
+/* 　幅560px以上の画面で見た場合 */
+@media screen and (max-width: 560px) {
+    #toggle-content1, #toggle-content2{
+        right: 20%;  /*リストの位置 */
+    }
+}
+
+/* header/toggle-2トグルのリストだけ高さが違うので　64pxで指示 */
+#toggle-content2{
+    top: 64px;
+}
 
 
 
@@ -351,23 +379,33 @@ body {
 
 
 .logo-title {
-    padding-top: 10px;
     text-align: center;
 }
+/* 　スマホで程よい指示　幅480px以下 */
+/*
+@media screen and (max-width: 480px) {
+    .logo-title {
+        size: 90%;
+    }
+}
+*/
 
 /*お題とフォーム*/
 .myForm{
     font-size: large;
-    font-weight: bolder;
-    color: #10a7ff;
-    padding-top: 10px;
-    padding-bottm: 0px;
+    font: weight 200px;;
+    color: #0090e3;
     text-align: center;
 }
 /*入力フォーム*/
 #inputData{
+    /*
     padding: 10px;
-    margin-bottom: 20px;
+    */
+    font-size: 20px;
+    font-family: "BIZ UDGothic";
+    padding: 10px 10px; /* フォームの中の余白 */
+    border: 3px solid #ffa463; /* 縁の色と太さを変える */
 }
 /*入力フォームを中心に*/
 .inputform{
@@ -390,6 +428,7 @@ label, input {
 
 
 /* 編集したボタン */
+/*
 *,
 *:before,
 *:after {
@@ -401,6 +440,7 @@ html {
     box-sizing: border-box;
 
 }
+*/
 .btn,
 a.btn,
 button.btn {
@@ -471,6 +511,7 @@ button.btn {
     -webkit-transform: rotateX(0.5turn) rotateX(-0.03turn);
     transform: rotateX(0.5turn) rotateX(-0.03turn);
     background: #f2f5f6; /* 裏面の背景色 */
+    
 }
 /* 表の文字も反転させないために　0； */
 .btn-3d-circle:hover .btn-3d-circle-front {
@@ -492,27 +533,23 @@ button.btn {
     font-size: 62.5%;
     top: 50%; /* まずは真ん中に */
     left: 50%;
-    transform: translate(-50%, -50%); /* 要素の中心を真ん中に */
+    transform: translate(-50%, -50%); /* 要素の中心を真ん中に */ 
     /* 画面が縮んでも改行しない指示 */
     white-space: nowrap;
     color: #52b1ff; /* 表文字の色 */
 
-    -webkit-transition-duration: 0.8s; /* 古いWebKitブラウザ用 */
-    transition-duration: 0.8s;         /* 標準ブラウザ用 */
+    -webkit-transition-duration: 0.5s; /* 古いWebKitブラウザ用 */
+    transition-duration: 0.5s;         /* 標準ブラウザ用 */
 
     opacity: 0;
 }
-
-
-
-
 
 
 /* フラッシュメッセージ */
 #flashMessage{
     font-size:medium
     font-weight: small;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
 }
 
     /* 追加：画面が縮んでも改行しない指示 */
@@ -520,13 +557,15 @@ button.btn {
     /* 追加：画面が縮んでも背景が変わらない */
     /* width: fit-content;*/
 
-
 /* お問い合わせ */
+.copyright{
+    margin-left: 20px;
+    top: 0;
+}
 .copyright a{
     cursor: pointer; /* マウスオーバーでカーソルの形状を変える */
-    font-weight: lighter;
+    font: weight 250px;
     color: rgb(255, 140, 0);
-    text-align: left;
     bottom: 0;
     text-decoration: none;  /* リンク下の線を削除 */
     font-size: medium;
@@ -535,12 +574,11 @@ button.btn {
     cursor: pointer; /* マウスオーバーでカーソルの形状を変える */
     font-weight:bolder;
     color: rgb(255, 0, 0);
-    text-align: left;
     bottom: 0;
     text-decoration: none;  /* リンク下の線を削除 */
     font-size: medium;
 }
-
-
-
-
+/* ホバーするとXの黒い画像が出る指示 */
+.copyright a:hover #image-x {
+    content: url('footer/x-black.png');
+}
