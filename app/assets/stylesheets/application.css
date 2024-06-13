@@ -307,6 +307,8 @@ body {
     list-style: none; /*先頭の・を非表示*/
     background-color: rgb(254, 255, 240);
     padding: 15px; /* 追加 */
+    border-radius: 10px;/* 角を丸める */
+
     /* 追加：画面が縮んでも改行しない指示 */
     white-space: nowrap;
     /* 追加：画面が縮んでも背景が変わらない */
@@ -466,7 +468,6 @@ button.btn {
     align-items: center; /* 垂直方向の中央揃え */
     justify-content: center; /* 水平方向の中央揃え */
 }
-
 /* 表面の文字色 */
 .btn-3d-circle-front{
     position: absolute;
@@ -572,13 +573,13 @@ button.btn {
 }
 .copyright a:hover{
     cursor: pointer; /* マウスオーバーでカーソルの形状を変える */
-    font-weight:bolder;
+    font-weight:bold; 
     color: rgb(255, 0, 0);
     bottom: 0;
-    text-decoration: none;  /* リンク下の線を削除 */
+    text-decoration: none;   /* リンク下の線を削除 */
     font-size: medium;
 }
 /* ホバーするとXの黒い画像が出る指示 */
 .copyright a:hover #image-x {
-    content: url('footer/x-black.png');
+    content: url('footer/x-black.png'); /* ホバー時の背景画像 */
 }
