@@ -1,10 +1,5 @@
 <%# トップページのメインコンテンツを構成 %>
-    <div class="logo-title">
-    <%= image_tag '仮ロゴ.png', class: 'rounded-circle mr15', width: '400', height: '400' %>
-    </div>
 
-
-<%# 入力フォームとスタートボタン %>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -13,39 +8,45 @@
     <title>リスト一覧？</title>
 </head>
 <body>
-<form id="myForm" class="myForm">
-<label for="inputData">どのクラスタを攻略する？🤔</label>
-<div class="inputform">
-<input type="text" id="inputData" name="inputData">
+
+<%# ロゴ %>
+<div class="logo-title">
+<%= image_tag 'logo-clear.png', class: 'rounded-circle mr15', width: '400', height: '400' %>
 </div>
 
-<%# ★★★★★★ 未入力の場合の処理：フラッシュメッセージの表示 %>
-<div id="flashMessage" style="display:none; color:red;"></div>
+<%# 入力フォームとスタートボタン %>
+    <form id="myForm" class="myForm">
+        <label for="inputData">どの界隈のあるあるで遊ぶ？🤔</label>
+        <div class="inputform">
+        <input type="text" id="inputData" name="inputData">
+        </div>
+        
+        <%# ★★★★★★ フラッシュメッセージの表示 %>
+        <%#
+            <div id="flashMessage" class="flash-message"></div>
+        %>
+            <%# ★★★★★★ 未入力の場合の処理：フラッシュメッセージの表示 %>
+            <div id="flashMessage" style="display:none; color:red;"></div>
 
-<%# ★★★★★★ 入力済み場合の処理：フラッシュメッセージ用の要素を取得 %>
-<div id="flashMessage" style="display:none; color:green;"></div>
+            <%# ★★★★★★ 入力済み場合の処理：フラッシュメッセージ用の要素を取得 %>
+            <div id="flashMessage" style="display:none; color:green;"></div>
+        
 
-<%# ーーーーーースタートボタンーーーーーーーー %>
 
-<a href="" class="btn btn-3d-circle">
-    <span class="btn-3d-circle-content">
-        <span class="btn-3d-circle-front">とにかく知りたいモード</span>
-    </span>
-    <span class="btn-3d-circle-back">じっくりめくろう！</i></span>
-</a>
-
-<a href="" class="btn btn-3d-circle">
-    <span class="btn-3d-circle-content">
-        <span class="btn-3d-circle-front">はやく言いたいモード</span>
-    </span>
-    <span class="btn-3d-circle-back">タイムオーバーあり！</i></span>
-</a>
-
-</form>
-    </form>
-    <div id="flashMessage" class="flash-message"></div>
+        <%# ーーーーーースタートボタンーーーーーーーー %>
+        
+        <a href="#" class="btn btn-3d-circle" id="button1">
+            <span class="btn-3d-circle-content">
+                <span class="btn-3d-circle-front">とにかく知りたいモード</span>
+            </span>
+                <span class="btn-3d-circle-back">じっくりめくろう！</span>
         </a>
-
+        <a href="#" class="btn btn-3d-circle" id="button2">
+            <span class="btn-3d-circle-content">
+                <span class="btn-3d-circle-front">はやく言いたいモード</span>
+            </span>
+            <span class="btn-3d-circle-back">タイムオーバーあり！</span>
+        </a>
     </form>
 
     <script>
