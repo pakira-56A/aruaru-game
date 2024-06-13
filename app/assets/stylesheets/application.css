@@ -169,6 +169,7 @@ body {
     font-weight: bold;
     font-size: larger;
     text-align: center; 
+    padding-bottom: 10px;
 }
 .popup-overlay-2 {
     /* 6/11追加 */
