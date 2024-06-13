@@ -13,7 +13,7 @@ document.querySelectorAll('a').forEach(function(link) {
     });
 });
 
-// 吹き出しトグル(トグル1)の指示
+// header/toggle-1トグル(トグル1)の指示
 document.getElementById('toggle-button1').addEventListener('click', function() {
     let content = document.getElementById('toggle-content1');
         // トグル1を開いてる時に、トグル2は開かない指示
@@ -29,7 +29,7 @@ document.getElementById('toggle-button1').addEventListener('click', function() {
 });
 
 
-// ハートトグル(トグル2)の指示
+// header/toggle-2トグル(トグル2)の指示
 document.getElementById('toggle-button2').addEventListener('click', function() {
     let content = document.getElementById('toggle-content2');
         // トグル2を開いてる時に、トグル1は開かない指示
