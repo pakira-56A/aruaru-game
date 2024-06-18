@@ -584,3 +584,8 @@ button.btn {
 .copyright a:hover #image-x {
     content: url('footer/x-black.png'); /* ホバー時の背景画像 */
 }
+
+.special-text {
+    color: white;
+    font-size: 0.9em; /* 文字を少し小さくする */
+}
