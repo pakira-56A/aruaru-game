@@ -200,11 +200,11 @@ ____
 > 情報収集や調査は全くできてません。  
 > 他の受講生さんのREADMEを参加に、思い当たる範囲で以下に書き出します。
 
-
-- Gem kaminari（投稿一覧で使用）
-- Gem carrierwave（カードの背面・投稿した界隈またはあるあるのイメージ画像をカスタムできる機能を追加？）
-- オートコンプリート：[stimulus-autocomplete](https://github.com/afcapel/stimulus-autocomplete)（投稿するあるあるを増やしたいユーザー向け）
-- X連携：[Twitter API](https://developer.x.com/ja)
-- Omniauth（Google ログイン）
-- Google analytics（ユーザー層の把握）
+- **OpenAI API**：AIであるあるを生成
+- **Gem kaminari**：投稿一覧で使用
+- **Gem carrierwave**：カードの背面・投稿した界隈またはあるあるのイメージ画像をカスタムできる機能を追加？
+- **オートコンプリート**/[**stimulus-autocomplete**](https://github.com/afcapel/stimulus-autocomplete)：投稿するあるあるを増やしたいユーザー向け
+- [**Twitter API**](https://developer.x.com/ja)：X連携
+- **Omniauth**：Google ログイン
+- **Google analytics**：ユーザー層の把握
 _____
