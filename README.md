@@ -172,3 +172,8 @@ ____
 - **Omniauth**：Google ログイン
 - **Google analytics**：ユーザー層の把握
 _____
+## 画面遷移図
+https://www.figma.com/design/HgPujRv8Tli2qBWqlzYeyY/Untitled?node-id=0-1&t=1UjNVUB1TIqBl4wG-1  
+**一部、既存のトップページから仕様を変更してる部分もあります**  
+[![Image from Gyazo](https://i.gyazo.com/5ed438bb2ee28e876bc1d884a1b6a77a.png)](https://gyazo.com/5ed438bb2ee28e876bc1d884a1b6a77a)
+___
