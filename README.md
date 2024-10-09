@@ -175,5 +175,9 @@ _____
 ## 画面遷移図
 https://www.figma.com/design/HgPujRv8Tli2qBWqlzYeyY/Untitled?node-id=0-1&t=1UjNVUB1TIqBl4wG-1  
 **一部、既存のトップページから仕様を変更してる部分もあります**  
-[![Image from Gyazo](https://i.gyazo.com/5ed438bb2ee28e876bc1d884a1b6a77a.png)](https://gyazo.com/5ed438bb2ee28e876bc1d884a1b6a77a)
+[![Image from Gyazo](https://i.gyazo.com/8b6d6d93f1fbfdda487b3d6c0ded9c28.png)](https://gyazo.com/8b6d6d93f1fbfdda487b3d6c0ded9c28)
 ___
+### ER図
+https://dbdiagram.io/d/あるある神経衰弱-670531e2fb079c7ebdbde9aa  
+[![Image from Gyazo](https://i.gyazo.com/84e323a834745582c25efba26cc67f33.png)](https://gyazo.com/84e323a834745582c25efba26cc67f33)
+____
