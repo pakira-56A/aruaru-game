@@ -149,11 +149,11 @@ ____
 | JavaScript   | -             |
 | bootsnap   | インストールのみ（未着手）             |
 | Docker   | -             |
-| PL/pgSQL   | -             |
+| PostgreSQL   | -             |
 | Render   | -             |
 
 
-**PL/pgSQL**は  
+**PostgreSQL**は  
 > バトラン時に、わけもわからず[この記事(2024.6頃)](https://hackmd.io/@SKjw2RY-RNCUNSdJfEWPig/HJE0GUClC)を参考に環境構築した時に入れたのかもです。  
 > どんな特徴をもつSQLなのか分かってません。  
 > 可能であれば、別のものに入れ替えるかもです。  
@@ -179,5 +179,5 @@ https://www.figma.com/design/HgPujRv8Tli2qBWqlzYeyY/Untitled?node-id=0-1&t=1UjNV
 ___
 ### ER図
 https://dbdiagram.io/d/あるある神経衰弱-670531e2fb079c7ebdbde9aa  
-[![Image from Gyazo](https://i.gyazo.com/ce88af876b8fe4065e6c037902773012.png)](https://gyazo.com/ce88af876b8fe4065e6c037902773012)
+[![Image from Gyazo](https://i.gyazo.com/1d250c0c568ae4884860cb8d66b6c288.png)](https://gyazo.com/1d250c0c568ae4884860cb8d66b6c288)
 ____
