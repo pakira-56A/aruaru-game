@@ -73,21 +73,22 @@ ____
 # ■ 機能候補
 
 ## MVPリリースに向け（多いかもです...）
-**界隈あるある生成・投稿に関して**
-- **AI生成機能**
-  - ユーザーが入力した界隈(インスタンス変数に格納)をAIに渡し、あるあるを生成
-  - あのあるある(文字列)をトランプに反映させ、神経衰弱に。
+**優先順位たかい機能**
+- **Googleログイン**
 - **界隈あるある投稿機能**
   - AIではなくユーザー自ら界隈と、そのあるあるを投稿。
 - **投稿した/された界隈あるあるを神経衰弱に反映**
   - ユーザーAが投稿した界隈あるあるで遊べる・Xシェアできる
   - ユーザーAがXシェアポストのリンクから飛んだユーザーBが、Xシェアされた界隈あるあるで遊べる
 
-**Xでシェアするための機能**
+**優先順位ひくい機能**
+- **AI生成機能**
+  - ユーザーが入力した界隈(インスタンス変数に格納)をAIに渡し、あるあるを生成
+  - あのあるある(文字列)をトランプに反映させ、神経衰弱に。
 - **Googleログイン**
 - **Xシェア機能**
   - 作成した界隈のあるあるを保存し、Xでシェア
-- **動的OGP**
+- **動的OGP**（本リリースに回すかも？）
   - Xシェアの際、動的OGPを反映させる
   - 動的OGPは、並んだカードが並んでおり。ユーザーが最初にめくったカードだけめくられた画像が理想。
 　　
@@ -165,12 +166,13 @@ ____
 > 他の受講生さんのREADMEを参加に、思い当たる範囲で以下に書き出します。
 
 - **OpenAI API**：AIであるあるを生成
+- [**Gem devise**](https://github.com/heartcombo/devise)：認証機能
+- [**Omniauth**](omniauth)：Google ログイン
 - **Gem kaminari**：投稿一覧で使用
 - **Gem carrierwave**：カードの背面・投稿した界隈またはあるあるのイメージ画像をカスタムできる機能を追加？
 - **オートコンプリート**/[**stimulus-autocomplete**](https://github.com/afcapel/stimulus-autocomplete)：投稿するあるあるを増やしたいユーザー向け
 - [**Twitter API**](https://developer.x.com/ja)：X連携
-- **Omniauth**：Google ログイン
-- **Google analytics**：ユーザー層の把握
+- [**Google analytics**](https://developers.google.com/analytics?hl=ja)：ユーザー層の把握
 _____
 ## 画面遷移図
 https://www.figma.com/design/HgPujRv8Tli2qBWqlzYeyY/Untitled?node-id=0-1&t=1UjNVUB1TIqBl4wG-1  
