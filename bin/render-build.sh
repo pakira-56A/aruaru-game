@@ -1,6 +1,6 @@
 set -o errexit
 
-rm ../app/assets/builds/*
+rm ./app/assets/builds/*
 
 bundle install
 bundle exec rails assets:precompile
