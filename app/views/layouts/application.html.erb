@@ -4,6 +4,7 @@
 <head>
 <%= favicon_link_tag('favicon.png') %>
 <%# stylesheetのcssファイルと紐付けされる %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 
 
@@ -37,7 +38,7 @@
 
 
 <%# ナビゲーションバーをトグルに変更 %>
-  <body>
+  <body class="bg-red-500">
     <%# ヘッダーを表示、全ページで共通のレイアウトを定義 %>
     <%# クラス名をつけた %>
     <div class="header-container">
