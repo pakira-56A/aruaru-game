@@ -15,11 +15,11 @@
  */
 
 
-body { 
+/* body {
     background-color: #fdea2e;
 
     font-family: "Hiragino Sans","ヒラギノ角ゴシック";
-}
+} */
 
 /*　　　　遊び方　　　　　*/
 #popup-1 {
@@ -549,7 +549,7 @@ button.btn {
 
 /* フラッシュメッセージ */
 #flashMessage{
-    font-size:medium
+    font-size:medium;
     font-weight: small;
     padding-bottom: 10px;
 }
