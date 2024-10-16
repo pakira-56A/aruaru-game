@@ -44,31 +44,19 @@
 
 
 <nav>
-    <div class="toggles">
-
-        <div class="toggle1">
-        <span id="toggle-button1">
-            <%= image_tag 'header/toggle-1.png', class: 'rounded-circle mr15', width: '40', height: '40' ,id:'image-toggle' %>
+    <div class="toggle">
+        <span id="toggle-button" class="toggle-button">
+            <%= image_tag 'header/toggle.svg', width: '40', height: '40', id:'image-toggle-button'%>
         </span>
-            <div id="toggle-content1" class="toggle-content1">
-                <ul class="toggle-list1" >
-                <!-- 矢印アイコンを項目の先頭に表示 -->
-                    <li><a href="/about"><span class="material-symbols-outlined">chevron_right</span>シェアされた界隈</a></li>
-                    <li><a href="/contact"><span class="material-symbols-outlined">chevron_right</span>皆の自作あるある</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="toggle2">
-        <span id="toggle-button2">
-                <%= image_tag 'header/toggle-2.png', class: 'rounded-circle mr15', width: '33', height: '33',id:'image-toggle'  %>
-        </span>
-            <div id="toggle-content2" class="toggle-content2">
-                <ul class="toggle-list2" >
-                <!-- 矢印アイコンを項目の先頭に表示 -->
-                <li><a href="/"><span class="material-symbols-outlined">chevron_right</span>界隈をシェアする</a></li>
-                <li><a href="/users_likes"><span class="material-symbols-outlined">chevron_right</span>お気に入りの界隈</a></li>
-                </ul>
-            </div>
+        <div id="toggle-area" class="toggle-area">
+            <div class="toggle-list1" >
+                <li><a href="/index">
+                <%= image_tag 'header/toggle-1.png', width: '30', height: '30',id:'image-toggle1' %>
+                誰かが作ったあるあるで遊ぶ</a></li>
+            <div class="toggle-list2" >
+                <li><a href="/likes">
+                <%= image_tag 'header/toggle-2.png', width: '25', height: '25',id:'image-toggle2' %>
+                お気に入りの界隈をみる</a></li>
         </div>
     </div>
 </nav>
