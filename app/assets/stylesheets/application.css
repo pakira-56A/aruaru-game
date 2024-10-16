@@ -382,16 +382,16 @@
 
 
 .logo-title {
+    display: flex;
+    justify-content: center;
     text-align: center;
 }
 /* 　スマホで程よい指示　幅480px以下 */
-/*
-@media screen and (max-width: 480px) {
+/* @media screen and (max-width: 480px) {
     .logo-title {
         size: 90%;
     }
-}
-*/
+} */
 
 /*お題とフォーム*/
 .myForm{
@@ -579,13 +579,4 @@ button.btn {
     bottom: 0;
     text-decoration: none;   /* リンク下の線を削除 */
     font-size: medium;
-}
-/* ホバーするとXの黒い画像が出る指示 */
-.copyright a:hover #image-x {
-    content: url('footer/x-black.png'); /* ホバー時の背景画像 */
-}
-
-.special-text {
-    color: white;
-    font-size: 0.9em; /* 文字を少し小さくする */
 }
