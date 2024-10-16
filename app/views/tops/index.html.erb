@@ -20,7 +20,7 @@
         <div class="inputform">
         <input type="text" id="inputData" name="inputData">
         </div>
-        
+
         <%# ★★★★★★ フラッシュメッセージの表示 %>
         <%#
             <div id="flashMessage" class="flash-message"></div>
@@ -30,22 +30,14 @@
 
             <%# ★★★★★★ 入力済み場合の処理：フラッシュメッセージ用の要素を取得 %>
             <div id="flashMessage" style="display:none; color:green;"></div>
-        
 
 
         <%# ーーーーーースタートボタンーーーーーーーー %>
-        
         <a href="#" class="btn btn-3d-circle" id="button1">
             <span class="btn-3d-circle-content">
-                <span class="btn-3d-circle-front">とにかく知りたいモード</span>
+                <span class="btn-3d-circle-front">神経衰弱スタート</span>
             </span>
-                <span class="btn-3d-circle-back">じっくりめくろう！</span>
-        </a>
-        <a href="#" class="btn btn-3d-circle" id="button2">
-            <span class="btn-3d-circle-content">
-                <span class="btn-3d-circle-front">はやく言いたいモード</span>
-            </span>
-            <span class="btn-3d-circle-back">タイムオーバーあり！</span>
+                <span class="btn-3d-circle-back">めくって知ろう！</span>
         </a>
     </form>
 
@@ -69,7 +61,6 @@
             // ★★★★★★ 入力された場合のフラッシュメッセージ
             flashMessage.textContent = 'まだ遊べないんだぁ、待っててね😀';
             flashMessage.style.display = 'block';
-            
 
             // AIにデータを送信する一旦Geminiを登録
             fetch('https://gemini.google.com/', {
