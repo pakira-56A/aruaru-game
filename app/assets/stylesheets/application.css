@@ -166,31 +166,24 @@
 
 
 /*トグルメニュー*/
-.toggles {
+.toggle{
     /* header/toggle-1トグルとheader/toggle-2トグルを一括りにしたクラス */
     position:relative;
-    display: flex;
-    /* toggle1と2の間の距離 */
-    gap: 30px;
     justify-content: flex-end; /* 追加：親要素に追加すると子が右寄せになる */
     cursor: pointer;
-    width: 100%; /* 親要素の幅を100%に */
     right: 20px;
+    width: auto;}
 
-}
-.toggle1 , .toggle2{
-    /* header/toggle-1トグルとheader/toggle-2トグル */
-    position: relative;
-    width: auto; /* 修正：100%からautoに変更 */
-}
-/*.toggle2{
-    right: 20px;
-}*/
+.toggle-button :hover{ content: url('header/toggle-hover.svg');}
 
-.toggle-list1 , .toggle-list2{    
-    /* header/toggle-1トグルとheader/toggle-2トグルの項目 */
-    /* padding-left: 30px; */
-    /* width: 100%; */
+
+.toggle-area{
+    position: fixed;
+    max-width: 30%; /* 元は300 */
+    top: 70px;
+    right: 25px;}
+
+.toggle-list1, .toggle-list2{
     line-height: 25px;
     list-style: none; /*先頭の・を非表示*/
     background-color: rgb(254, 255, 240);
@@ -200,68 +193,51 @@
     /* 追加：画面が縮んでも改行しない指示 */
     white-space: nowrap;
     /* 追加：画面が縮んでも背景が変わらない */
-    width: fit-content;
-}
-.toggle-list1 li a, .toggle-list2 li a{
+    width: fit-content;}
+
+.toggle-list1 li{
+    padding: 10px;}
+
+.toggle-list1 li a{
     /* toggle-listの中のliタグの中のaタグを編集 */
     font-weight: bold;
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;  /* リンク下の線を削除 */
-    /*gap: 40px;*/ /*矢印との距離が離れる*/ 
-}
-.toggle-list1 li , .toggle-list2 li {
-    margin-bottom: 10px;
-}
-.toggle-list2 {
-    justify-content: flex-start;
-}
+    gap: 5px; /*アイコンとの距離が離れる*/}
+
 .toggle-list1 li a{ color: #008C80;}
 .toggle-list1 li a:hover{ color: #00e4d1;}
-#toggle-button1:hover #image-toggle {content: url('header/toggle-1-green.png');}
+.toggle-list1 li a:hover #image-toggle1 {content: url('header/toggle-1-hover.png');}
 
 .toggle-list2 li a{ color: #DF5656;}
 .toggle-list2 li a:hover{ color: #fe9898;}
-#toggle-button2:hover #image-toggle { content: url('header/toggle-2-red.png');}
-
-#toggle-content1, #toggle-content2 {
-    /* header/toggle-1トグルとheader/toggle-2トグルのコンテンツ */
-    /*display: none; */  /* 追加 */
-    position: fixed;
-    /*width: 100%;*/
-    max-width: 30%; /* 元は300 */
-    /*　　right: 20px;  /*リストの位置 */
-    right: 25px;
-
-}
+.toggle-list2 li a:hover #image-toggle2 { content: url('header/toggle-2-hover.png');}
 
 /* 　幅480以上の画面で見た場合 */
 @media screen and (min-width: 480px) {
-    #toggle-content1, #toggle-content2{
+    #toggle-area{
+        top: 70px;
         right: 20px;  /*リストの位置 */
-    }
-}
+    }}
+
 /* 　幅480px以下の画面で見た場合 */
 @media screen and (max-width: 480px) {
     #toggle-button2 {
         right: 10%;
     }
-    #toggle-content1, #toggle-content2{
-        right: 10%;
-    }
-}
+    #toggle-area{
+        top: 70px;
+        right: 20px;  /*リストの位置 */
+    }}
+
 /* 　幅560px以上の画面で見た場合 */
 @media screen and (max-width: 560px) {
-    #toggle-content1, #toggle-content2{
-        right: 20%;  /*リストの位置 */
-    }
-}
-
-/* header/toggle-2トグルのリストだけ高さが違うので　64pxで指示 */
-#toggle-content2{
-    top: 64px;
-}
+    #toggle-area{
+        top: 70px;
+        right: 20px;  /*リストの位置 */
+    }}
 
 
 
