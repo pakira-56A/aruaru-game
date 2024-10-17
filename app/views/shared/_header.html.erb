@@ -1,44 +1,50 @@
 <!--  遊び方 -->
 <div>
-    <input type="checkbox" id="popup-1">
-        <label class="popup-open-1" for="popup-1">遊び方</label>
-            <div class="popup-overlay-1">
-                <div class="popup-window-1">
-                    <p class="popup-title-1">🥳　遊び方　🥳</p>
-                    <p class="popup-text-1">
-                    <span style="font-weight: bold; ">あらゆる界隈をすこーし探求できるゲーム</span>
-                    <br>①あるあるを知りたい界隈を入力！
-                    <br>　ＡＩがあるあるを生成してくれるよ
-                    <br><%= image_tag 'header/AI-search.png', class: 'rounded-circle mr15', width: '20%', height: '20%' %>
-                    <%= image_tag 'header/AI-lines.jpeg', class: 'rounded-circle mr15', width: '60%', height: '60%' %>
-                    <br>②モードを選んで神経衰弱スタート！
-                    <br>　札をめくって、あるあるのペアを作ろう！
-                    <br>
-                        <%= image_tag 'header/card.png', class: 'rounded-circle mr15', width: '12.7%', height: '12.7%' %>
-                        <%= image_tag 'header/card-2.jpeg', class: 'rounded-circle mr15', width: '12%', height: '12%' %>
-                        <%= image_tag 'header/card.png', class: 'rounded-circle mr15', width: '12.7%', height: '12.7%' %>
-                        <%= image_tag 'header/card-1.jpeg', class: 'rounded-circle mr15 custom-border', width: '12%', height: '12%' %>
-                        <%= image_tag 'header/pea.jpeg', class: 'rounded-circle mr15', width: '20%', height: '20%' %>
-                        <br>
-
-                        <%= image_tag 'header/card.png', class: 'rounded-circle mr15', width: '12.7%', height: '12.7%' %>
-                        <%= image_tag 'header/card.png', class: 'rounded-circle mr15', width: '12.7%', height: '12.7%' %>
-                        <%= image_tag 'header/card-1.jpeg', class: 'rounded-circle mr15 custom-border', width: '12%', height: '12%' %>
-                        <%= image_tag 'header/card.png', class: 'rounded-circle mr15', width: '12.7%', height: '12.7%' %>
-                        <%= image_tag 'header/pea-lines.png', class: 'rounded-circle mr15', width: '30%', height: '30%' %>
-                    <br>
-                    ③左上の <%= image_tag 'header/menu/menus.svg', class: 'rounded-circle mr15', width: '30', height: '30' %>から
-                    <br>　あるあるを自作したり、シェアしよう💃
-                    </p>
-                    <label class="popup-close-1" for="popup-1">
-                        <svg width="18" height="18" xmlns="http://www.w3.org/2000/svg">
-                            <line x1="0" y1="0" x2="18" y2="18" stroke="white" stroke-width="3"></line>
-                            <line x1="0" y1="18" x2="18" y2="0" stroke="white" stroke-width="3"></line>
-                        </svg>
-                    </label>
+    <input type="checkbox" id="howto">
+        <label class="howto-open" for="howto">遊び方</label>
+            <div class="howto-overlay" onclick="document.getElementById('howto').checked = false;">
+                <div class="close-text">タップして閉じる</div>
+                    <div class="howto-window">
+                        <p class="howto-title">🥳　遊び方　🥳</p>
+                        <div class="howto-text">
+                            <span style="font-weight: bold; ">あらゆる界隈をすこーし探求できるゲーム</span>
+                            <br>
+                            <br>
+                            ①あるあるを知りたい界隈を入力！
+                            <br>　ＡＩがあるあるを生成してくれるよ
+                                <div style="display: flex;">
+                                <br><%= image_tag 'header/AI-search.png', class: 'rounded-circle mr15', width: '15%', height: '15%' %>
+                                <%= image_tag 'header/AI-lines.jpeg', class: 'rounded-circle mr15', width: '60%', height: '60%' %>
+                                </div>
+                            <br>
+                                <div style="display: flex;">
+                                ②<%= image_tag 'header/start-button.png', class: 'rounded-circle mr15', width: '28%', height: '18%' %>で
+                                </div>
+                                札をめくって、あるあるのペアを作ろう！
+                            <br>
+                                <div style="display: flex;">
+                                    <%= image_tag 'header/card.png', class: 'rounded-circle mr15', width: '12.7%', height: '12.7%' %>
+                                    <%= image_tag 'header/card-2.jpeg', class: 'rounded-circle mr15', width: '12%', height: '12%' %>
+                                    <%= image_tag 'header/card.png', class: 'rounded-circle mr15', width: '12.7%', height: '12.7%' %>
+                                    <%= image_tag 'header/card-1.jpeg', class: 'rounded-circle mr15 card-border', width: '12%', height: '12%' %>
+                                    <%= image_tag 'header/pea.jpeg', class: 'rounded-circle mr15', width: '25%', height: '10%' %>
+                                    <br>
+                                </div>
+                                <div style="display: flex;">
+                                    <%= image_tag 'header/card.png', class: 'rounded-circle mr15', width: '12.7%', height: '12.7%' %>
+                                    <%= image_tag 'header/card.png', class: 'rounded-circle mr15', width: '12.7%', height: '12.7%' %>
+                                    <%= image_tag 'header/card-1.jpeg', class: 'rounded-circle mr15 card-border', width: '12%', height: '12%' %>
+                                    <%= image_tag 'header/card.png', class: 'rounded-circle mr15', width: '12.7%', height: '12.7%' %>
+                                    <%= image_tag 'header/pea-lines.png', class: 'rounded-circle mr15', width: '40%', height: '12%' %>
+                                </div>
+                                    <br>
+                                <div style="display: flex;">
+                                ③左上の <%= image_tag 'header/menu/menus.svg', class: 'rounded-circle mr15', width: '30', height: '30' %> から
+                                </div>
+                                誰かのあるあるで遊んだり、自作してシェアしよう💃
+                        </div>
+                    </div>
                 </div>
-            </div>
-    </input>
 </div>
 
 
