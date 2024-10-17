@@ -16,11 +16,11 @@
 
 
 /*　　　　遊び方　　　　　*/
-#popup-1 {
+#howto{
     display: none; /* label でコントロールするので input は非表示に */
-    position: relative;
-}
-.popup-open-1 {
+    position: relative;}
+
+.howto-open {
     display: block; /* 6/11 追加 */
     margin-bottom: 10px; /* 6/11 要素間にスペを追加 */
 
@@ -32,27 +32,26 @@
     left: 20px;
     /* メニュー達とヘッダーの高さを揃えられす、topで指定 */
     top: 10px;
-    position: absolute;
-}
-.popup-open-1:hover {
+    position: absolute;}
+
+.howto-open:hover {
     cursor: pointer; /* マウスオーバーでカーソルの形状を変える*/
-    color: rgb(80, 153, 255);
-    margin-bottom: 0;
+    color: #5099ff;
     font-weight: 300;
     font-weight: bold;
     text-align: left;
     left: 20px;
     /* メニュー達とヘッダーの高さを揃えられす、topで指定 */
     top: 10px;
-    position: absolute;
-}
-.popup-title-1{
-    color: rgb(255, 0, 144);
+    position: absolute;}
+
+.howto-title{
+    color: #ff0090;
     font-weight: bold;
     font-size: larger;
-    text-align: center;
-}
-.popup-overlay-1 {
+    text-align: center;}
+
+.howto-overlay {
     /* 6/11追加 */
     position: fixed;
     z-index: 1000; /* オーバーレイを前面に表示 */
@@ -62,11 +61,11 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 143, 73, 0.7);
+    background: #ff8f49;
     justify-content: center;
-    align-items: center;
-}
-#popup-1:checked ~ .popup-overlay-1 {
+    align-items: center;}
+
+#howto:checked ~ .howto-overlay {
     display: block;
     z-index: 99999;
     /*　　背景透過　*/
@@ -75,9 +74,9 @@
     height: 100%;
     width: 100%;
     top: 0;
-    left: 0;
-}
-.popup-window-1 {
+    left: 0;}
+
+.howto-window {
     border-radius: 10px;
     text-align: center;
     z-index: 1001; /* ウィンドウをオーバーレイより前面に表示 */
@@ -91,51 +90,38 @@
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-}
-.popup-text-1 {
+    transform: translate(-50%, -50%);}
+
+.howto-text {
     line-height: 200%;
     text-align: left;
-    padding: 0px,10px,10px,0px;
-    color: rgb(255, 89, 0);
+    padding: 0px 10px 10px 0px;
+    color: #ff5900;
     /* 画面が縮んでも改行しない指示 */
     white-space: nowrap;
     /* 画面が縮んでも背景が変わらない */
-    width: fit-content;
-}
-.popup-text-1:not(:last-of-type) {
-    margin-bottom: 1em
-}
-.popup-text-1 image{
-    align-items: center;
-}
-.popup-close-1 {
-    cursor: pointer;
-     /* popup子 */
-    position: absolute;
-    top: -26px;
-    right: 0;
-}
+    width: fit-content;}
 
-.custom-border {
-    border: 3px solid rgb(255, 238, 46);  /* 縁の太さと色を指定 */
-    border-radius: 4%;  /* 角を丸める */
-}
+.card-border {
+    border: 3px solid #ffee2e;  /* 縁の太さと色を指定 */
+    border-radius: 4%;  /* 角を丸める */}
 
-
+.close-text{
+    color: #ffffff;
+    font-weight: bold;
+    font-size: larger;
+    text-align: center;
+    top: 50px;}
 
 /* 　幅560px以上の画面で見た場合の説明テキスト */
 @media screen and (min-width: 560px) {
-    .popup-text-1 , .popup-text-2{
-        margin-left: 15%; /* 左に余白を */
-    }
-}
+    .howto-text{
+        margin-left: 10%; /* 左に余白を */}}
 /* 　幅560px以下の画面で見た場合の説明テキスト */
 @media screen and (max-width: 560px) {
-    .popup-text-1 , .popup-text-2{
+    .howto-text{
         margin-left: 10%; /* 左に余白を */
-    }
-}
+    }}
 
 
 
@@ -153,7 +139,7 @@
 .menus,.header-container {
     align-items: center;
 }
-.popup,popup2,.header-container {
+.howto,howto2,.header-container {
     align-items: center;
 }
 
