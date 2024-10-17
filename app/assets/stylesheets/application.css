@@ -30,7 +30,7 @@
     font-size: large;
     text-align: left;
     left: 20px;
-    /* トグル達とヘッダーの高さを揃えられす、topで指定 */
+    /* メニュー達とヘッダーの高さを揃えられす、topで指定 */
     top: 10px;
     position: absolute;
 }
@@ -42,7 +42,7 @@
     font-weight: bold;
     text-align: left;
     left: 20px;
-    /* トグル達とヘッダーの高さを揃えられす、topで指定 */
+    /* メニュー達とヘッダーの高さを揃えられす、topで指定 */
     top: 10px;
     position: absolute;
 }
@@ -149,8 +149,8 @@
     position: relative;
     top: 10px;
 }
-/* ヘッダーを基準にガイドとトグルとの高さを揃える　(揃わなかった) */
-.toggles,.header-container {
+/* ヘッダーを基準にガイドとメニューとの高さを揃える　(揃わなかった) */
+.menus,.header-container {
     align-items: center;
 }
 .popup,popup2,.header-container {
@@ -165,25 +165,25 @@
 
 
 
-/*トグルメニュー*/
-.toggle{
-    /* header/toggle-1トグルとheader/toggle-2トグルを一括りにしたクラス */
+/*メニューメニュー*/
+.menu{
+    /* header/menu/menu-1メニューとheader/menu/menu-3メニューを一括りにしたクラス */
     position:relative;
     justify-content: flex-end; /* 追加：親要素に追加すると子が右寄せになる */
     cursor: pointer;
     right: 20px;
     width: auto;}
 
-.toggle-button :hover{ content: url('header/toggle-hover.svg');}
+.menu-button :hover{ content: url('header/menu/menus-hover.svg');}
 
 
-.toggle-area{
+.menu-area{
     position: fixed;
     max-width: 30%; /* 元は300 */
     top: 70px;
     right: 25px;}
 
-.toggle-list1, .toggle-list2{
+.menu-list1, .menu-list3{
     line-height: 25px;
     list-style: none; /*先頭の・を非表示*/
     background-color: rgb(254, 255, 240);
@@ -195,11 +195,11 @@
     /* 追加：画面が縮んでも背景が変わらない */
     width: fit-content;}
 
-.toggle-list1 li{
+.menu-list1 li{
     padding: 10px;}
 
-.toggle-list1 li a{
-    /* toggle-listの中のliタグの中のaタグを編集 */
+.menu-list1 li a{
+    /* menu-listの中のliタグの中のaタグを編集 */
     font-weight: bold;
     display: flex;
     justify-content: center;
@@ -207,34 +207,42 @@
     text-decoration: none;  /* リンク下の線を削除 */
     gap: 5px; /*アイコンとの距離が離れる*/}
 
-.toggle-list1 li a{ color: #008C80;}
-.toggle-list1 li a:hover{ color: #00e4d1;}
-.toggle-list1 li a:hover #image-toggle1 {content: url('header/toggle-1-hover.png');}
+.menu-list1 li a{ color: #008C80;}
+.menu-list1 li a:hover{ color: #00e4d1;}
+.menu-list1 li a:hover #image-menu1 {content: url('header/menu/menu-1-hover.png');}
 
-.toggle-list2 li a{ color: #DF5656;}
-.toggle-list2 li a:hover{ color: #fe9898;}
-.toggle-list2 li a:hover #image-toggle2 { content: url('header/toggle-2-hover.png');}
+.menu-list2 li a{ color: #0088D0;}
+.menu-list2 li a:hover{ color: #00c5ff;}
+.menu-list2 li a:hover #image-menu2 {content: url('header/menu/menu-2-hover.svg');}
+
+.menu-list3 li a{ color: #DF5656;}
+.menu-list3 li a:hover{ color: #fe9898;}
+.menu-list3 li a:hover #image-menu3 { content: url('header/menu/menu-3-hover.png');}
+
+.menu-list4 li a{ color: #818181;}
+.menu-list4 li a:hover{ color: #b7b7b7;}
+.menu-list4 li a:hover #image-menu4 { content: url('header/menu/menu-4-hover.svg');}
 
 /* 　幅480以上の画面で見た場合 */
 @media screen and (min-width: 480px) {
-    #toggle-area{
+    #menu-area{
         top: 70px;
         right: 20px;  /*リストの位置 */
     }}
 
 /* 　幅480px以下の画面で見た場合 */
 @media screen and (max-width: 480px) {
-    #toggle-button2 {
+    #menu-button2 {
         right: 10%;
     }
-    #toggle-area{
+    #menu-area{
         top: 70px;
         right: 20px;  /*リストの位置 */
     }}
 
 /* 　幅560px以上の画面で見た場合 */
 @media screen and (max-width: 560px) {
-    #toggle-area{
+    #menu-area{
         top: 70px;
         right: 20px;  /*リストの位置 */
     }}
