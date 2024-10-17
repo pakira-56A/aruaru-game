@@ -16,11 +16,11 @@
 
 
 /*　　　　遊び方　　　　　*/
-#howto-1 {
+#howto{
     display: none; /* label でコントロールするので input は非表示に */
     position: relative;}
 
-.howto-open-1 {
+.howto-open {
     display: block; /* 6/11 追加 */
     margin-bottom: 10px; /* 6/11 要素間にスペを追加 */
 
@@ -34,7 +34,7 @@
     top: 10px;
     position: absolute;}
 
-.howto-open-1:hover {
+.howto-open:hover {
     cursor: pointer; /* マウスオーバーでカーソルの形状を変える*/
     color: #5099ff;
     font-weight: 300;
@@ -45,13 +45,13 @@
     top: 10px;
     position: absolute;}
 
-.howto-title-1{
+.howto-title{
     color: #ff0090;
     font-weight: bold;
     font-size: larger;
     text-align: center;}
 
-.howto-overlay-1 {
+.howto-overlay {
     /* 6/11追加 */
     position: fixed;
     z-index: 1000; /* オーバーレイを前面に表示 */
@@ -65,7 +65,7 @@
     justify-content: center;
     align-items: center;}
 
-#howto-1:checked ~ .howto-overlay-1 {
+#howto:checked ~ .howto-overlay {
     display: block;
     z-index: 99999;
     /*　　背景透過　*/
@@ -76,7 +76,7 @@
     top: 0;
     left: 0;}
 
-.howto-window-1 {
+.howto-window {
     border-radius: 10px;
     text-align: center;
     z-index: 1001; /* ウィンドウをオーバーレイより前面に表示 */
@@ -92,7 +92,7 @@
     left: 50%;
     transform: translate(-50%, -50%);}
 
-.howto-text-1 {
+.howto-text {
     line-height: 200%;
     text-align: left;
     padding: 0px 10px 10px 0px;
@@ -115,11 +115,11 @@
 
 /* 　幅560px以上の画面で見た場合の説明テキスト */
 @media screen and (min-width: 560px) {
-    .howto-text-1 , .howto-text-2{
+    .howto-text{
         margin-left: 10%; /* 左に余白を */}}
 /* 　幅560px以下の画面で見た場合の説明テキスト */
 @media screen and (max-width: 560px) {
-    .howto-text-1 , .howto-text-2{
+    .howto-text{
         margin-left: 10%; /* 左に余白を */
     }}
 
