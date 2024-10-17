@@ -165,8 +165,8 @@
 
 
 
-/*メニューメニュー*/
-.menu{
+/*メニュー*/
+.menus{
     /* header/menu/menu-1メニューとheader/menu/menu-3メニューを一括りにしたクラス */
     position:relative;
     justify-content: flex-end; /* 追加：親要素に追加すると子が右寄せになる */
@@ -174,16 +174,15 @@
     right: 20px;
     width: auto;}
 
-.menu-button :hover{ content: url('header/menu/menus-hover.svg');}
+.menus-button :hover{ content: url('header/menu/menus-hover.svg');}
 
-
-.menu-area{
+.menus-area{
     position: fixed;
     max-width: 30%; /* 元は300 */
     top: 70px;
     right: 25px;}
 
-.menu-list1, .menu-list3{
+.menu-list1{
     line-height: 25px;
     list-style: none; /*先頭の・を非表示*/
     background-color: rgb(254, 255, 240);
@@ -202,14 +201,14 @@
     /* menu-listの中のliタグの中のaタグを編集 */
     font-weight: bold;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     text-decoration: none;  /* リンク下の線を削除 */
     gap: 5px; /*アイコンとの距離が離れる*/}
 
-.menu-list1 li a{ color: #008C80;}
-.menu-list1 li a:hover{ color: #00e4d1;}
-.menu-list1 li a:hover #image-menu1 {content: url('header/menu/menu-1-hover.png');}
+.menu-list1 li a{ color: #019c8f;}
+.menu-list1 li a:hover{ color: #00e297;}
+.menu-list1 li a:hover #image-menu1 {content: url('header/menu/menu-1-hover.svg');}
 
 .menu-list2 li a{ color: #0088D0;}
 .menu-list2 li a:hover{ color: #00c5ff;}
@@ -217,7 +216,7 @@
 
 .menu-list3 li a{ color: #DF5656;}
 .menu-list3 li a:hover{ color: #fe9898;}
-.menu-list3 li a:hover #image-menu3 { content: url('header/menu/menu-3-hover.png');}
+.menu-list3 li a:hover #image-menu3 { content: url('header/menu/menu-3-hover.svg');}
 
 .menu-list4 li a{ color: #818181;}
 .menu-list4 li a:hover{ color: #b7b7b7;}
