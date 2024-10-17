@@ -234,72 +234,9 @@
 
 
 
-/*  */
 
 
-.logo-title {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-}
-/* 　スマホで程よい指示　幅480px以下 */
-/* @media screen and (max-width: 480px) {
-    .logo-title {
-        size: 90%;
-    }
-} */
-
-/*お題とフォーム*/
-.myForm{
-    font-size: large;
-    font: weight 200px;;
-    color: #0090e3;
-    text-align: center;
-}
-/*入力フォーム*/
-#inputData{
-    /*
-    padding: 10px;
-    */
-    font-size: 20px;
-    font-family: "BIZ UDGothic";
-    padding: 10px 10px; /* フォームの中の余白 */
-    border: 3px solid #ffa463; /* 縁の色と太さを変える */
-}
-/*入力フォームを中心に*/
-.inputform{
-    display: flex;
-    justify-content: center;
-}
-/*お題とフォームを二列に*/
-label, input {
-    display: block;
-    margin-bottom: 10px; /* 元は20 */
-    text-align: center;
-}
-
-
-/* 　2つのボタンの並べ方 
-.buttons{
-    display: flex;
-    justify-content:center;
-}*/
-
-
-/* 編集したボタン */
-/*
-*,
-*:before,
-*:after {
-    -webkit-box-sizing: inherit;
-    box-sizing: inherit;
-}
-html {
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-
-}
-*/
+/* めくれるスタートボタン。Tailwindで書けなかった */
 .btn,
 a.btn,
 button.btn {
@@ -323,8 +260,8 @@ button.btn {
     border-radius: 0.5rem;
 
     align-items: center; /* 垂直方向の中央揃え */
-    justify-content: center; /* 水平方向の中央揃え */
-}
+    justify-content: center; /* 水平方向の中央揃え */}
+
 /* 表面の文字色 */
 .btn-3d-circle-front{
     position: absolute;
@@ -334,8 +271,8 @@ button.btn {
     transform: translate(-50%, -50%); /* 要素の中心を真ん中に */
     /* 画面が縮んでも改行しない指示 */
     white-space: nowrap;
-    color: #ff426b; /* 表文字の色 */
-}
+    color: #ff426b; /* 表文字の色 */}
+
 /* 表面の背景 */
 .btn-3d-circle-content {
     display: flex;
@@ -347,7 +284,7 @@ button.btn {
     -webkit-transition: all 0.3s;/* 古いWebKitブラウザ用 */
     transition: all 0.3s; /* 標準ブラウザ用 */
 
-    border: 2px solid #ffffff; /* 縁の色と太さを変える */
+    border: 4px solid #ffffff; /* 縁の色と太さを変える */
     border-radius: 40px;/* 角を丸める */
     background: #ffdde0; /* 表面の背景色 */
 
@@ -355,35 +292,22 @@ button.btn {
 
     transform-style: preserve-3d;
     -webkit-perspective: 150px;
-    perspective: 150px;
-}
-/* 反転の仕方 */
-/*  横に反転する場合
-.btn-3d-circle:hover .btn-3d-circle-content {
-    -webkit-transform: rotateY(0.5turn) rotateX(-0.03turn);
-    transform: rotateY(0.5turn) rotateX(-0.03turn);
-    background: #f2f5f6; /* 裏面の背景色 
-}*/
+    perspective: 150px;}
+
 /*  縦に反転する場合 */
 .btn-3d-circle:hover .btn-3d-circle-content {
     -webkit-transform: rotateX(0.5turn) rotateX(-0.03turn);
     transform: rotateX(0.5turn) rotateX(-0.03turn);
-    background: #f2f5f6; /* 裏面の背景色 */
-    
-}
+    background: #f2f5f6; /* 裏面の背景色 */}
+
 /* 表の文字も反転させないために　0； */
 .btn-3d-circle:hover .btn-3d-circle-front {
-    opacity: 0;
-}
+    opacity: 0;}
 
 /* 裏面を表示 */
 .btn-3d-circle:hover .btn-3d-circle-back {
-    /*
-    top: calc(50% - 2rem);
-    left: calc(50% - 0.75rem);
-    */
-    opacity: 1;
-}
+    opacity: 1;}
+
 /* 裏面の文字の表示の仕方 */
 .btn-3d-circle-back {
     position: absolute;
@@ -391,7 +315,7 @@ button.btn {
     font-size: 62.5%;
     top: 50%; /* まずは真ん中に */
     left: 50%;
-    transform: translate(-50%, -50%); /* 要素の中心を真ん中に */ 
+    transform: translate(-50%, -50%); /* 要素の中心を真ん中に */
     /* 画面が縮んでも改行しない指示 */
     white-space: nowrap;
     color: #52b1ff; /* 表文字の色 */
@@ -399,40 +323,4 @@ button.btn {
     -webkit-transition-duration: 0.5s; /* 古いWebKitブラウザ用 */
     transition-duration: 0.5s;         /* 標準ブラウザ用 */
 
-    opacity: 0;
-}
-
-
-/* フラッシュメッセージ */
-#flashMessage{
-    font-size:medium;
-    font-weight: small;
-    padding-bottom: 10px;
-}
-
-    /* 追加：画面が縮んでも改行しない指示 */
-    /* white-space: nowrap; */
-    /* 追加：画面が縮んでも背景が変わらない */
-    /* width: fit-content;*/
-
-/* お問い合わせ */
-.copyright{
-    margin-left: 20px;
-    top: 0;
-}
-.copyright a{
-    cursor: pointer; /* マウスオーバーでカーソルの形状を変える */
-    font: weight 250px;
-    color: rgb(255, 140, 0);
-    bottom: 0;
-    text-decoration: none;  /* リンク下の線を削除 */
-    font-size: medium;
-}
-.copyright a:hover{
-    cursor: pointer; /* マウスオーバーでカーソルの形状を変える */
-    font-weight:bold; 
-    color: rgb(255, 0, 0);
-    bottom: 0;
-    text-decoration: none;   /* リンク下の線を削除 */
-    font-size: medium;
-}
+    opacity: 0;}
