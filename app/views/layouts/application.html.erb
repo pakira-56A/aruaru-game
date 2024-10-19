@@ -4,7 +4,6 @@
   <head>
     <%= favicon_link_tag('favicon.png') %>
     <%# stylesheetのcssファイルと紐付け %>
-        <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
         <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
         <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 
@@ -23,7 +22,7 @@
       <meta name="twitter:image" content="<%= asset_url('URL-SHARE_mini.png') %>" />
 
 
-
+      <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>あるある神経衰弱</title>
