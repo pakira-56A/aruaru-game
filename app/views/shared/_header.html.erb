@@ -1,50 +1,52 @@
 <!--  遊び方 -->
+
 <div>
-    <input type="checkbox" id="howto">
-        <label class="howto-open" for="howto">遊び方</label>
-            <div class="howto-overlay" onclick="document.getElementById('howto').checked = false;">
-                <div class="close-text">タップして閉じる</div>
-                    <div class="howto-window">
-                        <p class="howto-title">🥳　遊び方　🥳</p>
-                        <div class="howto-text">
-                            <span style="font-weight: bold; ">あらゆる界隈をすこーし探求できるゲーム</span>
-                            <br>
-                            <br>
-                            ①あるあるを知りたい界隈を入力！
-                            <br>　ＡＩがあるあるを生成してくれるよ
-                                <div style="display: flex;">
-                                <br><%= image_tag 'header/AI-search.png', class: 'rounded-circle mr15', width: '15%', height: '15%' %>
-                                <%= image_tag 'header/AI-lines.jpeg', class: 'rounded-circle mr15', width: '60%', height: '60%' %>
-                                </div>
-                            <br>
-                                <div style="display: flex;">
-                                ②<%= image_tag 'header/start-button.png', class: 'rounded-circle mr15', width: '28%', height: '18%' %>で
-                                </div>
-                                札をめくって、あるあるのペアを作ろう！
-                            <br>
-                                <div style="display: flex;">
-                                    <%= image_tag 'header/card.png', class: 'rounded-circle mr15', width: '12.7%', height: '12.7%' %>
-                                    <%= image_tag 'header/card-2.jpeg', class: 'rounded-circle mr15', width: '12%', height: '12%' %>
-                                    <%= image_tag 'header/card.png', class: 'rounded-circle mr15', width: '12.7%', height: '12.7%' %>
-                                    <%= image_tag 'header/card-1.jpeg', class: 'rounded-circle mr15 card-border', width: '12%', height: '12%' %>
-                                    <%= image_tag 'header/pea.jpeg', class: 'rounded-circle mr15', width: '25%', height: '10%' %>
-                                    <br>
-                                </div>
-                                <div style="display: flex;">
-                                    <%= image_tag 'header/card.png', class: 'rounded-circle mr15', width: '12.7%', height: '12.7%' %>
-                                    <%= image_tag 'header/card.png', class: 'rounded-circle mr15', width: '12.7%', height: '12.7%' %>
-                                    <%= image_tag 'header/card-1.jpeg', class: 'rounded-circle mr15 card-border', width: '12%', height: '12%' %>
-                                    <%= image_tag 'header/card.png', class: 'rounded-circle mr15', width: '12.7%', height: '12.7%' %>
-                                    <%= image_tag 'header/pea-lines.png', class: 'rounded-circle mr15', width: '40%', height: '12%' %>
-                                </div>
-                                    <br>
-                                <div style="display: flex;">
-                                ③左上の <%= image_tag 'header/menu/menus.svg', class: 'rounded-circle mr15', width: '30', height: '30' %> から
-                                </div>
-                                誰かのあるあるで遊んだり、自作してシェアしよう💃
-                        </div>
-                    </div>
-                </div>
+<input type="checkbox" aria-labelledby="howto" id="howto">
+<label class="howto-open" for="howto">遊び方</label>
+<div class="howto-overlay" onclick="document.getElementById('howto').checked = false;">
+    <div class="close-text">タップして閉じる</div>
+    <div class="howto-window">
+        <p class="howto-title">🥳　遊び方　🥳</p>
+        <div class="howto-text">
+        <span style="font-weight: bold;">あらゆる界隈をすこーし探求できるゲーム</span>
+        <br>
+        <br>
+        ①あるあるを知りたい界隈を入力！
+        <br>　ＡＩがあるあるを生成してくれるよ
+        <div style="display: flex;">
+            <br>
+            <%= image_tag 'header/AI-search.png', class: 'rounded-circle mr15', width: '70', height: '70' %>
+            <%= image_tag 'header/AI-lines.jpeg', class: 'rounded-circle mr15', width: '320', height: '60' %>
+        </div>
+        <br>
+        <div style="display: flex;">
+            ②<%= image_tag 'header/start-button.png', class: 'rounded-circle mr15', width: '130', height: '2' %>で
+        </div>
+        札をめくって、あるあるのペアを作ろう！
+        <br>
+        <div style="display: flex;">
+            <%= image_tag 'header/card.png', class: 'rounded-circle mr15', width: '70', height: '70' %>
+            <%= image_tag 'header/card-2.jpeg', class: 'rounded-circle mr15', width: '70', height: '70' %>
+            <%= image_tag 'header/card.png', class: 'rounded-circle mr15', width: '70', height: '70' %>
+            <%= image_tag 'header/card-1.jpeg', class: 'rounded-circle mr15 card-border', width: '70', height: '70' %>
+            <%= image_tag 'header/pea.jpeg', class: 'rounded-circle mr15', width: '150', height: '70' %>
+            <br>
+        </div>
+        <div style="display: flex;">
+            <%= image_tag 'header/card.png', class: 'rounded-circle mr15', width: '70', height: '70' %>
+            <%= image_tag 'header/card.png', class: 'rounded-circle mr15', width: '70', height: '70' %>
+            <%= image_tag 'header/card-1.jpeg', class: 'rounded-circle mr15 card-border', width: '70', height: '70' %>
+            <%= image_tag 'header/card.png', class: 'rounded-circle mr15', width: '70', height: '70' %>
+            <%= image_tag 'header/pea-lines.png', class: 'rounded-circle mr15', width: '200', height: '70' %>
+        </div>
+        <br>
+        <div style="display: flex;">
+            ③左上の <%= image_tag 'header/menu/menus.svg', class: 'rounded-circle mr15', width: '30', height: '30' %> から
+        </div>
+        誰かのあるあるで遊んだり、自作してシェアしよう💃
+        </div>
+    </div>
+    </div>
 </div>
 
 
@@ -55,21 +57,24 @@
         </span>
         <div id="menus-area" class="menus-area">
             <div class="menu-list1" >
-                <li><a href="/index">
+                <li>
+                <a href="/index">
                 <%= image_tag 'header/menu/menu-1.svg', width: '30', height: '30',id:'image-menu1' %>
-                誰かが作ったあるあるで遊ぶ</a></li>
+                誰かが作ったあるあるで遊ぶ</a>
+                </li>
             <div class="menu-list2" >
                 <li><a href="/user/index">
                 <%= image_tag 'header/menu/menu-2.svg', width: '25', height: '25',id:'image-menu2' %>
                 自分であるあるを作って投稿</a></li>
             <div class="menu-list3" >
-                <li><a href="/likes">
+                <li><a href="/bookmarks">
                 <%= image_tag 'header/menu/menu-3.svg', width: '25', height: '25',id:'image-menu3' %>
                 お気に入りの界隈をみる</a></li>
             <div class="menu-list4" >
                 <li><a href="/settings">
                 <%= image_tag 'header/menu/menu-4.svg', width: '25', height: '25',id:'image-menu4' %>
                 設定</a></li>
+            </div>
         </div>
     </div>
 </nav>

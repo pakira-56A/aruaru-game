@@ -35,15 +35,11 @@
     position: absolute;}
 
 .howto-open:hover {
-    cursor: pointer; /* マウスオーバーでカーソルの形状を変える*/
     color: #5099ff;
     font-weight: 300;
     font-weight: bold;
     text-align: left;
-    left: 20px;
-    /* メニュー達とヘッダーの高さを揃えられす、topで指定 */
-    top: 10px;
-    position: absolute;}
+    left: 20px;}
 
 .howto-title{
     color: #ff0090;
@@ -61,20 +57,14 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: #ff8f49;
     justify-content: center;
     align-items: center;}
 
 #howto:checked ~ .howto-overlay {
     display: block;
-    z-index: 99999;
     /*　　背景透過　*/
-    background-color: #ffba7070;
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;}
+    background-color: #ffab508d;
+    position: fixed;}
 
 .howto-window {
     border-radius: 10px;
@@ -123,25 +113,15 @@
         margin-left: 10%; /* 左に余白を */
     }}
 
-
-
-
-
 .header-container {
     /* application.html.erbで設定したクラス（親）*/
-    display: flex; 
-    justify-content: space-between; 
+    display: flex;
+    justify-content: space-between;
     align-items: center;/* 高さを中央に揃える */
     position: relative;
-    top: 10px;
-}
-/* ヘッダーを基準にガイドとメニューとの高さを揃える　(揃わなかった) */
-.menus,.header-container {
-    align-items: center;
-}
-.howto,howto2,.header-container {
-    align-items: center;
-}
+    top: 10px;}
+
+
 
 
 
@@ -160,11 +140,11 @@
     right: 20px;
     width: auto;}
 
-.menus-button :hover{ content: url('header/menu/menus-hover.svg');}
+.menus-button :hover{content: url('header/menu/menus-hover.svg');}
 
 .menus-area{
     position: fixed;
-    max-width: 30%; /* 元は300 */
+    max-width: 330px;
     top: 70px;
     right: 25px;}
 
@@ -210,24 +190,21 @@
 
 /* 　幅480以上の画面で見た場合 */
 @media screen and (min-width: 480px) {
-    #menu-area{
+    .menus-area{
         top: 70px;
         right: 20px;  /*リストの位置 */
     }}
 
 /* 　幅480px以下の画面で見た場合 */
 @media screen and (max-width: 480px) {
-    #menu-button2 {
-        right: 10%;
-    }
-    #menu-area{
+    .menus-area{
         top: 70px;
         right: 20px;  /*リストの位置 */
     }}
 
-/* 　幅560px以上の画面で見た場合 */
-@media screen and (max-width: 560px) {
-    #menu-area{
+/* 　幅570px以上の画面で見た場合 */
+@media screen and (max-width: 570px) {
+    .menus-area{
         top: 70px;
         right: 20px;  /*リストの位置 */
     }}
