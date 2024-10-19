@@ -21,7 +21,7 @@ module.exports = {
     require('@tailwindcss/forms'),
     require('@tailwindcss/typography'),
     require('@tailwindcss/container-queries'),
-    require("daisyui"), // この行と、この行以降を追記
+    require("daisyui"),
   ],
   daisyui: {
     darkTheme: false, // ダークモードをONにする場合は削除
