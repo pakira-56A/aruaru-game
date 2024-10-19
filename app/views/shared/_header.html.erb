@@ -1,53 +1,50 @@
-<!--  遊び方 -->
+<button class="btn text-[#F50968] hover:text-[#5099ff] left-5 top-2" onclick="howto.showModal()">遊び方</button>
+<dialog id="howto" class="modal">
+    <div class="modal-box fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg max-w-[400px] p-2 z-50">
+        <h3 class="text-pink-500 font-bold text-2xl text-center text-[#ff0090]">🥳　遊び方　🥳</h3>
+        <br>
+        <div class="howto-text text-[#ff5900] text-left whitespace-nowrap leading-400 px-8 py-8 left-2">
+            <div class="font-bold text-center">あらゆる界隈をすこーし探求できるゲーム</div>
+            <br>
+            ①あるあるを知りたい界隈を入力！<br>
+            ＡＩがあるあるを生成してくれるよ
+            <div class="flex">
+            <%= image_tag 'header/AI-search.png', width: '70', height: '70' %>
+            <%= image_tag 'header/AI-lines.jpeg', width: '320', height: '60' %>
+            </div>
+            <br>
+            <div class="flex">②<%= image_tag 'header/start-button.png', class: 'rounded-circle mr-2', width: '130', height: '2' %>で</div>
+            札をめくって、あるあるのペアを作ろう！
+            <div class="flex space-x-3">
+                <%= image_tag 'header/card.png',  width: '70', height: '70' %>
+                <%= image_tag 'header/card-2.jpeg',  width: '70', height: '70' %>
+                <%= image_tag 'header/card.png',  width: '70', height: '70' %>
+                <%= image_tag 'header/card-1.jpeg', class: 'border-4 border-yellow-500 rounded-lg', width: '70', height: '70' %>
+                <%= image_tag 'header/pea.jpeg',  width: '150', height: '70' %>
+                <br>
+            </div>
+            <div class="flex space-x-3">
+                <%= image_tag 'header/card.png',  width: '70', height: '70' %>
+                <%= image_tag 'header/card.png',  width: '70', height: '70' %>
+                <%= image_tag 'header/card-1.jpeg', class: 'border-4 border-yellow-500 rounded-lg', width: '70', height: '70' %>
+                <%= image_tag 'header/card.png',  width: '70', height: '70' %>
+                <%= image_tag 'header/pea-lines.png',  width: '200', height: '70' %>
+            </div>
+            <br>
+            <div class="flex space-x-3">
+                ③左上の <%= image_tag 'header/menu/menus.svg', width: '30', height: '30' %> から
+                </div>
+                誰かのあるあるで遊んだり、自作してシェアしよう💃
+                </div>
+                <br>
+            <form method="dialog" class="modal-backdrop" onclick="howto.close()">
+                <button>閉じる</button>
+            </form>
+            </div>
+        </div>
+    </div>
+</dialog>
 
-<div>
-<input type="checkbox" aria-labelledby="howto" id="howto">
-<label class="howto-open" for="howto">遊び方</label>
-<div class="howto-overlay" onclick="document.getElementById('howto').checked = false;">
-    <div class="close-text">タップして閉じる</div>
-    <div class="howto-window">
-        <p class="howto-title">🥳　遊び方　🥳</p>
-        <div class="howto-text">
-        <span style="font-weight: bold;">あらゆる界隈をすこーし探求できるゲーム</span>
-        <br>
-        <br>
-        ①あるあるを知りたい界隈を入力！
-        <br>　ＡＩがあるあるを生成してくれるよ
-        <div style="display: flex;">
-            <br>
-            <%= image_tag 'header/AI-search.png', class: 'rounded-circle mr15', width: '70', height: '70' %>
-            <%= image_tag 'header/AI-lines.jpeg', class: 'rounded-circle mr15', width: '320', height: '60' %>
-        </div>
-        <br>
-        <div style="display: flex;">
-            ②<%= image_tag 'header/start-button.png', class: 'rounded-circle mr15', width: '130', height: '2' %>で
-        </div>
-        札をめくって、あるあるのペアを作ろう！
-        <br>
-        <div style="display: flex;">
-            <%= image_tag 'header/card.png', class: 'rounded-circle mr15', width: '70', height: '70' %>
-            <%= image_tag 'header/card-2.jpeg', class: 'rounded-circle mr15', width: '70', height: '70' %>
-            <%= image_tag 'header/card.png', class: 'rounded-circle mr15', width: '70', height: '70' %>
-            <%= image_tag 'header/card-1.jpeg', class: 'rounded-circle mr15 card-border', width: '70', height: '70' %>
-            <%= image_tag 'header/pea.jpeg', class: 'rounded-circle mr15', width: '150', height: '70' %>
-            <br>
-        </div>
-        <div style="display: flex;">
-            <%= image_tag 'header/card.png', class: 'rounded-circle mr15', width: '70', height: '70' %>
-            <%= image_tag 'header/card.png', class: 'rounded-circle mr15', width: '70', height: '70' %>
-            <%= image_tag 'header/card-1.jpeg', class: 'rounded-circle mr15 card-border', width: '70', height: '70' %>
-            <%= image_tag 'header/card.png', class: 'rounded-circle mr15', width: '70', height: '70' %>
-            <%= image_tag 'header/pea-lines.png', class: 'rounded-circle mr15', width: '200', height: '70' %>
-        </div>
-        <br>
-        <div style="display: flex;">
-            ③左上の <%= image_tag 'header/menu/menus.svg', class: 'rounded-circle mr15', width: '30', height: '30' %> から
-        </div>
-        誰かのあるあるで遊んだり、自作してシェアしよう💃
-        </div>
-    </div>
-    </div>
-</div>
 
 
 <nav>
