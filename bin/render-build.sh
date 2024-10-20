@@ -1,15 +1,17 @@
+# エラーチェックを有効にして、コマンドが失敗したらスクリプトを終了
 set -o errexit
-
+# Gemの依存関係を解決し、必要なライブラリをインストール
 bundle install
 
-
-# 卒制：Tailwindを導入追記
+# 既存のアセットを削除し、ディレクトリをクリーンにする
 bundle exec rails assets:clobber
 
-# 10.19.追記（10.20.5行目から移動）
+# JavaScript依存ライブラリをインストール
 yarn install
+# JavaScriptやCSSをビルド
 yarn build
+# CSSを圧縮して最適化
 yarn build:css_minify
 
+# アセットをプリコンパイルして本番環境用に準備
 bundle exec rails assets:precompile
-
