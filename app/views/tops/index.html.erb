@@ -21,12 +21,43 @@
                         id="inputData" name="inputData"
                         class="w-[360px] p-2 border-4 border-[#ffa463] rounded text-left font-family-['BIZ UDGothic'] placeholder-[#cecece]" />
                 </div>
-            <div class="flex justify-center">
-                <a href="#" class="btn btn-3d-circle " id="button">
-                    <span class="btn-3d-circle-content">
-                        <span class="btn-3d-circle-front">神経衰弱スタート</span>
-                    </span>
-                        <span class="btn-3d-circle-back">めくって知ろう！</span>
+
+            <div class="flex justify-center relative inline-block ">
+                <a href="#" class="start-btn
+                opacity-1
+                transition-all duration-300 flex items-center justify-center rounded-md">
+
+                    <div class="start-btn-content shadow-md
+                    flex w-[260px] h-[70px] border-4 border-white rounded-[40px] bg-[#ffdde0]
+                    perspective-[150px] transform-style-[preserve-3d]
+                    ">
+
+                    <style>
+                    .start-btn:hover .start-btn-front {opacity: 0; /* 表面文字を非表示 */}
+                    .start-btn:hover .start-btn-back {opacity: 1; /* 裏面文字を表示 */}
+                    .start-btn:hover .start-btn-content {
+                        -webkit-transform: rotateX(0.5turn) rotateX(-0.03turn);
+                        transform: rotateX(0.5turn) rotateX(-0.03turn);
+                        -webkit-transition-duration: 0.5s; /* 古いWebKitブラウザ用 */
+                        transition-duration: 0.5s; /* 標準ブラウザ用 */
+                        background: #f2f5f6; }
+                    </style>
+
+                        <div class="start-btn-front
+                        duration-500
+                        text-[#ff426b] font-bold text-lg whitespace-nowrap absolute
+                        top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
+                        transition-opacity duration-500 opacity-100 ">
+                            神経衰弱スタート
+                        </div>
+                        <div class="start-btn-back
+                        duration-300 rotate-180 -scale-x-100
+                        text-[#52b1ff] font-bold text-lg whitespace-nowrap absolute
+                        top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
+                        transition-opacity opacity-0 hover:opacity-100">
+                            あるあるを知ろう！
+                        </div>
+                    </div>
                 </a>
             </div>
         </form>
