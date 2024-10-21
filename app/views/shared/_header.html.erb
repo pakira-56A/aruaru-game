@@ -1,74 +1,80 @@
-<button class="font-bold text-2xl text-[#F50968] hover:text-[#5099ff] left-6 drop-shadow-lg" onclick="howto.showModal()">遊び方</button>
-<dialog id="howto" class="modal">
-    <div class="modal-box fixed  transform  bg-white rounded-lg max-w-[600px] p-2 z-50 drop-shadow-lg">
-        <p class="py-2">
-        <h3 class="text-pink-500 font-bold p-2 text-xl text-center text-[#ff0090]">🥳　遊び方　🥳</h3>
-        <div class="howto-text text-[#ff5900] text-left whitespace-nowrap leading-400 px-6 py-8 left-2">
-            <div class="font-bold text-center">あらゆる界隈をすこーし探求できるゲーム</div>
-            <br>
-            ①あるあるを知りたい界隈を入力！<br>
-            ＡＩがあるあるを生成してくれるよ
-            <div class="flex">
-            <%= image_tag 'header/AI-search.png', width: '60', height: '60' %>
-            <%= image_tag 'header/AI-lines.jpeg', width: '320', height: '60' %>
-            </div>
-            <br>
-            <div class="flex">②<%= image_tag 'header/start-button.png', class: 'rounded-circle mr-2', width: '130', height: '2' %>で</div>
-            札をめくって、あるあるのペアを作ろう！
-            <div class="flex space-x-3">
-                <%= image_tag 'header/card.png',  width: '60', height: '60' %>
-                <%= image_tag 'header/card-2.jpeg',  width: '60', height: '60' %>
-                <%= image_tag 'header/card.png',  width: '60', height: '60' %>
-                <%= image_tag 'header/card-1.jpeg', class: 'border-4 border-yellow-300 rounded-lg', width: '60', height: '60' %>
-                <%= image_tag 'header/pea.jpeg',  width: '150', height: '60' %>
-                <br>
-            </div>
-            <div class="flex space-x-3">
-                <%= image_tag 'header/card.png',  width: '60', height: '60' %>
-                <%= image_tag 'header/card.png',  width: '60', height: '60' %>
-                <%= image_tag 'header/card-1.jpeg', class: 'border-4 border-yellow-300 rounded-lg', width: '60', height: '60' %>
-                <%= image_tag 'header/card.png',  width: '60', height: '60' %>
-                <%= image_tag 'header/pea-lines.png',  width: '200', height: '60' %>
-            </div>
-            <br>
-            <div class="flex space-x-3">
-                ③左上の <%= image_tag 'header/menu/menus.svg', width: '30', height: '30' %> から
+<div class="flex justify-between items-center">
+    <div class="grid grid-cols-3 flex mt-6">
+        <div class="flex">
+        <button class="font-bold text-2xl whitespace-nowrap text-[#F50968] hover:text-[#5099ff] drop-shadow-lg ml-6"
+        onclick="howto.showModal()">遊び方</button>
+        <dialog id="howto" class="modal">
+            <div class="modal-box fixed  transform  bg-white rounded-lg max-w-[600px] p-2 z-50 drop-shadow-lg">
+                <p class="py-2">
+                <h3 class="text-pink-500 font-bold p-2 text-xl text-center text-[#ff0090]">🥳　遊び方　🥳</h3>
+                <div class="howto-text text-[#ff5900] text-left whitespace-nowrap leading-400 px-6 py-8 left-2">
+                    <div class="font-bold text-center">あらゆる界隈をすこーし探求できるゲーム</div>
+                    <br>
+                    ①あるあるを知りたい界隈を入力！<br>
+                    ＡＩがあるあるを生成してくれるよ
+                    <div class="flex">
+                    <%= image_tag 'header/AI-search.png', width: '60', height: '60' %>
+                    <%= image_tag 'header/AI-lines.jpeg', width: '320', height: '60' %>
+                    </div>
+                    <br>
+                    <div class="flex">②<%= image_tag 'header/start-button.png', class: 'rounded-circle mr-2', width: '130', height: '2' %>で</div>
+                    札をめくって、あるあるのペアを作ろう！
+                    <div class="flex space-x-3">
+                        <%= image_tag 'header/card.png',  width: '60', height: '60' %>
+                        <%= image_tag 'header/card-2.jpeg',  width: '60', height: '60' %>
+                        <%= image_tag 'header/card.png',  width: '60', height: '60' %>
+                        <%= image_tag 'header/card-1.jpeg', class: 'border-4 border-yellow-300 rounded-lg', width: '60', height: '60' %>
+                        <%= image_tag 'header/pea.jpeg',  width: '150', height: '60' %>
+                        <br>
+                    </div>
+                    <div class="flex space-x-3">
+                        <%= image_tag 'header/card.png',  width: '60', height: '60' %>
+                        <%= image_tag 'header/card.png',  width: '60', height: '60' %>
+                        <%= image_tag 'header/card-1.jpeg', class: 'border-4 border-yellow-300 rounded-lg', width: '60', height: '60' %>
+                        <%= image_tag 'header/card.png',  width: '60', height: '60' %>
+                        <%= image_tag 'header/pea-lines.png',  width: '200', height: '60' %>
+                    </div>
+                    <br>
+                    <div class="flex space-x-3">
+                        ③左上の <%= image_tag 'header/menu/menus.svg', width: '30', height: '30' %> から
+                        </div>
+                        誰かのあるあるで遊んだり、自作してシェアしよう！
+                        </div>
+                    </div>
+                <form method="dialog" class="modal-backdrop mix-blend-multiply bg-[#FFAB508D]" onclick="howto.close()"></form>
                 </div>
-                誰かのあるあるで遊んだり、自作してシェアしよう！
+                </p>
+            </div>
+        </dialog>
+
+        <nav class="flex justify-end">
+            <div class="menus cursor-pointer drop-shadow-lg mr-6 mt-6">
+                <a id="menus-button" class="menus-button">
+                <%= image_tag 'header/menu/menus.svg', width: '40', height: '40', id:'image-menus-button'%>
+                </a>
+                <div id="menus-area" class="fixed max-w-[400px] top-[55px] right-[4px] bg-white rounded-[10px] drop-shadow-lg">
+                    <div class="flex flex-col list-none whitespace-nowrap py-4 px-6">
+                        <div class="menu-list1 text-[#019c8f] hover:text-[#00e297]">
+                            <a href="/index" class="font-bold flex justify-start items-center no-underline gap-2 pb-4 pr-8">
+                                <%= image_tag 'header/menu/menu-1.svg', width: '30', height: '30',id:'image-menu1' %>
+                                誰かが作ったあるあるで遊ぶ</a></div>
+                        <div class="menu-list2 text-[#0088D0] hover:text-[#00c5ff]" >
+                            <a href="/user/index" class="font-bold flex justify-start items-center no-underline gap-2 pb-4">
+                                <%= image_tag 'header/menu/menu-2.svg', width: '25', height: '25',id:'image-menu2' %>
+                                自分であるあるを作って投稿</a></div>
+                        <div class="menu-list3 text-[#DF5656] hover:text-[#fe9898]" >
+                            <a href="/bookmarks" class="font-bold flex justify-start items-center no-underline gap-2 pb-4">
+                                <%= image_tag 'header/menu/menu-3.svg', width: '25', height: '25',id:'image-menu3' %>
+                                お気に入りの界隈をみる</a></div>
+                        <div class="menu-list4 text-[#818181] hover:text-[#b7b7b7]" >
+                            <a href="/settings" class="font-bold flex justify-start items-center no-underline gap-2">
+                                <%= image_tag 'header/menu/menu-4.svg', width: '25', height: '25',id:'image-menu4' %>
+                                設定</a></div>
+                    </div>
                 </div>
             </div>
-        <form method="dialog" class="modal-backdrop mix-blend-multiply bg-[#FFAB508D]" onclick="howto.close()"></form>
-        </div>
-        </p>
-    </div>
-</dialog>
+        </nav>
 
-
-<nav>
-    <div class="menus">
-        <span id="menus-button" class="menus-button">
-        <%= image_tag 'header/menu/menus.svg', width: '40', height: '40', id:'image-menus-button'%>
-        </span>
-        <div id="menus-area" class="menus-area">
-            <div class="menu-list1" >
-                <li>
-                <a href="/index">
-                <%= image_tag 'header/menu/menu-1.svg', width: '30', height: '30',id:'image-menu1' %>
-                誰かが作ったあるあるで遊ぶ</a>
-                </li>
-            <div class="menu-list2" >
-                <li><a href="/user/index">
-                <%= image_tag 'header/menu/menu-2.svg', width: '25', height: '25',id:'image-menu2' %>
-                自分であるあるを作って投稿</a></li>
-            <div class="menu-list3" >
-                <li><a href="/bookmarks">
-                <%= image_tag 'header/menu/menu-3.svg', width: '25', height: '25',id:'image-menu3' %>
-                お気に入りの界隈をみる</a></li>
-            <div class="menu-list4" >
-                <li><a href="/settings">
-                <%= image_tag 'header/menu/menu-4.svg', width: '25', height: '25',id:'image-menu4' %>
-                設定</a></li>
-            </div>
         </div>
     </div>
-</nav>
+</div>
