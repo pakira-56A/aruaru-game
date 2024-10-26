@@ -2,7 +2,7 @@ source "https://rubygems.org"
 ruby "3.2.3"
 
 gem 'devise'
-
+gem 'pry-byebug'
 
 
 
@@ -57,6 +57,8 @@ group :development, :test do
     gem 'rubocop'
     gem "rubocop-rails"
     gem "rubocop-checkstyle_formatter"
+    gem "rspec-rails"
+    gem "rspec_junit_formatter"
 end
 
 group :development do
