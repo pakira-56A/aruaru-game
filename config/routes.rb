@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
-  # トップページに移動する指示
-  root "tops#index"
+  #OmniAuth：認証成功時の処理
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
+  root "tops#index"
   get "tops/index"
 end

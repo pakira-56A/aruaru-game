@@ -3,8 +3,8 @@ ruby "3.2.3"
 
 gem 'devise'
 gem 'pry-byebug'
-
-
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.4"
