@@ -2,6 +2,9 @@ source "https://rubygems.org"
 
 ruby "3.2.3"
 
+gem 'pry-byebug'
+
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.4"
 
@@ -53,6 +56,9 @@ group :development, :test do
     gem 'rubocop'
     gem "rubocop-rails"
     gem "rubocop-checkstyle_formatter"
+
+    gem "rspec-rails"
+    gem "rspec_junit_formatter"
 end
 
 group :development do
