@@ -1,3 +1,4 @@
 class TopsController < ApplicationController
-  def index; end
+  def toppage; end
+  def after_login; end
 end
