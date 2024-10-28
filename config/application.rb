@@ -15,12 +15,13 @@ module Myapp
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w(assets tasks))
-        # Rails generatorの設定を加える記述
-        config.generators do |g|
-          g.skip_routes true
-          g.helper false
-          g.test_framework nil
-        end
+
+    config.generators.system_tests = nil
+    config.generators do |g|
+      g.skip_routes true
+      g.helper false
+      g.test_framework nil
+    end
 
     # Configuration for the application, engines, and railties goes here.
     #
