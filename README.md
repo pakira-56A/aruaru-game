@@ -172,5 +172,5 @@ https://www.figma.com/design/HgPujRv8Tli2qBWqlzYeyY/Untitled?node-id=0-1&t=1UjNV
 ___
 ### ER図
 https://dbdiagram.io/d/あるある神経衰弱-670531e2fb079c7ebdbde9aa  
-[![Image from Gyazo](https://i.gyazo.com/6da702e35c808fa34a3c4d487c946e25.png)](https://gyazo.com/6da702e35c808fa34a3c4d487c946e25)
+[![Image from Gyazo](https://i.gyazo.com/945f33698224778ad565607f8bd522c0.png)](https://gyazo.com/945f33698224778ad565607f8bd522c0)
 ____
