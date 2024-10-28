@@ -47,6 +47,27 @@
             </div>
         </dialog>
 
+
+    <div class="google_login_button mt-6 mr-6">
+        <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+        <div id="g_id_onload"
+            data-client_id="<%= ENV['GOOGLE_CLIENT_ID'] %>"
+            data-login_uri="http://localhost:3000/google_login_api/callback"
+            data-auto_prompt="false">
+        </div>
+        <div class="g_id_signin bg-custom-yellow"
+            data-type="standard"
+            data-size="large"
+            data-theme="outline"
+            data-text="signin"
+            data-shape="pill"
+            data-logo_alignment="left"
+            data-width="60">
+        </div>
+    </div>
+
+
         <nav class="flex justify-end">
             <div class="menus cursor-pointer drop-shadow-lg mr-6 mt-6">
                 <a id="menus-button" class="menus-button">
