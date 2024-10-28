@@ -6,4 +6,7 @@ Rails.application.routes.draw do
 
   post "google_login_api/callback", to: "google_login_api#callback"
   get "/after_login", to: "tops#my_index"
+
+  get "/policy", to: "tops#policy"
+  get "/term", to: "tops#term"
 end
