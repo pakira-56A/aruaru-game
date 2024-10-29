@@ -9,4 +9,5 @@ Rails.application.routes.draw do
 
   get "/policy", to: "tops#policy"
   get "/term", to: "tops#term"
+  get "/toppage", to: "tops#toppage"
 end
