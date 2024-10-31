@@ -6,7 +6,7 @@ bundle install
 # 既存のアセットを削除し、ディレクトリをクリーンにする
 bundle exec rails assets:clobber
 
-# Renderのデータベースと連携用に追記
+# Renderのデータベースと連携用に追記 
 bundle exec rails db:migrate
 
 # JavaScript依存ライブラリをインストール
