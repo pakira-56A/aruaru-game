@@ -5,8 +5,8 @@ bundle install
 # Renderのデータベースと連携用に追記
 bundle exec rails db:migrate
 
-# 古いアセットを削除し、不要なものだけ捨てる
-bundle exec rails assets:clean
+# 既存のアセットを完全に削除して再生成
+bundle exec rails assets:clobber
 
 # JavaScript依存ライブラリをインストール
 yarn install
