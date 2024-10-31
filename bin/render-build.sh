@@ -9,6 +9,8 @@ bundle exec rails db:migrate
 yarn install
 # JavaScriptやCSSをビルド
 yarn build
+# CSSを圧縮して最適化
+yarn build:css_minify
 
 # アセットをプリコンパイルして本番環境用に準備
 bundle exec rails assets:precompile
