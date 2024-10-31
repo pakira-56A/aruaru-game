@@ -7,6 +7,8 @@ bundle exec rails db:migrate
 
 # JavaScript依存ライブラリをインストール
 yarn install
+# JavaScriptやCSSをビルド
+yarn build
 
 # アセットをプリコンパイルして本番環境用に準備
 bundle exec rails assets:precompile
