@@ -5,14 +5,12 @@ bundle install
 # Renderのデータベースと連携用に追記
 bundle exec rails db:migrate
 
-# 既存のアセットを完全に削除して再生成
-bundle exec rails assets:clobber
-
 # JavaScript依存ライブラリをインストール
 yarn install
 # JavaScriptやCSSをビルド
 yarn build
-# CSSを圧縮して最適化
-yarn build:css_minify
+
 # アセットをプリコンパイルして本番環境用に準備
 bundle exec rails assets:precompile
+# 掃除して不要なものだけ削除
+bundle exec rails assets:clean
