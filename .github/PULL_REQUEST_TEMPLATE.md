@@ -5,10 +5,10 @@
 **該当issue**： 
 
 **できるようになったこと**
-- あ
+- 
   - http://localhost:3000/
   - https://aruaru-game.onrender.com/
-- あ
+- 
   - http://localhost:3000/
   - https://aruaru-game.onrender.com/
 
