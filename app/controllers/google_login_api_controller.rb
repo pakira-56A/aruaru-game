@@ -11,13 +11,13 @@ class GoogleLoginApiController < ApplicationController
     begin
       generated_password = Devise.friendly_token
       user = User.find_or_create_by!(email: payload['email']) do |u|
-                u.password = generated_password
-                u.name = payload['name']
-              end
+        u.password = generated_password
+        u.name = payload['name']
+      end
       session[:user_id] = user.id
       redirect_to after_login_path, notice: 'ログインできたよ'
-    rescue => e
-        pp e
+    rescue StandardError => e
+      pp e
     end
   end
 
