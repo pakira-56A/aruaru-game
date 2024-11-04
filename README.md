@@ -28,8 +28,6 @@ ____
 - 神経衰弱が苦手なユーザーでも、ただ「めくってあるあるを知る」という奇妙な体験ができます。
 
 
-
-
 **開発者の個人的な願望**
 - 私はラジオで不特定多数の趣味・趣向の話を聴くのが楽しくて好きです。  
  まだまだ知り得ない界隈や、想像もつかない`あるある`が溢れかえってると思います。  
@@ -74,18 +72,18 @@ ____
 
 ## MVPリリースに向け
 - **Googleログイン**
+- **ログアウト機能**
 - **界隈あるある投稿機能**
-  - AIではなくユーザー自ら界隈と、そのあるあるを投稿。
-  - 編集・削除機能。
+  - AIではなくユーザー自ら、界隈とそのあるあるを投稿。
 - **ゲーム画面**
   - 投稿した/された界隈あるあるを神経衰弱で遊べる
-
 　　
 ## 本リリースに向け
 - **AI生成機能**
   - ユーザーが入力した界隈(インスタンス変数に格納)をAIに渡し、あるあるを生成
   - あのあるある(文字列)をトランプに反映させ、神経衰弱に。
 
+**投稿を編集・削除する機能**
 **ブックマーク登録**
   - 再び誰かと遊びたい時に投稿/保存された界隈あるあるをブックマークできる
 
@@ -138,31 +136,28 @@ ____
 # ■ 機能の実装方針予定
 **現状、実装済みの技術**
 
-| 技術        | バージョン    |
+| 技術        | バージョン,機能    |
 |-------------|---------------|
 | Ruby        | 3.2.3        |
-| Rails       | 7.1.3.2      |
-| HTML        | -             |
-| CSS         | -             |
+| Rails       | 7.1.3.      |
+| HTML,CSS        | -             |
 | JavaScript   | -             |
 | Tailwindcss,DaisyUI   |              |
 | Docker   | -             |
 | PostgreSQL   | -             |
 | Render   | -             |
+| [gem 'devise'](https://github.com/heartcombo/devise), [Omniauth](omniauth), [Google API](https://console.cloud.google.com)| Google認証 |
 
 
 **今後実装する技術**  
-
 > 情報収集や調査は全くできてません。  
 > 他の受講生さんのREADMEを参加に、思い当たる範囲で以下に書き出します。
 
-- **OpenAI API**：AIであるあるを生成
-- [**Gem devise**](https://github.com/heartcombo/devise)：認証機能
-- [**Omniauth**](omniauth)：Google ログイン
 - **Gem kaminari**：投稿一覧で使用
-- **Gem carrierwave**：カードの背面・投稿した界隈またはあるあるのイメージ画像をカスタムできる機能を追加？
+- **Gem carrierwave**（時間位余裕があれば、カードの背面・投稿した界隈またはあるあるのイメージ画像をカスタムできる機能を追加）
 - **オートコンプリート**/[**stimulus-autocomplete**](https://github.com/afcapel/stimulus-autocomplete)：投稿するあるあるを増やしたいユーザー向け
 - [**Twitter API**](https://developer.x.com/ja)：X連携
+- **OpenAI API**：AIであるあるを生成
 - [**Google analytics**](https://developers.google.com/analytics?hl=ja)：ユーザー層の把握
 _____
 ## 画面遷移図
@@ -172,5 +167,5 @@ https://www.figma.com/design/HgPujRv8Tli2qBWqlzYeyY/Untitled?node-id=0-1&t=1UjNV
 ___
 ### ER図
 https://dbdiagram.io/d/あるある神経衰弱-670531e2fb079c7ebdbde9aa  
-[![Image from Gyazo](https://i.gyazo.com/945f33698224778ad565607f8bd522c0.png)](https://gyazo.com/945f33698224778ad565607f8bd522c0)
+[![Image from Gyazo](https://i.gyazo.com/8da5cb459e8d9f8e483d7aab1515702b.png)](https://gyazo.com/8da5cb459e8d9f8e483d7aab1515702b)
 ____
