@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* メニュー */
-.menus-button :hover{ content: url('header/menu/menus-hover.svg');}
+.menus-btn :hover{ content: url('header/menu/menus-hover.svg');}
 .menu-list1 a:hover #image-menu1 { content: url('header/menu/menu-1-hover.svg');}
 .menu-list2 a:hover #image-menu2 { content: url('header/menu/menu-2-hover.svg');}
 .menu-list3 a:hover #image-menu3 { content: url('header/menu/menu-3-hover.svg');}
