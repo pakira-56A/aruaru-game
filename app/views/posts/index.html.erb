@@ -1,0 +1,30 @@
+<div class="container py-4">
+
+    <form>
+        <div class="flex mb-6 ml-8 gap-2">
+            <input class="form-control" placeholder="まだ未実装だよ！" type="search"/>
+            <input type="submit" value="検索" class="btn px-3"/>
+        </div>
+    </form>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="row">
+
+                <% if @posts.present? %>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <%= render @posts %>
+                    </div>
+                <% else %>
+                    <div class="mb-3 text-center">まだ投稿がないよ！投稿しよう！</div>
+                <% end %>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="pl-8">
+    <%= render 'shared/toppage_backbutton' %>
+</div>
