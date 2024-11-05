@@ -1,0 +1,24 @@
+<div class="card bg-green-50 hover:bg-white rounded-lg shadow-md hover:shadow-none text-nowrap">
+    <div class="card-body">
+        <div id="post-id-<%= post.id %>">
+            <ul class="list-inline text-slate-400">
+                <li><i class="bi bi-person"></i><%= post.user.name %>さん作</li>
+            </ul>
+            <%= link_to post.title, '#' ,
+                class: "card-title font-bold text-lime-800 hover:text-orange-500 drop-shadow-md hover:drop-shadow-none" %>
+            <div class="text-lime-600 pt-2">界隈のあるあるで遊ぶ</div>
+
+            <!-- 編集・削除機能は未実装です -->
+            <div class="card-actions justify-end">
+                <%= link_to '#', id: 'button-edit-#{post.id}' do %>
+                    <i class="bi bi-pencil-fill"></i>
+                <% end %>
+                <%= link_to '#', id: 'button-delete-#{post.id}', method: :delete, data: {confirm: ''} do %>
+                    <i class="bi bi-trash-fill"></i>
+                <% end %>
+            </div>
+
+        </div>
+    </div>
+</div>
+<br>
