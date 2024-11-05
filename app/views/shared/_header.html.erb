@@ -70,30 +70,38 @@
 
     <!-- 右端：メニュー -->
     <div class="flex-1 flex justify-end">
-        <div class="menus cursor-pointer drop-shadow-lg mr-6">
-        <a id="menus-button" class="menus-button">
-            <%= image_tag 'header/menu/menus.svg', width: '40', height: '40', id:'image-menus-button'%>
-        </a>
-            <div id="menus-area" class="fixed max-w-[400px] top-[55px] right-[4px] bg-white rounded-[10px] drop-shadow-lg">
-                <div class="flex flex-col list-none whitespace-nowrap py-4 px-6">
-                    <div class="menu-list1 text-[#019c8f] hover:text-[#00e297]">
-                        <a href="/index" class="font-bold flex justify-start items-center no-underline gap-2 pb-4 pr-8">
-                        <%= image_tag 'header/menu/menu-1.svg', width: '30', height: '30',id:'image-menu1' %>
-                        誰かが作ったあるあるで遊ぶ</a></div>
-                    <div class="menu-list2 text-[#0088D0] hover:text-[#00c5ff]" >
-                        <a href="/user/index" class="font-bold flex justify-start items-center no-underline gap-2 pb-4">
+
+        <div class="dropdown dropdown-bottom dropdown-end">
+            <div tabindex="0" role="button"
+                class="menus-btn bg-yellow-50 hover:bg-yellow-50 border-0 hover:border-none mr-8">
+            <%= image_tag 'header/menu/menus.svg', width: '40', height: '40', id: 'image-menus-button', class: 'drop-shadow-md hover:drop-shadow-none'%>
+            </div>
+            <ul tabindex="0"
+            class="dropdown-content menu bg-white rounded-box z-[1] w-[300px] p-2 mt-6 mr-4 shadow-lg">
+                <li>
+                    <div class="menu-list1 text-[#019c8f] hover:text-[#00e297] hover:bg-white">
+                    <%= link_to image_tag('header/menu/menu-1.svg', width: '30', height: '30', id: 'image-menu1') + '誰かが作ったあるあるで遊ぶ',
+                        posts_path, class: "font-bold text-nowrap flex items-center no-underline drop-shadow-md hover:drop-shadow-none gap-2 pb-2 pr-8" %>
+                </li>
+                <li>
+                    <div class="menu-list2 text-[#0088D0] hover:text-[#00c5ff] hover:bg-white" >
+                        <a href="/user/index" class="font-bold flex justify-start items-center no-underline gap-2 pb-2">
                         <%= image_tag 'header/menu/menu-2.svg', width: '25', height: '25',id:'image-menu2' %>
                         自分であるあるを作って投稿</a></div>
-                    <div class="menu-list3 text-[#DF5656] hover:text-[#fe9898]" >
-                        <a href="/bookmarks" class="font-bold flex justify-start items-center no-underline gap-2 pb-4">
+                </li>
+                <li>
+                    <div class="menu-list3 text-[#DF5656] hover:text-[#fe9898] hover:bg-white" >
+                        <a href="/bookmarks" class="font-bold flex justify-start items-center no-underline gap-2 pb-2">
                         <%= image_tag 'header/menu/menu-3.svg', width: '25', height: '25',id:'image-menu3' %>
                         お気に入りの界隈をみる</a></div>
-                    <div class="menu-list4 text-[#818181] hover:text-[#b7b7b7]" >
+                </li>
+                <li>
+                    <div class="menu-list4 text-[#818181] hover:text-[#b7b7b7] hover:bg-white" >
                         <a href="/settings" class="font-bold flex justify-start items-center no-underline gap-2">
                         <%= image_tag 'header/menu/menu-4.svg', width: '25', height: '25',id:'image-menu4' %>
                         設定</a></div>
-                </div>
-            </div>
+                </li>
+            </ul>
         </div>
     </div>
 
