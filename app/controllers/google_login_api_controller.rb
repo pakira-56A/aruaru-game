@@ -9,15 +9,15 @@ class GoogleLoginApiController < ApplicationController
     def callback
         payload = Google::Auth::IDTokens.verify_oidc(params[:credential], aud: ENV['GOOGLE_CLIENT_ID'])
         begin
-        generated_password = Devise.friendly_token
-        user = User.find_or_create_by!(email: payload['email']) do |u|
-            u.password = generated_password
-            u.name = payload['name']
-        end
-        session[:user_id] = user.id
-        redirect_to after_login_path, notice: 'ログインできたよ'
-        rescue StandardError => e
-        pp e
+            generated_password = Devise.friendly_token
+            user = User.find_or_create_by!(email: payload['email']) do |u|
+                u.password = generated_password
+                u.name = payload['name']
+            end
+            sign_in(user)
+            redirect_to after_login_path, notice: 'ログインできたよ'
+        rescue => e
+            pp e
         end
     end
 
