@@ -85,9 +85,9 @@
                 </li>
                 <li>
                     <div class="menu-list2 text-[#0088D0] hover:text-[#00c5ff] hover:bg-white" >
-                        <a href="/user/index" class="font-bold flex justify-start items-center no-underline gap-2 pb-2">
-                        <%= image_tag 'header/menu/menu-2.svg', width: '25', height: '25',id:'image-menu2' %>
-                        自分であるあるを作って投稿</a></div>
+                    <%= link_to image_tag('header/menu/menu-2.svg', width: '25', height: '25', id: 'image-menu2') + '自分であるあるを投稿',
+                        new_post_path, class: "font-bold text-nowrap flex items-center no-underline drop-shadow-md hover:drop-shadow-none gap-2 pb-2 pr-8" %>
+                    </div>
                 </li>
                 <li>
                     <div class="menu-list3 text-[#DF5656] hover:text-[#fe9898] hover:bg-white" >
