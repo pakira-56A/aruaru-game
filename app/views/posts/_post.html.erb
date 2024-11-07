@@ -4,7 +4,7 @@
             <ul class="list-inline text-slate-400">
                 <li><i class="bi bi-person"></i><%= post.user.name %>さん作</li>
             </ul>
-            <%= link_to post.title, '#' ,
+            <%= link_to post.title, post_path(post),
                 class: "card-title font-bold text-lime-800 hover:text-orange-500 drop-shadow-md hover:drop-shadow-none" %>
             <div class="text-lime-600 pt-2">界隈のあるあるで遊ぶ</div>
 
