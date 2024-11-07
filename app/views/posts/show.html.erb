@@ -1,0 +1,26 @@
+<div class='flex justify-center'>
+    <div class='items-center mt-8'>
+
+        <div class="text-sky-800"><%= "#{@post.user.name}さんが思う" %></div>
+        <div class="flex mt-2">
+            <div class="text-3xl text-sky-600 font-bold"><%= @post.title %></div>
+            <div class="text-1xl text-sky-400 pt-4">　界隈あるある</div>
+        </div>
+
+        <div class='d-flex justify-content-end'>
+            <%= link_to "#", id: "button-edit-#{@post.id}" do %>
+            <i class='bi bi-pencil-fill'></i>
+            <% end %>
+            <%= link_to "#", id: "button-delete-#{@post.id}", class: "ms-2" do %>
+            <i class="bi bi-trash-fill"></i>
+            <% end %>
+        </div>
+
+        <div class="text-sky-600 font-bold space-y-4">
+            <% %w[one two three four five].each do |number| %>
+                <%= simple_format(@post.public_send("aruaru_#{number}"),
+                class: "bg-white border-sky-200 rounded-md border-2 py-1.5 px-4 border-2") %>
+            <% end %>
+        </div>
+    </div>
+</div>
