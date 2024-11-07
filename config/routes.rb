@@ -14,5 +14,5 @@ Rails.application.routes.draw do
   get "/term", to: "tops#term"
   get "/toppage", to: "tops#toppage"
 
-  resources :posts, only: %i[index new create]
+  resources :posts, only: %i[index new create show edit update destroy]
 end

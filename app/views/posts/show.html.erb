@@ -1,0 +1,26 @@
+<div class='flex justify-center'>
+    <div class='items-center mt-6'>
+
+        <div class="text-sky-800 mt-2"><%= "#{@post.user.name}さんが思う" %></div>
+        <div class="text-3xl text-sky-600 font-bold pt-2"><%= @post.title %></div>
+
+
+        <div class='flex justify-end gap-4 my-2'>
+            <div class="text-sky-400">界隈あるある</div>
+            <%= link_to edit_post_path(@post), id: "button-edit-#{@post.id}" do %>
+                <%= image_tag 'post/post-edit.svg', width: '25', height: '25', class: "post-edit drop-shadow-md hover:drop-shadow-none" %>
+            <% end %>
+            <%= link_to post_path(@post), id: "button-delete-#{@post.id}", data: { turbo_method: :delete, turbo_confirm: "えぇ〜 消しちゃうの？" } do %>
+                <%= image_tag 'post/post-delete.svg', width: '25', height: '25', class: "post-delete drop-shadow-md hover:drop-shadow-none" %>
+            <% end %>
+        </div>
+
+
+        <div class="text-sky-600 font-bold space-y-4">
+            <% %w[one two three four five].each do |number| %>
+                <%= simple_format(@post.public_send("aruaru_#{number}"),
+                class: "bg-white border-sky-200 rounded-md border-2 py-1.5 px-4 border-2") %>
+            <% end %>
+        </div>
+    </div>
+</div>

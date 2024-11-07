@@ -7,19 +7,15 @@
         </div>
     </form>
 
-    <div class="row">
-        <div class="col-12">
-            <div class="row">
-
-                <% if @posts.present? %>
-                    <div class="flex flex-wrap justify-center gap-4">
-                        <%= render @posts %>
-                    </div>
-                <% else %>
-                    <div class="mb-3 text-center">まだ投稿がないよ！投稿しよう！</div>
-                <% end %>
-
-            </div>
+    <div class="col-12">
+        <div class="row">
+            <% if @posts.present? %>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <%= render @posts %>
+                </div>
+            <% else %>
+                <div class="mb-3 text-center">まだ投稿がないよ！投稿しよう！</div>
+            <% end %>
         </div>
     </div>
 

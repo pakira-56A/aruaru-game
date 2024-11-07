@@ -1,0 +1,31 @@
+<%= form_with(model: @post, class: "space-y-4") do |f| %>
+    <%= f.label :title, "界隈名", class: "label text-[#0088D0]" %>
+    <dr>
+    <div>
+    <%= f.text_field :title,
+        class: "input input-bordered border-2 border-sky-300 rounded-md w-[350px]
+                text-xl text-orange-500 font-bold
+                placeholder:font-light placeholder:text-[#C7C7C7] placeholder:text-xs",
+        placeholder: "例:ONEPIECEイーストブルー編" %>
+    </div>
+
+    <%= f.label :aruarus, "あるあるを５つ入力してね！", class: "label text-[#0088D0] pb-0" %>
+        <% [:aruaru_one, :aruaru_two, :aruaru_three, :aruaru_four, :aruaru_five].each_with_index do |field, index| %>
+            <div class="mt-2">
+            <%= f.text_field field,
+                class: "input input-bordered border-2 border-sky-300 rounded-md w-[350px]
+                        text-xl text-orange-500 font-bold
+                        placeholder:font-light placeholder:text-[#C7C7C7] placeholder:text-xs",
+                placeholder: "例:#{['ゾロがまだ陽気',
+                                    '３巻まではSBS無くてすぐ読み終えちゃう',
+                                    'アニメOP『富・名声・力』のくだり聴きいっちゃう',
+                                    '丸い植え込み見るとガイモンさんが恋しい',
+                                    'ギンに振る舞われたのチャーハンと間違えがち'][index]}" %>
+            </div>
+        <% end %>
+
+    <%= render 'shared/toppage_backbutton' %>
+    <%= f.submit nil, class: "btn  text-white font-semibold rounded-lg mt-4
+            drop-shadow-lg hover:drop-shadow-none bg-[#0088D0] hover:bg-orange-500" %>
+
+<% end %>
