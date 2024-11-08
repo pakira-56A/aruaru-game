@@ -15,7 +15,7 @@ class GoogleLoginApiController < ApplicationController
         u.name = payload['name']
       end
       sign_in(user)
-      redirect_to after_login_path, notice: 'ログインできたよ'
+      redirect_to root_path, notice: 'ログインできたよ！右上のメニューから遊んでね！'
     rescue StandardError => e
       pp e
     end
@@ -26,6 +26,6 @@ class GoogleLoginApiController < ApplicationController
   def verify_g_csrf_token
     return unless cookies['g_csrf_token'].blank? || params[:g_csrf_token].blank? || cookies['g_csrf_token'] != params[:g_csrf_token]
 
-    redirect_to root_path, notice: '不正なアクセスです'
+    redirect_to root_path, alert: '不正なアクセスです'
   end
 end
