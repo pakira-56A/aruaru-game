@@ -1,5 +1,3 @@
-<%# トップページのメインコンテンツを構成 %>
-
 <!DOCTYPE html>
 <html lang="ja">
     <head>
@@ -7,7 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>トップページ</title>
     </head>
-
 
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 
@@ -30,19 +27,18 @@
 
                     <div class="start-btn-content shadow-md
                     flex w-[260px] h-[70px] border-4 border-white rounded-[40px] bg-[#ffdde0]
-                    perspective-[150px] transform-style-[preserve-3d]
-                    ">
+                    perspective-[150px] transform-style-[preserve-3d]">
 
-                    <style>
-                    .start-btn:hover .start-btn-front {opacity: 0; /* 表面文字を非表示 */}
-                    .start-btn:hover .start-btn-back {opacity: 1; /* 裏面文字を表示 */}
-                    .start-btn:hover .start-btn-content {
-                        -webkit-transform: rotateX(0.5turn) rotateX(-0.03turn);
-                        transform: rotateX(0.5turn) rotateX(-0.03turn);
-                        -webkit-transition-duration: 0.5s; /* 古いWebKitブラウザ用 */
-                        transition-duration: 0.5s; /* 標準ブラウザ用 */
-                        background: #f2f5f6; }
-                    </style>
+                        <style>
+                            .start-btn:hover .start-btn-front {opacity: 0; /* 表面文字を非表示 */}
+                            .start-btn:hover .start-btn-back {opacity: 1; /* 裏面文字を表示 */}
+                            .start-btn:hover .start-btn-content {
+                                -webkit-transform: rotateX(0.5turn) rotateX(-0.03turn);
+                                transform: rotateX(0.5turn) rotateX(-0.03turn);
+                                -webkit-transition-duration: 0.5s; /* 古いWebKitブラウザ用 */
+                                transition-duration: 0.5s; /* 標準ブラウザ用 */
+                                background: #f2f5f6; }
+                        </style>
 
                         <div class="start-btn-front duration-500
                         text-[#ff426b] font-bold text-lg whitespace-nowrap absolute
@@ -56,6 +52,7 @@
                         transition-opacity opacity-0 hover:opacity-100">
                             あるあるを知ろう！
                         </div>
+
                     </div>
                 </a>
             </div>
