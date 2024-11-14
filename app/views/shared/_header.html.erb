@@ -96,18 +96,17 @@
                     </div>
                 </li>
 
-                <!--未実装のリンク -->
                 <li>
-                    <div class="menu-list3 text-[#DF5656] hover:text-[#fe9898] hover:bg-white" >
-                        <%= link_to image_tag('header/menu/menu-3.svg', width: '25', height: '25', id: 'image-menu3') + 'お気に入りの界隈',
-                            root_path, class: "font-bold flex justify-start items-center no-underline drop-shadow-md hover:drop-shadow-none gap-2 pb-2 pr-8",
-                            onclick: "alert('未実装だよ！待っててね！'); return false;" %>
+                    <div class="menu-list3 text-[#00cee8] hover:text-[#6eefff] hover:bg-white" >
+                    <%= link_to image_tag('header/menu/menu-3.svg', width: '25', height: '25', id: 'image-menu3') + '自作したあるある一覧・設定',
+                        myindex_posts_path(@post), class: "font-bold text-nowrap flex items-center no-underline drop-shadow-md hover:drop-shadow-none gap-2 pb-2 pr-8" %>
                     </div>
                 </li>
+                <!--未実装のリンク -->
                 <li>
-                    <div class="menu-list4 text-[#818181] hover:text-[#b7b7b7] hover:bg-white" >
-                        <%= link_to image_tag('header/menu/menu-4.svg', width: '25', height: '25', id: 'image-menu4') + '設定',
-                            root_path, class: "font-bold flex justify-start items-center no-underline drop-shadow-md hover:drop-shadow-none gap-2 pr-8",
+                    <div class="menu-list4 text-[#DF5656] hover:text-[#fe9898] hover:bg-white" >
+                        <%= link_to image_tag('header/menu/menu-4.svg', width: '25', height: '25', id: 'image-menu4') + 'お気に入りの界隈',
+                            root_path, class: "font-bold flex justify-start items-center no-underline drop-shadow-md hover:drop-shadow-none gap-2 pb-2 pr-8",
                             onclick: "alert('未実装だよ！待っててね！'); return false;" %>
                     </div>
                 </li>

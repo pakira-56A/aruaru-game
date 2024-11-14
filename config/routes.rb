@@ -13,5 +13,10 @@ Rails.application.routes.draw do
   get "/policy", to: "tops#policy"
   get "/term", to: "tops#term"
 
-  resources :posts, only: %i[index new create show edit update destroy]
+  resources :posts, only: %i[index new create show edit update destroy] do
+    collection do
+      get :myindex
+    end
+  end
+
 end
