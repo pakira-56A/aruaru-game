@@ -15,7 +15,7 @@ class GoogleLoginApiController < ApplicationController
         u.name = payload['name']
       end
       sign_in(user)
-      redirect_to root_path, notice: 'ログインできたよ！右上のメニューから遊んでね！'
+      redirect_to posts_path, notice: 'ログインできたよ！どのあるあるで遊ぶ？'
     rescue StandardError => e
       pp e
     end

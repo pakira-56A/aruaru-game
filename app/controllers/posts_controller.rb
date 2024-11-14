@@ -24,10 +24,10 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      flash[:notice] = '投稿したよ'
+      flash[:notice] = '投稿したよ！'
       redirect_to posts_path
     else
-      flash.now[:alert] = '全て入力してね！30文字までだよ！'
+      flash.now[:alert] = '全て入力してね！40文字までだよ！'
       render :new, status: :unprocessable_entity
     end
   end
