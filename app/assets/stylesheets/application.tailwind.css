@@ -11,5 +11,37 @@
 
 /* 投稿の詳細・ゲーム・編集・削除ボタン */
 .post-show :hover { content: url('post/post-show-hover.svg');}
+.post-game :hover { content: url('post/post-game-hover.svg');}
 .post-edit :hover{ content: url('post/post-edit-hover.svg');}
 .post-delete :hover { content: url('post/post-delete-hover.svg');}
+
+/* ゲーム画面 （Tailwindに書き換えられず） */
+#panel {
+    background-color: rgba(233, 252, 255, 0.995);
+    border-radius: 10px;
+    width: 400px;
+    height: 480px;
+    overflow: hidden; }
+
+.card {
+    width: 180px;
+    height: 85px;
+    line-height: 25px;
+    border-radius: 10px;
+
+    box-shadow: rgb(255, 115, 0) 0px 4px;
+    float: left;
+    margin: 5px 0px 5px 13px;
+    cursor: pointer;
+
+    color: rgb(244, 0, 175);
+    text-align: center;
+    text-wrap: balance;
+    font-size: 15px;
+    font-weight: bold;
+    background: rgb(255, 255, 247); }
+
+/* カードが裏の状態 */
+.back {
+    background-image: url('game-cardback.png');
+    background-size: 180px 85px; }

@@ -7,6 +7,9 @@
 
         <div class='flex justify-end gap-4 my-2'>
             <div class="text-sky-400">界隈あるある</div>
+            <%= link_to start_game_path(@post), id: "button-game-#{@post.id}" do %>
+                <%= image_tag 'post/post-game.svg', width: '25', height: '25', class: "post-game drop-shadow-md hover:drop-shadow-none" %>
+            <% end %>
             <%= link_to edit_post_path(@post), id: "button-edit-#{@post.id}" do %>
                 <%= image_tag 'post/post-edit.svg', width: '25', height: '25', class: "post-edit drop-shadow-md hover:drop-shadow-none" %>
             <% end %>
