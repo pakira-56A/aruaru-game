@@ -1,10 +1,11 @@
-<%= form_with(model: @post, class: "space-y-4") do |f| %>
-    <%= f.label :title, "界隈名", class: "label text-[#0088D0]" %>
+<%= form_with(model: @post, class: "space-y-2") do |f| %>
+    <%= f.label :title, "界隈名", class: "label text-[#0088D0] pb-0" %>
+    <%= f.label :title, "(自動で末尾に「〇〇界隈あるある」とつくよ！）", class: "label text-[#0093e0] text-xs pt-0" %>
     <dr>
     <div>
-    <%= f.text_field :title,
+    <%= f.text_area :title,
         class: "input input-bordered border-2 border-sky-300 rounded-md w-72
-                text-xl text-orange-500 font-bold
+                text-md text-orange-500 font-bold rows-2
                 placeholder:font-light placeholder:text-[#C7C7C7] placeholder:text-xs",
         placeholder: "例:ONEPIECEイーストブルー編" %>
     </div>
@@ -12,15 +13,16 @@
     <%= f.label :aruarus, "あるあるを５つ入力してね！", class: "label text-[#0088D0] pb-0" %>
         <% [:aruaru_one, :aruaru_two, :aruaru_three, :aruaru_four, :aruaru_five].each_with_index do |field, index| %>
             <div class="mt-2">
-            <%= f.text_field field,
+            <%= f.text_area field,
                 class: "input input-bordered border-2 border-sky-300 rounded-md w-72
-                        text-xl text-orange-500 font-bold
+                        text-sm text-orange-500 font-bold h-[75px]
                         placeholder:font-light placeholder:text-[#C7C7C7] placeholder:text-xs",
                 placeholder: "例:#{['ゾロがまだ陽気',
-                                    '３巻まではSBS無くてすぐ読み終えちゃう',
-                                    'アニメOP『富・名声・力』のくだり聴きいっちゃう',
-                                    '丸い植え込み見るとガイモンさんが恋しい',
-                                    'ギンに振る舞われたのチャーハンと間違えがち'][index]}" %>
+                                    '３巻まではSBSないから、すぐ読み終えちゃう',
+                                    'アニメのオープニング『富・名声・力』のくだり聴きいっちゃう',
+                                    '丸い植え込み見ると、ガイモンさんが恋しい',
+                                    'ギンに振る舞われたの、チャーハンと間違えがち'][index]}" %>
+
             </div>
         <% end %>
 
