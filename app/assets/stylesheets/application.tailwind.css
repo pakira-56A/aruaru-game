@@ -39,9 +39,24 @@
     text-wrap: balance;
     font-size: 15px;
     font-weight: bold;
-    background: rgb(255, 255, 247); }
+    background: rgb(255, 255, 247);
+
+    transform-style: preserve-3d; /* 3D効果を維持 */
+    -webkit-transform: rotateY(0.5turn);  /* 横に回転(古いブラウザ用) */
+    transform: rotateY(0.5turn);  /* 横に回転 */
+    -webkit-transition: transform 0.5s;  /* 回転する速度(古いブラウザ用) */
+    transition: transform 0.5s; } /* 回転する速度 */
 
 /* カードが裏の状態 */
 .back {
     background-image: url('game-cardback.png');
     background-size: 180px 85px; }
+
+/* カードが表の状態 */
+.card:not(.back) { transform: rotateY(0); } /* 反転させない */
+
+/* ペアになったカード */
+.finish {
+    background-color: white;
+    box-shadow: none;
+    border: 2px solid rgb(255, 132, 0, 0.827); }
