@@ -1,0 +1,24 @@
+<div class="container py-4">
+
+    <%= render 'search_form' %>
+
+    <div class="flex flex-col items-center">
+        <div class="flex items-center mb-4">
+            <div class="text-3xl font-bold text-sky-600"><%= "#{current_user.name}" %></div>
+            <div class="text-lg font-bold text-sky-500 ml-2"><%= "作・界隈あるある一覧" %></div>
+        </div>
+
+        <% if @posts.present? %>
+            <div class="flex flex-wrap justify-center gap-4">
+                <%= render @posts %>
+            </div>
+        <% else %>
+            <div class="mb-3 text-center">まだ投稿がないよ！投稿しよう！</div>
+        <% end %>
+    </div>
+
+</div>
+
+<div class="pl-8">
+    <%= render 'shared/toppage_backbutton' %>
+</div>

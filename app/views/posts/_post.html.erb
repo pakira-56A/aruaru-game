@@ -1,16 +1,18 @@
-<div class="card bg-green-50 hover:bg-white rounded-lg shadow-md hover:shadow-none text-nowrap">
-    <div class="card-body p-4">
-        <div id="post-id-<%= post.id %>">
-            <ul class="list-inline text-slate-400">
-                <li><i class="bi bi-person"></i><%= post.user.name %>さんの思う</li>
-            </ul>
-            <%= link_to post.title, post_path(post),
-                class: "card-title font-bold pt-2
-                    text-lime-800 hover:text-orange-500 drop-shadow-md hover:drop-shadow-none" %>
-            <div class="text-lime-600 pt-2">界隈のあるあるで遊ぶ</div>
+<% if current_user == post.user %>
 
-            <% if current_user == post.user %>
-                <div class="flex justify-end gap-4">
+    <!-- カレントユーザーが自作した投稿（myindex） -->
+    <div class="post-box bg-cyan-50 hover:bg-white rounded-lg shadow-md hover:shadow-none text-nowrap">
+        <div class="post-box-body p-4">
+            <div id="post-id-<%= post.id %>">
+                <%= link_to post.title, "#",
+                    class: "post-box-title font-bold pt-2
+                        text-cyan-800 hover:text-orange-500 drop-shadow-md hover:drop-shadow-none" %>
+                <div class="text-cyan-600 pt-2">界隈のあるあるで遊ぶ</div>
+
+                <div class="flex justify-end gap-4 pt-2">
+                    <%= link_to post_path(post), id: 'button-show-#{post.id}' do %>
+                        <%= image_tag 'post/post-show.svg', width: '25', height: '25', class: "post-game drop-shadow-md hover:drop-shadow-none" %>
+                    <% end %>
                     <%= link_to edit_post_path(post), id: 'button-edit-#{post.id}' do %>
                         <%= image_tag 'post/post-edit.svg', width: '25', height: '25', class: "post-edit drop-shadow-md hover:drop-shadow-none" %>
                     <% end %>
@@ -18,9 +20,26 @@
                         <%= image_tag 'post/post-delete.svg', width: '25', height: '25', class: "post-delete drop-shadow-md hover:drop-shadow-none" %>
                     <% end %>
                 </div>
-            <% end %>
-
+            </div>
         </div>
     </div>
-</div>
+
+<% else %>
+
+		<!-- 他のユーザーが投稿した一覧（index） -->
+    <div class="post-box bg-green-50 hover:bg-white rounded-lg shadow-md hover:shadow-none text-nowrap">
+        <div class="post-box-body p-4">
+            <div id="post-id-<%= post.id %>">
+                <ul class="list-inline text-slate-400">
+                    <li><i class="bi bi-person"></i><%= post.user.name %>さんの思う</li>
+                </ul>
+                <%= link_to post.title, "#",
+                    class: "post-box-title font-bold pt-2
+                        text-lime-800 hover:text-orange-500 drop-shadow-md hover:drop-shadow-none" %>
+                <div class="text-lime-600 pt-2">界隈のあるあるで遊ぶ</div>
+            </div>
+        </div>
+    </div>
+
+<% end %>
 <br>
