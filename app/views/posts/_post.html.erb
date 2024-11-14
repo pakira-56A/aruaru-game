@@ -4,7 +4,7 @@
     <div class="post-box bg-cyan-50 hover:bg-white rounded-lg shadow-md hover:shadow-none text-nowrap">
         <div class="post-box-body p-4">
             <div id="post-id-<%= post.id %>">
-                <%= link_to post.title, "#",
+                <%= link_to post.title, start_game_path(post),
                     class: "post-box-title font-bold pt-2
                         text-cyan-800 hover:text-orange-500 drop-shadow-md hover:drop-shadow-none" %>
                 <div class="text-cyan-600 pt-2">界隈のあるあるで遊ぶ</div>
@@ -33,7 +33,7 @@
                 <ul class="list-inline text-slate-400">
                     <li><i class="bi bi-person"></i><%= post.user.name %>さんの思う</li>
                 </ul>
-                <%= link_to post.title, "#",
+                <%= link_to post.title, start_game_path(post),
                     class: "post-box-title font-bold pt-2
                         text-lime-800 hover:text-orange-500 drop-shadow-md hover:drop-shadow-none" %>
                 <div class="text-lime-600 pt-2">界隈のあるあるで遊ぶ</div>

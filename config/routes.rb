@@ -19,4 +19,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :games, only: [] do
+    member do
+      get "start"
+    end
+  end
+
 end
