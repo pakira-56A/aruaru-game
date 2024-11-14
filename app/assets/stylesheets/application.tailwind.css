@@ -9,6 +9,7 @@
 .menu-list3 a:hover #image-menu3 { content: url('header/menu/menu-3-hover.svg');}
 .menu-list4 a:hover #image-menu4 { content: url('header/menu/menu-4-hover.svg');}
 
-/* 投稿の編集削除 */
+/* 投稿の詳細・ゲーム・編集・削除ボタン */
+.post-show :hover { content: url('post/post-show-hover.svg');}
 .post-edit :hover{ content: url('post/post-edit-hover.svg');}
 .post-delete :hover { content: url('post/post-delete-hover.svg');}

@@ -1,16 +1,16 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: %i[new create]
+  before_action :authenticate_user!, only: %i[myindex new show edit update create]
 
   def index
-    @posts = Post.includes(:user)
+    @posts = Post.where.not(user_id: current_user.id)
+  end
+
+  def myindex
+    @posts = current_user.posts
   end
 
   def show
     @post = Post.find(params[:id])
-    return unless @post.user != current_user
-
-    flash[:alert] = 'この界隈あるあるを、神経衰弱で遊ぶ？'
-    redirect_to posts_path
   end
 
   def new
