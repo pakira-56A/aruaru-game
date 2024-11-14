@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="ja">
   <head>
     <title><%= content_for(:title) | "あるある神経衰弱" %></title>
@@ -27,6 +26,7 @@
       <!-- 静的OGP -->
 
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+    <%= javascript_include_tag "games", type: "module" %>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>あるある神経衰弱</title>
