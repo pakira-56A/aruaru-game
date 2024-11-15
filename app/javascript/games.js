@@ -1,15 +1,34 @@
 console.log("games.js が読み込めました");
 
-var cards = [];         // div要素を格納
-var flgFirst = true;    // 1枚目かどうかのフラグ   1枚目: true   2枚目: false
-var cardFirst;          // 1枚目のカードを格納
-var countUnit = 0;      // そろえた枚数
+let cards = [];         // div要素を格納
+let flgFirst = true;    // 1枚目かどうかのフラグ   1枚目: true   2枚目: false
+let cardFirst;          // 1枚目のカードを格納
+let countUnit = 0;      // ペアカード枚数
 
+// ゲームの状態をリセットする関数
+function resetGame() {
+    cards = [];
+    flgFirst = true;
+    cardFirst = null;
+    countUnit = 0;
+    currentColorIndex = 0;
+    isLocked = false;
+}
 
 // ゲームの開始時に、渡された投稿データを利用
 // 下記の""にDOMContentLoadedを書くと、Turboだと発火しちゃうので却下
 document.addEventListener("turbo:load", () => {
+    resetGame(); // ゲームの状態をリセット
+
     const postsDataElement = document.getElementById("posts-data");
+    const panel = document.getElementById('panel');
+    // panelが存在するか確認
+    if (panel) {
+        // 既存のカードを削除
+        while (panel.firstChild) {
+            panel.removeChild(panel.firstChild); } }
+    else {
+        console.warn('パネル要素が見つかりませんでした'); }
 
     // 投稿データが存在するか確認
     if (postsDataElement) {
@@ -20,14 +39,12 @@ document.addEventListener("turbo:load", () => {
         const aruaruFour = postsDataElement.getAttribute("data-aruaru-four");
         const aruaruFive = postsDataElement.getAttribute("data-aruaru-five");
 
-        console.log("投稿データを取得しました");
+        console.log("投稿データを取得：", postID);
 
         // カードの配列をデータで更新
         var arr = [aruaruOne, aruaruTwo, aruaruThree, aruaruFour, aruaruFive];
         arr = arr.concat(arr); // カードをペアにして2倍にする
         shuffle(arr); // シャッフル
-
-        var panel = document.getElementById('panel');
 
         // div要素作成
         for (let i = 0; i < 10; i++) {
@@ -42,7 +59,6 @@ document.addEventListener("turbo:load", () => {
     }
     else { console.warn('投稿データが見つかりませんでした'); }
 });
-
 // シャッフル用関数
 function shuffle(arr) {
     var n = arr.length;
@@ -55,8 +71,7 @@ function shuffle(arr) {
     return arr;
 }
 
-// ペア完成時の色を用意
-// 緑,青,ピンク,オレンジ,赤
+// ペア完成時の色を用意　左から、緑,青,ピンク,オレンジ,赤
 const colors = ['#21c000','#008eff', '#ff68fa', '#ff7b0b', '#ff0000'];
 let currentColorIndex = 0; // 現在の色のインデックス
 let isLocked = false; // ゲームがロックされているか否かを示すフラグ
@@ -106,7 +121,7 @@ function turn(e) {
                 cardFirst.innerHTML = '';
                 cardFirst = null;
                 isLocked = false; // ロックを解除
-                cardFirst = null; }, 700); }  // 0.7秒の速度でノーペアのカードが伏せられる
+            }, 700); }  // 0.7秒の速度でノーペアのカードが伏せられる
         flgFirst = true;
     }
 }
