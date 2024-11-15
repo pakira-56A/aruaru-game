@@ -2,9 +2,11 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: %i[myindex new show edit update create]
 
   def index
-    @posts = Post.includes(:user)
-    # 以下、カレントユーザーがいる前提の書き方なので、未ログインユーザーがindexアクションを閲覧できなくなる
-    # @posts = Post.where.not(user_id: current_user.id)
+    if user_signed_in?
+      @posts = Post.where.not(user_id: current_user.id)
+    else
+      @posts = Post.includes(:user)
+    end
   end
 
   def myindex
