@@ -2,14 +2,24 @@
 
     <%= render 'search_form' %>
 
-    <div class="col-12">
-        <div class="row">
+    <div class="flex flex-col items-center">
+        <div class="flex items-center mb-2">
+            <div class="text-3xl font-bold text-green-600">みんなが思う</div>
+            <div class="text-lg font-bold text-lime-500 ml-2"><%= "界隈あるある一覧" %></div>
+        </div>
+        <div class="text-lg font-bold text-cyan-500 pb-4"><%= "ゆかりがない界隈でも遊んでみよう！" %></div>
+
             <% if @posts.present? %>
                 <div class="flex flex-wrap justify-center gap-4">
                     <%= render @posts %>
                 </div>
             <% else %>
                 <div class="mb-3 text-center">まだ投稿がないよ！投稿しよう！</div>
+                <div class="menu-list2 bg-white rounded-lg p-2 text-[#0088D0] hover:text-[#00c5ff]
+                    border-2 hover:border-orange-400 drop-shadow-md hover:drop-shadow-none" >
+                <%= link_to image_tag('header/menu/menu-2.svg', width: '25', height: '25', id: 'image-menu2') + '自分であるあるを投稿',
+                    new_post_path, class: "font-bold text-nowrap flex items-center no-underline drop-shadow-md hover:drop-shadow-none gap-2" %>
+                </div>
             <% end %>
         </div>
     </div>
