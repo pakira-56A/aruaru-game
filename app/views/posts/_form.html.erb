@@ -10,7 +10,7 @@
         placeholder: "例:ONEPIECEイーストブルー編" %>
     </div>
 
-    <%= f.label :aruarus, "あるあるを５つ、40文字以内で入力してね！", class: "label text-[#0088D0] text-sm pb-0" %>
+    <%= f.label :aruarus, "あるあるを５つ、40文字以内で入力してね！", class: "label text-[#0088D0] pb-0 text-sm " %>
         <% [:aruaru_one, :aruaru_two, :aruaru_three, :aruaru_four, :aruaru_five].each_with_index do |field, index| %>
             <div class="mt-2">
             <%= f.text_area field,
