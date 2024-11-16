@@ -1,4 +1,8 @@
-<%= link_to '一覧へ戻る', posts_path,
-class: 'btn rounded-lg py-2 mt-4 px-5
-    text-orange-500 font-light border-stone-200 bg-white shadow-md
-    hover:text-red-500 hover:font-bold hover:bg-slate-100 hover:shadow-none'%>
+<% link_classes = 'btn rounded-lg py-2 mt-2 p-2 border-stone-200 bg-slate-50
+                    shadow-md hover:shadow-none hover:bg-white hover:font-bold' %>
+
+<%= link_to 'みんなが思うあるある一覧へ戻る', posts_path,
+    class: "#{link_classes} text-[#019c8f] font-light hover:text-[#00e297]" %>
+<br>
+<%= link_to '自作したあるある一覧へ戻る', myindex_posts_path,
+    class: "#{link_classes} text-[#00cee8] font-light hover:text-[#6eefff]" %>

@@ -1,6 +1,6 @@
 <%= form_with(model: @post, class: "space-y-2") do |f| %>
     <%= f.label :title, "界隈名", class: "label text-[#0088D0] pb-0" %>
-    <%= f.label :title, "(自動で末尾に「〇〇界隈あるある」とつくよ！）", class: "label text-[#0093e0] text-xs pt-0" %>
+    <%= f.label :title, "(自動で末尾に「〇〇界隈あるある」とつくよ！）", class: "label text-[#0088D0] text-xs pt-0" %>
     <dr>
     <div>
     <%= f.text_area :title,
@@ -10,7 +10,7 @@
         placeholder: "例:ONEPIECEイーストブルー編" %>
     </div>
 
-    <%= f.label :aruarus, "あるあるを５つ入力してね！", class: "label text-[#0088D0] pb-0" %>
+    <%= f.label :aruarus, "あるあるを５つ、40文字以内で入力してね！", class: "label text-[#0088D0] pb-0 text-sm " %>
         <% [:aruaru_one, :aruaru_two, :aruaru_three, :aruaru_four, :aruaru_five].each_with_index do |field, index| %>
             <div class="mt-2">
             <%= f.text_area field,
@@ -26,8 +26,8 @@
             </div>
         <% end %>
 
-    <%= render 'shared/index_backbutton' %>
     <%= f.submit nil, class: "btn  text-white font-semibold rounded-lg mt-4
             drop-shadow-lg hover:drop-shadow-none bg-[#0088D0] hover:bg-orange-500" %>
+    <%= render 'shared/index_backbutton' %>
 
 <% end %>
