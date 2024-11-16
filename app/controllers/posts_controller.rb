@@ -2,9 +2,11 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: %i[myindex new show edit update create]
 
   def index
-    @posts = Post.includes(:user)
-    # 以下、カレントユーザーがいる前提の書き方なので、未ログインユーザーがindexアクションを閲覧できなくなる
-    # @posts = Post.where.not(user_id: current_user.id)
+    if user_signed_in?
+      @posts = Post.where.not(user_id: current_user.id)
+    else
+      @posts = Post.includes(:user)
+    end
   end
 
   def myindex
@@ -27,7 +29,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     if @post.save
       flash[:notice] = '投稿したよ！'
-      redirect_to posts_path
+      redirect_to myindex_posts_path(@post)
     else
       flash.now[:alert] = '全て入力してね！40文字までだよ！'
       render :new, status: :unprocessable_entity
@@ -38,7 +40,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.find(params[:id])
     if @post.update(post_params)
       flash[:notice] = '更新したよ'
-      redirect_to post_path(@post)
+      redirect_to myindex_posts_path(@post)
     else
       flash.now[:alert] = '全て入力してね！30文字までだよ！'
       render :edit, status: :unprocessable_entity
@@ -49,7 +51,7 @@ class PostsController < ApplicationController
     post = current_user.posts.find(params[:id])
     post.destroy!
     flash[:notice] = '消したよ〜 また投稿してね！'
-    redirect_to posts_path
+    redirect_to myindex_posts_path(@post)
   end
 
   private

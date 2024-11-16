@@ -10,10 +10,10 @@
 .menu-list4 a:hover #image-menu4 { content: url('header/menu/menu-4-hover.svg');}
 
 /* 投稿の詳細・ゲーム・編集・削除ボタン */
-.post-show :hover { content: url('post/post-show-hover.svg');}
-.post-game :hover { content: url('post/post-game-hover.svg');}
-.post-edit :hover{ content: url('post/post-edit-hover.svg');}
-.post-delete :hover { content: url('post/post-delete-hover.svg');}
+.post-show :hover #button-show{ content: url('post/post-show-hover.svg');}
+.post-game :hover #button-game { content: url('post/post-game-hover.svg');}
+.post-edit :hover #button-edit{ content: url('post/post-edit-hover.svg');}
+.post-delete :hover #button-delete{ content: url('post/post-delete-hover.svg');}
 
 /* ゲーム画面 （Tailwindに書き換えられず） */
 #panel {

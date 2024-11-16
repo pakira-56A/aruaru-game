@@ -1,45 +1,43 @@
 <% if current_user == post.user %>
-
     <!-- カレントユーザーが自作した投稿（myindex） -->
-    <div class="post-box bg-cyan-50 hover:bg-white rounded-lg shadow-md hover:shadow-none text-nowrap">
-        <div class="post-box-body p-4">
-            <div id="post-id-<%= post.id %>">
-                <%= link_to post.title, start_game_path(post),
-                    class: "post-box-title font-bold pt-2
-                        text-cyan-800 hover:text-orange-500 drop-shadow-md hover:drop-shadow-none" %>
-                <div class="text-cyan-600 pt-2">界隈のあるあるで遊ぶ</div>
+    <div class="post-box-body bg-[#fbffff] rounded-lg p-2">
+        <%= link_to start_game_path(post),
+        class: "block post-box bg-cyan-50 hover:bg-white rounded-lg
+            shadow-md hover:shadow-none text-nowrap hover:border-2 hover:border-orange-400" do %>
+                <div id="post-id-<%= post.id %>">
+                    <div class="post-box-title font-bold p-2 pb-0 text-cyan-800 drop-shadow-md group-hover:drop-shadow-none">
+                        <%= post.title %></div>
+                    <div class="text-cyan-600 p-2 text-xs">あるあるで遊ぶ</div>
 
-                <div class="flex justify-end gap-4 pt-2">
-                    <%= link_to post_path(post), id: 'button-show-#{post.id}' do %>
-                        <%= image_tag 'post/post-show.svg', width: '25', height: '25', class: "post-game drop-shadow-md hover:drop-shadow-none" %>
-                    <% end %>
-                    <%= link_to edit_post_path(post), id: 'button-edit-#{post.id}' do %>
-                        <%= image_tag 'post/post-edit.svg', width: '25', height: '25', class: "post-edit drop-shadow-md hover:drop-shadow-none" %>
-                    <% end %>
-                    <%= link_to post_path(post), id: 'button-delete-#{post.id}', data: { turbo_method: :delete, turbo_confirm: "えぇ〜 消しちゃうの？" } do %>
-                        <%= image_tag 'post/post-delete.svg', width: '25', height: '25', class: "post-delete drop-shadow-md hover:drop-shadow-none" %>
-                    <% end %>
+                    <div class="flex justify-end gap-4 pt-2">
+                        <% actions = [
+                            { path: post_path(post), id: "button-show", image: 'post/post-show.svg', class: 'post-game' },
+                            { path: edit_post_path(post), id: "button-edit", image: 'post/post-edit.svg', class: 'post-edit' },
+                            { path: post_path(post), id: "button-delete", image: 'post/post-delete.svg', class: 'post-delete', data: { turbo_method: :delete, turbo_confirm: "えぇ〜 消しちゃうの？" } }
+                        ] %>
+                        <% actions.each do |action| %>
+                            <%= link_to image_tag(action[:image], width: '25', height: '25', class: "#{action[:class]} drop-shadow-md hover:drop-shadow-none"), action[:path], id: action[:id], data: action[:data] %>
+                        <% end %>
+                    </div>
                 </div>
-            </div>
-        </div>
+        <% end %>
     </div>
 
 <% else %>
 
-		<!-- 他のユーザーが投稿した一覧（index） -->
-    <div class="post-box bg-green-50 hover:bg-white rounded-lg shadow-md hover:shadow-none text-nowrap">
+    <!-- 他のユーザーが投稿した一覧（index） -->
+    <%= link_to start_game_path(post),
+        class: "block post-box bg-green-50 hover:bg-white rounded-lg shadow-md hover:shadow-none text-nowrap border-2 hover:border-2 hover:border-orange-400" do %>
         <div class="post-box-body p-4">
             <div id="post-id-<%= post.id %>">
-                <ul class="list-inline text-slate-400">
-                    <li><i class="bi bi-person"></i><%= post.user.name %>さんの思う</li>
-                </ul>
-                <%= link_to post.title, start_game_path(post),
-                    class: "post-box-title font-bold pt-2
-                        text-lime-800 hover:text-orange-500 drop-shadow-md hover:drop-shadow-none" %>
-                <div class="text-lime-600 pt-2">界隈のあるあるで遊ぶ</div>
+                <ul class="list-inline text-slate-400 text-xs"><%= post.user.name %>さんの思う</ul>
+                <div class="post-box-title font-bold pt-2 text-lime-800 group-hover:text-orange-500 drop-shadow-md group-hover:drop-shadow-none">
+                    <%= post.title %>
+                </div>
+                <div class="text-lime-600 pt-2 text-xs">あるあるで遊ぶ</div>
             </div>
         </div>
-    </div>
+    <% end %>
 
 <% end %>
 <br>
