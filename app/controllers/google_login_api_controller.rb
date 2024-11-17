@@ -18,6 +18,7 @@ class GoogleLoginApiController < ApplicationController
       redirect_to posts_path, notice: 'ログインできたよ！どのあるあるで遊ぶ？'
     rescue StandardError => e
       pp e
+      redirect_to root_path, alert: 'ログインに失敗したよ。もう一度試してみてね！'
     end
   end
 

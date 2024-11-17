@@ -11,6 +11,7 @@ class PostsController < ApplicationController
 
   def myindex
     @posts = current_user.posts
+    render 'users/posts/index'
   end
 
   def show
@@ -25,13 +26,15 @@ class PostsController < ApplicationController
     @post = current_user.posts.find(params[:id])
   end
 
+  VALIDATION_MESSAGE = '全て入力してね！40文字までだよ！'
+
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      flash[:notice] = '投稿したよ！'
-      redirect_to myindex_posts_path(@post)
+      flash[:notice] = '投稿したよー！遊んでもらおう！'
+      redirect_to myindex_posts_path
     else
-      flash.now[:alert] = '全て入力してね！40文字までだよ！'
+      flash.now[:alert] = VALIDATION_MESSAGE
       render :new, status: :unprocessable_entity
     end
   end
@@ -39,19 +42,24 @@ class PostsController < ApplicationController
   def update
     @post = current_user.posts.find(params[:id])
     if @post.update(post_params)
-      flash[:notice] = '更新したよ'
-      redirect_to myindex_posts_path(@post)
+      flash[:notice] = '更新したよー！遊んでもらおう！'
+      redirect_to myindex_posts_path
     else
-      flash.now[:alert] = '全て入力してね！30文字までだよ！'
+      flash.now[:alert] = VALIDATION_MESSAGE
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-    post = current_user.posts.find(params[:id])
-    post.destroy!
-    flash[:notice] = '消したよ〜 また投稿してね！'
-    redirect_to myindex_posts_path(@post)
+    ActiveRecord::Base.transaction do
+      post = current_user.posts.find(params[:id])
+      post.destroy!
+      flash[:notice] = '消したよ〜 また投稿してね！'
+      redirect_to myindex_posts_path, status: :see_other
+    end
+  rescue StandardError => e
+    flash[:alert] = '消すの失敗！ もう一度お試してみてね！'
+    redirect_to myindex_posts_path, status: :see_other
   end
 
   private
