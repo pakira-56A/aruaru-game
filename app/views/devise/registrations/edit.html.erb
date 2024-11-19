@@ -1,0 +1,26 @@
+<div class="flex justify-center items-center mt-6">
+    <div id="profile" class="area w-80 md:w-96 bg-base-100 rounded-lg">
+        <div class="area-body items-center text-center p-4">
+        <div class="flex">
+            <%= form_with model: @user, url: user_registration_path, method: :put do |f| %>
+                <div class="m-2">
+
+                    <%= f.label :name, "きみのお名前は？", class: "text-xl text-cyan-700 font-bold" %>
+                    <%= f.text_field :name,
+                        class: "input input-bordered border-2 border-sky-300
+                                rounded-md w-60 text-orange-500 font-bold" %>
+                </div>
+
+                <%= f.submit "変更",
+                    class: "btn text-blue-600 bg-cyan-300 hover:bg-cyan-200 font-bold
+                            drop-shadow-md hover:drop-shadow-none" %>
+
+                <div class="flex justify-end pr-4">
+                    <%= link_to 'キャンセル', myindex_posts_path,
+                        class: "text-sm text-blue-600 hover:text-blue-500 hover:font-bold drop-shadow-md hover:drop-shadow-none" %>
+                </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
