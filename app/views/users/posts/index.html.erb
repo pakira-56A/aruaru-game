@@ -1,6 +1,10 @@
 <div class="container py-4">
 
-    <%= render 'search_form' %>
+    <div class="flex gap-2">
+        <%= render 'search_form' %>
+        <%= link_to "お名前変える？", edit_user_registration_path,
+            class: "btn btn-sm text-blue-600 bg-cyan-200 hover:bg-white shadow-md hover:shadow-none" %>
+    </div>
 
     <div class="flex flex-col items-center">
         <div class="flex items-center mb-4">
