@@ -2,113 +2,17 @@
 
     <!-- 左側：遊び方 -->
     <div class="flex-1 flex justify-start">
-        <button class="font-bold text-2xl whitespace-nowrap text-[#F50968] hover:text-[#5099ff] drop-shadow-lg hover:drop-shadow-none ml-6"
-                onclick="howto.showModal()">遊び方</button>
-        <dialog id="howto" class="modal">
-        <div class="modal-box fixed transform bg-white rounded-lg max-w-[600px] p-2 z-50 drop-shadow-lg">
-            <p class="py-2">
-            <h3 class="text-pink-500 font-bold p-2 text-xl text-center text-[#ff0090]">🥳　遊び方　🥳</h3>
-            <div class="howto-text text-[#ff5900] text-left whitespace-nowrap leading-400 px-6 py-4 left-2">
-                <div class="font-bold text-center">あらゆる界隈をすこーし探求できるゲーム</div>
-                <br>
-                ①あるあるを知りたい界隈を入力！<br>
-                ＡＩがあるあるを生成してくれるよ
-                <div class="flex">
-                <%= image_tag 'header/AI-search.png', width: '60', height: '60' %>
-                <%= image_tag 'header/AI-lines.jpeg', width: '270', height: '20' %>
-                </div>
-                <br>
-                <div class="flex">②　<%= image_tag 'header/start-button.png', class: 'rounded-circle mr-2', width: '130', height: '2' %>で</div>
-                札をめくって、あるあるのペアを作ろう！
-                <a href="https://gyazo.com/62fa9798a64b46babcce1d1a680fb5d9">
-                <img src="https://i.gyazo.com/62fa9798a64b46babcce1d1a680fb5d9.png" alt="Image from Gyazo" width="400"/></a>
-                <br>
-                <div class="flex space-x-3">
-                ③右上の <%= image_tag 'header/menu/menus.svg', width: '30', height: '30' %> から
-                </div>
-                誰かのあるあるで遊んだり、あるあるを自作してシェアしよう！
-            </div>
-            </p>
-        </div>
-        <form method="dialog" class="modal-backdrop mix-blend-multiply bg-[#FFAB508D]" onclick="howto.close()"></form>
-        </dialog>
+        <%= render 'shared/header/howto' %>
     </div>
 
-    <!-- 中央：ログイン状態に応じたコンテンツを実装予定 -->
+    <!-- 中央：ログイン状態に応じたコンテンツを表示 -->
     <div class="flex-1 flex justify-center">
-
-        <% if user_signed_in? %>
-            <%= link_to root_path, class: "flex items-center drop-shadow-md shadow-pink-500 hover:drop-shadow-none" do %>
-                <%= image_tag 'logo-clear.png', alt: 'Logo', class: 'h-12 w-auto' %>
-            <% end %>
-        <% else %>
-            <script src="https://accounts.google.com/gsi/client" async defer></script>
-            <div id="g_id_onload"
-                data-client_id="<%= ENV['GOOGLE_CLIENT_ID'] %>"
-                data-login_uri=
-                "<%= Rails.env.development? ? 'http://localhost:3000/google_login_api/callback' : 'https://aruaru-game.onrender.com/google_login_api/callback' %>"
-                data-auto_prompt="false">
-            </div>
-            <div class="g_id_signin bg-yellow-50"
-                data-type="standard"
-                data-size="large"
-                data-theme="outline"
-                data-text="signin"
-                data-shape="pill"
-                data-logo_alignment="left"
-                data-width="60">
-            </div>
-        <% end %>
+        <%= render 'shared/header/googleloginbutton_or_logo' %>
     </div>
 
     <!-- 右端：メニュー -->
     <div class="flex-1 flex justify-end">
-
-        <div class="dropdown dropdown-bottom dropdown-end">
-            <div tabindex="0" role="button"
-                class="menus-btn bg-yellow-50 hover:bg-yellow-50 border-0 hover:border-none mr-8">
-            <%= image_tag 'header/menu/menus.svg', width: '40', height: '40', id: 'image-menus-button', class: 'drop-shadow-md hover:drop-shadow-none'%>
-            </div>
-            <ul tabindex="0"
-            class="dropdown-content menu bg-white rounded-box z-[1] w-[300px] p-2 mt-6 mr-4 shadow-lg">
-                <li>
-                    <div class="menu-list1 text-[#019c8f] hover:text-[#00e297] hover:bg-white">
-                    <%= link_to image_tag('header/menu/menu-1.svg', width: '30', height: '30', id: 'image-menu1') + 'みんなが思うあるあるで遊ぶ',
-                        posts_path, class: "font-bold text-nowrap flex items-center no-underline drop-shadow-md hover:drop-shadow-none gap-2 pb-2" %>
-                </li>
-                <li>
-                    <div class="menu-list2 text-[#0088D0] hover:text-[#00c5ff] hover:bg-white" >
-                    <%= link_to image_tag('header/menu/menu-2.svg', width: '25', height: '25', id: 'image-menu2') + '自分であるあるを投稿',
-                        new_post_path, class: "font-bold text-nowrap flex items-center no-underline drop-shadow-md hover:drop-shadow-none gap-2 pb-2" %>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="menu-list3 text-[#00cee8] hover:text-[#6eefff] hover:bg-white" >
-                    <%= link_to image_tag('header/menu/menu-3.svg', width: '25', height: '25', id: 'image-menu3') + '自作したあるある一覧・設定',
-                        myindex_posts_path(@post), class: "font-bold text-nowrap flex items-center no-underline drop-shadow-md hover:drop-shadow-none gap-2 pb-2" %>
-                    </div>
-                </li>
-                <!--未実装のリンク -->
-                <li>
-                    <div class="menu-list4 text-[#DF5656] hover:text-[#fe9898] hover:bg-white" >
-                        <%= link_to image_tag('header/menu/menu-4.svg', width: '25', height: '25', id: 'image-menu4') + 'お気に入りの界隈',
-                            root_path, class: "font-bold flex justify-start items-center no-underline drop-shadow-md hover:drop-shadow-none gap-2 pb-2",
-                            onclick: "alert('未実装だよ！待っててね！'); return false;" %>
-                    </div>
-                </li>
-
-                <% if user_signed_in? then %>
-                    <li>
-                    <div class="menu-list5 text-[#B4B4B4] hover:text-[#DBAAFF] pt-2 hover:bg-white">
-                        <div class="font-bold flex justify-start items-center no-underline gap-2" >
-                            <%= link_to "　　ログアウト", destroy_user_session_path, method: :delete %>
-                        </div>
-                    </div>
-                    </li>
-                <% end %>
-            </ul>
-        </div>
+        <%= render 'shared/header/menu' %>
     </div>
 
 </header>
