@@ -1,0 +1,26 @@
+<% if user_signed_in? %>
+
+    <%= link_to root_path, class: "flex items-center drop-shadow-md shadow-pink-500 hover:drop-shadow-none" do %>
+        <%= image_tag 'logo-clear.png', alt: 'Logo', class: 'h-12 w-auto' %>
+    <% end %>
+
+<% else %>
+
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <div id="g_id_onload"
+        data-client_id="<%= ENV['GOOGLE_CLIENT_ID'] %>"
+        data-login_uri=
+        "<%= Rails.env.development? ? 'http://localhost:3000/google_login_api/callback' : 'https://aruaru-game.onrender.com/google_login_api/callback' %>"
+        data-auto_prompt="false">
+    </div>
+    <div class="g_id_signin bg-yellow-50"
+        data-type="standard"
+        data-size="large"
+        data-theme="outline"
+        data-text="signin"
+        data-shape="pill"
+        data-logo_alignment="left"
+        data-width="60">
+    </div>
+
+<% end %>
