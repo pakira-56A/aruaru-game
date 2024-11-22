@@ -71,10 +71,38 @@ function shuffle(arr) {
     return arr;
 }
 
+
+
 // ペア完成時の色を用意　左から、緑,青,ピンク,オレンジ,赤
 const colors = ['#21c000','#008eff', '#ff68fa', '#ff7b0b', '#ff0000'];
 let currentColorIndex = 0; // 現在の色のインデックス
 let isLocked = false; // ゲームがロックされているか否かを示すフラグ
+
+// モーダルを表示する関数（ゲームクリア後に表示するモーダル）
+function showModal() {
+    const modal = document.getElementById('modal');
+    if (modal) {
+        modal.style.display = 'block'; }
+}
+// // モーダルを非表示にする関数（ゲームクリア後に表示するモーダル）
+function hideModal() {
+    const modal = document.getElementById('modal');
+    if (modal) {
+        modal.style.display = 'none'; }
+}
+
+// ×ボタンをクリックでモーダルを閉じる
+document.querySelector('.close-button').addEventListener('click', hideModal);
+
+// // モーダルの外側をクリックで閉じる（こちらに変更するかもなので、一応残しておきます）
+// const modal = document.getElementById('modal');
+// if (modal) {
+//     modal.addEventListener('click', function(event) {
+//         // クリックしたのがモーダルの内容でない場合に閉じる
+//         if (event.target === modal) {
+//             hideModal(); }
+// });}
+
 
 // クリック時の処理
 function turn(e) {
@@ -109,8 +137,8 @@ function turn(e) {
             if (countUnit == 5) {
                 // ゲーム終了
                 setTimeout(function () {
-                    alert('界隈探求クリア！どう思った〜？');
-                }, 500); }  //　　0.5秒後にアラート表示
+                    showModal(); // モーダルを表示
+                }, 1000); }//　　1秒後にモーダル表示
             isLocked = false; // ロックを解除
         }, 500); }  // カードがペアになったら0.5秒の速度で文字の色が変わる
         else {   // ノーペアの場合

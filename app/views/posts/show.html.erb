@@ -7,14 +7,17 @@
 
         <div class='flex justify-end gap-4 my-2'>
             <div class="text-sky-400">界隈あるある</div>
-            <%= link_to start_game_path(@post), id: "button-game-#{@post.id}" do %>
-                <%= image_tag 'post/post-game.svg', width: '25', height: '25', class: "post-game drop-shadow-md hover:drop-shadow-none" %>
-            <% end %>
-            <%= link_to edit_post_path(@post), id: "button-edit-#{@post.id}" do %>
-                <%= image_tag 'post/post-edit.svg', width: '25', height: '25', class: "post-edit drop-shadow-md hover:drop-shadow-none" %>
-            <% end %>
-            <%= link_to post_path(@post), id: "button-delete-#{@post.id}", data: { turbo_method: :delete, turbo_confirm: "えぇ〜 消しちゃうの？" } do %>
-                <%= image_tag 'post/post-delete.svg', width: '25', height: '25', class: "post-delete drop-shadow-md hover:drop-shadow-none" %>
+            <%= render 'shared/xshare_button', post: @post %>
+
+            <% buttons = [
+                { path: start_game_path(@post), image: 'post/post-game.svg', id: "image-start-#{@post.id}" },
+                { path: edit_post_path(@post), image: 'post/post-edit.svg', id: "image-edit-#{@post.id}" },
+                { path: post_path(@post), image: 'post/post-delete.svg', id: "image-delete-#{@post.id}", data: { turbo_method: :delete, turbo_confirm: "えぇ〜 消しちゃうの？" } }
+            ] %>
+            <% buttons.each do |button| %>
+                <%= link_to button[:path], id: button[:id], data: button[:data] do %>
+                    <%= image_tag button[:image], width: '25', height: '25', class: "#{button[:image].split('/').last.split('.').first} drop-shadow-md hover:drop-shadow-none" %>
+                <% end %>
             <% end %>
         </div>
 
