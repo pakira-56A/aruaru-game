@@ -2,11 +2,11 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: %i[myindex new show edit update create]
 
   def index
-    if user_signed_in?
-      @posts = Post.where.not(user_id: current_user.id)
-    else
-      @posts = Post.includes(:user)
-    end
+    @posts = if user_signed_in?
+                Post.where.not(user_id: current_user.id)
+            else
+                Post.includes(:user)
+            end
   end
 
   def myindex
