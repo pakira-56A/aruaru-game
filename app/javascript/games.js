@@ -107,8 +107,8 @@ document.addEventListener("turbo:load", () => {
     // モーダルを閉じるボタンの設定
     const closeButton = document.querySelector('.close-button');
     if (closeButton) {
-        closeButton.addEventListener('click', hideModal);
-    }
+        closeButton.addEventListener('click', hideModal); }
+    else { console.warn('閉じるボタンが見つかりませんでした'); }
 
     // ゲームパネルの取得と初期化
     const postsDataElement = document.getElementById("posts-data");
