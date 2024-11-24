@@ -1,25 +1,116 @@
 console.log("games.js が読み込めました");
 
-let cards = [];         // div要素を格納
-let flgFirst = true;    // 1枚目かどうかのフラグ   1枚目: true   2枚目: false
-let cardFirst;          // 1枚目のカードを格納
-let countUnit = 0;      // ペアカード枚数
+// ペア完成時の色を定義（左から緑、青、ピンク、オレンジ、赤）
+const colors = ['#21c000', '#008eff', '#ff68fa', '#ff7b0b', '#ff0000'];
+
+let cards = [];             // カード要素を格納する配列
+let flgFirst = true;        // 1枚目のカードかどうかを示すフラグ
+let cardFirst;              // 1枚目にめくられたカードを保持
+let countUnit = 0;          // 見つけたペアの数
+let currentColorIndex = 0;  // 現在使用する色のインデックス
+let isLocked = false;       // ゲームがロックされているかどうか
 
 // ゲームの状態をリセットする関数
-function resetGame() {
+const resetGame = () => {
     cards = [];
     flgFirst = true;
     cardFirst = null;
     countUnit = 0;
     currentColorIndex = 0;
     isLocked = false;
-}
+};
+
+// 配列をシャッフルする関数
+const shuffle = (arr) => {
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+};
+
+// カード要素を作成する関数
+const createCard = (index, number) => {
+    const div = document.createElement('div');
+    div.className = 'card back';
+    div.index = index;
+    div.number = number;
+    div.innerHTML = '';
+    div.onclick = turn;
+    return div;
+};
+
+// モーダルを表示する関数
+const showModal = () => {
+    const modal = document.getElementById('modal');
+    if (modal) modal.style.display = 'block';
+};
+
+// モーダルを非表示にする関数
+const hideModal = () => {
+    const modal = document.getElementById('modal');
+    if (modal) modal.style.display = 'none';
+};
+
+// ペアが一致した時の処理
+const handlePairMatch = (div) => {
+    countUnit++;
+    setTimeout(() => {
+        div.className = 'card finish';
+        cardFirst.className = 'card finish';
+        div.style.color = colors[currentColorIndex];
+        cardFirst.style.color = colors[currentColorIndex];
+        currentColorIndex = (currentColorIndex + 1) % colors.length;
+
+        if (countUnit === 5) {
+            setTimeout(showModal, 1000); } // 全カードがペアになった1秒後にモーダル表示
+        isLocked = false;
+    }, 500);  // カードがペアになったら0.5秒の速度で文字の色が変わる
+};
+
+// ペアが一致しなかった時の処理
+const handleNoMatch = (div) => {
+    setTimeout(() => {
+        div.className = 'card back';
+        div.innerHTML = '';
+        cardFirst.className = 'card back';
+        cardFirst.innerHTML = '';
+        cardFirst = null;
+        isLocked = false;
+    }, 700);  // 0.7秒の速度でノーペアのカードが伏せられる
+};
+
+// カードをクリックした時の処理
+const turn = (e) => {
+    const div = e.target;
+    if (div.className === 'card' || div.className === 'card finish' || countUnit === 5 || isLocked) return;
+
+    div.className = 'card';
+    div.innerHTML = div.number;
+
+    if (flgFirst) {
+        cardFirst = div;
+        flgFirst = false; }
+    else {
+        isLocked = true;
+        if (cardFirst.number == div.number) {
+            handlePairMatch(div);}
+        else { handleNoMatch(div); }
+        flgFirst = true; }
+};
 
 // ゲームの開始時に、渡された投稿データを利用
 // 下記の""にDOMContentLoadedを書くと、Turboだと発火しちゃうので却下
 document.addEventListener("turbo:load", () => {
     resetGame(); // ゲームの状態をリセット
 
+    // モーダルを閉じるボタンの設定
+    const closeButton = document.querySelector('.close-button');
+    if (closeButton) {
+        closeButton.addEventListener('click', hideModal);
+    }
+
+    // ゲームパネルの取得と初期化
     const postsDataElement = document.getElementById("posts-data");
     const panel = document.getElementById('panel');
     // panelが存在するか確認
@@ -28,71 +119,33 @@ document.addEventListener("turbo:load", () => {
         while (panel.firstChild) {
             panel.removeChild(panel.firstChild); } }
     else {
-        console.warn('パネル要素が見つかりませんでした'); }
+        console.warn('パネル要素が見つかりませんでした');
+        return; }
 
-    // 投稿データが存在するか確認
+    // 投稿データの取得とカードの生成
     if (postsDataElement) {
         const postID = postsDataElement.getAttribute("data-post-id"); // post ID を取得
-        const aruaruOne = postsDataElement.getAttribute("data-aruaru-one");
-        const aruaruTwo = postsDataElement.getAttribute("data-aruaru-two");
-        const aruaruThree = postsDataElement.getAttribute("data-aruaru-three");
-        const aruaruFour = postsDataElement.getAttribute("data-aruaru-four");
-        const aruaruFive = postsDataElement.getAttribute("data-aruaru-five");
-
         console.log("投稿データを取得：", postID);
 
-        // カードの配列をデータで更新
-        var arr = [aruaruOne, aruaruTwo, aruaruThree, aruaruFour, aruaruFive];
-        arr = arr.concat(arr); // カードをペアにして2倍にする
-        shuffle(arr); // シャッフル
+        // あるある要素のデータを取得
+        const aruaruData = ['one', 'two', 'three', 'four', 'five'].map(num =>
+            postsDataElement.getAttribute(`data-aruaru-${num}`) );
 
-        // div要素作成
-        for (let i = 0; i < 10; i++) {
-            var div = document.createElement('div');
-            div.className = 'card back';
-            div.index = i;
-            div.number = arr[i];  // カードの内容にデータを設定
-            div.innerHTML = '';
-            div.onclick = turn;
-            panel.appendChild(div);
-            cards.push(div); }
-    }
+        // カードデータの配列を作成し、シャッフル
+        const arr = shuffle([...aruaruData, ...aruaruData]);
+
+        // カードを生成し、パネルに追加
+        arr.forEach((number, index) => {
+            const card = createCard(index, number);
+            panel.appendChild(card);
+            cards.push(card); }); }
     else { console.warn('投稿データが見つかりませんでした'); }
 });
-// シャッフル用関数
-function shuffle(arr) {
-    var n = arr.length;
-    var temp, i;
-    while (n) {
-        i = Math.floor(Math.random() * n--);
-        temp = arr[n];
-        arr[n] = arr[i];
-        arr[i] = temp; }
-    return arr;
-}
 
-
-
-// ペア完成時の色を用意　左から、緑,青,ピンク,オレンジ,赤
-const colors = ['#21c000','#008eff', '#ff68fa', '#ff7b0b', '#ff0000'];
-let currentColorIndex = 0; // 現在の色のインデックス
-let isLocked = false; // ゲームがロックされているか否かを示すフラグ
-
-// モーダルを表示する関数（ゲームクリア後に表示するモーダル）
-function showModal() {
-    const modal = document.getElementById('modal');
-    if (modal) {
-        modal.style.display = 'block'; }
-}
-// // モーダルを非表示にする関数（ゲームクリア後に表示するモーダル）
-function hideModal() {
-    const modal = document.getElementById('modal');
-    if (modal) {
-        modal.style.display = 'none'; }
-}
-
-// ×ボタンをクリックでモーダルを閉じる
+// モーダルを閉じるボタンのイベントリスナー
 document.querySelector('.close-button').addEventListener('click', hideModal);
+
+
 
 // // モーダルの外側をクリックで閉じる（こちらに変更するかもなので、一応残しておきます）
 // const modal = document.getElementById('modal');
@@ -102,54 +155,3 @@ document.querySelector('.close-button').addEventListener('click', hideModal);
 //         if (event.target === modal) {
 //             hideModal(); }
 // });}
-
-
-// クリック時の処理
-function turn(e) {
-    var div = e.target;
-
-    // カードがすでに裏返されてる、ゲームが終了してる、またはロック中の場合は return
-    if (div.className === 'card' || div.className === 'card finish' || countUnit === 5 || isLocked) return;
-
-    // カードを表にする
-    div.className = 'card';
-    div.innerHTML = div.number;
-
-    // 1枚目の処理
-    if (flgFirst) { cardFirst = div;
-                    flgFirst = false; }
-    // 2枚目の処理
-    else {
-        isLocked = true; // カードがめくれない制限（ロック）
-
-        // あるあるが1枚目とペアの場合
-        if (cardFirst.number == div.number) {
-            countUnit++;
-            setTimeout(function () {
-                div.className = 'card finish';
-                cardFirst.className = 'card finish';
-
-            // 色を設定
-            div.style.color = colors[currentColorIndex];
-            cardFirst.style.color = colors[currentColorIndex];
-            currentColorIndex = (currentColorIndex + 1) % colors.length; // インデックスを更新
-
-            if (countUnit == 5) {
-                // ゲーム終了
-                setTimeout(function () {
-                    showModal(); // モーダルを表示
-                }, 1000); }//　　1秒後にモーダル表示
-            isLocked = false; // ロックを解除
-        }, 500); }  // カードがペアになったら0.5秒の速度で文字の色が変わる
-        else {   // ノーペアの場合
-            setTimeout(function () {
-                div.className = 'card back';
-                div.innerHTML = '';
-                cardFirst.className = 'card back';
-                cardFirst.innerHTML = '';
-                cardFirst = null;
-                isLocked = false; // ロックを解除
-            }, 700); }  // 0.7秒の速度でノーペアのカードが伏せられる
-        flgFirst = true;
-    }
-}
