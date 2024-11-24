@@ -42,8 +42,12 @@
     <%= yield %>
   </body>
 
-  <footer class="fixed bottom-0 left-0 right-0 pb-2 bg-white">
+  <footer>
     <%= render 'shared/footer' %>
   </footer>
+
+  <% if request.path == "/games/#{params[:id]}/start" %>
+    <%= render 'games/clear_modal' %>
+  <% end %>
 
 </html>
