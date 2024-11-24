@@ -142,10 +142,6 @@ document.addEventListener("turbo:load", () => {
     else { console.warn('投稿データが見つかりませんでした'); }
 });
 
-// モーダルを閉じるボタンのイベントリスナー
-document.querySelector('.close-button').addEventListener('click', hideModal);
-
-
 
 // // モーダルの外側をクリックで閉じる（こちらに変更するかもなので、一応残しておきます）
 // const modal = document.getElementById('modal');
