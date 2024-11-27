@@ -18,7 +18,7 @@ class GamesController < ApplicationController
     set_meta_tags og: {
                     site_name: 'あるある神経衰弱',
                     title: post.title,
-                    description: 'の界隈あるあるで遊ぼう！',
+                    description: 'この界隈あるあるで遊ぼう！',
                     type: 'website',
                     url: request.original_url,
                     image: image_url,
