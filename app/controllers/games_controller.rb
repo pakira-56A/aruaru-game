@@ -8,6 +8,15 @@ class GamesController < ApplicationController
 
   private
 
+  def authenticate_user!
+    unless user_signed_in?
+      # XシェアされたURLを未ログインユーザーがクリックした際、クリックしたURLを保存
+      store_location_for(:user, request.original_url)
+      flash[:alert] = 'ログインしてね〜！'
+      redirect_to root_path
+    end
+  end
+
   def prepare_meta_tags(post)
     user_name = post.user.name
     title = post.title
@@ -20,7 +29,7 @@ class GamesController < ApplicationController
                     title: post.title,
                     description: 'この界隈あるあるで遊ぼう！',
                     type: 'website',
-                    url: request.original_url,
+                    url: "#{request.base_url}/games/#{post.id}/start",
                     image: image_url,
                     locale: 'ja-JP'
                   },
