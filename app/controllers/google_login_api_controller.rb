@@ -23,7 +23,6 @@ class GoogleLoginApiController < ApplicationController
         flash[:notice] = 'ログインできたよ！どのあるあるで遊ぶ？'
       end
       redirect_to redirect_to_location
-
     rescue StandardError => e
       pp e
       redirect_to root_path, alert: 'ログインに失敗したよ。もう一度試してみてね！'
