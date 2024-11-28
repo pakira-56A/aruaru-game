@@ -3,18 +3,29 @@ class GamesController < ApplicationController
 
   def start
     @post = Post.find(params[:id])
-    prepare_meta_tags(@post)
+    image_data = OgpCreator.build(prepare_meta_tags(@post))
+    save_ogp_image(@post, image_data)
   end
 
   private
 
-  def authenticate_user!
-    unless user_signed_in?
-      # XシェアされたURLを未ログインユーザーがクリックした際、クリックしたURLを保存
-      store_location_for(:user, request.original_url)
-      flash[:alert] = 'ログインしてね〜！'
-      redirect_to root_path
+  def save_ogp_image(post, image_data)
+    File.open(Rails.public_path.join('ogp_images', "#{post.id}.png"), 'wb') do |file|
+      file.write(image_data)
     end
+  end
+
+  def authenticate_user!
+    if request.user_agent =~ /bot|crawler|spider/i
+      return
+    end
+
+    return if user_signed_in?
+
+    # XシェアされたURLを未ログインユーザーがクリックした際、クリックしたURLを保存
+    store_location_for(:user, request.original_url)
+    flash[:alert] = 'ログインしてね〜！'
+    redirect_to root_path
   end
 
   def prepare_meta_tags(post)
@@ -22,7 +33,6 @@ class GamesController < ApplicationController
     title = post.title
     ogp_text = "#{user_name}さんが思う\n#{title}"
     image_url = "#{request.base_url}/images/ogp.png?text=#{CGI.escape(ogp_text)}"
-    OgpCreator.build(ogp_text) # 画像生成メソッドを呼び出す
 
     set_meta_tags og: {
                     site_name: 'あるある神経衰弱',
@@ -38,5 +48,6 @@ class GamesController < ApplicationController
                     site: '@https://x.com/pakira_rrr',
                     image: image_url
                   }
+    ogp_text # 生成したテキストを返す
   end
 end
