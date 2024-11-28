@@ -3,7 +3,14 @@ class GamesController < ApplicationController
 
   def start
     @post = Post.find(params[:id])
-    image_data = OgpCreator.build(prepare_meta_tags(@post))
+    Rails.logger.info("Generating OGP image for post ID: #{@post.id}")
+    begin
+      image_data = OgpCreator.build(prepare_meta_tags(@post))
+    rescue => e
+      Rails.logger.error("Error generating OGP image: #{e.message}")
+      render json: { error: 'Internal Server Error' }, status: :internal_server_error
+    end
+    Rails.logger.info("Generated image data: #{image_data.inspect}")
     save_ogp_image(@post, image_data)
   end
 
