@@ -4,10 +4,10 @@ class PostsController < ApplicationController
 
   def index
     @posts = if user_signed_in?
-                Post.where.not(user_id: current_user.id)
-            else
-                Post.includes(:user)
-            end
+               Post.where.not(user_id: current_user.id)
+             else
+               Post.includes(:user)
+             end
   end
 
   def myindex

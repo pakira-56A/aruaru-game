@@ -1,5 +1,4 @@
 class GamesController < ApplicationController
-  require "google/cloud/storage"
   before_action :authenticate_user!, only: %i[start]
 
   def start
@@ -7,7 +6,7 @@ class GamesController < ApplicationController
     Rails.logger.info("Generating OGP image for post ID: #{@post.id}")
     begin
       image_data = OgpCreator.build(prepare_meta_tags(@post))
-    rescue => e
+    rescue StandardError => e
       Rails.logger.error("Error generating OGP image: #{e.message}")
       render json: { error: 'Internal Server Error' }, status: :internal_server_error
     end
@@ -19,10 +18,9 @@ class GamesController < ApplicationController
 
   def save_ogp_image(post, image_data)
     if Rails.env.production? # 本番環境の場合
-      storage = Google::Cloud::Storage.new
-      bucket = storage.bucket(Rails.application.credentials.dig(:gcs, :bucket_name)) # バケット名の取得
-      bucket.create_file(StringIO.new(image_data), "ogp_images/#{post.id}.png") # GCSにアップロード
-      Rails.logger.info("Uploaded OGP image to GCS for post ID: #{post.id}")
+      # 一旦、何もしない処理を記載
+      Rails.logger.info("No action taken for OGP image in production for post ID: #{post.id}")
+      # AWS S3導入後に使う記載・Rails.logger.info("Uploaded OGP image to GCS for post ID: #{post.id}")
     else # 開発環境の場合
       File.open(Rails.public_path.join('ogp_images', "#{post.id}.png"), 'wb') do |file|
         file.write(image_data)
