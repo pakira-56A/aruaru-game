@@ -6,25 +6,6 @@ local:
   service: Disk
   root: <%= Rails.root.join("storage") %>
 
-google:
-  service: GCS
-  project: {aruaru-game}
-  credentials:
-    {
-      "type": "service_account",
-      "project_id": "<%= Rails.application.credentials.dig(:google_cloud_storage, :project_id) %>",
-      "private_key_id": "<%= Rails.application.credentials.dig(:google_cloud_storage, :private_key_id) %>",
-      "private_key": "<%= Rails.application.credentials.dig(:google_cloud_storage, :private_key) %>",
-      "client_email": "<%= Rails.application.credentials.dig(:google_cloud_storage, :client_email) %>",
-      "client_id": "<%= Rails.application.credentials.dig(:google_cloud_storage, :client_id) %>",
-      "auth_uri": "<%= Rails.application.credentials.dig(:google_cloud_storage, :auth_uri) %>",
-      "token_uri": "<%= Rails.application.credentials.dig(:google_cloud_storage, :token_uri) %>",
-      "auth_provider_x509_cert_url": "<%= Rails.application.credentials.dig(:google_cloud_storage, :auth_provider_x509_cert_url) %>",
-      "client_x509_cert_url": "<%= Rails.application.credentials.dig(:google_cloud_storage, :client_x509_cert_url) %>",
-      "universe_domain": "googleapis.com"
-    }
-  bucket: {aruaru-game}
-
 # Use bin/rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
 #   service: S3
