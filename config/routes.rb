@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   get "/policy", to: "tops#policy"
   get "/term", to: "tops#term"
+  get 'images/ogp.png', to: 'images#ogp', as: 'images_ogp'
 
   resources :posts, only: %i[index new create show edit update destroy] do
     collection do

@@ -3,7 +3,7 @@
     <div class="post-box-body bg-[#fbffff] rounded-lg p-2">
         <%= link_to start_game_path(post),
         class: "block post-box bg-cyan-50 hover:bg-white rounded-lg
-            shadow-md hover:shadow-none text-nowrap hover:border-2 hover:border-orange-400" do %>
+            shadow-md hover:shadow-none hover:border-2 hover:border-orange-400" do %>
                 <div id="post-id-<%= post.id %>">
                     <div class="post-box-title font-bold p-2 pb-0 text-cyan-800 drop-shadow-md group-hover:drop-shadow-none">
                         <%= post.title %></div>
@@ -30,7 +30,7 @@
     <div class="post-box-body bg-[#fbffff] rounded-lg p-2">
         <%= link_to start_game_path(post),
             class: "block post-box bg-green-50 hover:bg-white rounded-lg
-                    shadow-md hover:shadow-none text-nowrap hover:border-2 hover:border-orange-400" do %>
+                    shadow-md hover:shadow-none hover:border-2 hover:border-orange-400" do %>
 
             <div id="post-id-<%= post.id %>">
             <ul class="list-inline text-slate-400 text-xs p-2 pb-0"><%= post.user.name %>さんの思う</ul>
