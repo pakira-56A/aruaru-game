@@ -1,6 +1,6 @@
 <html lang="ja">
   <head>
-    <title><%= content_for(:title) | "あるある神経衰弱" %></title>
+    <title><%= content_for(:title) || "あるある神経衰弱" %></title>
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <meta name="mobile-web-app-capable" content="yes">
       <%= csrf_meta_tags %>
@@ -11,26 +11,11 @@
       <%= favicon_link_tag('favicon.png') %>
       <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
 
-      <!-- 静的OGP -->
-        <meta property="og:url" content="https://aruaru-game.onrender.com/">
-        <meta property="og:type" content="website">
-        <meta property="og:title" content="あるある神経衰弱：界隈探求ゲーム">
-        <meta property="og:description" content="あらゆる界隈のあるあるを作って遊ぼう！人は誰しも何かのオタクでしょう？？">
-        <meta property="og:site_name" content="TOP">
-        <meta property="og:image" content="<%= image_url('URL-SHARE_mini.png') %>" />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@pakira_rrr" />
-        <meta name="twitter:description" content="あらゆる界隈のあるあるを作って遊ぼう！人は誰しも何かのオタクでしょう？？" />
-        <meta name="twitter:image" content="<%= asset_url('URL-SHARE_mini.png') %>" />
-      <!-- 静的OGP -->
-
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
     <%= javascript_include_tag "games", type: "module" %>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>あるある神経衰弱</title>
-    <style>.menu-content { display: none; }</style>
+
+    <!-- 動的OGP -->
+    <%= display_meta_tags(default_meta_tags) %>
   </head>
 
   <header>
