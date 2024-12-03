@@ -12,26 +12,10 @@ class GamesController < ApplicationController
       return
     end
     Rails.logger.info("生成した画像データ: #{image_data.inspect}")
-    save_ogp_image(@post, image_data)
   end
 
   private
 
-  def save_ogp_image(post, image_data)
-    if Rails.env.production? # 本番環境の場合
-      Rails.logger.info("ポストID: #{post.id} のOGP画像データを返却中")
-      begin
-        send_data image_data, type: 'image/png', disposition: 'inline' # 生成した画像データをそのまま返す
-      rescue StandardError => e
-        Rails.logger.error("OGP画像データの返却中にエラーが発生しました: #{e.message}")
-      end
-    else # 開発環境の場合
-      File.open(Rails.public_path.join('ogp_images', "#{post.id}.png"), 'wb') do |file|
-        file.write(image_data)
-      end
-      Rails.logger.info("ポストID: #{post.id} のOGP画像を公開フォルダに保存しました")
-    end
-  end
 
   def authenticate_user!
     if request.user_agent =~ /bot|crawler|spider/i
@@ -52,6 +36,7 @@ class GamesController < ApplicationController
     ogp_text = "#{user_name}さんが思う\n#{title}"
     image_url = "#{request.base_url}/images/ogp.png?text=#{CGI.escape(ogp_text)}"
 
+    Rails.logger.info("OGP画像の生成: ユーザー名: #{user_name}, タイトル: #{title}, 画像URL: #{image_url}")
     set_meta_tags og: {
                     site_name: 'あるある神経衰弱',
                     title: post.title,
