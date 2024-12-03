@@ -16,14 +16,11 @@ class GamesController < ApplicationController
 
   private
 
-
   def authenticate_user!
     if request.user_agent =~ /bot|crawler|spider/i
       return
     end
-
     return if user_signed_in?
-
     # XシェアされたURLを未ログインユーザーがクリックした際、クリックしたURLを保存
     store_location_for(:user, request.original_url)
     flash[:alert] = 'ログインしてね〜！'
@@ -36,7 +33,7 @@ class GamesController < ApplicationController
     ogp_text = "#{user_name}さんが思う\n#{title}"
     image_url = "#{request.base_url}/images/ogp.png?text=#{CGI.escape(ogp_text)}"
 
-    Rails.logger.info("OGP画像の生成: ユーザー名: #{user_name}, タイトル: #{title}, 画像URL: #{image_url}")
+    Rails.logger.info("『#{request.base_url}』でOGP画像の生成「#{user_name}さんの#{title}」画像URL「#{image_url}」")
     set_meta_tags og: {
                     site_name: 'あるある神経衰弱',
                     title: post.title,
