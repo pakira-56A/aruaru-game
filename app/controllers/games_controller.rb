@@ -9,6 +9,7 @@ class GamesController < ApplicationController
     rescue StandardError => e
       Rails.logger.error("Error generating OGP image: #{e.message}")
       render json: { error: 'Internal Server Error' }, status: :internal_server_error
+      return
     end
     Rails.logger.info("Generated image data: #{image_data.inspect}")
     save_ogp_image(@post, image_data)
@@ -18,9 +19,8 @@ class GamesController < ApplicationController
 
   def save_ogp_image(post, image_data)
     if Rails.env.production? # 本番環境の場合
-      # 一旦、何もしない処理を記載
-      Rails.logger.info("No action taken for OGP image in production for post ID: #{post.id}")
-      # AWS S3導入後に使う記載・Rails.logger.info("Uploaded OGP image to GCS for post ID: #{post.id}")
+      Rails.logger.info("Returning OGP image data for post ID: #{post.id}")
+      render json: { image_data: image_data } # 生成した画像データをそのまま返す
     else # 開発環境の場合
       File.open(Rails.public_path.join('ogp_images', "#{post.id}.png"), 'wb') do |file|
         file.write(image_data)
