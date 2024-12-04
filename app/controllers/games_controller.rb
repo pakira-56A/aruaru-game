@@ -17,14 +17,15 @@ class GamesController < ApplicationController
   private
 
   def authenticate_user!
-    if request.user_agent =~ /bot|crawler|spider/i
-      return
-    end
-    return if user_signed_in?
-    # XシェアされたURLを未ログインユーザーがクリックした際、クリックしたURLを保存
-    store_location_for(:user, request.original_url)
-    flash[:alert] = 'ログインしてね〜！'
-    redirect_to root_path
+    return
+    # if request.user_agent =~ /bot|crawler|spider/i
+    #   return
+    # end
+    # return if user_signed_in?
+    # # XシェアされたURLを未ログインユーザーがクリックした際、クリックしたURLを保存
+    # store_location_for(:user, request.original_url)
+    # flash[:alert] = 'ログインしてね〜！'
+    # redirect_to root_path
   end
 
 end
