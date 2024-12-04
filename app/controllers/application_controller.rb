@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
     ts = Time.now.utc.strftime("%Y%m%d%H%M%S")
     image_url = "#{request.base_url}/images/ogp.png?text=#{CGI.escape(ogp_text)}&ts=#{ts}"
 
-    Rails.logger.info("『#{request.base_url}』でOGP画像の生成「#{user_name}さんの#{title}」画像URL「#{image_url}」")
+    Rails.logger.info("ここ#{request.base_url}』でOGP画像の生成「#{user_name}さんの#{title}」画像URL「#{image_url}」")
     set_meta_tags og: {
                     site_name: 'あるある神経衰弱',
                     title: post.title,
