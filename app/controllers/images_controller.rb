@@ -5,7 +5,7 @@ class ImagesController < ApplicationController
     text = ogp_params[:text]
     image = OgpCreator.build(text).tempfile.open.read
     send_data image, type: 'image/png', disposition: 'inline'
-    Rails.logger.info("ogpメソッドをを実行")
+    Rails.logger.info("ogpメソッドを実行")
   end
 
   private
