@@ -3,6 +3,7 @@ class GamesController < ApplicationController
 
   def start
     @post = Post.find(params[:id])
+    prepare_meta_tags(@post)
     Rails.logger.info("ポストID: #{@post.id} を取得")
     # begin
     #   image_data = OgpCreator.build(prepare_meta_tags(@post))
