@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
     user_name = post.user.name
     title = post.title
     ogp_text = "#{user_name}さんが思う\n#{title}"
+    # 一旦動的OGPが生成された時刻を表示 &ts=#{ts}
     ts = Time.now.utc.strftime("%Y%m%d%H%M%S")
     image_url = "#{request.base_url}/images/ogp.png?text=#{CGI.escape(ogp_text)}&ts=#{ts}"
 
