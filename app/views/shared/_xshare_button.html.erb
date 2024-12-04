@@ -1,6 +1,6 @@
 <div class="twitter">
     <% prepare_meta_tags post %>
-    <%= link_to "https://twitter.com/intent/tweet?url=#{request.base_url}/games/#{post.id}/start?a=1&text=#{ERB::Util.url_encode("\n#{post.user.name}さんが思う\n##{post.title.gsub(/[^\p{Alnum}\s]/u, '')} あるあるをシェア！\n#あるある神経衰弱\n")}",
+    <%= link_to "https://twitter.com/intent/tweet?url=#{request.base_url}/games/#{post.id}/start?r=#{rand}&text=#{ERB::Util.url_encode("\n#{post.user.name}さんが思う\n##{post.title.gsub(/[^\p{Alnum}\s]/u, '')} あるあるをシェア！\n#あるある神経衰弱\n")}",
         target: '_blank',
         data: { toggle: "tooltip", placement: "bottom" },
         title: "Xでシェア" do %>
