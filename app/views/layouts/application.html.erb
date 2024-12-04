@@ -14,9 +14,8 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
     <%= javascript_include_tag "games", type: "module" %>
 
-    <!-- 動的OGP -->
+    <!-- 静的OGP（ゲーム画面のみ動的OGP） -->
     <%= display_meta_tags(default_meta_tags) %>
-    <%= yield(:meta_tags) %>
   </head>
 
   <header>

@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: %i[myindex new show edit update create]
-  helper_method :prepare_meta_tags
 
   def index
     @posts = if user_signed_in?
