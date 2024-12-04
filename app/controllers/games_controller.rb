@@ -17,6 +17,7 @@ class GamesController < ApplicationController
   private
 
   def authenticate_user!
+    Rails.logger.info("#{request.user_agent}でアクセスしました")
     if request.user_agent =~ /bot|crawler|spider|Twitterbot/i
       return
     end
