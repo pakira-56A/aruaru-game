@@ -1,8 +1,9 @@
 class PostOgpUploader < CarrierWave::Uploader::Base
-  storage :file
 
-  # 　❶一旦ローカルででS3に保存できるか確認
-  # storage :fog
+  # storage :file
+
+  #　❶一旦ローカルででS3に保存できるか確認
+  storage :fog
 
   # ❷保存場所を指定
   # if Rails.env.production?
