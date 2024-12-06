@@ -24,7 +24,8 @@ class ApplicationController < ActionController::Base
                     title: post.title,
                     description: 'この界隈あるあるで遊ぼう！',
                     type: 'website',
-                    url: "#{request.base_url}/games/#{post.id}/start",
+                    url: request.original_url,
+                    # url: "#{request.base_url}/games/#{post.id}/start",
                     image: image_url,
                     locale: 'ja-JP'
                   },
