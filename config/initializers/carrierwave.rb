@@ -8,6 +8,8 @@ CarrierWave.configure do |config|
     }
 
     config.fog_directory = ENV['S3_BUCKET_NAME']
-    config.fog_attributes = {'x-amz-acl' => nil} # ACLを設定しない
+    config.fog_attributes = {'x-amz-acl' => 'public-read'} # ACLを設定する
+    # config.fog_attributes = {'x-amz-acl' => nil} # ACLを設定しない
+    config.fog_public = false
 
 end
