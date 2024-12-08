@@ -25,6 +25,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_05_093128) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "ogp"
+    t.string "previous_user_name"
+    t.string "previous_title"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
