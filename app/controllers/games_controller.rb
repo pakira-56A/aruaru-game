@@ -1,11 +1,12 @@
 class GamesController < ApplicationController
 
+
   def start
     @post = Post.find(params[:id])
     Rails.logger.info("ポストID: #{@post.id} を取得")
-    set_meta_tags(og: { image: "#{@post.ogp.url}"})
-    set_meta_tags(twitter: { image: "#{@post.ogp.url}"})
-    # set_meta_tags(og: { image: './app/assets/images/OGP_game.png' })
+    # set_meta_tags(og: { image: "#{@post.ogp.url}"})
+    # set_meta_tags(twitter: { image: "#{@post.ogp.url}"})
+    set_meta_tags(og: { image: './app/assets/images/OGP_game.png' })
     generate_and_save_ogp(@post)
   end
 
