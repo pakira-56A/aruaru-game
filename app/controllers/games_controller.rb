@@ -6,7 +6,9 @@ class GamesController < ApplicationController
     Rails.logger.info("ポストID: #{@post.id} を取得")
     set_meta_tags(og: { image: "#{@post.ogp.url}"})
     set_meta_tags(twitter: { image: "#{@post.ogp.url}"})
+    # set_meta_tags(og: { image: './app/assets/images/OGP_game.png' })
     update_ogp_if_needed(@post)
+
   end
 
   private
@@ -56,7 +58,6 @@ class GamesController < ApplicationController
       return
     end
 
-    # return unless post.update!(ogp: image_data, previous_user_name: post.user.name, previous_title: post.title) # 生成したOGP画像をポストに登録
     return unless post.update!(ogp: image_data, previous_user_name: post.user.name, previous_title: post.title) # 生成したOGP画像をポストに登録
     Rails.logger.info("生成した動的OGP画像を保存: #{post.ogp.url}")
   rescue StandardError => e
