@@ -9,6 +9,6 @@ class PostOgpUploader < CarrierWave::Uploader::Base
   # end
 
   def store_dir
-    "#{mounted_as}_#{model.user.name}さんの#{model.title}（投稿ID:#{model.id}）"
+    "#{mounted_as}_#{model.user.name}さんの#{model.title}（投稿ID:#{model.id})"
   end
 end
