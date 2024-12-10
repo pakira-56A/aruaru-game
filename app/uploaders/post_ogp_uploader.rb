@@ -11,9 +11,9 @@ class PostOgpUploader < CarrierWave::Uploader::Base
 
   def store_dir
     if Rails.env.production?
-      "#{mounted_as}_本番環境、投稿ID:#{model.id}"
+      "#{mounted_as}_production:post_ID:#{model.id}"
     else
-      "#{mounted_as}_ローカル、投稿ID:#{model.id}"
+      "#{mounted_as}_development:post_ID:#{model.id}"
     end
   end
 
