@@ -8,8 +8,11 @@ gem 'omniauth-rails_csrf_protection'
 gem 'googleauth'
 gem 'dotenv'
 
+# 動的OGP用
 gem 'mini_magick'
 gem 'meta-tags', require: 'meta_tags'
+gem 'carrierwave', '~> 3.0'
+gem 'fog-aws'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.4"

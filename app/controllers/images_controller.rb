@@ -1,10 +1,13 @@
 class ImagesController < ApplicationController
-  before_action :authenticate_user!, raise: false
-
   def ogp
-    text = ogp_params[:text]
-    image = OgpCreator.build(text).tempfile.open.read
-    send_data image, type: 'image/png', disposition: 'inline'
+    begin
+      text = ogp_params[:text]
+      image = OgpCreator.build(text).tempfile.open.read
+      send_data image, type: 'image/png', disposition: 'inline'
+      Rails.logger.info('ogpのイメージを出力')
+    rescue StandardError => e
+      Rails.logger.error("ogpメソッド実行中にエラー発生: #{e.message}")
+    end
   end
 
   private

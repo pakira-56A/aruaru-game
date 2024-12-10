@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: %i[myindex new show edit update create]
-  helper_method :prepare_meta_tags
 
   def index
     @posts = if user_signed_in?
@@ -66,6 +65,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :aruaru_one, :aruaru_two, :aruaru_three, :aruaru_four, :aruaru_five)
+    params.require(:post).permit(:title, :aruaru_one, :aruaru_two, :aruaru_three, :aruaru_four, :aruaru_five).merge(ogp: OgpCreator.build("#{current_user.name}さんが思う\n#{params[:post][:title]}"))
   end
 end
