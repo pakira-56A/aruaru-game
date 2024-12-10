@@ -4,6 +4,5 @@ class Post < ApplicationRecord
 
   belongs_to :user
 
-  # UploaderをPost.ogpに紐付け
   mount_uploader :ogp, PostOgpUploader
 end
