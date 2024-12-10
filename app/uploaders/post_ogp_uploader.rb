@@ -1,13 +1,10 @@
 class PostOgpUploader < CarrierWave::Uploader::Base
 
-  # storage :file
-
-  # if Rails.env.production?
+  if Rails.env.production?
     storage :fog
-  # else
-  #   storage :file
-  # end
-
+  else
+    storage :file
+  end
 
   def store_dir
     if Rails.env.production?
