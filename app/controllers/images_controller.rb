@@ -1,8 +1,5 @@
 class ImagesController < ApplicationController
-  before_action :authenticate_user!, raise: false
-
   def ogp
-    Rails.logger.info('ogpメソッド実行')
     begin
       text = ogp_params[:text]
       image = OgpCreator.build(text).tempfile.open.read
