@@ -5,4 +5,8 @@ class Post < ApplicationRecord
   belongs_to :user
 
   mount_uploader :ogp, PostOgpUploader
+
+  def self.ransackable_attributes(_auth_object = nil)
+    ['title']
+  end
 end
