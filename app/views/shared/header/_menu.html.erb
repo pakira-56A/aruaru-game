@@ -1,12 +1,11 @@
 <div class="dropdown dropdown-bottom dropdown-end">
 
-    <div tabindex="0" role="button"
-        class="menus-btn bg-yellow-50 hover:bg-yellow-50 border-0 hover:border-none mr-8">
-    <%= image_tag 'header/menu/menus.svg', width: '40', height: '40', id: 'image-menus-button', class: 'drop-shadow-md hover:drop-shadow-none'%>
+    <div tabindex="0" role="button" class="menus-btn bg-yellow-50 hover:bg-yellow-50 border-0 hover:border-none">
+        <%= image_tag 'header/menu/menus.svg', width: '30', height: '30',id: 'image-menus-button', class: 'drop-shadow-md hover:drop-shadow-none'%>
     </div>
 
     <ul tabindex="0"
-        class="dropdown-content menu bg-white rounded-box z-[1] w-[300px] p-2 mt-6 mr-4 shadow-lg">
+        class="dropdown-content menu bg-white rounded-box z-[1] w-[300px] p-2 mt-6 mr-2 shadow-lg">
 
         <%= render 'shared/header/menu-list' %>
 
