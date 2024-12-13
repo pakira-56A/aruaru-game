@@ -73,9 +73,38 @@ class PostsController < ApplicationController
     end
   end
 
+  def autocomplete
+    @posts = search_posts(params[:q])
+    respond_to do |format|
+        format.js # JSリクエストに対応
+        format.json { render json: @posts.pluck(:title) }
+    end
+  end
+
   private
 
   def post_params
     params.require(:post).permit(:title, :aruaru_one, :aruaru_two, :aruaru_three, :aruaru_four, :aruaru_five).merge(ogp: OgpCreator.build("#{current_user.name}さんが思う\n#{params[:post][:title]}"))
+  end
+
+  def search_posts(query)
+    conditions = [
+        "title ILIKE ?",
+        "title ILIKE ?",
+        "title ILIKE ?",
+        "title ILIKE ?",
+        "title ILIKE ?" ]
+
+    search_queries = [
+        "%#{query}%",
+        "%#{query.tr('ぁ-ん', 'ァ-ン')}%",
+        "%#{query.tr('ァ-ン', 'ぁ-ん')}%",
+        "%#{query.tr('一-龯', '')}%",
+        "%#{query.tr('a-zA-Z', '')}%" ]
+    posts = Post.where(conditions.join(' OR '), *search_queries)
+    if query.match?(/[a-zA-Z]/)
+        posts = posts.where("title ILIKE ?", "%#{query}%")
+    end
+    posts
   end
 end
