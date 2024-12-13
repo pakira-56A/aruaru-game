@@ -14,18 +14,11 @@ class GoogleLoginApiController < ApplicationController
         u.password = generated_password
         u.name = payload['name']
       end
-      sign_in(user)
-
-      # 保存したURLがあればそこにリダイレクト、なければposts_pathに遷移
-      redirect_to_location = stored_location_for(user) || posts_path
-      # posts_pathに遷移するならメッセージを追加
-      if redirect_to_location == posts_path
-        flash[:notice] = 'ログインできたよ！どのあるあるで遊ぶ？'
-      end
-      redirect_to redirect_to_location
+      sign_in(user) # 自動ログインに変更
+      redirect_to posts_path, notice: "ログインできたよ！どのあるあるで遊ぶ？"
     rescue StandardError => e
       pp e
-      redirect_to root_path, alert: 'ログインに失敗したよ。もう一度試してみてね！'
+      redirect_to root_path, alert: "ログインに失敗したよ。もう一度試してみてね！"
     end
   end
 
