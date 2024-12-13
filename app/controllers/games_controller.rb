@@ -4,10 +4,9 @@ class GamesController < ApplicationController
     @post = Post.find(params[:id])
     Rails.logger.info("ポストID: #{@post.id} を取得")
 
-    if @post
-      ogp_image_url = generate_and_save_ogp(@post)
-      set_meta_tags(og: { image: ogp_image_url }, twitter: { image: ogp_image_url })
-    end
+    return unless @post
+    ogp_image_url = generate_and_save_ogp(@post)
+    set_meta_tags(og: { image: ogp_image_url }, twitter: { image: ogp_image_url })
   end
 
   private
