@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     collection do
       get :myindex
       get :search
+      get :autocomplete
     end
   end
 

@@ -1,0 +1,16 @@
+<ul class="list-group absolute md:text-sm max-w-max z-50 mt-2">
+    <% if @posts.present? %>
+        <% @posts.each do |post| %>
+            <li class="autocomplete-item w-56 flex items-center gap-x-3 py-2 px-3
+                    bg-white rounded-md text-sm text-orange-700
+                    hover:bg-pink-100 hover:text-orange-500"
+                    role="option">
+                <%= post.title %>
+            </li>
+        <% end %>
+    <% else %>
+        <li class="autocomplete-item w-56 flex flex-col items-start gap-x-3 py-2 px-3 bg-white rounded-md">
+            <%= render 'no_posts' %>
+        </li>
+    <% end %>
+</ul>
