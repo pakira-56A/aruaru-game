@@ -2,15 +2,17 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: %i[myindex new show edit update create]
 
   def index
+    @q = Post.ransack(params[:q])
     @posts = if user_signed_in?
-               Post.where.not(user_id: current_user.id)
+                @q.result(distinct: true).where.not(user_id: current_user.id).includes(:user)
              else
-               Post.includes(:user)
+                @q.result(distinct: true).includes(:user)
              end
   end
 
   def myindex
-    @posts = current_user.posts
+    @q = current_user.posts.ransack(params[:q])
+    @posts = @q.result(distinct: true).where(user_id: current_user.id).includes(:user)
     render 'users/posts/index'
   end
 
@@ -60,6 +62,15 @@ class PostsController < ApplicationController
   rescue StandardError => e
     flash[:alert] = '消すの失敗！ もう一度お試してみてね！'
     redirect_to myindex_posts_path, status: :see_other
+  end
+
+  def search
+    @q = Post.ransack(params[:q])
+    @posts = @q.result(distinct: true)
+    respond_to do |format|
+        format.js # JSリクエストに対応
+        format.html { render :search } # HTMLリクエストに対応
+    end
   end
 
   private
