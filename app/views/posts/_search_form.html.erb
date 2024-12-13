@@ -1,6 +1,22 @@
-<form>
-    <div class="flex justify-start mb-2 pl-2 gap-1">
-        <input class="form-control p-0 pl-2 w-40" placeholder="まだ未実装だよ！" type="search"/>
-        <input type="submit" value="検索" class="btn btn-sm px-3"/>
-    </div>
-</form>
+<div class="flex pl-2 gap-1">
+    <%= search_form_for @q, url: url do |f| %>
+        <div class="relative flex rounded-md">
+            <div data-controller="autocomplete"
+                    data-autocomplete-url-value="<%= autocomplete_posts_path %>"
+                    role="combobox">
+                <%= f.search_field :title_cont, data: { autocomplete_target: 'input' },
+                    class: "border-pink-300 shadow-md rounded-md p-0 px-2 w-32 h-8 pl-2 block
+                        text-md text-orange-500 font-bold
+                        placeholder:font-normal placeholder:text-gray-400 placeholder:text-xs",
+                        placeholder: "どの界隈で遊ぶ？" %>
+                <%= f.hidden_field :title, data: { autocomplete_target: 'hidden' } %>
+                <ul class="list-group bg-white absolute w-full md:text-sm max-w-max" data-autocomplete-target="results"></ul>
+                <div class="absolute inset-y-0 left-0 flex items-center pointer-events-none pl-4">
+                </div>
+            </div>
+            <%= button_tag class: "btn btn-sm border-1 bg-pink-300 hover:bg-pink-200 hover:border-orange-500 px-3 ml-0.5 shadow-md" do %>
+                <%= image_tag 'post/post-search.svg', alt: 'Search', class: 'h-5 w-5' %>
+            <% end %>
+        </div>
+    <% end %>
+</div>

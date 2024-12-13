@@ -14,6 +14,8 @@ gem 'meta-tags', require: 'meta_tags'
 gem 'carrierwave', '~> 3.0'
 gem 'fog-aws'
 
+gem 'ransack'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.4"
 

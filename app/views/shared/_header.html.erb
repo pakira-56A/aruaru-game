@@ -1,17 +1,22 @@
-<header class="flex justify-between items-center h-16 bg-yellow-50 shadow-md">
+<header class="h-16 bg-yellow-50 shadow-md flex justify-between items-center">
 
     <!-- 左側：遊び方 -->
-    <div class="flex-1 flex justify-start">
+    <div class="flex-1 text-center ml-2">
         <%= render 'shared/header/howto' %>
     </div>
 
-    <!-- 中央：ログイン状態に応じたコンテンツを表示 -->
-    <div class="flex-1 flex justify-center">
+    <!-- 中央左：ログイン状態に応じたコンテンツを表示 -->
+    <div class="flex-1 text-center ml-2">
         <%= render 'shared/header/googleloginbutton_or_logo' %>
     </div>
 
+    <!-- 中央右：検索フォーム -->
+    <div class="flex-1 text-center mr-8 h-8">
+        <%= render 'posts/search_form', url: search_posts_path %>
+    </div>
+
     <!-- 右端：メニュー -->
-    <div class="flex-1 flex justify-end">
+    <div class="flex-1 text-center mr-2">
         <%= render 'shared/header/menu' %>
     </div>
 
