@@ -1,0 +1,32 @@
+<button class="font-bold text-2xl whitespace-nowrap text-[#F50968] hover:text-[#5099ff] drop-shadow-lg hover:drop-shadow-none"
+    onclick="howto.showModal()">遊び方</button>
+
+<dialog id="howto" class="modal">
+    <div class="modal-box fixed transform bg-white rounded-lg max-w-[600px] p-2 z-50 drop-shadow-lg md:px-6">
+        <div class="py-2 text-[#ff5900]">
+            <h3 class="text-pink-500 font-bold text-xl text-center text-[#ff0090]">🥳　遊び方　🥳</h3>
+            <div class="font-bold text-center px-2 py-4">あらゆる界隈をすこーし探求できるゲーム</div>
+            <div class="howto-text whitespace-nowrap leading-400 pl-2">
+                ①あるあるを知りたい界隈を入力！<br>
+                ＡＩがあるあるを生成してくれるよ
+                <div class="flex">
+                    <%= image_tag 'header/AI-search.png', width: '50', height: '10' %>
+                    <%= image_tag 'header/AI-lines.jpeg', width: '230', height: '10' %>
+                </div>
+                <br>
+                <div class="flex">②　<%= image_tag 'header/start-button.png', class: 'rounded-circle mr-2', width: '130', height: '2' %>で</div>
+                    札をめくって、あるあるのペアを作ろう！
+                <%= image_tag 'header/howto_game.png', width: '300' %>
+                <br>
+                <div class="flex space-x-3">
+                    ③右上の <%= image_tag 'header/menu/menus.svg', width: '20', height: '20' %> から
+                </div>
+                誰かのあるあるで遊んだり
+                <br>
+                あるあるを自作してシェアしよう！
+            </div>
+        </div>
+    </div>
+
+    <form method="dialog" class="modal-backdrop mix-blend-multiply min-h-full bg-[#FFAB508D]" onclick="howto.close()"></form>
+</dialog>
