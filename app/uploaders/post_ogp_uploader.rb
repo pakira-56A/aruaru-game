@@ -1,5 +1,4 @@
 class PostOgpUploader < CarrierWave::Uploader::Base
-
   if Rails.env.production?
     storage :fog
   else
@@ -14,5 +13,4 @@ class PostOgpUploader < CarrierWave::Uploader::Base
       "#{mounted_as}_development:post_ID:#{model.id}"
     end
   end
-
 end
