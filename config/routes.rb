@@ -1,21 +1,21 @@
 Rails.application.routes.draw do
-  #OmniAuth：認証成功時の処理
+  # OmniAuth：認証成功時の処理
   devise_for :users, controllers: {
     sessions: "users/sessions",
     registrations: "users/registrations" }
 
   devise_scope :user do
-    get '/users/sign_out' => 'devise/sessions#destroy'
+    get "/users/sign_out" => "devise/sessions#destroy"
   end
 
   root "tops#toppage"
 
   post "google_login_api/callback", to: "google_login_api#callback"
-  get "/after_login", to: "tops#toppage" #アクセスされる時のため、一応残しています
+  get "/after_login", to: "tops#toppage" # アクセスされる時のため、一応残しています
 
   get "/policy", to: "tops#policy"
   get "/term", to: "tops#term"
-  get 'images/ogp.png', to: 'images#ogp', as: 'images_ogp'
+  get "images/ogp.png", to: "images#ogp", as: "images_ogp"
 
   resources :posts, only: %i[index new create show edit update destroy] do
     collection do
@@ -30,5 +30,4 @@ Rails.application.routes.draw do
       get "start"
     end
   end
-
 end

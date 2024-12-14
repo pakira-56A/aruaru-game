@@ -1,20 +1,20 @@
 source "https://rubygems.org"
 ruby "3.2.3"
 
-gem 'devise'
-gem 'pry-byebug'
-gem 'omniauth-google-oauth2'
-gem 'omniauth-rails_csrf_protection'
-gem 'googleauth'
-gem 'dotenv'
+gem "devise"
+gem "pry-byebug"
+gem "omniauth-google-oauth2"
+gem "omniauth-rails_csrf_protection"
+gem "googleauth"
+gem "dotenv"
 
 # 動的OGP用
-gem 'mini_magick'
-gem 'meta-tags', require: 'meta_tags'
-gem 'carrierwave', '~> 3.0'
-gem 'fog-aws'
+gem "mini_magick"
+gem "meta-tags", require: "meta_tags"
+gem "carrierwave", "~> 3.0"
+gem "fog-aws"
 
-gem 'ransack'
+gem "ransack"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.4"
@@ -31,7 +31,7 @@ gem "puma", ">= 5.0"
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
 gem "jsbundling-rails"
 # CSSをバンドルするgem
-gem 'cssbundling-rails', '~> 1.3', '>= 1.3.3'
+gem "cssbundling-rails", "~> 1.3", ">= 1.3.3"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
@@ -64,7 +64,7 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
     # RubocopのLintチェック
-    gem 'rubocop'
+    gem "rubocop"
     gem "rubocop-rails"
     gem "rubocop-checkstyle_formatter"
 
@@ -75,7 +75,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-
+  gem "rubocop-rails-omakase", require: false
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
@@ -88,4 +88,3 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
-
