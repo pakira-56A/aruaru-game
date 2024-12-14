@@ -1,5 +1,4 @@
 class GamesController < ApplicationController
-
   def start
     @post = Post.find(params[:id])
     Rails.logger.info("ポストID: #{@post.id} を取得")
@@ -22,8 +21,7 @@ class GamesController < ApplicationController
 
     rescue StandardError => e
       Rails.logger.error("動的OGP画像の生成 または保存に失敗: #{e.message}")
-      render json: { error: '内部サーバーエラー' }, status: :internal_server_error
+      render json: { error: "内部サーバーエラー" }, status: :internal_server_error
     end
   end
-
 end
