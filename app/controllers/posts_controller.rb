@@ -15,7 +15,7 @@ class PostsController < ApplicationController
     @q = current_user.posts.ransack(params[:q])
     @posts = @q.result(distinct: true).includes(:user)
     render "users/posts/index"
-  end
+end
 
   def new
     @post = Post.new
@@ -24,12 +24,12 @@ class PostsController < ApplicationController
   def edit; end
 
   def create
-    @post = current_user.posts.build(post_params)
-    save_post(:new)
+      @post = current_user.posts.build(post_params)
+      save_post(:new)
   end
 
   def update
-    update_post
+      update_post
   end
 
   def destroy
