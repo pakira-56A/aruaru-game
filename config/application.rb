@@ -24,6 +24,7 @@ module Myapp
     end
 
     config.time_zone = "Tokyo"
+    config.i18n.default_locale = :ja
 
     config.autoload_paths += %W[#{config.root}/lib]
     # Configuration for the application, engines, and railties goes here.
