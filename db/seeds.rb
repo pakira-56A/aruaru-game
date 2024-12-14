@@ -1,5 +1,4 @@
 ActiveRecord::Base.transaction do
-
     10.times do |n|
         User.create!(
             name: "テスト#{n+1}",
