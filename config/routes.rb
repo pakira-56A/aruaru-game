@@ -20,6 +20,11 @@ Rails.application.routes.draw do
   resources :posts, only: %i[index new create show edit update destroy] do
     collection do
       get :myindex
+    end
+  end
+
+  resources :search_posts, only: [] do
+    collection do
       get :search
       get :autocomplete
     end
