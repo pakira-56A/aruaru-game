@@ -1,0 +1,66 @@
+# 実際に使う文字列以外は、念のために設定しています
+ja:
+  devise:
+    confirmations:
+      confirmed: "メールアドレスの確認が成功しました。"
+      send_instructions: "数分以内にメールアドレス確認の手順が記載されたメールが届きます。"
+      send_paranoid_instructions: "メールアドレスがデータベースに存在する場合、確認手順のメールが届きます。"
+    failure:
+      already_authenticated: "すでにサインインしています。"
+      inactive: "アカウントはまだアクティベートされていません。"
+      invalid: "無効な %{authentication_keys} またはパスワードです。"
+      locked: "アカウントはロックされています。"
+      last_attempt: "ロックされる前にあと1回の試行があります。"
+      not_found_in_database: "無効な %{authentication_keys} またはパスワードです。"
+      timeout: "セッションが期限切れです。再度サインインしてください。"
+      # 実際に使う文字列
+      unauthenticated: "Googleログインが必要だよ〜！"
+      unconfirmed: "続行する前にメールアドレスを確認する必要があります。"
+    mailer:
+      confirmation_instructions:
+        subject: "確認手順"
+      reset_password_instructions:
+        subject: "パスワードリセット手順"
+      unlock_instructions:
+        subject: "解除手順"
+      email_changed:
+        subject: "メールアドレス変更"
+      password_change:
+        subject: "パスワード変更"
+    omniauth_callbacks:
+      failure: "%{kind} からの認証に失敗しました: \"%{reason}\"。"
+      success: "%{kind} アカウントから正常に認証されました。"
+    passwords:
+      no_token: "パスワードリセットメールから来ないとこのページにアクセスできません。"
+      send_instructions: "数分以内にパスワードリセット手順のメールが届きます。"
+      send_paranoid_instructions: "メールアドレスがデータベースに存在する場合、数分以内にリカバリンクが届きます。"
+      updated: "パスワードが正常に変更されました。サインインしました。"
+      updated_not_active: "パスワードが正常に変更されました。"
+    registrations:
+      destroyed: "さようなら！アカウントが正常にキャンセルされました。また会いましょう。"
+      signed_up: "ようこそ！成功裏にサインアップしました。"
+      signed_up_but_inactive: "サインアップが成功しましたが、アカウントがまだアクティベートされていません。"
+      signed_up_but_locked: "サインアップが成功しましたが、アカウントがロックされています。"
+      signed_up_but_unconfirmed: "確認リンク付きメッセージがメールアドレスに送信されました。アカウントをアクティベートするにはリンクを辿ってください。"
+      update_needs_confirmation: "アカウントが正常に更新されましたが、新しいメールアドレスを確認する必要があります。"
+      updated: "アカウントが正常に更新されました。"
+      updated_but_not_signed_in: "アカウントが更新されましたが、パスワードが変更されたため再度サインインが必要です。"
+    sessions:
+      signed_in: "正常にサインインしました。"
+      # 実際に使う文字列
+      signed_out: "ログアウトしたよ！また来てね！"
+      already_signed_out: "正常にサインアウトしました。"
+    unlocks:
+      send_instructions: "数分以内にアカウント解除手順のメールが届きます。"
+      send_paranoid_instructions: "アカウントが存在する場合、解除手順のメールが届きます。"
+      unlocked: "アカウントが正常に解除されました。サインインしてください。"
+  errors:
+    messages:
+      already_confirmed: "すでに確認済みです。サインインを試みてください。"
+      confirmation_period_expired: "%{period} 内に確認が必要です。新しいリクエストをしてください。"
+      expired: "期限切れです。新しいリクエストをしてください。"
+      not_found: "見つかりませんでした。"
+      not_locked: "ロックされていません。"
+      not_saved:
+        one: "1つのエラーがこの %{resource} の保存を阻止しました："
+        other: "%{count} のエラーがこの %{resource} の保存を阻止しました："
