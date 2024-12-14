@@ -2,7 +2,7 @@
     <%= search_form_for @q, url: url do |f| %>
         <div class="relative flex rounded-md">
             <div data-controller="autocomplete"
-                data-autocomplete-url-value="<%= autocomplete_posts_path %>"
+                data-autocomplete-url-value="<%= autocomplete_search_posts_path %>"
                 role="combobox">
                 <%= f.search_field :title_cont, data: { autocomplete_target: 'input' },
                     class: "border-pink-300 shadow-md rounded-md w-32 h-8 pl-2 p-0 block
