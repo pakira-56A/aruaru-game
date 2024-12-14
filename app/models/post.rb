@@ -7,6 +7,6 @@ class Post < ApplicationRecord
   mount_uploader :ogp, PostOgpUploader
 
   def self.ransackable_attributes(_auth_object = nil)
-    ['title']
+    [ "title" ]
   end
 end

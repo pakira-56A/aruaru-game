@@ -5,7 +5,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if resource.update_without_password(params)
       true
     else
-      flash.now[:alert] = 'お名前を入力してね'
+      flash.now[:alert] = "お名前を入力してね"
       false
     end
   end
