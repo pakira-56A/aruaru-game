@@ -2,33 +2,42 @@
     <%= f.label :title, "界隈名", class: "label text-[#0088D0] pb-0" %>
     <%= f.label :title, "(自動で末尾に「〇〇界隈あるある」とつくよ！）", class: "label text-[#0088D0] text-xs pt-0" %>
     <dr>
-    <div>
-    <%= f.text_area :title,
-        class: "input input-bordered border-2 border-sky-300 rounded-md w-72
-                text-md text-orange-500 font-bold rows-2
-                placeholder:font-light placeholder:text-[#C7C7C7] placeholder:text-xs",
-        placeholder: "例:ONEPIECEイーストブルー編" %>
+
+    <div class="relative" data-controller="character-counter" data-character-counter-countdown-value="true">
+        <%= f.text_area :title, id: "post_title",
+            class: "input input-bordered border-2 border-sky-300 rounded-md w-72 h-16
+                    text-sm text-orange-500 font-bold rows-2
+                    placeholder:font-light placeholder:text-[#C7C7C7] placeholder:text-xs",
+            placeholder: "例:ONEPIECEイーストブルー編",
+            data: { character_counter_target: "input" }, maxlength: 40 %>
+        <p class="absolute right-2 bottom-2 text-xs text-green-500">
+            あと <strong data-character-counter-target="counter"></strong> 字まで
+        </p>
     </div>
 
-    <%= f.label :aruarus, "あるあるを５つ、40文字以内で入力してね！", class: "label text-[#0088D0] pb-0 text-sm " %>
+    <%= f.label :aruarus, "あるあるを５つ、入力してね！", class: "label text-[#0088D0] text-sm pb-0" %>
         <% [:aruaru_one, :aruaru_two, :aruaru_three, :aruaru_four, :aruaru_five].each_with_index do |field, index| %>
-            <div class="mt-2">
-            <%= f.text_area field,
-                class: "input input-bordered border-2 border-sky-300 rounded-md w-72
-                        text-sm text-orange-500 font-bold h-[75px]
-                        placeholder:font-light placeholder:text-[#C7C7C7] placeholder:text-xs",
-                placeholder: "例:#{['ゾロがまだ陽気',
-                                    '３巻まではSBSないから、すぐ読み終えちゃう',
-                                    'アニメのオープニング『富・名声・力』のくだり聴きいっちゃう',
-                                    '丸い植え込み見ると、ガイモンさんが恋しい',
-                                    'ギンに振る舞われたの、チャーハンと間違えがち'][index]}" %>
-
+            <div class="relative mt-2" data-controller="character-counter" data-character-counter-countdown-value="true">
+                <%= f.text_area field, id: field,
+                    class: "input input-bordered border-2 border-sky-300 rounded-md w-72
+                            text-sm text-orange-500 font-bold h-[75px]
+                            placeholder:font-light placeholder:text-[#C7C7C7] placeholder:text-xs",
+                    placeholder: "例:#{['ゾロがまだ陽気',
+                                            '３巻まではSBSないから、すぐ読み終えちゃう',
+                                            'アニメのオープニング『富・名声・力』のくだり聴きいっちゃう',
+                                            '丸い植え込み見ると、ガイモンさんが恋しい',
+                                            'ギンに振る舞われたの、チャーハンと間違えがち'][index]}",
+                    data: { character_counter_target: "input" }, maxlength: 40 %>
+                <p class="absolute right-2 bottom-2 text-xs text-green-500">
+                    あと <strong data-character-counter-target="counter"></strong> 字まで
+                </p>
             </div>
         <% end %>
 
     <%= f.submit t("posts.#{params[:action]}"),
         class: "btn btn-sm text-white font-semibold rounded-lg mt-4
                 drop-shadow-lg hover:drop-shadow-none bg-[#0088D0] hover:bg-orange-500" %>
+    <br>
     <%= render 'shared/index_backbutton' %>
 
 <% end %>
