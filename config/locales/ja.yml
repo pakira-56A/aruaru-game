@@ -1,4 +1,6 @@
 ja:
   posts:
-    new: "投稿ぉ！"
+    new: "投稿ぉ"
+    create: "投稿ぉ！"
     edit: "更新っ"
+    update: "更新っ！"
