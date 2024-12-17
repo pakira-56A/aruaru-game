@@ -23,14 +23,12 @@ class SearchPostsController < ApplicationController
             "title ILIKE ?",
             "title ILIKE ?",
             "title ILIKE ?",
-            "title ILIKE ?",
             "title ILIKE ?" ]
 
         search_queries = [
             "%#{query}%",
             "%#{query.tr('ぁ-ん', 'ァ-ン')}%",
             "%#{query.tr('ァ-ン', 'ぁ-ん')}%",
-            "%#{query.tr('一-龯', '')}%",
             "%#{query.tr('a-zA-Z', '')}%" ]
         posts = Post.where(conditions.join(" OR "), *search_queries)
         if query.match?(/[a-zA-Z]/)
