@@ -69,7 +69,8 @@ group :development, :test do
     gem "rubocop-rails"
     gem "rubocop-checkstyle_formatter"
 
-    gem "rspec-rails"
+    gem "rspec-rails"          # Rspec用に追加
+    gem "factory_bot_rails"    # Rspec用に追加
     gem "rspec_junit_formatter"
 end
 
