@@ -3,5 +3,8 @@ FactoryBot.define do
         sequence(:email) { |n| "user_#{n}@example.com" }
         password { "password" }
         password_confirmation { "password" }
-        end
+        name { "ユーザー名" }
+        provider { "provider_name" }
+        uid { "unique_uid" }
+    end
 end
