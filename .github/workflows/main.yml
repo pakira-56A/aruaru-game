@@ -5,6 +5,8 @@ on:
 
 env:
   RENDER_DB_URL: ${{secrets.RENDER_DB_URL}}
+  AWS_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_ACCESS_KEY }}
 
 jobs:
   rspec:
