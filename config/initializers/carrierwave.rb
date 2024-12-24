@@ -5,6 +5,6 @@ CarrierWave.configure do |config|
         aws_secret_access_key: ENV["S3_SECRET_ACCESS_KEY"],
         region: ENV["S3_REGION"]
     }
-    config.fog_directory = "aruaru-game-bucket"
+    config.fog_directory = ENV["S3_BUCKET_NAME"]
     config.fog_public = false
 end
