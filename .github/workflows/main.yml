@@ -5,6 +5,7 @@ on:
 
 env:
   # Github actionsに設定した環境変数をを使う宣言
+  RENDER_DB_URL: ${{secrets.RENDER_DB_URL}}
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   MASTER_KEY: ${{ secrets.MASTER_KEY }}
@@ -71,9 +72,12 @@ jobs:
 
       - name: Database create and migrate
         run: |
+          # CI環境用のデータベース設定ファイルを本番の設定ファイルとしてコピー
           cp config/database.yml.ci config/database.yml
+          # テストを実行するために必要なデータを生成
           bundle exec rails db:create RAILS_ENV=test
-          # bundle exec rails db:migrate RAILS_ENV=test
+          # テスト環境のデータベースにマイグレーションを適用
+          bundle exec rails db:migrate RAILS_ENV=test
 
       - name: assets precompile
         run: bundle exec rake assets:precompile RAILS_ENV=test
