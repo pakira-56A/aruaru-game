@@ -1,26 +1,26 @@
 <%= form_with(model: @post, class: "space-y-2") do |f| %>
     <%= f.label :title, "界隈名", class: "label text-[#0088D0] pb-0" %>
-    <%= f.label :title, "(自動で末尾に「〇〇界隈あるある」とつくよ！）", class: "label text-[#0088D0] text-xs pt-0" %>
-    <dr>
 
     <div class="relative" data-controller="character-counter" data-character-counter-countdown-value="true">
         <%= f.text_area :title, id: "post_title", autofocus: true,
             class: "input input-bordered border-2 border-sky-300 rounded-md w-72 h-16
-                    text-sm text-orange-500 font-bold rows-2
+                    text-xs text-orange-500 font-bold rows-2
                     placeholder:font-light placeholder:text-[#C7C7C7] placeholder:text-xs",
             placeholder: "例:ONEPIECEイーストブルー編",
             data: { character_counter_target: "input" }, maxlength: 40 %>
-        <p class="absolute right-2 bottom-2 text-xs text-green-500">
-            あと <strong data-character-counter-target="counter"></strong> 字まで
-        </p>
+        <div class="absolute right-2 bottom-2 top-12 flex items-center text-xs">
+            <p class="text-orange-500">のあるある。</p>
+            <p class="text-green-500">
+                あと <strong data-character-counter-target="counter"></strong> 字まで</p>
+        </div>
     </div>
 
     <%= f.label :aruarus, "あるあるを５つ、入力してね！", class: "label text-[#0088D0] text-sm pb-0" %>
         <% [:aruaru_one, :aruaru_two, :aruaru_three, :aruaru_four, :aruaru_five].each_with_index do |field, index| %>
             <div class="relative mt-2" data-controller="character-counter" data-character-counter-countdown-value="true">
                 <%= f.text_area field, id: field, autofocus: true,
-                    class: "input input-bordered border-2 border-sky-300 rounded-md w-72
-                            text-sm text-orange-500 font-bold h-[75px]
+                    class: "input input-bordered border-2 border-sky-300 rounded-md w-72 h-20
+                            text-xs text-orange-500 font-bold h-[75px]
                             placeholder:font-light placeholder:text-[#C7C7C7] placeholder:text-xs",
                     placeholder: "例:#{['ゾロがまだ陽気',
                                             '３巻まではSBSないから、すぐ読み終えちゃう',
