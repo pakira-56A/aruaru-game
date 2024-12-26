@@ -4,8 +4,11 @@
         <div class="text-sky-800"><%= "#{@post.user.name}さんが思う" %></div>
         <div class="text-3xl text-sky-600 font-bold mb-0"><%= @post.title %></div>
 
-        <div class='flex justify-end mb-2'>
+        <div class='flex justify-end'>
             <div class="text-sky-400">界隈あるある</div>
+        </div>
+        <div class='mb-4'>
+            <%= render 'tags/tags_list', post: @post %>
         </div>
 
         <!-- ゲーム画面に必要な記述 -->

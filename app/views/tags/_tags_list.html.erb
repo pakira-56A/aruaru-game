@@ -1,0 +1,14 @@
+<% if post.tags.any? %>
+
+    <% post.tags.each do |tag| %>
+        <%= link_to "##{tag.tag_name}", tag_path(tag),
+            class: "btn btn-sm font-light text-slate-400 px-2 py-0 text-xs
+                    shadow-md bg-yellow-50 border-1 border-yellow-100
+                    hover:shadow-none hover:bg-white hover:border-orange-400" %>
+    <% end %>
+
+<% else %>
+
+    <div class="font-light text-slate-400 text-xs">タグなし</div>
+
+<% end %>
