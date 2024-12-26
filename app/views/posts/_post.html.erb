@@ -19,7 +19,6 @@
         <div class="flex justify-end gap-4 pt-2">
             <%= render 'shared/xshare_button', post: post %>
             <% buttons = [
-                { path: post_path(post), id: "image-show", image: 'post/post-show.svg', class: 'post-show pt-0.5' },
                 { path: edit_post_path(post), id: "image-edit", image: 'post/post-edit.svg', class: 'post-edit' },
                 { path: post_path(post), id: "image-delete", image: 'post/post-delete.svg', class: 'post-delete', data: { turbo_method: :delete, turbo_confirm: "えぇ〜 消しちゃうの？" } }
             ] %>
