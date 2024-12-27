@@ -1,17 +1,16 @@
 <div class="flex flex-col items-center">
     <div class="flex items-center mb-2">
-        <div class="text-3xl font-bold text-green-600">みんなが思う</div>
-        <div class="text-lg font-bold text-lime-500 ml-2"><%= "界隈あるある一覧" %></div>
+        <div class="text-xl font-bold text-fuchsia-400 ml-2"><%= "##{@tag.tag_name} の検索結果" %></div>
     </div>
     <div class="text-md text-cyan-500 pb-4"><%= "ゆかりがない界隈でも遊んでみよう！" %></div>
 
     <% if @posts.present? %>
-        <div class="flex flex-wrap justify-center gap-1">
+        <div class="flex flex-wrap justify-center gap-4">
             <%= render @posts %>
         </div>
     <% else %>
         <div class="my-10">
-            <%= render 'no_posts' %>
+            <%= render 'posts/no_posts' %>
         </div>
     <% end %>
 </div>

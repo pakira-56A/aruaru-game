@@ -23,6 +23,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :tags, only: %w[index show destroy]
+
   resources :search_posts, only: [] do
     collection do
       get :search

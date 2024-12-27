@@ -18,10 +18,12 @@ class PostsController < ApplicationController
 
     def new
         @post = Post.new
+        @tags = []
     end
 
     def edit
         @post = current_user.posts.find(params[:id])
+        @tags = @post.tags.map(&:tag_name).join(" ")
     end
 
     VALIDATION_MESSAGE = "全て入力してね！40文字までだよ！"
@@ -29,9 +31,11 @@ class PostsController < ApplicationController
     def create
         @post = current_user.posts.build(post_params)
         if @post.save
+            @post.save_tags(params[:post][:tag])
             flash[:notice] = "投稿したよ！遊んでもらおう！"
             redirect_to myindex_posts_path
         else
+            @tags = params[:post][:tag]
             flash.now[:alert] = VALIDATION_MESSAGE
             render :new, status: :unprocessable_entity
         end
@@ -40,9 +44,11 @@ class PostsController < ApplicationController
     def update
         @post = current_user.posts.find(params[:id])
         if @post.update(post_params)
+            @post.save_tags(params[:post][:tag])
             flash[:notice] = "更新したよ！遊んでもらおう！"
             redirect_to myindex_posts_path
         else
+            @tags = params[:post][:tag]
             flash.now[:alert] = VALIDATION_MESSAGE
             render :edit, status: :unprocessable_entity
         end
@@ -63,6 +69,8 @@ class PostsController < ApplicationController
     private
 
     def post_params
-        params.require(:post).permit(:title, :aruaru_one, :aruaru_two, :aruaru_three, :aruaru_four, :aruaru_five).merge(ogp: OgpCreator.build("#{current_user.name}さんが思う\n#{params[:post][:title]}"))
+        params.require(:post)
+        .permit(:title, :aruaru_one, :aruaru_two, :aruaru_three, :aruaru_four, :aruaru_five, :tag_name)
+        .merge(ogp: OgpCreator.build("#{current_user.name}さんが思う\n#{params[:post][:title]}"))
     end
 end
