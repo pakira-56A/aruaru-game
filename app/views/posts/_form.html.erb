@@ -3,10 +3,9 @@
 
     <div class="relative" data-controller="character-counter" data-character-counter-countdown-value="true">
         <%= f.text_area :title, id: "post_title", autofocus: true,
-            class: "input input-bordered border-2 border-sky-300 rounded-md w-72 h-16
-                    text-xs text-orange-500 font-bold rows-2
-                    placeholder:font-light placeholder:text-[#C7C7C7] placeholder:text-xs",
-            placeholder: "例:ONEPIECEイーストブルー編",
+            class: "input input-bordered border-2 border-sky-300 rounded-md w-72 h-20
+                    text-sm text-orange-500 font-bold placeholder:font-light placeholder:text-[#C7C7C7]",
+            placeholder: "例：ONEPIECEイーストブルー編",
             data: { character_counter_target: "input" }, maxlength: 40 %>
         <div class="absolute right-2 bottom-2 top-12 flex items-center text-xs">
             <p class="text-orange-500">のあるある。</p>
@@ -20,9 +19,8 @@
             <div class="relative mt-2" data-controller="character-counter" data-character-counter-countdown-value="true">
                 <%= f.text_area field, id: field, autofocus: true,
                     class: "input input-bordered border-2 border-sky-300 rounded-md w-72 h-20
-                            text-xs text-orange-500 font-bold h-[75px]
-                            placeholder:font-light placeholder:text-[#C7C7C7] placeholder:text-xs",
-                    placeholder: "例:#{['ゾロがまだ陽気',
+                            text-sm text-orange-500 font-bold placeholder:font-light placeholder:text-[#C7C7C7]",
+                    placeholder: "例：#{['ゾロがまだ陽気',
                                             '３巻まではSBSないから、すぐ読み終えちゃう',
                                             'アニメのオープニング『富・名声・力』のくだり聴きいっちゃう',
                                             '丸い植え込み見ると、ガイモンさんが恋しい',
@@ -33,6 +31,14 @@
                 </p>
             </div>
         <% end %>
+
+    <%= f.label :tag, "この界隈に関連するワードは？", class: "label text-[#0088D0] text-sm p-0" %>
+    <!-- value:@tagsでタグの配列を取得 -->
+    <%= f.text_field :tag, placeholder: "例：漫画　アニメ　ジャンプ",
+        class: "border-2 border-sky-300 rounded-md w-72
+                text-sm text-orange-500 font-bold placeholder:font-light placeholder:text-[#C7C7C7]",
+        value: @tags %>
+    <br>
 
     <%= f.submit t("posts.#{params[:action]}"),
         class: "btn btn-sm text-white font-semibold rounded-lg mt-4

@@ -5,10 +5,12 @@
         <%= link_to start_game_path(post),
             class: "block post-box bg-cyan-50 border-2 border-cyan-100 rounded-lg shadow-md
                     hover:bg-white hover:shadow-none hover:border-2 hover:border-orange-400" do %>
-            <!-- 検索結果一覧に表示する場合は、カレントユーザー名を表示 -->
-            <% if request.path == search_search_posts_path %>
-                <ul class="list-inline text-slate-400 text-xs p-2 pb-0"><%= post.user.name %>さんの思う</ul>
+
+            <!-- 自作投稿一覧以外に表示する場合は、カレントユーザー名を表示 -->
+            <% if request.path != myindex_posts_path %>
+                <ul class="list-inline text-slate-400 text-xs px-2 pt-2"><%= post.user.name %>さんの思う</ul>
             <% end %>
+
             <div id="post-id-<%= post.id %>">
                 <div class="post-box-title font-bold p-2 pb-0 text-cyan-800 drop-shadow-md group-hover:drop-shadow-none">
                     <%= post.title %></div>
@@ -16,7 +18,11 @@
             </div>
         <% end %>
 
-        <div class="flex justify-end gap-4 pt-2">
+        <div class='mt-3'>
+            <%= render 'tags/tags_list', post: post %>
+        </div>
+
+        <div class="flex justify-end gap-4 pt-4">
             <%= render 'shared/xshare_button', post: post %>
             <% buttons = [
                 { path: edit_post_path(post), id: "image-edit", image: 'post/post-edit.svg', class: 'post-edit' },
@@ -34,13 +40,18 @@
             class: "block post-box bg-green-50 border-2 border-green-100 rounded-lg shadow-md
                     hover:bg-white hover:shadow-none hover:border-2 hover:border-orange-400" do %>
             <div id="post-id-<%= post.id %>">
-            <ul class="list-inline text-slate-400 text-xs p-2 pb-0"><%= post.user.name %>さんの思う</ul>
+            <ul class="list-inline text-slate-400 text-xs px-2 pt-2"><%= post.user.name %>さんの思う</ul>
                 <div class="post-box-title font-bold p-2 pb-0 text-lime-800 drop-shadow-md group-hover:drop-shadow-none">
                     <%= post.title %></div>
                 <div class="text-lime-600 p-2 text-xs">あるあるで遊ぶ</div>
             </div>
         <% end %>
-        <div class="flex justify-end gap-4 pt-2">
+
+        <div class='mt-3'>
+            <%= render 'tags/tags_list', post: post %>
+        </div>
+
+        <div class="flex justify-end gap-4 pt-4">
             <%= render 'shared/xshare_button', post: post %>
         </div>
 

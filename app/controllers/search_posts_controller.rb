@@ -6,6 +6,7 @@ class SearchPostsController < ApplicationController
             format.js
             format.html { render :search }
         end
+        @tags = Tag.all
     end
 
     def autocomplete
