@@ -28,23 +28,20 @@
     </script>
   </head>
 
-  <header>
+  <body class="bg-custom-yellow">
     <%= render 'shared/header' %>
-  </header>
-  <%= render 'shared/flash_message' %>
 
-  <body class="bg-custom-yellow text-left">
-    <div class="py-4">
+    <div class="py-[64px]">
+      <%= render 'shared/flash_message' %>
       <%= yield %>
     </div>
+
+    <%= render 'shared/footer' %>
+
+    <% if request.path == "/games/#{params[:id]}/start" %>
+      <%= render 'games/clear_modal' %>
+    <% end %>
   </body>
 
-  <footer class="mt-8">
-    <%= render 'shared/footer' %>
-  </footer>
-
-  <% if request.path == "/games/#{params[:id]}/start" %>
-    <%= render 'games/clear_modal' %>
-  <% end %>
 
 </html>
