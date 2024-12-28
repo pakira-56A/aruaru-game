@@ -1,22 +1,29 @@
-<div class="dropdown dropdown-bottom dropdown-end">
+<div class="dropdown">
 
-    <div tabindex="0" role="button" class="menus-btn bg-yellow-50 hover:bg-yellow-50 border-0 hover:border-none">
-        <%= image_tag 'header/menu/menus.svg', width: '30', height: '30',id: 'image-menus-button', class: 'drop-shadow-md hover:drop-shadow-none'%>
+    <div tabindex="0" role="button"
+        class="menus-btn bg-yellow-50 hover:bg-yellow-50 border-0 hover:border-none">
+    <%= image_tag 'header/menu/menus.svg', width: '20', height: '20', id: 'image-menus-button', class: 'drop-shadow-md hover:drop-shadow-none'%>
     </div>
 
-    <ul tabindex="0"
-        class="dropdown-content menu bg-white rounded-box z-[1] w-[300px] p-2 mt-6 mr-2 shadow-lg">
-
-        <%= render 'shared/header/menu-list' %>
-
-        <% if user_signed_in? then %>
+    <ul tabindex="0" class="dropdown-content menu bg-white rounded-xl z-[1] w-[220px] mt-6 shadow-lg">
+        <div class="font-bold flex justify-start items-center no-underline">
             <li>
-            <div class="menu-list5 text-[#B4B4B4] hover:text-[#DBAAFF] pt-2 hover:bg-white">
-                <div class="font-bold flex justify-start items-center no-underline gap-2" >
-                    <%= link_to "　　ログアウト", destroy_user_session_path, method: :delete %>
+            <% links = [
+                { text: 'お問い合わせ', url: 'https://forms.gle/RFMvzC4v6ECWJre48' },
+                { text: 'プライバシーポリシー', url: policy_path },
+                { text: '利用規約', url: term_path } ] %>
+
+            <% links.each do |link| %>
+                <%= link_to link[:text], link[:url], class: 'text-orange-500 hover:text-red-500 hover:bg-yellow-50' %>
+            <% end %>
+
+            <% if user_signed_in? then %>
+                <div class="menu-list5 text-[#B4B4B4] pt-2 hover:bg-yellow-50">
+                    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
                 </div>
-            </div>
+            <% end %>
             </li>
-        <% end %>
+        </div>
     </ul>
+
 </div>
