@@ -7,20 +7,25 @@
         <div class="py-2 text-[#ff5900]">
             <h3 class="text-pink-500 font-bold text-xl text-center text-[#ff0090]">🥳　遊び方　🥳</h3>
             <div class="font-bold text-center px-2 py-4">あらゆる界隈をすこーし探求できるゲーム</div>
-            <div class="howto-text whitespace-nowrap leading-400 pl-2">
-                ①あるあるを知りたい界隈を入力！<br>
+            <div class="howto-text pl-2 flex flex-col items-center">
+                ①　あるあるを知りたい界隈を入力！<br>
                 ＡＩがあるあるを生成してくれるよ
                 <div class="flex">
-                    <%= image_tag 'header/AI-search.png', width: '50', height: '10' %>
-                    <%= image_tag 'header/AI-lines.jpeg', width: '230', height: '10' %>
+                    <%= image_tag 'howto/AI-search.png', width: '50', height: '10' %>
+                    <%= image_tag 'howto/AI-lines.jpeg', width: '230', height: '10' %>
                 </div>
                 <br>
-                <div class="flex">②　<%= image_tag 'header/start-button.png', class: 'rounded-circle mr-2', width: '130', height: '2' %>で</div>
-                    札をめくって、あるあるのペアを作ろう！
-                <%= image_tag 'header/howto_game.png', width: '300' %>
+
+                <div class="text-left">
+                    <div class="flex">
+                    ②　<%= image_tag 'howto/start-button.png', class: 'rounded-circle mr-2', width: '130', height: '2' %>で</div>
+                    札をめくり、あるあるを揃えよう
+                </div>
+                <%= image_tag 'howto/howto_game.png', width: '300' %>
                 <br>
+
                 <div class="flex space-x-3">
-                    ③右上の <%= image_tag 'header/menu/menus.svg', width: '20', height: '20' %> から
+                    ③　<%= image_tag 'howto/howto_menus.png', width: '250' %>
                 </div>
                 誰かのあるあるで遊んだり
                 <br>
