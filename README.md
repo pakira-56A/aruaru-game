@@ -1,5 +1,5 @@
 # あるある神経衰弱
-**■ サービスURL：** https://aruaru-game.onrender.com/
+**■ サービスURL：** https://aruaru-games.com/
 [![Image from Gyazo](https://i.gyazo.com/f9a39e43471435448f2d22f7286815a4.png)](https://gyazo.com/f9a39e43471435448f2d22f7286815a4)
 
 - **OGP**　[RUNTEQ | ソーシャルポートフォリオ](https://school.runteq.jp/v3/social_portfolios/1093/web_applications/13)  

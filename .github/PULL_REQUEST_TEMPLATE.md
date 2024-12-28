@@ -3,10 +3,10 @@
 **できるようになったこと**
 - 
   - http://localhost:3000/
-  - https://aruaru-game.onrender.com/
+  - https://aruaru-games.com/
 - 
   - http://localhost:3000/
-  - https://aruaru-game.onrender.com/
+  - https://aruaru-games.com/
 
 
 ____
