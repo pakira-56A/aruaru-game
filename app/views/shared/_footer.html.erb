@@ -1,12 +1,26 @@
-<div class='bg-yellow-50 mt-6 py-2'>
-    <div class="flex ml-6">
-        <dr>
-        <a href="https://forms.gle/RFMvzC4v6ECWJre48"
-            class='text-orange-500 hover:text-red-500 hover:font-bold no-underline'>お問い合わせ</a>
-        <%= link_to 'プライバシーポリシー', '/policy',
-            class: 'text-orange-500 hover:text-red-500 hover:font-bold no-underline ml-2' %>
-        <%= link_to '利用規約', '/term',
-            class: 'text-orange-500 hover:text-red-500 hover:font-bold no-underline ml-2' %>
-        <dr>
+<div class="fixed z-50 w-full h-14 bg-base-100 bottom-0 bg-yellow-50 border-t-2 border-white">
+    <div class="flex h-full max-w-lg mx-auto justify-evenly">
+
+    <div class="menu-list1 text-xs text-[#019c8f] hover:text-[#00e297] flex items-center justify-center">
+        <%= link_to image_tag('header/menu/menu-1.svg', width: '30', height: '30', id: 'image-menu1', class: 'mx-auto mb-1')+ '界隈一覧',
+                posts_path, class: "font-bold items-center no-underline drop-shadow-md hover:drop-shadow-none" %>
+    </div>
+
+    <div class="menu-list2 text-xs text-[#0088D0] hover:text-[#00c5ff] flex items-center justify-center">
+        <%= link_to image_tag('header/menu/menu-2.svg', width: '25', height: '25', id: 'image-menu2', class: 'mx-auto mb-1') + '投稿しよう',
+            new_post_path, class: "font-bold items-center no-underline drop-shadow-md hover:drop-shadow-none gap-4" %>
+    </div>
+
+    <div class="menu-list3 text-xs text-[#00cee8] hover:text-[#6eefff] flex items-center justify-center">
+        <%= link_to image_tag('header/menu/menu-3.svg', width: '25', height: '25', id: 'image-menu3', class: 'mx-auto mb-1') + '自作あるある・設定',
+            myindex_posts_path(@post), class: "font-bold items-center no-underline drop-shadow-md hover:drop-shadow-none gap-4" %>
+    </div>
+
+    <div class="menu-list4 text-xs text-[#DF5656] hover:text-[#fe9898] flex items-center justify-center">
+        <%= link_to image_tag('header/menu/menu-4.svg', width: '25', height: '25', id: 'image-menu4', class: 'mx-auto mb-1') + 'お気に入り',
+            root_path, class: "font-bold items-center no-underline drop-shadow-md hover:drop-shadow-none gap-4",
+            onclick: "alert('未実装だよ！待っててね！'); return false;" %>
+    </div>
+
     </div>
 </div>
