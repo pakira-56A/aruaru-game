@@ -10,8 +10,9 @@
             <li>
             <% links = [
                 { text: 'お問い合わせ', url: 'https://forms.gle/RFMvzC4v6ECWJre48' },
-                { text: 'プライバシーポリシー', url: '/policy' },
-                { text: '利用規約', url: '/term' } ] %>
+                { text: 'プライバシーポリシー', url: policy_path },
+                { text: '利用規約', url: term_path } ] %>
+
             <% links.each do |link| %>
                 <%= link_to link[:text], link[:url], class: 'text-orange-500 hover:text-red-500 hover:bg-yellow-50' %>
             <% end %>
