@@ -1,19 +1,19 @@
 <li>
     <div class="menu-list1 text-[#019c8f] hover:text-[#00e297] hover:bg-white">
-    <%= link_to image_tag('header/menu/menu-1.svg', width: '30', height: '30', id: 'image-menu1') + 'みんなが思うあるあるで遊ぶ',
+    <%= link_to image_tag('footer/menu/menu-1.svg', width: '30', height: '30', id: 'image-menu1') + 'みんなが思うあるあるで遊ぶ',
         posts_path, class: "font-bold text-nowrap flex items-center no-underline drop-shadow-md hover:drop-shadow-none gap-2 pb-2" %>
 </li>
 
 <li>
     <div class="menu-list2 text-[#0088D0] hover:text-[#00c5ff] hover:bg-white" >
-    <%= link_to image_tag('header/menu/menu-2.svg', width: '25', height: '25', id: 'image-menu2') + '自分であるあるを投稿',
+    <%= link_to image_tag('footer/menu/menu-2.svg', width: '25', height: '25', id: 'image-menu2') + '自分であるあるを投稿',
         new_post_path, class: "font-bold text-nowrap flex items-center no-underline drop-shadow-md hover:drop-shadow-none gap-2 pb-2" %>
     </div>
 </li>
 
 <li>
     <div class="menu-list3 text-[#00cee8] hover:text-[#6eefff] hover:bg-white" >
-    <%= link_to image_tag('header/menu/menu-3.svg', width: '25', height: '25', id: 'image-menu3') + '自作したあるある一覧・設定',
+    <%= link_to image_tag('footer/menu/menu-3.svg', width: '25', height: '25', id: 'image-menu3') + '自作したあるある一覧・設定',
         myindex_posts_path(@post), class: "font-bold text-nowrap flex items-center no-underline drop-shadow-md hover:drop-shadow-none gap-2 pb-2" %>
     </div>
 </li>
@@ -21,7 +21,7 @@
 <!--未実装のリンク -->
 <li>
     <div class="menu-list4 text-[#DF5656] hover:text-[#fe9898] hover:bg-white" >
-        <%= link_to image_tag('header/menu/menu-4.svg', width: '25', height: '25', id: 'image-menu4') + 'お気に入りの界隈',
+        <%= link_to image_tag('footer/menu/menu-4.svg', width: '25', height: '25', id: 'image-menu4') + 'お気に入りの界隈',
             root_path, class: "font-bold flex justify-start items-center no-underline drop-shadow-md hover:drop-shadow-none gap-2",
             onclick: "alert('未実装だよ！待っててね！'); return false;" %>
     </div>
