@@ -1,13 +1,14 @@
 <div class='flex justify-center'>
     <div class='items-center'>
 
-        <div class="text-sky-800"><%= "#{@post.user.name}さんが思う" %></div>
-        <div class="text-3xl text-sky-600 font-bold mb-0"><%= @post.title %></div>
+        <div class="text-sky-800 text-sm"><%= "#{@post.user.name}さんが思う" %></div>
+        <div class="text-2xl text-sky-600 font-bold mb-0"><%= @post.title %></div>
 
-        <div class='flex justify-end'>
-            <div class="text-sky-400">界隈あるある</div>
+        <div class='flex justify-end gap-2 pr-2'>
+            <div class="text-sky-400 text-sm">界隈あるある</div>
+            <%= render 'shared/xshare_button', post: @post %>
         </div>
-        <div class='mb-4'>
+        <div class='mb-2'>
             <%= render 'tags/tags_list', post: @post %>
         </div>
 
@@ -22,8 +23,5 @@
                 data-aruaru-five="<%= @post.aruaru_five %>">
         </div>
 
-        <div class="mt-8">
-            <%= render 'shared/index_backbutton' %>
-        </div>
     </div>
 </div>
