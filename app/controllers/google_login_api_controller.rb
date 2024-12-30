@@ -1,4 +1,4 @@
-# class GoogleLoginApiController < ApplicationController
+class GoogleLoginApiController < ApplicationController
 #   require "googleauth/id_tokens/verifier"
 
 #   # g_csrf_tokenの検証がOKだった場合、callbackアクションが実行
@@ -29,4 +29,4 @@
 
 #     redirect_to root_path, alert: "不正なアクセスです"
 #   end
-# end
+end
