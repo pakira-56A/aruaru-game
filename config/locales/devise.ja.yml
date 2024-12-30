@@ -29,7 +29,8 @@ ja:
         subject: "パスワード変更"
     omniauth_callbacks:
       failure: "%{kind} からの認証に失敗しました: \"%{reason}\"。"
-      success: "%{kind} アカウントから正常に認証されました。"
+      # 実際に使う
+      success: "ログインできたよ！どのあるあるで遊ぶ？"
     passwords:
       no_token: "パスワードリセットメールから来ないとこのページにアクセスできません。"
       send_instructions: "数分以内にパスワードリセット手順のメールが届きます。"
