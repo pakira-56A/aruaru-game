@@ -7,6 +7,7 @@
 
 <% else %>
 
+
     <%= button_to "Googleログイン", user_google_oauth2_omniauth_authorize_path,
         method: :post, data: { turbo: false },
         class: "bg-yellow-500 text-white font-bold rounded hover:bg-yellow-600" %>
