@@ -471,6 +471,7 @@ DEPENDENCIES
   jsbundling-rails
   meta-tags
   mini_magick
+  omniauth
   omniauth-google-oauth2
   omniauth-rails_csrf_protection
   pg (~> 1.1)
