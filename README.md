@@ -142,15 +142,12 @@ ____
 - **Gem kaminari**：投稿一覧で使用
 - **Gem carrierwave**（時間位余裕があれば、カードの背面・投稿した界隈またはあるあるのイメージ画像をカスタムできる機能を追加）
 - **オートコンプリート**/[**stimulus-autocomplete**](https://github.com/afcapel/stimulus-autocomplete)：投稿するあるあるを増やしたいユーザー向け
-- [**Twitter API**](https://developer.x.com/ja)：X連携
 - **OpenAI API**：AIであるあるを生成
 - [**Google analytics**](https://developers.google.com/analytics?hl=ja)：ユーザー層の把握
 _____
-## 画面遷移図
-https://www.figma.com/design/HgPujRv8Tli2qBWqlzYeyY/Untitled?node-id=0-1&t=1UjNVUB1TIqBl4wG-1   
+## [画面遷移図](https://www.figma.com/design/HgPujRv8Tli2qBWqlzYeyY/Untitled?node-id=0-1&t=1UjNVUB1TIqBl4wG-1)   
 [![Image from Gyazo](https://i.gyazo.com/8b6d6d93f1fbfdda487b3d6c0ded9c28.png)](https://gyazo.com/8b6d6d93f1fbfdda487b3d6c0ded9c28)
 ___
-### ER図
-https://dbdiagram.io/d/あるある神経衰弱-670531e2fb079c7ebdbde9aa  
-[![Image from Gyazo](https://i.gyazo.com/ce46be1621b9e6237feccefeb5654acc.png)](https://gyazo.com/ce46be1621b9e6237feccefeb5654acc)
+### [ER図](https://dbdiagram.io/d/あるある神経衰弱-670531e2fb079c7ebdbde9aa)  
+[![Image from Gyazo](https://i.gyazo.com/2f55ece824a508bc0c536af97e70e8ba.png)](https://gyazo.com/2f55ece824a508bc0c536af97e70e8ba)
 ____
