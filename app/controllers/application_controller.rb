@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
   def set_search
     @q = Post.ransack(params[:q])
   end
+
+  def after_sign_in_path_for(resource)
+    posts_path # リダイレクト先をダッシュボードに変更
+  end
 end

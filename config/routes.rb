@@ -1,17 +1,20 @@
 Rails.application.routes.draw do
   # OmniAuth：認証成功時の処理
   devise_for :users, controllers: {
+    omniauth_callbacks: 'users/omniauth_callbacks',
     sessions: "users/sessions",
     registrations: "users/registrations" }
 
   devise_scope :user do
     get "/users/sign_out" => "devise/sessions#destroy"
+    # 追加
+    post 'users/auth/google_oauth2/callback', to: 'users/omniauth_callbacks#google_oauth2'
   end
 
   root "tops#toppage"
 
-  post "google_login_api/callback", to: "google_login_api#callback"
-  get "/after_login", to: "tops#toppage" # アクセスされる時のため、一応残しています
+  # post "google_login_api/callback", to: "google_login_api#callback"
+  # get "/after_login", to: "tops#toppage" # アクセスされる時のため、一応残しています
 
   get "/policy", to: "tops#policy"
   get "/term", to: "tops#term"
