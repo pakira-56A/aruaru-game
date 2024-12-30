@@ -5,8 +5,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # GoogleのOAuthコールバックを処理
   def google_oauth2
     # callback_for(:google)
-    @user = User.from_omniauth(request.env["omniauth.auth"])
 
+    # @user = User.from_omniauth(request.env["omniauth.auth"])
     # if @user.persisted?
     #   sign_in_and_redirect @user, event: :authentication
     #   set_flash_message(:notice, :success, kind: "Google") if is_navigational_format?
@@ -15,21 +15,24 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     #   redirect_to posts_path, alert: @user.errors.full_messages.join("\n")
     # end
 
-    if @user.persisted?
-      sign_in_and_redirect @user, event: :authentication
-      set_flash_message(:notice, :success, kind: "Google") if is_navigational_format?
-      # redirect_to posts_path, notice: "ログインできたよ！どのあるあるで遊ぶ？"
-    else
-      # ユーザーが存在しない場合の処理
-      generated_password = Devise.friendly_token
-      @user = User.find_or_create_by!(email: request.env["omniauth.auth"]["info"]["email"]) do |u|
-        u.password = generated_password
-        u.name = request.env["omniauth.auth"]["info"]["name"]
-      end
-      sign_in_and_redirect @user, event: :authentication
-      set_flash_message(:notice, :success, kind: "Google") if is_navigational_format?
-    end
+    # OmniAuthから認証データを取得
+    auth = request.env["omniauth.auth"]
 
+    # ユーザーを検索または初期化
+    @user = User.find_or_initialize_by(provider: auth.provider, uid: auth.uid) do |user|
+      user.email = auth.info.email
+      user.name = auth.info.name
+      # user.password = nil           # パスワードを設定しない
+      # user.password_confirmation = nil
+      # user.skip_password_validation # パスワード検証をスキップ
+    end
+  
+    if @user.persisted? || @user.save
+      sign_in_and_redirect @user, event: :authentication
+      set_flash_message(:notice, :success, kind: "Google") if is_navigational_format?
+    else
+      redirect_to new_user_registration_url, alert: "Googleログインに失敗しました。"
+    end
   end
 
   # ユーザーをOAuth情報から作成・取得
