@@ -5,7 +5,7 @@ gem "devise"
 gem "omniauth"
 gem "pry-byebug"
 gem "omniauth-google-oauth2"
-gem "omniauth-rails_csrf_protection" 
+gem "omniauth-rails_csrf_protection"
 gem "googleauth"
 gem "dotenv"
 

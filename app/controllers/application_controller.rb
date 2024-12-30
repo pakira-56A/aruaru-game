@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   # deviseコントローラを使う前に、deviseコントローラーが真なら以下のアクションを実行する
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_search
+  protect_from_forgery with: :exception
 
   private
 
