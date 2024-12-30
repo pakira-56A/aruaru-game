@@ -15,23 +15,16 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     #   redirect_to posts_path, alert: @user.errors.full_messages.join("\n")
     # end
 
-    # OmniAuthから認証データを取得
-    auth = request.env["omniauth.auth"]
-
-    # ユーザーを検索または初期化
-    @user = User.find_or_initialize_by(provider: auth.provider, uid: auth.uid) do |user|
-      user.email = auth.info.email
-      user.name = auth.info.name
-      # user.password = nil           # パスワードを設定しない
-      # user.password_confirmation = nil
-      # user.skip_password_validation # パスワード検証をスキップ
-    end
-  
-    if @user.persisted? || @user.save
+    # OmniAuthから認証データを取得して、モデルのメソッドを呼び出す
+    @user = User.from_omniauth(request.env['omniauth.auth'])
+    if @user.persisted?
+      # ユーザーが存在する場合はログインしてリダイレクト
       sign_in_and_redirect @user, event: :authentication
-      set_flash_message(:notice, :success, kind: "Google") if is_navigational_format?
+      set_flash_message(:notice, :success, kind: 'Google') if is_navigational_format?
     else
-      redirect_to new_user_registration_url, alert: "Googleログインに失敗しました。"
+      # 新規ユーザーの保存が失敗した場合の処理
+      session['devise.google_data'] = request.env['omniauth.auth'].except(:extra) # 不要なデータを削除
+      redirect_to new_user_registration_url, alert: 'Google認証に失敗しました。'
     end
   end
 
@@ -56,6 +49,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   private
 
   def auth
-    auth = request.env['omniauth.auth']
+    auth = request.env["omniauth.auth"]
   end
 end
