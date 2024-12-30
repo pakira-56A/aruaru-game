@@ -10,11 +10,11 @@
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
   config.omniauth :google_oauth2, ENV["GOOGLE_CLIENT_ID"], ENV["GOOGLE_CLIENT_SECRET"], {
-    scope: 'userinfo.email, userinfo.profile'
+    scope: "userinfo.email, userinfo.profile"
   }
 
   # OmniAuthがPOSTリクエストを受け付けるようにする
-  OmniAuth.config.allowed_request_methods = [:post, :get]
+  OmniAuth.config.allowed_request_methods = [ :post, :get ]
   # 上記のリクエストしたものの読み取りを許可
   OmniAuth.config.silence_get_warning = true
 
