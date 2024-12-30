@@ -93,7 +93,7 @@ Rails.application.configure do
   #   /.*\.example\.com/ # Allow requests from subdomains like `www.example.com`
   # ]
   # 独自ドメインを設定
-  # config.hosts << "aruaru-games.com"
+  config.hosts << "aruaru-games.com"
   # config.hosts = [
   #   "aruaru-games.com"     # Allow requests from example.com
   #   # /.*\.example\.com/ # Allow requests from subdomains like `www.example.com`
