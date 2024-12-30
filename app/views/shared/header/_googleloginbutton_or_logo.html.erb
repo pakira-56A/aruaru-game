@@ -1,7 +1,8 @@
 <% if user_signed_in? %>
 
-    <%= link_to root_path, class: "flex items-center drop-shadow-md shadow-pink-500 hover:drop-shadow-none" do %>
-        <%= image_tag 'logo-clear.png', alt: 'Logo', class: 'h-12 w-12' %>
+    <%= link_to root_path, class: "flex flex-col items-center drop-shadow-md shadow-pink-500 hover:drop-shadow-none" do %>
+        <%= image_tag 'logo-clear.png', alt: 'Logo', class: 'h-8 w-8' %>
+        <span class="text-xs font-bold text-pink-500">あるある神経衰弱</span>
     <% end %>
 
 <% else %>
