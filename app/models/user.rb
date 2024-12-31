@@ -1,7 +1,8 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :omniauthable, omniauth_providers: [ :google_oauth2 ]
+  # database_authenticatable追加：パスワードなしでユーザー名を変更できる
+  devise :database_authenticatable, :omniauthable, omniauth_providers: [ :google_oauth2 ]
   # :database_authenticatable, :registerable,
   # :recoverable, :rememberable, :validatable,
   # :omniauthable, omniauth_providers: [ :google_oauth2 ]

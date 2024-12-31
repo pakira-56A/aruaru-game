@@ -2,13 +2,14 @@ Rails.application.routes.draw do
   # OmniAuth：認証成功時の処理
   devise_for :users, controllers: {
     omniauth_callbacks: "users/omniauth_callbacks",
-    sessions: "users/sessions",
+    # sessions: "users/sessions",
     registrations: "users/registrations" }
 
   devise_scope :user do
-    get "/users/sign_out" => "devise/sessions#destroy"
-    # 追加
     post "users/auth/google_oauth2/callback", to: "users/omniauth_callbacks#google_oauth2"
+    get "/users/sign_out" => "devise/sessions#destroy"
+    get "/users/edit" => "users/registrations#edit", as: :edit_user_registration
+    put "/users" => "users/registrations#update", as: :user_registration
   end
 
   root "tops#toppage"
