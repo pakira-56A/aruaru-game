@@ -1,15 +1,16 @@
 <div class='flex justify-center'>
-    <div class='items-center'>
+    <div class='items-center bg-custom-yellow'>
+        <div class='ml-4'>
+            <div class="text-sky-800 text-sm"><%= "#{@post.user.name}さんが思う" %></div>
+            <div class="text-2xl text-sky-600 font-bold mb-0 text-balance"><%= @post.title %></div>
 
-        <div class="text-sky-800 text-sm"><%= "#{@post.user.name}さんが思う" %></div>
-        <div class="text-2xl text-sky-600 font-bold mb-0"><%= @post.title %></div>
-
-        <div class='flex justify-end gap-2 pr-2'>
-            <div class="text-sky-400 text-sm">界隈あるある</div>
-            <%= render 'shared/xshare_button', post: @post %>
-        </div>
-        <div class='mb-2'>
-            <%= render 'tags/tags_list', post: @post %>
+            <div class='flex justify-end gap-2 pr-4'>
+                <div class="text-sky-400 text-sm">界隈あるある</div>
+                <%= render 'shared/xshare_button', post: @post %>
+            </div>
+            <div class='mb-2'>
+                <%= render 'tags/tags_list', post: @post %>
+            </div>
         </div>
 
         <!-- ゲーム画面に必要な記述 -->
