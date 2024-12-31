@@ -14,8 +14,7 @@ Rails.application.routes.draw do
 
   root "tops#toppage"
 
-  # post "google_login_api/callback", to: "google_login_api#callback"
-  # get "/after_login", to: "tops#toppage" # アクセスされる時のため、一応残しています
+  get "/after_login", to: "tops#toppage" # アクセスされる時のため、一応残しています
 
   get "/policy", to: "tops#policy"
   get "/term", to: "tops#term"

@@ -2,7 +2,8 @@ ActiveRecord::Base.transaction do
     10.times do |n|
         User.create!(
             name: "テスト#{n+1}",
-            email: "test#{n+1}@example.com")
+            email: "test#{n+1}@example.com",
+            password: "password")
         end
 
     user_ids = User.ids
