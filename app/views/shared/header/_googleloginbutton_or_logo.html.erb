@@ -7,22 +7,13 @@
 
 <% else %>
 
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <div id="g_id_onload"
-        data-client_id="<%= ENV['GOOGLE_CLIENT_ID'] %>"
-        data-login_uri=
-        "<%= Rails.env.development? ? 'http://localhost:3000/google_login_api/callback' : 'https://www.aruaru-games.com/google_login_api/callback' %>"
-        # "<%= Rails.env.development? ? 'http://localhost:3000/google_login_api/callback' : 'https://aruaru-game.onrender.com/google_login_api/callback' %>"
-        data-auto_prompt="false">
-    </div>
-    <div class="g_id_signin bg-yellow-50 h-8"
-        data-type="standard"
-        data-size="large"
-        data-theme="outline"
-        data-text="signin"
-        data-shape="pill"
-        data-logo_alignment="left"
-        data-width="60">
+    <div class="mt-3">
+    <%= button_to user_google_oauth2_omniauth_authorize_path, method: :post, data: { turbo: false },
+        class: "btn btn-sm gap-1 font-semibold rounded-full bg-white hover:border-orange-500 hover:bg-white" do %>
+        <img width="20" height="20" alt="Googleログイン" class="inline-block"
+            src="https://img.icons8.com/external-those-icons-flat-those-icons/24/external-Google-logos-and-brands-those-icons-flat-those-icons.png"/>
+        <span class="text-xs text-gray-400 font-light">ログイン</span>
+    <% end %>
     </div>
 
 <% end %>

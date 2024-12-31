@@ -4,24 +4,30 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   # GoogleのOAuthコールバックを処理
   def google_oauth2
-    callback_for(:google)
-  end
-
-  # ユーザーをOAuth情報から作成・取得
-  def callback_for(provider)
+    # OmniAuthから認証データを取得して、モデルのメソッドを呼び出す
     @user = User.from_omniauth(request.env["omniauth.auth"])
-
     if @user.persisted?
+      # 既存ユーザーは、ログインしてリダイレクト
       sign_in_and_redirect @user, event: :authentication
-      set_flash_message(:notice, :success, kind: provider.to_s.capitalize) if is_navigational_format?
+      set_flash_message(:notice, :success) if is_navigational_format?
     else
-      flash[:alert] = @user.errors.full_messages.to_sentence if @user.errors.any?
-      session["devise.#{provider}_data"] = request.env["omniauth.auth"].except(:extra)
-      redirect_to new_user_registration_url
+      if @user.save    # 新規ユーザー、保存成功時
+        sign_in_and_redirect @user, event: :authentication
+        set_flash_message(:notice, :success) if is_navigational_format?
+      else
+        session["devise.google_data"] = request.env["omniauth.auth"].except(:extra)
+        redirect_to root_path, alert: "Google認証に失敗したよ"
+      end
     end
   end
 
   def failure
     redirect_to root_path
+  end
+
+  private
+
+  def auth
+    request.env["omniauth.auth"]
   end
 end
