@@ -18,4 +18,11 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     posts_path
   end
+
+  # 未ログイン状態でログイン必須ページにアクセスした際の処理
+  def authenticate_user!
+    return if user_signed_in?
+    flash[:alert] = I18n.t("devise.failure.unauthenticated")
+    redirect_to root_path
+  end
 end
