@@ -48,9 +48,13 @@ ja:
         unhappy: "気に入りません"
         update: "更新"
         we_need_your_current_password_to_confirm_your_changes: "変更を反映するには現在のパスワードを入力してください"
+        # 追加
+        no_name: "お名前を入力してね"
+        update_success: "OK！きみは、%{name}さんだね！"
       new:
         sign_up: "アカウント登録"
     sessions:
+      signed_out: "ログアウトしたよ！また来てね！"  #追加
       new:
         sign_in: "ログイン"
     shared:
@@ -65,3 +69,8 @@ ja:
     unlocks:
       new:
         resend_unlock_instructions: "アカウントの凍結解除方法を再送する"
+    # 追加
+    failure:
+      unauthenticated: "Googleログインが必要だよ〜！"
+    omniauth_callbacks:
+      success: "ログインできたよ！どのあるあるで遊ぶ？"
