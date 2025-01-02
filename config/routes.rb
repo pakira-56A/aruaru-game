@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # OmniAuth：認証成功時の処理
   devise_for :users, controllers: {
     omniauth_callbacks: "users/omniauth_callbacks",
-    # sessions: "users/sessions",
+    sessions: "users/sessions", # カスタムコントローラーを使用
     registrations: "users/registrations" }
 
   devise_scope :user do
