@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   # 未ログイン状態でログイン必須ページにアクセスした際の処理
-  def authenticate_user!
+  def custom_authenticate_user!
     return if user_signed_in?
     flash[:alert] = I18n.t("devise.failure.unauthenticated")
     redirect_to root_path
