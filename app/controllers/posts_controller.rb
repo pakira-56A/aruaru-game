@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-    before_action :authenticate_user!, only: %i[myindex new edit update create]
+    # ApplicationControllerのメソッドを使う
+    before_action :custom_authenticate_user!, only: %i[myindex new edit update create]
 
     def index
         @q = Post.ransack(params[:q])
