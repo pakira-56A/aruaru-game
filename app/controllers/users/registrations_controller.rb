@@ -8,13 +8,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if resource.update_without_password(params)
       true
     else
-      flash.now[:alert] = "お名前を入力してね"
+      flash.now[:alert] = I18n.t("devise.registrations.edit.no_name")
       false
     end
   end
 
   def after_update_path_for(resource)
-    flash[:notice] = "OK！きみは、#{resource.name}さんだね！"
+    flash[:notice] = I18n.t("devise.registrations.edit.update_success", name: resource.name)
     myindex_posts_path
   end
 end
