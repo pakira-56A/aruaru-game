@@ -1,4 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  # Deviseのデフォルトの`authenticate_user!`を使用
+  prepend_before_action :authenticate_user!, only: [ :edit, :update ]
+
   protected
 
   def update_resource(resource, params)
