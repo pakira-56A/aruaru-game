@@ -3,7 +3,11 @@
         <div class="text-3xl font-bold text-green-600">みんなが思う</div>
         <div class="text-lg font-bold text-lime-500 ml-2"><%= "界隈あるある一覧" %></div>
     </div>
-    <div class="text-md text-cyan-500 pb-4"><%= "ゆかりがない界隈でも遊んでみよう！" %></div>
+    <div class="text-md text-cyan-500 pb-2 text-center"><%= "ゆかりがない界隈でも遊んでみよう！" %>
+        <div class="pt-2 pb-4">
+            <%= render "shared/xreview_button" %>
+        </div>
+    </div>
 
     <% if @posts.present? %>
         <div class="flex flex-wrap justify-center gap-1">

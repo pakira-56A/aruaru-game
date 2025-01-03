@@ -2,7 +2,11 @@
     <div class="flex items-center mb-2">
         <div class="text-xl font-bold text-fuchsia-400"><%= "見つけた界隈あるある一覧" %></div>
     </div>
-    <div class="text-md text-cyan-500 pb-4"><%= "ゆかりがない界隈でも遊んでみよう！" %></div>
+    <div class="text-md text-cyan-500 pb-2 text-center"><%= "ゆかりがない界隈でも遊んでみよう！" %>
+        <div class="pt-2 pb-4">
+            <%= render "shared/xreview_button" %>
+        </div>
+    </div>
 
     <% if @posts.present? %>
         <div class="flex flex-wrap justify-center gap-1">
