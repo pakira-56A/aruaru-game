@@ -1,14 +1,14 @@
 <%= form_with(model: @post, class: "space-y-2") do |f| %>
-    <%= f.label :title, "界隈名", class: "label text-[#0088D0] text-xs pb-0" %>
+    <%= f.label :title, "界隈名（もう誰かが投稿した界隈名も大歓迎 🥳 ）", class: "label text-[#0088D0] text-xs pb-0" %>
 
     <div class="relative" data-controller="character-counter" data-character-counter-countdown-value="true">
         <%= f.text_area :title, id: "post_title", autofocus: true,
             class: "input input-bordered border-2 border-sky-300 rounded-md w-72 h-20
-                    text-sm text-orange-500 font-bold placeholder:font-light placeholder:text-[#C7C7C7] placeholder:text-xs",
-            placeholder: "例:ONEPIECEイーストブルー編",
+                    text-sm text-orange-500 font-bold placeholder:font-light placeholder:text-[#C7C7C7]",
+            placeholder: "例：ONEPIECEイーストブルー編",
             data: { character_counter_target: "input" }, maxlength: 40 %>
         <div class="absolute right-2 bottom-2 top-12 flex items-center text-xs">
-            <p class="text-orange-500">のあるある。</p>
+            <p class="text-orange-500 font-bold">のあるある。</p>
             <p class="text-green-500">
                 あと <strong data-character-counter-target="counter"></strong> 字まで</p>
         </div>
@@ -20,8 +20,8 @@
                 <%= f.text_area field, id: field, autofocus: true,
                     class: "input input-bordered border-2 border-sky-300 rounded-md w-72 h-20
                             text-sm text-orange-500 font-bold
-                            placeholder:font-light placeholder:text-[#C7C7C7] placeholder:text-xs",
-                    placeholder: "例:#{['ゾロがまだ陽気',
+                            placeholder:font-light placeholder:text-[#C7C7C7]",
+                    placeholder: "例：#{['ゾロがまだ陽気',
                                             '３巻まではSBSないから、すぐ読み終えちゃう',
                                             'アニメのオープニング『富・名声・力』のくだり聴きいっちゃう',
                                             '丸い植え込み見ると、ガイモンさんが恋しい',
@@ -38,7 +38,7 @@
     <!-- value:@tagsでタグの配列を取得 -->
     <%= f.text_field :tag, placeholder: "漫画 アニメ ジャンプ",
         class: "border-2 border-sky-300 rounded-md w-72
-            text-sm text-orange-500 font-bold placeholder:font-light placeholder:text-[#C7C7C7] placeholder:text-xs",
+            text-sm text-orange-500 font-bold placeholder:font-light placeholder:text-[#C7C7C7]",
         value: @tags %>
     <br>
 
