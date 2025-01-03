@@ -8,7 +8,7 @@
 
             <!-- 自作投稿一覧以外に表示する場合は、カレントユーザー名を表示 -->
             <% if request.path != myindex_posts_path %>
-                <ul class="list-inline text-slate-400 text-xs px-2 pt-2"><%= post.user.name %>さんが思う</ul>
+                <ul class="text-left list-inline text-slate-400 text-xs px-2 pt-2"><%= post.user.name %>さんが思う</ul>
             <% end %>
 
             <div id="post-id-<%= post.id %>" class="text-left">
