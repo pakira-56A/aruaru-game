@@ -1,5 +1,5 @@
 <%= form_with(model: @post, class: "space-y-2") do |f| %>
-    <%= f.label :title, "界隈名（もう誰かが投稿した界隈名も大歓迎 🥳 ）", class: "label text-[#0088D0] text-xs pb-0" %>
+    <%= f.label :title, "界隈名（他の投稿と同じ界隈名でもOK 🥳 ）", class: "label text-[#0088D0] text-xs pb-0" %>
 
     <div class="relative" data-controller="character-counter" data-character-counter-countdown-value="true">
         <%= f.text_area :title, id: "post_title", autofocus: true,
