@@ -18,19 +18,20 @@
             </div>
         <% end %>
 
-        <div class='mt-3'>
+        <div class='mt-3 text-left'>
             <%= render 'tags/tags_list', post: post %>
         </div>
 
-        <div class="flex justify-end gap-4 pt-4">
+        <div class="flex justify-end gap-3 pt-4">
             <%= render 'shared/xshare_button', post: post %>
-            <% buttons = [
-                { path: edit_post_path(post), id: "image-edit", image: 'post/post-edit.svg', class: 'post-edit' },
-                { path: post_path(post), id: "image-delete", image: 'post/post-delete.svg', class: 'post-delete', data: { turbo_method: :delete, turbo_confirm: "えぇ〜 消しちゃうの？" } }
-            ] %>
-            <% buttons.each do |button| %>
-                <%= link_to image_tag(button[:image], width: '25', height: '25', class: "#{button[:class]} drop-shadow-md hover:drop-shadow-none"), button[:path], id: button[:id], data: button[:data] %>
-            <% end %>
+            <div class="post-edit">
+                <%= link_to image_tag('post/post-edit.svg', width: '25', height: '25', class: "post-edit drop-shadow-md hover:drop-shadow-none", id: "image-edit"),
+                edit_post_path(post), id: "button-edit-#{post.id}" %>
+            </div>
+            <div class="post-delete">
+                <%= link_to image_tag('post/post-delete.svg', width: '25', height: '25', class: "drop-shadow-md hover:drop-shadow-none", id: "image-delete"),
+                post_path(post), id: "button-delete-#{post.id}", data: { turbo_method: :delete, turbo_confirm: "えぇ〜 消しちゃうの？" } %>
+            </div>
         </div>
 
     <% else %>
@@ -47,7 +48,7 @@
             </div>
         <% end %>
 
-        <div class='mt-3'>
+        <div class='mt-3 text-left'>
             <%= render 'tags/tags_list', post: post %>
         </div>
 
