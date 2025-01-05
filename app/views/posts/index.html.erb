@@ -9,13 +9,6 @@
         </div>
     </div>
 
-    <% if @posts.present? %>
-        <div class="flex flex-wrap justify-center gap-1">
-            <%= render @posts %>
-        </div>
-    <% else %>
-        <div class="my-10">
-            <%= render 'no_posts' %>
-        </div>
-    <% end %>
+    <%= render 'shared/posts/existence_or_empty', post: @posts %>
+
 </div>
