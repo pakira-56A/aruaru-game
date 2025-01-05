@@ -4,13 +4,7 @@
     </div>
     <div class="text-md text-cyan-500 pb-4"><%= "ゆかりがない界隈でも遊んでみよう！" %></div>
 
-    <% if @posts.present? %>
-        <div class="flex flex-wrap justify-center gap-1">
-            <%= render @posts %>
-        </div>
-    <% else %>
-        <div class="my-10">
-            <%= render 'posts/no_posts' %>
-        </div>
-    <% end %>
+    <!-- 投稿されてないタグを使って検索できない仕様ですが、念の為に設置 -->
+    <%= render 'shared/posts/existence_or_empty', post: @posts %>
+
 </div>
