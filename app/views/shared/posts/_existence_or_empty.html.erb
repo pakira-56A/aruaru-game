@@ -1,0 +1,14 @@
+<% if @posts.present? %>
+
+    <div class="flex flex-wrap justify-center gap-1">
+        <%= render @posts %>
+    </div>
+
+<% else %>
+
+    <div class="my-10">
+        <%= render "shared/posts/empty_posts_text" %>
+        <%= render "shared/posts/new_posts_button" %>
+    </div>
+
+<% end %>
