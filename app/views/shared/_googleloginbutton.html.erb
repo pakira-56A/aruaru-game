@@ -1,0 +1,6 @@
+<%= button_to user_google_oauth2_omniauth_authorize_path, method: :post, data: { turbo: false },
+    class: "btn btn-sm gap-1 font-semibold rounded-full bg-white hover:border-orange-500 hover:bg-white" do %>
+    <img width="20" height="20" alt="Googleログイン" class="inline-block"
+        src="https://img.icons8.com/external-those-icons-flat-those-icons/24/external-Google-logos-and-brands-those-icons-flat-those-icons.png"/>
+    <span class="text-xs text-gray-400 font-light">ログイン</span>
+<% end %>
