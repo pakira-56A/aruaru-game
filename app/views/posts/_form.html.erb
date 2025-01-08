@@ -14,7 +14,7 @@
         </div>
     </div>
 
-    <%= f.label :aruarus, "あるあるを５つ、入力してね！", class: "label text-[#0088D0] text-xs pb-0" %>
+    <%= f.label :aruarus, "この界隈ならではのあるあるを、５つ入力してね！", class: "label text-[#0088D0] text-xs pb-0" %>
         <% [:aruaru_one, :aruaru_two, :aruaru_three, :aruaru_four, :aruaru_five].each_with_index do |field, index| %>
             <div class="relative mt-2" data-controller="character-counter" data-character-counter-countdown-value="true">
                 <%= f.text_area field, id: field, autofocus: true,
@@ -36,7 +36,7 @@
     <!-- タグを登録するフォーム -->
     <%= f.label :tag, "この界隈に関連するワードは？", class: "label text-[#0088D0] text-xs p-0" %>
     <!-- value:@tagsでタグの配列を取得 -->
-    <%= f.text_field :tag, placeholder: "漫画 アニメ ジャンプ",
+    <%= f.text_field :tag, placeholder: "例：漫画 アニメ ジャンプ",
         class: "border-2 border-sky-300 rounded-md w-72
             text-sm text-orange-500 font-bold placeholder:font-light placeholder:text-[#C7C7C7]",
         value: @tags %>
