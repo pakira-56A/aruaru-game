@@ -3,15 +3,15 @@
         <div class="mt-3 text-center">
             <div class="flex flex-col items-center">
 
-                <% if @post.user.name == "OPEN_AI_ANSWER" %>
+            <% if @post.user.name == "OPEN_AI_ANSWER" %>
 
-                    <!-- AIが生成したあるあるで遊んだあとの場合 -->
-                    <h3 class="text-xl leading-6 font-bold text-pink-500 py-4">🙄　界隈探求クリア？？？　🙄</h3>
-                    <div class="text-sm text-pink-500">どう思った〜？？<br><br>きみの好きな界隈のあるあるを
-                        <%= render "shared/login_status" %>
-                    </div>
+                <!-- AIが生成したあるあるで遊んだあとの場合 -->
+                <h3 class="text-xl leading-6 font-bold text-pink-500 py-4">🙄　界隈探求クリア？？？　🙄</h3>
+                <div class="text-sm text-pink-500">どう思った〜？？<br><br>きみの好きな界隈のあるあるを
+                    <%= render "shared/login_status" %>
+                </div>
 
-                <% else %>
+            <% else %>
 
                     <!-- ユーザーが投稿したあるあるで遊んだあとの場合 -->
                     <h3 class="text-xl leading-6 font-bold text-orange-500 pt-4">🥳　界隈探求クリア！　🥳</h3>
