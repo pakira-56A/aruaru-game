@@ -1,15 +1,21 @@
-<form id="myForm" class="font-light text-lg text-[#0090e3] ">
-<label for="inputData" class="block mb-2 text-center">どの界隈のあるあるで遊ぶ？🤔</label>
+<%= form_with url: answer_openai_posts_path, method: :post, local: true, class: "font-light text-lg text-fuchsia-500 flex flex-col items-center", id: "myForm" do |f| %>
+
+    <%= image_tag 'openai/openai_1day1try.png', class: 'ml-6 max-w-64 h-auto' %>
+    <div class="flex items-center gap-1 mb-2" >
+        <img width="40" height="40" src="https://img.icons8.com/nolan/64/bot.png" alt="bot"/>
+        <%= f.label :question, "どんな界隈のあるあるで遊ぶ？", for: "inputData" %>
+    </div>
+
     <div class="flex justify-center mb-4">
-        <input type="text" placeholder="未実装だよ！待っててね！" id="inputData" name="inputData"
-            class="w-[360px] p-2 border-4 border-[#ffa463] rounded text-left font-family-['BIZ UDGothic'] placeholder-[#cecece]"
-            maxlength="40" />
+        <%= f.text_field :question, id: "inputData", placeholder: "未実装だよ！待っててね",
+            class: "w-[310px] p-2 border-4 border-fuchsia-300 rounded font-bold font-family-['BIZ UDGothic'] placeholder-gray-300 placeholder:font-light",
+            maxlength: 40 %>
     </div>
 
     <div class="flex justify-center relative inline-block">
-        <a href="#" class="start-btn opacity-1 transition-all duration-300 flex items-center justify-center rounded-md">
+        <%= f.button type: "submit", class: "start-btn opacity-1 transition-all duration-300 flex items-center justify-center rounded-md" do %>
             <div class="start-btn-content shadow-md
-                        flex w-[260px] h-[70px] border-4 border-white rounded-[40px] bg-[#ffdde0]
+                        flex w-[270px] h-[70px] border-4 border-white rounded-[40px] bg-pink-200
                         perspective-[150px] transform-style-[preserve-3d]">
                 <style>
                     .start-btn:hover .start-btn-front {opacity: 0; /* 表面文字を非表示 */}
@@ -22,7 +28,7 @@
                         background: #f2f5f6; }
                 </style>
                 <div class="start-btn-front duration-500
-                            text-[#ff426b] font-bold text-lg whitespace-nowrap absolute
+                            text-red-500 font-bold text-lg whitespace-nowrap absolute
                             top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
                             transition-opacity duration-500 opacity-100 ">
                     神経衰弱スタート
@@ -31,9 +37,9 @@
                             text-[#52b1ff] font-bold text-lg whitespace-nowrap absolute
                             top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
                             transition-opacity opacity-0 hover:opacity-100">
-                    あるあるを知ろう！
+                    AIが思うあるあるって？
                 </div>
             </div>
-        </a>
+        <% end %>
     </div>
-</form>
+<% end %>
