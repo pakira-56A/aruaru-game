@@ -1,16 +1,33 @@
 <div class='flex justify-center'>
     <div class='items-center bg-custom-yellow'>
         <div class='ml-4'>
-            <div class="text-sky-800 text-sm"><%= "#{@post.user.name}さんが思う" %></div>
-            <div class="text-2xl text-sky-600 font-bold mb-0 text-balance"><%= @post.title %></div>
 
-            <div class='flex justify-end gap-2 pr-4'>
-                <div class="text-sky-400 text-sm">界隈あるある</div>
-                <%= render 'shared/xshare_button', post: @post %>
-            </div>
-            <div class='mb-2'>
-                <%= render 'tags/tags_list', post: @post %>
-            </div>
+            <% if @post.user.name == "OPEN_AI_ANSWER" %>
+                <!-- AIが生成したあるあるで遊ぶ場合 -->
+                <div class="text-fuchsia-800 text-sm">
+                    <div class="flex text-lg font-bold items-center gap-4">
+                        <img width="55" height="55" src="https://img.icons8.com/nolan/64/bot.png" alt="bot"/>
+                        ＡＩが思う
+                    </div>
+                    <div class="text-2xl text-fuchsia-600 font-bold mb-0 text-center"><%= @post.title %></div>
+                    <div class='flex justify-end pr-4 pb-2'>
+                        <div class="text-fuchsia-400 text-sm font-bold">界隈あるある</div>
+                    </div>
+                </div>
+            <% else %>
+                <!-- ユーザーが投稿したあるあるで遊ぶ場合 -->
+                <div class="text-sky-800 text-sm">
+                    <%= "#{@post.user.name}さんが思う" %>
+                    <div class="text-2xl text-sky-600 font-bold mb-0 text-balance"><%= @post.title %></div>
+                    <div class='flex justify-end gap-2 pr-4'>
+                        <div class="text-sky-400 text-sm font-bold">界隈あるある</div>
+                        <%= render 'shared/xshare_button', post: @post %>
+                    </div>
+                    <div class='mb-2'>
+                        <%= render 'tags/tags_list', post: @post %>
+                    </div>
+                </div>
+            <% end %>
         </div>
 
         <!-- ゲーム画面に必要な記述 -->
