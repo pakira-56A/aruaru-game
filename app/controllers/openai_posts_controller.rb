@@ -21,5 +21,9 @@ class OpenaiPostsController < ApplicationController
             flash[:alert] = post ? "ごめんね！あるある思いつかない！代わりに投稿してね！" : "AI使いすぎちゃった！また今度使ってね！"
             redirect_to root_path
         end
+
+        # cookieに保存（日本時間で1日後に期限切れ）
+        Time.zone = "Tokyo"
+        cookies[:cookie_count] = { value: Time.zone.today.to_s, expires: Time.zone.now + 1.day }
     end
 end
