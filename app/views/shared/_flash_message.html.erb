@@ -1,13 +1,13 @@
-<div class="flex inset-0 justify-center items-center pt-2 my-2">
+<div class="flex inset-0 justify-center items-center">
 
     <% if notice.present? %>
-        <p class="py-2 px-3 bg-green-50 text-green-500 font-medium rounded-lg inline-block" id="notice">
+        <p class="my-2 py-2 px-3 bg-green-50 text-green-500 font-medium rounded-lg inline-block" id="notice">
         <%= notice %></p>
     <% end %>
 
     <% if alert.present? %>
-        <p class="py-2 px-3 bg-orange-50 text-red-500 font-bold rounded-lg border-2 border-orange-400 inline-block" id="alert">
-        <%= alert %></p>
+        <p class="my-2 py-2 px-3 bg-orange-50 text-red-500 font-bold rounded-lg border-2 border-orange-400 inline-block" id="alert">
+        <%= alert.html_safe %></p>
     <% end %>
 
 </div>

@@ -5,10 +5,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
   def update_resource(resource, params)
-    if resource.update_without_password(params)
+    if params[:name].blank?
+      resource.errors.add(:name, :blank)
+      flash.now[:alert] = I18n.t("devise.registrations.edit.empty_name")
+      false
+    elsif resource.update(params)
       true
     else
-      flash.now[:alert] = I18n.t("devise.registrations.edit.no_name")
+      flash.now[:alert] = I18n.t("devise.registrations.edit.name_taken", html: true)
       false
     end
   end
