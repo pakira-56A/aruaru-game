@@ -40,4 +40,11 @@ Rails.application.routes.draw do
       get "start"
     end
   end
+
+  # AI機能
+  resources :openai_posts, only: [] do
+    collection do
+      post :answer
+    end
+  end
 end
