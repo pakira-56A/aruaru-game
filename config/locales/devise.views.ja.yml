@@ -48,8 +48,8 @@ ja:
         unhappy: "気に入りません"
         update: "更新"
         we_need_your_current_password_to_confirm_your_changes: "変更を反映するには現在のパスワードを入力してください"
-        # 追加
-        no_name: "お名前を入力してね"
+        name_taken: "すでに使われてるお名前だから<br>表記かえたり、数字つけたりしてみてね！"  # 追加
+        empty_name: "お名前を入力してね！"  # 追加
         update_success: "OK！きみは、%{name}さんだね！"
       new:
         sign_up: "アカウント登録"
