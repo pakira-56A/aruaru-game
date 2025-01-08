@@ -1,0 +1,20 @@
+<% if user_signed_in? %>
+
+    <!-- ユーザーログイン済みなら、投稿を促す -->
+    <div class="text-pink-500 font-medium mb-2">投稿してみよう！</div>
+    <div class="transform scale-90">
+        <%= render 'shared/posts/new_posts_button'%>
+        <%= render 'shared/posts/index_button' %>
+    </div>
+
+<% else %>
+
+    <!-- ユーザー未ログインなら、ログインをを促す -->
+    <div class="flex items-center justify-left mt-2 gap-1">
+        <div class="transform scale-90">
+                <%= render 'shared/googleloginbutton' %>
+        </div>
+        <span class="ext-sm font-bold text-pink-500 mb-4">して投稿しよう！</span>
+    </div>
+
+<% end %>
