@@ -12,6 +12,8 @@ env:
   OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
   OPENAI_ORGANIZATION_ID: ${{ secrets.OPENAI_ORGANIZATION_ID }}
 
+  TZ: Asia/Tokyo  # タイムゾーンを設定
+
 jobs:
   rspec:
     runs-on: ubuntu-latest
@@ -24,10 +26,11 @@ jobs:
         image: postgres
         ports:
           - 5432:5432
-      chrome:
-        image: seleniarm/standalone-chromium:latest
-        ports:
-          - 4445:4444
+      # # Chrome関連のテストをしないのでコメントアウト
+      # chrome:
+      #   image: seleniarm/standalone-chromium:latest
+      #   ports:
+      #     - 4445:4444
 
     steps:
       - name: Checkout code
@@ -38,14 +41,15 @@ jobs:
         with:
           bundler-cache: true
 
-      - name: Set up Chrome
-        uses: browser-actions/setup-chrome@v1
-        with:
-          chrome-version: 120
-          install-dependencies: true
+      # # Chrome関連のテストをしないのでコメントアウト
+      # - name: Set up Chrome
+      #   uses: browser-actions/setup-chrome@v1
+      #   with:
+      #     chrome-version: latest
+      #     install-dependencies: true
 
       - name: Cache node modules
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
@@ -82,12 +86,12 @@ jobs:
         run: bundle exec rake assets:precompile RAILS_ENV=test
 
       - name: Run tests
-        run: |
-          bundle exec rspec
-        env:
-          SELENIUM_DRIVER_URL: http://localhost:4445/wd/hub
-          # CAPYBARAを使うテストを書いた際に、コメントアウトを解除する予定
-          # CAPYBARA_PORT: ${{ env.CAPYBARA_PORT }}
+        run: |  # エラー原因を突き止めやすいよう|| exit を追加
+          bundle exec rspec || exit 1
+        # env:　　　# Chrome関連のテストをしないのでコメントアウト
+        #   SELENIUM_DRIVER_URL: http://localhost:4445/wd/hub
+        #   # CAPYBARAを使うテストを書いた際に、コメントアウトを解除する予定
+        #   # CAPYBARA_PORT: ${{ env.CAPYBARA_PORT }}
 
   rubocop:
     runs-on: ubuntu-latest

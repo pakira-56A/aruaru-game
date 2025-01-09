@@ -1,13 +1,10 @@
-# （[コミット]()）該当issue： #
-
+# 
+該当issue：#
 **できるようになったこと**
 - 
-  - http://localhost:3000/
   - https://aruaru-games.com/
 - 
-  - http://localhost:3000/
   - https://aruaru-games.com/
-
 
 ____
 **実装**
