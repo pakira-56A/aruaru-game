@@ -4,10 +4,10 @@ class GamesController < ApplicationController
     Rails.logger.info("ポストID: #{@post.id} を取得")
 
     # AIが生成した投稿には動的OGPをを生成しない
-    # if @post && @post.user.name != "OPEN_AI_ANSWER"
-    #   ogp_image_url = generate_and_save_ogp(@post)
-    #   set_meta_tags(og: { image: ogp_image_url }, twitter: { image: ogp_image_url })
-    # end
+    if @post && @post.user.name != "OPEN_AI_ANSWER"
+      ogp_image_url = generate_and_save_ogp(@post)
+      set_meta_tags(og: { image: ogp_image_url }, twitter: { image: ogp_image_url })
+    end
   end
 
   private
@@ -23,7 +23,7 @@ class GamesController < ApplicationController
 
     rescue StandardError => e
       Rails.logger.error("動的OGP画像の生成 または保存に失敗: #{e.message}")
-      render json: { error: "内部サーバーエラー" }, status: :internal_server_error
+      nil # エラー発生時はnilを返す
     end
   end
 end
