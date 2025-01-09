@@ -24,10 +24,11 @@ jobs:
         image: postgres
         ports:
           - 5432:5432
-      chrome:
-        image: seleniarm/standalone-chromium:latest
-        ports:
-          - 4445:4444
+      # # Chrome関連をコメントアウト
+      # chrome:
+      #   image: seleniarm/standalone-chromium:latest
+      #   ports:
+      #     - 4445:4444
 
     steps:
       - name: Checkout code
@@ -38,11 +39,11 @@ jobs:
         with:
           bundler-cache: true
 
-      - name: Set up Chrome
-        uses: browser-actions/setup-chrome@v1
-        with:
-          chrome-version: latest
-          install-dependencies: true
+      # - name: Set up Chrome
+      #   uses: browser-actions/setup-chrome@v1
+      #   with:
+      #     chrome-version: latest
+      #     install-dependencies: true
 
       # 追記
       - name: Install system dependencies
@@ -88,12 +89,12 @@ jobs:
         run: bundle exec rake assets:precompile RAILS_ENV=test
 
       - name: Run tests
-        run: |
-          bundle exec rspec
-        env:
-          SELENIUM_DRIVER_URL: http://localhost:4445/wd/hub
-          # CAPYBARAを使うテストを書いた際に、コメントアウトを解除する予定
-          # CAPYBARA_PORT: ${{ env.CAPYBARA_PORT }}
+        run: |  # エラー原因を突き止めやすいよう|| exit を追加
+          bundle exec rspec || exit 1
+        # env:　　　# # Chrome関連をコメントアウト
+        #   SELENIUM_DRIVER_URL: http://localhost:4445/wd/hub
+        #   # CAPYBARAを使うテストを書いた際に、コメントアウトを解除する予定
+        #   # CAPYBARA_PORT: ${{ env.CAPYBARA_PORT }}
 
   rubocop:
     runs-on: ubuntu-latest
