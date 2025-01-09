@@ -23,7 +23,7 @@ class GamesController < ApplicationController
 
     rescue StandardError => e
       Rails.logger.error("動的OGP画像の生成 または保存に失敗: #{e.message}")
-      render json: { error: "内部サーバーエラー" }, status: :internal_server_error
+      nil # エラー発生時はnilを返す
     end
   end
 end
