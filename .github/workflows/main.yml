@@ -12,6 +12,8 @@ env:
   OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
   OPENAI_ORGANIZATION_ID: ${{ secrets.OPENAI_ORGANIZATION_ID }}
 
+  TZ: Asia/Tokyo  # タイムゾーンを設定
+
 jobs:
   rspec:
     runs-on: ubuntu-latest
