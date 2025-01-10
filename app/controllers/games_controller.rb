@@ -7,6 +7,8 @@ class GamesController < ApplicationController
     if @post && @post.user.name != "OPEN_AI_ANSWER"
       ogp_image_url = generate_and_save_ogp(@post)
       set_meta_tags(og: { image: ogp_image_url }, twitter: { image: ogp_image_url })
+    else
+      Rails.logger.info("OGPを生成しない: AIが生成した投稿です")
     end
   end
 
