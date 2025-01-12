@@ -63,3 +63,10 @@
     background-color: white;
     box-shadow: none;
     border: 2px solid rgb(255, 132, 0, 0.827); }
+
+
+
+/* ローディングアニメーション */
+.loaded {
+    opacity: 0;
+    display: none; }
