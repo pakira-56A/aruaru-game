@@ -12,7 +12,8 @@
       <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
 
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
-    <%= javascript_include_tag "games", type: "module" %>
+    <%= javascript_include_tag "games", "data-turbo-track": "reload", type: "module" %>
+    <%= javascript_include_tag "loading", "data-turbo-track": "reload", type: "module" %>
 
     <!-- 静的OGP（ゲーム画面のみ動的OGP） -->
     <%= display_meta_tags(default_meta_tags) %>
@@ -38,6 +39,7 @@
 
     <%= render 'shared/footer' %>
 
+    <%= render 'shared/load_animation' %>
     <% if request.path == "/games/#{params[:id]}/start" %>
       <%= render 'games/clear_modal' %>
     <% end %>
