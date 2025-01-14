@@ -11,9 +11,9 @@ class OgpCreator
 
   def self.build(text)
     text_a, text_b = text.split("\n", 2) # AとBに分離
-    text_a = text_a.force_encoding("UTF-8") # minimagick用に、UTF-8に変換
+    text_a = text_a.gsub("'", "’").force_encoding("UTF-8") # シングルクォーテーションは右シングルクォーテーションに変換、minimagick用に、UTF-8に変換
     text_b = prepare_text(text_b)
-    text_b = text_b.force_encoding("UTF-8") # minimagick用に、UTF-8に変換
+    text_b = text_b.gsub("'", "’").force_encoding("UTF-8") # シングルクォーテーションは右シングルクォーテーションに変換、minimagick用に、UTF-8に変換
     image = MiniMagick::Image.open(BASE_IMAGE_PATH)
 
     image.combine_options do |config|
@@ -37,7 +37,7 @@ class OgpCreator
   end
 
   def self.prepare_text(text)
-    text = text.to_s.force_encoding("UTF-8") # minimagick用に、UTF-8に変換
+    text = text.to_s.gsub("'", "’").force_encoding("UTF-8") # シングルクォーテーションは右シングルクォーテーションに変換、minimagick用に、UTF-8に変換
     text.scan(/.{1,#{INDENTION_COUNT}}/)[0...ROW_LIMIT].join("\n")
   end
 end
