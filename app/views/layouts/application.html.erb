@@ -18,15 +18,10 @@
     <!-- 静的OGP（ゲーム画面のみ動的OGP） -->
     <%= display_meta_tags(default_meta_tags) %>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7M5YD1J9TK"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-7M5YD1J9TK');
-    </script>
+    <!-- Googleアナリティクス -->
+    <% if Rails.env.production? %>
+      <%= render 'layouts/google_analytics' %>
+    <% end %>
   </head>
 
   <body class="bg-custom-yellow">
