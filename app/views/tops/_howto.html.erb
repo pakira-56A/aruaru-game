@@ -1,35 +1,26 @@
 <button class="btn font-bold text-lg drop-shadow-md hover:drop-shadow-md
-                bg-yellow-50 hover:bg-cyan-50 text-[#F50968] hover:text-[#5099ff]"
+                border-4 border-white hover:border-orange-400
+                bg-cyan-100 hover:bg-white text-pink-500 hover:text-orange-500"
     onclick="howto.showModal()">遊び方</button>
 
 <dialog id="howto" class="modal">
-    <div class="modal-box fixed transform bg-white rounded-lg max-w-[600px] p-2 z-50 drop-shadow-lg md:px-6">
-        <div class="py-2 text-[#ff5900]">
-            <h3 class="text-pink-500 font-bold text-xl text-center text-[#ff0090]">🥳　遊び方　🥳</h3>
-            <div class="font-bold text-center px-2 py-4">あらゆる界隈をすこーし探求できるゲーム</div>
-            <div class="howto-text pl-2 flex flex-col items-center">
-                ①　あるあるを知りたい界隈を入力！<br>
-                ＡＩがあるあるを生成してくれるよ
-                <div class="flex">
-                    <%= image_tag 'howto/AI-search.png', width: '50', height: '10' %>
-                    <%= image_tag 'howto/AI-lines.jpeg', width: '230', height: '10' %>
-                </div>
+    <div class="modal-box fixed transform bg-white rounded-lg max-w-[600px] max-h-[70vh] z-50 drop-shadow-lg">
+        <div class="text-orange-500">
+            <h3 class="text-pink-500 font-bold text-xl text-center">🥳　遊び方　🥳</h3>
+            <div class="text-pink-500 font-bold text-center py-4">あらゆる界隈をすこーし探求するゲーム</div>
+            <div class="howto-text flex flex-col items-center">
+                好きな界隈のあるあるを投稿しよう！
+                <img src="https://i.gyazo.com/a0d84ef0d742d69be28e5d5d7552ff89.gif" alt="Image from Gyazo" width="220"/></a>
                 <br>
 
-                <div class="text-left">
-                    <div class="flex">
-                    ②　<%= image_tag 'howto/start-button.png', class: 'rounded-circle mr-2', width: '130', height: '2' %>で</div>
-                    札をめくり、あるあるを揃えよう
-                </div>
-                <%= image_tag 'howto/howto_game.png', width: '300' %>
+                みんなが作ったあるあるで遊ぼう！
+                <img src="https://i.gyazo.com/0c80c3257072ad532da1f9dcb11266aa.gif" alt="Image from Gyazo" width="220"/></a>
                 <br>
 
-                <div class="flex space-x-3">
-                    ③　<%= image_tag 'howto/howto_menus.png', width: '250' %>
-                </div>
-                誰かのあるあるで遊んだり
+                あるあるを知りたい界隈を入力すると<br>
+                ＡＩがあるあるを作ってくれるよ！
+                <img src="https://i.gyazo.com/5582e53134acd44d73224eecad2a6837.gif" alt="Image from Gyazo" width="220"/></a>
                 <br>
-                あるあるを自作してシェアしよう！
             </div>
         </div>
     </div>
