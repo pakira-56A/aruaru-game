@@ -10,11 +10,11 @@
 
 <body class="text-center">
 
-    <div class="flex justify-center mt-4">
+    <div class="flex justify-center mt-2">
         <%= image_tag 'logo-bg-custom-yellow.png', class: 'w-64 h-64 aspect-[1/1]' %>
     </div>
 
-    <div class="flex justify-center mb-4">
+    <div class="flex justify-center mb-8">
         <%= render 'tops/howto' %>
     </div>
 
@@ -38,5 +38,6 @@
     <% else %>
         <%= render 'openai_form' %>
     <% end %>
+
 </body>
 </html>
