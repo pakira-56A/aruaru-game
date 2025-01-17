@@ -26,7 +26,8 @@ class OpenaiPostsController < ApplicationController
         Time.zone = "Tokyo"
         # secure: 本番環境で動いているときだけクッキーはHTTPSを使って配送され、クッキーが盗まれるリスクを減らす
         # httponly: JavaScriptからそのクッキーにアクセスできなくり、XSS攻撃でクッキーが盗まれにくくなる
+        # samesite: CSRF対策
         cookies[:cookie_count] = { value: Time.zone.today.to_s, expires: Time.zone.now + 1.day,
-                                    secure: Rails.env.production?,  httponly: true }
+                                    secure: Rails.env.production?,  httponly: true, same_site: :lax }
     end
 end
