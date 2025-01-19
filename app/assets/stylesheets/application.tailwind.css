@@ -3,15 +3,15 @@
 @tailwind utilities;
 
 /* メニュー */
-.menu-list1 a:hover #image-menu1 { content: url('footer/menu/menu-1-hover.svg');}
-.menu-list2 a:hover #image-menu2 { content: url('footer/menu/menu-2-hover.svg');}
-.menu-list3 a:hover #image-menu3 { content: url('footer/menu/menu-3-hover.svg');}
-.menu-list4 a:hover #image-menu4 { content: url('footer/menu/menu-4-hover.svg');}
+.menu-index a:hover #image-index { content: url('footer/menu-index-hover.svg');}
+.menu-post-new a:hover #image-post_new { content: url('footer/menu-post-new-hover.svg');}
+.menu-myindex a:hover #image-myindex { content: url('footer/menu-myindex-hover.svg');}
+.menu-likes a:hover #image-likes { content: url('footer/menu-likes-hover.svg');}
 
 /* 投稿の編集・削除・お気に入りボタン */
 .post-edit a:hover #image-edit{ content: url('post/post-edit-hover.svg');}
 .post-delete a:hover #image-delete{ content: url('post/post-delete-hover.svg');}
-.post-like a:hover #image-like { content: url('footer/menu/menu-4-hover.svg');}
+.post-like a:hover #image-like { content: url('footer/menu-likes-hover.svg');}
 
 /* Xシェアボタン */
 .twitter a:hover #image-xshare { content: url('xshare-hover.svg');}
