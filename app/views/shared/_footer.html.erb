@@ -1,23 +1,23 @@
 <div class="fixed z-50 w-full h-16 bg-base-100 bottom-0 bg-yellow-50 border-t-2 border-white">
     <div class="flex h-full max-w-lg mx-auto justify-evenly">
 
-    <div class="menu-list1 text-xs text-[#019c8f] hover:text-[#00e297] flex items-center justify-center">
-        <%= link_to image_tag('footer/menu/menu-1.svg', width: '30', height: '30', id: 'image-menu1', class: 'mx-auto mb-1')+ '界隈一覧',
+    <div class="menu-index text-xs text-[#019c8f] hover:text-[#00e297] flex items-center justify-center">
+        <%= link_to image_tag('footer/menu-index.svg', width: '30', height: '30', id: 'image-index', class: 'mx-auto mb-1')+ '界隈一覧',
                 posts_path, class: "font-bold items-center no-underline drop-shadow-md hover:drop-shadow-none" %>
     </div>
 
-    <div class="menu-list2 text-xs text-[#0088D0] hover:text-[#00c5ff] flex items-center justify-center">
-        <%= link_to image_tag('footer/menu/menu-2.svg', width: '25', height: '25', id: 'image-menu2', class: 'mx-auto mb-1') + '投稿しよう',
+    <div class="menu-post-new text-xs text-[#0088D0] hover:text-[#00c5ff] flex items-center justify-center">
+        <%= link_to image_tag('footer/menu-post-new.svg', width: '25', height: '25', id: 'image-post_new', class: 'mx-auto mb-1') + '投稿しよう',
             new_post_path, class: "font-bold items-center no-underline drop-shadow-md hover:drop-shadow-none gap-4" %>
     </div>
 
-    <div class="menu-list3 text-xs text-[#00cee8] hover:text-[#6eefff] flex items-center justify-center">
-        <%= link_to image_tag('footer/menu/menu-3.svg', width: '25', height: '25', id: 'image-menu3', class: 'mx-auto mb-1') + '自作あるある・設定',
+    <div class="menu-myindex text-xs text-[#00cee8] hover:text-[#6eefff] flex items-center justify-center">
+        <%= link_to image_tag('footer/menu-myindex.svg', width: '25', height: '25', id: 'image-myindex', class: 'mx-auto mb-1') + '自作あるある・設定',
             myindex_posts_path(@post), class: "font-bold items-center no-underline drop-shadow-md hover:drop-shadow-none gap-4" %>
     </div>
 
-    <div class="menu-list4 text-xs text-[#ff78ac] hover:text-[#ffa9ca] flex items-center justify-center">
-        <%= link_to image_tag('footer/menu/menu-4.svg', width: '25', height: '25', id: 'image-menu4', class: 'mx-auto mb-1') + 'お気に入り',
+    <div class="menu-likes text-xs text-[#ff78ac] hover:text-[#ffa9ca] flex items-center justify-center">
+        <%= link_to image_tag('footer/menu-likes.svg', width: '25', height: '25', id: 'image-likes', class: 'mx-auto mb-1') + 'お気に入り',
             likes_path, class: "font-bold items-center no-underline drop-shadow-md hover:drop-shadow-none gap-4" %>
     </div>
 
