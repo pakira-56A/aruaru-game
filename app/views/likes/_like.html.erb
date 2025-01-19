@@ -1,0 +1,4 @@
+<!-- 未お気に入りのボタン -->
+<%= link_to likes_path(post_id: post.id), data: { turbo_method: :post } do %>
+    <%= image_tag 'post/post-like.svg', alt: "お気に入りする", id: 'image-like', class: "h-6 w-6 drop-shadow-md hover:drop-shadow-none" %>
+<% end %>

@@ -1,0 +1,9 @@
+<turbo-frame id="like_buttons_<%= post.id %>">
+    <div class="post-like">
+        <% if current_user.like?(post) %>
+            <%= render "likes/unlike", post: post %>
+        <% else %>
+            <%= render "likes/like", post: post %>
+        <% end %>
+    </div>
+</turbo-frame>
