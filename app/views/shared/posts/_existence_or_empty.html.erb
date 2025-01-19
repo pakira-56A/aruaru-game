@@ -7,8 +7,17 @@
 <% else %>
 
     <div class="my-10">
-        <%= render "shared/posts/empty_posts_text" %>
-        <%= render "shared/posts/new_posts_button" %>
+        <!-- お気に入り一覧に表示する場合は、投稿一覧遷移ボタンを表示 -->
+        <% if request.path != likes_path %>
+            <%= render "shared/posts/empty_posts_text" %>
+            <%= render "shared/posts/new_posts_button" %>
+        <% else %>
+            <div class="text-center mb-3 text-gray-500">まだないよ！界隈一覧をみにいこう！
+                <div class="mt-4">
+                    <%= render "shared/posts/index_button" %>
+                </div>
+            </div>
+        <% end %>
     </div>
 
 <% end %>
