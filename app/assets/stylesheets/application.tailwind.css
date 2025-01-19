@@ -8,9 +8,10 @@
 .menu-list3 a:hover #image-menu3 { content: url('footer/menu/menu-3-hover.svg');}
 .menu-list4 a:hover #image-menu4 { content: url('footer/menu/menu-4-hover.svg');}
 
-/* 投稿の編集・削除ボタン */
+/* 投稿の編集・削除・お気に入りボタン */
 .post-edit a:hover #image-edit{ content: url('post/post-edit-hover.svg');}
 .post-delete a:hover #image-delete{ content: url('post/post-delete-hover.svg');}
+.post-like a:hover #image-like { content: url('footer/menu/menu-4-hover.svg');}
 
 /* Xシェアボタン */
 .twitter a:hover #image-xshare { content: url('xshare-hover.svg');}

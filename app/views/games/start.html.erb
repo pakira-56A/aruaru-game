@@ -25,6 +25,10 @@
                     <div class='flex justify-end gap-2 pr-4'>
                         <div class="text-sky-400 text-sm font-bold">界隈あるある</div>
                         <%= render 'shared/xshare_button', post: @post %>
+                        <!-- ログイン済かつ他者投稿のゲームの場合は、お気に入りボタンを表示 -->
+                        <% if user_signed_in? && @post.user != current_user %>
+                            <%= render 'likes/like_buttons', post: @post %>
+                        <% end %>
                     </div>
                     <div class='mb-2'>
                         <%= render 'tags/tags_list', post: @post %>
