@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   end
 
   resources :tags, only: %w[index show destroy]
+  resources :likes, only: %i[index create destroy]
 
   resources :search_posts, only: [] do
     collection do
