@@ -79,7 +79,7 @@ ______
 
 | タグで絞り込み | 検索 |検索（ヒットしない場合）|
 |:-----------:|:------------:|:------------:|
-| <img src="https://i.gyazo.com/c631388adb5ed9066e82a318b439e55c.gif" alt="Image from Gyazo" width="250"/> |<img src="https://i.gyazo.com/611e1f54f8062f1d65a1549c2c6981e8.gif" alt="Image from Gyazo" width="250"/>　|　<img src="https://i.gyazo.com/3337c830b4cda69e58d015c49adbd65d.gif" alt="Image from Gyazo" width="250"/>|
+| <img src="https://i.gyazo.com/c631388adb5ed9066e82a318b439e55c.gif" alt="Image from Gyazo" width="250"/> |<img src="https://i.gyazo.com/611e1f54f8062f1d65a1549c2c6981e8.gif" alt="Image from Gyazo" width="250"/>|<img src="https://i.gyazo.com/3337c830b4cda69e58d015c49adbd65d.gif" alt="Image from Gyazo" width="250"/>|
 | 投稿されたタグから、近い界隈を検索きます | 界隈名を直接検索できます（オートコンプリート付き）|検索結果がヒットしない場合は投稿を誘導 |
 
 ### 当サービスにおける神経衰弱カードの特徴  
