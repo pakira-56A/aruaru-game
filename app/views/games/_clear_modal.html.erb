@@ -23,8 +23,8 @@
                         <%= link_to "https://twitter.com/intent/tweet?url=#{request.base_url}/games/#{@post.id}/start&text=#{ERB::Util.url_encode("\n#{@post.user.name}さんが思う\n##{@post.title.gsub(/[^\p{Alnum}\s]/u, '')} あるあるをシェア！\n#あるある神経衰弱 \n")}",
                             target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア",
                             class: "rounded-lg p-2
-                                    font-bold text-[#808080] bg-pink-50 border-2 border-pink-200 drop-shadow-md
-                                    hover:text-[#FF7611] hover:bg-yellow-100 hover:border-yellow-200 hover:drop-shadow-none" do %>
+                                    font-bold text-gray-500 bg-pink-50 border-2 border-pink-200 drop-shadow-md
+                                    hover:text-orange-500 hover:bg-yellow-100 hover:border-yellow-200 hover:drop-shadow-none" do %>
                             <span class="font-medium text-sm">
                                 <%= share_text.html_safe %>
                             </span> <!-- ここで変数を使用 -->

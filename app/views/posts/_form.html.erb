@@ -1,10 +1,10 @@
 <%= form_with(model: @post, class: "space-y-2") do |f| %>
-    <%= f.label :title, "界隈名（他の投稿と同じ界隈名でもOK 🥳 ）", class: "label text-[#0088D0] text-xs pb-0" %>
+    <%= f.label :title, "界隈名（他の投稿と同じ界隈名でもOK 🥳 ）", class: "label text-sky-600 text-xs pb-0" %>
 
     <div class="relative" data-controller="character-counter" data-character-counter-countdown-value="true">
         <%= f.text_area :title, id: "post_title", autofocus: true,
             class: "input input-bordered border-2 border-sky-300 rounded-md w-72 h-20
-                    text-sm text-orange-500 font-bold placeholder:font-light placeholder:text-[#C7C7C7]",
+                    text-sm text-orange-500 font-bold placeholder:font-light placeholder:text-gray-300",
             placeholder: "例：ONEPIECEイーストブルー編",
             data: { character_counter_target: "input" }, maxlength: 40 %>
         <div class="absolute right-2 bottom-2 top-12 flex items-center text-xs">
@@ -14,13 +14,13 @@
         </div>
     </div>
 
-    <%= f.label :aruarus, "この界隈ならではのあるあるを、５つ入力してね！", class: "label text-[#0088D0] text-xs pb-0" %>
+    <%= f.label :aruarus, "この界隈ならではのあるあるを、５つ入力してね！", class: "label text-sky-600 text-xs pb-0" %>
         <% [:aruaru_one, :aruaru_two, :aruaru_three, :aruaru_four, :aruaru_five].each_with_index do |field, index| %>
             <div class="relative mt-2" data-controller="character-counter" data-character-counter-countdown-value="true">
                 <%= f.text_area field, id: field, autofocus: true,
                     class: "input input-bordered border-2 border-sky-300 rounded-md w-72 h-20
                             text-sm text-orange-500 font-bold
-                            placeholder:font-light placeholder:text-[#C7C7C7]",
+                            placeholder:font-light placeholder:text-gray-300",
                     placeholder: "例：#{['ゾロがまだ陽気',
                                             '３巻まではSBSないから、すぐ読み終えちゃう',
                                             'アニメのオープニング『富・名声・力』のくだり聴きいっちゃう',
@@ -34,17 +34,17 @@
         <% end %>
 
     <!-- タグを登録するフォーム -->
-    <%= f.label :tag, "この界隈に関連するワードは？", class: "label text-[#0088D0] text-xs p-0" %>
+    <%= f.label :tag, "この界隈に関連するワードは？", class: "label text-sky-600 text-xs p-0" %>
     <!-- value:@tagsでタグの配列を取得 -->
     <%= f.text_field :tag, placeholder: "例：漫画 アニメ ジャンプ",
         class: "border-2 border-sky-300 rounded-md w-72
-            text-sm text-orange-500 font-bold placeholder:font-light placeholder:text-[#C7C7C7]",
+            text-sm text-orange-500 font-bold placeholder:font-light placeholder:text-gray-300",
         value: @tags %>
     <br>
 
     <%= f.submit t("posts.#{params[:action]}"),
         class: "btn btn-sm text-white font-semibold rounded-lg mt-4
-                drop-shadow-lg hover:drop-shadow-none bg-[#0088D0] hover:bg-orange-500" %>
+                drop-shadow-lg hover:drop-shadow-none bg-sky-600 hover:bg-orange-500" %>
     <br>
 
 <% end %>
