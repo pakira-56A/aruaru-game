@@ -88,8 +88,8 @@ ______
 
 - ニッチな内容も投稿して欲しいので、界隈名とあるあるはそれぞれ40文字まで
 - カードがペアになると、ペア同士で文字の色が変化します（右の画像は、ペア完成時の図です）  
-  <img src="https://i.gyazo.com/50da36cc92a5c7c4ec1500e9974e700f.gif" alt="Image from Gyazo" width="400"/>　　
-  <img src="https://i.gyazo.com/792ded5b1a5db50f3bd1443f220b7a57.png" alt="Image from Gyazo" width="240"/>
+  <img src="https://i.gyazo.com/6f10e83bd5f3856612f8094b19b31560.gif" alt="Image from Gyazo" width="400"/>
+  <img src="https://i.gyazo.com/6dceded7d313a601af37eb3b6deffbf2.png" alt="Image from Gyazo" width="270"/>
 ___
 # ■ 機能一覧
 
