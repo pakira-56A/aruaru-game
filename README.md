@@ -48,10 +48,10 @@ ______
   - レイアウトやデザインのコンセプトは、`シンプル` `POPに` `文字の少ない説明で明確に` `アイコンの配置で導線を明確に`
   - スマホで手軽に遊んで欲しいので、レスポンシブはスマホ重視
   - ワクワクしてもらいたいので、リンクのホバー時の変化を大きくしました
-  <img src="https://i.gyazo.com/3f98f36d4874f175b24e12748de4bcd3.gif" alt="Image from Gyazo" width="500"/>
+    <img src="https://i.gyazo.com/3f98f36d4874f175b24e12748de4bcd3.gif" alt="Image from Gyazo" width="500"/>
 
   - ユーザー情報や投稿などの**詳細画面**など、煩わしい画面遷移を設けませんでした
-  <img src="https://i.gyazo.com/a2816043cf67113651be80bd05a282d4.gif" alt="Image from Gyazo" width="500"/>
+    <img src="https://i.gyazo.com/a2816043cf67113651be80bd05a282d4.gif" alt="Image from Gyazo" width="500"/>
 
 # ■ 使用方法
 ### 界隈あるあるを、ユーザーが投稿できる、またはAIで生成できる
