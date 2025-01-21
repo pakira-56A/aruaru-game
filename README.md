@@ -1,6 +1,6 @@
 # [あるある神経衰弱：界隈探求ゲーム](https://aruaru-games.com/)
 - **OGP**　[RUNTEQ | ソーシャルポートフォリオ](https://school.runteq.jp/v3/social_portfolios/1093/web_applications/13)  
-![OGP画像](./app/assets/images/OGP.png)
+[![Image from Gyazo](https://i.gyazo.com/f974550f90299f41f0773b6c31fc3db3.png)](https://gyazo.com/f974550f90299f41f0773b6c31fc3db3)
 # ■ サービス概要
 - ユーザーによって投稿された界隈あるある５つを印字したカードで、神経衰弱として遊べます
 - ユーザーは馴染み深い界隈のあるあるを投稿・シェアできます
@@ -49,6 +49,7 @@ ______
   - スマホで手軽に遊んで欲しいので、レスポンシブはスマホ重視
   - ワクワクしてもらいたいので、リンクのホバー時の変化を大きくしました
   <img src="https://i.gyazo.com/3f98f36d4874f175b24e12748de4bcd3.gif" alt="Image from Gyazo" width="500"/>
+
   - ユーザー情報や投稿などの**詳細画面**など、煩わしい画面遷移を設けませんでした
   <img src="https://i.gyazo.com/a2816043cf67113651be80bd05a282d4.gif" alt="Image from Gyazo" width="500"/>
 
@@ -87,8 +88,8 @@ ______
 
 - ニッチな内容も投稿して欲しいので、界隈名とあるあるはそれぞれ40文字まで
 - カードがペアになると、ペア同士で文字の色が変化します（右の画像は、ペア完成時の図です）  
-  <img src="https://i.gyazo.com/50da36cc92a5c7c4ec1500e9974e700f.gif" alt="Image from Gyazo" width="500"/>　　
-  <img src="https://i.gyazo.com/792ded5b1a5db50f3bd1443f220b7a57.png" alt="Image from Gyazo" width="290"/>
+  <img src="https://i.gyazo.com/50da36cc92a5c7c4ec1500e9974e700f.gif" alt="Image from Gyazo" width="400"/>　　
+  <img src="https://i.gyazo.com/792ded5b1a5db50f3bd1443f220b7a57.png" alt="Image from Gyazo" width="240"/>
 ___
 # ■ 機能一覧
 
