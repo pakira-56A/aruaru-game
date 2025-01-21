@@ -4,7 +4,7 @@
         <%= image_tag 'footer/menus.svg', width: '25', height: '25', class: 'drop-shadow-md hover:drop-shadow-none'%>
     </div>
 
-    <ul tabindex="0" class="dropdown-content menu bg-white rounded-xl z-[1] w-[220px] mt-6 shadow-lg">
+    <ul tabindex="0" class="dropdown-content menu bg-white rounded-xl z-[1] w-[210px] mt-6 shadow-lg">
         <div class="font-bold flex justify-start items-center no-underline">
             <li>
             <% links = [
@@ -17,7 +17,7 @@
             <% end %>
 
             <% if user_signed_in? then %>
-                <div class="menu-list5 text-[#B4B4B4] pt-2 hover:bg-yellow-50">
+                <div class="menu-list5 text-gray-400 pt-2 hover:bg-yellow-50">
                     <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
                 </div>
             <% end %>
