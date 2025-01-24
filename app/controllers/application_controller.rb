@@ -4,6 +4,13 @@ class ApplicationController < ActionController::Base
   before_action :set_search
   protect_from_forgery with: :exception
 
+  NOT_FOUND_ALERT = "存在しないURLにアクセスしたみたいだよ".freeze
+  # 存在しないURLにアクセスした際の処理、404ページに遷移するより、メッセージで済ませる
+  def handle_404
+      flash[:alert] = NOT_FOUND_ALERT
+      redirect_to posts_path
+  end
+
   private
 
   def configure_permitted_parameters
