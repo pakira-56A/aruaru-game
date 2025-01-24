@@ -48,4 +48,7 @@ Rails.application.routes.draw do
       post :answer
     end
   end
+
+  # 404ページに遷移するより、メッセージで済ませておく。
+  match "*path", to: "application#handle_404", via: :all
 end
