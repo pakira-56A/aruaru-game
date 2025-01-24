@@ -1,10 +1,15 @@
 class GamesController < ApplicationController
   def start
-    @post = Post.find(params[:id])
-    Rails.logger.info("ポストID: #{@post.id} を取得")
+    # find指示でnilだとエラーになるが、find_byでnilを返す処理になる
+    @post = Post.find_by(id: params[:id])
+    if @post.nil?
+        handle_404
+        return
+    end
 
-    # AIが生成した投稿には動的OGPをを生成しない
-    if @post && @post.user.name != "OPEN_AI_ANSWER"
+    Rails.logger.info("ポストID: #{@post.id} を取得")
+    # AIが生成した投稿には動的OGPを生成しない
+    if @post.user.name != "OPEN_AI_ANSWER"
       ogp_image_url = generate_and_save_ogp(@post)
       set_meta_tags(og: { image: ogp_image_url }, twitter: { image: ogp_image_url })
     else
