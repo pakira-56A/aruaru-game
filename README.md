@@ -128,8 +128,8 @@ ___
 [![Image from Gyazo](https://i.gyazo.com/370df50dcc8384335f46adf9ec1943cb.jpg)](https://gyazo.com/370df50dcc8384335f46adf9ec1943cb)
 - [お問い合わせ](https://docs.google.com/forms/d/e/1FAIpQLSc7aPOWo9En9Ctwj0gOaXP418BtiicSvX2KXx5dLRnwWJRlIg/viewform)：Googleフォームに遷移します
 - Xシェアボタン：Xに遷移し、ポストができます
-- `遊んだみんなの感想をXで見る`ボタン：Xに遷移し、[#あるある神経衰弱](https://x.com/hashtag/%E3%81%82%E3%82%8B%E3%81%82%E3%82%8B%E7%A5%9E%E7%B5%8C%E8%A1%B0%E5%BC%B1?src=hashtag_click&f=live) がついたポストをを見れます
+- `遊んだみんなの感想をXで見る`ボタン：Xに遷移し、[#あるある神経衰弱](https://x.com/hashtag/%E3%81%82%E3%82%8B%E3%81%82%E3%82%8B%E7%A5%9E%E7%B5%8C%E8%A1%B0%E5%BC%B1?src=hashtag_click&f=live) がついたポストを見れます
 
 ## [ER図](https://dbdiagram.io/d/あるある神経衰弱-670531e2fb079c7ebdbde9aa)
-[![Image from Gyazo](https://i.gyazo.com/2f55ece824a508bc0c536af97e70e8ba.png)](https://gyazo.com/2f55ece824a508bc0c536af97e70e8ba)
-
+[![Image from Gyazo](https://i.gyazo.com/421d6167619b7f9f9a892b07fa16c85d.png)](https://gyazo.com/421d6167619b7f9f9a892b07fa16c85d)
+- あくまで投稿は`○○さんが思う△△あるある`という形で扱うため、`Posts`テーブルに`aruaru_one`~`aruaru_five`までを設けています
