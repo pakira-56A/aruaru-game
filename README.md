@@ -131,5 +131,5 @@ ___
 - `遊んだみんなの感想をXで見る`ボタン：Xに遷移し、[#あるある神経衰弱](https://x.com/hashtag/%E3%81%82%E3%82%8B%E3%81%82%E3%82%8B%E7%A5%9E%E7%B5%8C%E8%A1%B0%E5%BC%B1?src=hashtag_click&f=live) がついたポストを見れます
 
 ## [ER図](https://dbdiagram.io/d/あるある神経衰弱-670531e2fb079c7ebdbde9aa)
-[![Image from Gyazo](https://i.gyazo.com/421d6167619b7f9f9a892b07fa16c85d.png)](https://gyazo.com/421d6167619b7f9f9a892b07fa16c85d)
+[![Image from Gyazo](https://i.gyazo.com/b7c00230b096af7a39f110cb9d8b3192.png)](https://gyazo.com/b7c00230b096af7a39f110cb9d8b3192)
 - あくまで投稿は`○○さんが思う△△あるある`という形で扱うため、`Posts`テーブルに`aruaru_one`~`aruaru_five`までを設けています
