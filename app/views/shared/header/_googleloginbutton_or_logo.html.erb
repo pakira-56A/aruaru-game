@@ -1,14 +1,14 @@
 <% if user_signed_in? %>
 
-    <%= link_to root_path, class: "flex flex-col items-center drop-shadow-md text-pink-500 hover:drop-shadow-none hover:text-blue-400" do %>
-        <%= image_tag 'logo-clear.png', alt: 'Logo', class: 'h-8 w-8' %>
-        <span class="text-xs font-bold">あるある神経衰弱</span>
-    <% end %>
+  <%= link_to root_path, class: "flex flex-col items-center drop-shadow-md text-pink-500 hover:drop-shadow-none hover:text-blue-400" do %>
+    <%= image_tag 'logo-clear.png', alt: 'Logo', class: 'h-8 w-8' %>
+    <span class="text-xs font-bold">あるある神経衰弱</span>
+  <% end %>
 
 <% else %>
 
-    <div class="mt-3">
-        <%= render 'shared/googleloginbutton' %>
-    </div>
+  <div class="mt-3">
+    <%= render 'shared/googleloginbutton' %>
+  </div>
 
 <% end %>

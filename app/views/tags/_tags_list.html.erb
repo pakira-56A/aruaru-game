@@ -1,15 +1,15 @@
 <% if post.tags.any? %>
 
-    <% post.tags.each do |tag| %>
-        <%= link_to "##{tag.tag_name}", tag_path(tag),
-            class: "btn btn-xs border-yellow-100
-                font-light text-slate-400 shadow-md bg-yellow-50 border-2
-                hover:shadow-none hover:bg-white hover:border-orange-400
-                max-w-xs overflow-hidden break-words" %>
-    <% end %>
+  <% post.tags.each do |tag| %>
+    <%= link_to "##{tag.tag_name}", tag_path(tag),
+        class: "btn btn-xs border-yellow-100
+            font-light text-slate-400 shadow-md bg-yellow-50 border-2
+            hover:shadow-none hover:bg-white hover:border-orange-400
+            max-w-xs overflow-hidden break-words" %>
+  <% end %>
 
 <% else %>
 
-    <div class="font-light text-slate-400 text-xs pt-2">タグなし</div>
+  <div class="font-light text-slate-400 text-xs pt-2">タグなし</div>
 
 <% end %>

@@ -1,38 +1,39 @@
 <% content_for :title do %>
-    トップページ
+  トップページ
 <% end %>
 
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
 
 <body class="text-center">
 
-    <div class="flex justify-center mt-2">
-        <%= image_tag 'logo-bg-custom-yellow.png', class: 'w-64 h-64 aspect-[1/1]' %>
-    </div>
+  <div class="flex justify-center mt-2">
+    <%= image_tag 'logo-bg-custom-yellow.png', class: 'w-64 h-64 aspect-[1/1]' %>
+  </div>
 
-    <div class="flex justify-center mb-8">
-        <%= render 'tops/howto' %>
-    </div>
+  <div class="flex justify-center mb-8">
+    <%= render 'tops/howto' %>
+  </div>
 
-    <!-- AIの使用制限のため、cookie_countを持ってるか判別 -->
-    <% if cookies[:cookie_count].present? %>
-        <% begin %>
-            <% cookie_date = Date.parse(cookies[:cookie_count]) %>
-            <% if cookie_date == Time.zone.today %>
-                <!-- cookie_countが今日の日付の場合 -->
-                <div class="mt-4"><%= render 'openai_used' %></div>
-            <% else %>
-                <!-- cookie_countが今日以外の日付の場合 -->
-                <%= render 'openai_form' %>
-            <% end %>
+  <!-- AIの使用制限のため、cookie_countを持ってるか判別 -->
+  <% if cookies[:cookie_count].present? %>
+    <% begin %>
+      <% cookie_date = Date.parse(cookies[:cookie_count]) %>
 
-        <!-- cookie_countの日付が無効な場合（無意味な文字列などの場合）に備えて表示 -->
-        <% rescue ArgumentError %>
-            <%= render 'openai_form' %>
-        <% end %>
-
-    <% else %>
+      <% if cookie_date == Time.zone.today %>
+        <!-- cookie_countが今日の日付の場合 -->
+        <div class="mt-4"><%= render 'openai_used' %></div>
+      <% else %>
+        <!-- cookie_countが今日以外の日付の場合 -->
         <%= render 'openai_form' %>
-    <% end %>
+      <% end %>
+
+      <!-- cookie_countの日付が無効な場合（無意味な文字列などの場合）に備えて表示 -->
+      <% rescue ArgumentError %>
+        <%= render 'openai_form' %>
+      <% end %>
+
+  <% else %>
+    <%= render 'openai_form' %>
+  <% end %>
 </body>
 
