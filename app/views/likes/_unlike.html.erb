@@ -1,4 +1,4 @@
 <!-- お気に入り済みのボタン -->
 <%= link_to like_path(current_user.likes.find_by(post_id: post.id)), data: { turbo_method: :delete } do %>
-    <%= image_tag 'post/post-unlike.svg', alt: "お気に入り解除", id: 'image-like', class: "h-6 w-6 drop-shadow-md hover:drop-shadow-none" %>
+  <%= image_tag 'post/post-unlike.svg', alt: "お気に入り解除", id: 'image-like', class: "h-6 w-6 drop-shadow-md hover:drop-shadow-none" %>
 <% end %>
