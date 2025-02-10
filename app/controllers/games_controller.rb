@@ -1,6 +1,5 @@
 class GamesController < ApplicationController
   def start
-    # find指示でnilだとエラーになるが、find_byでnilを返す処理になる
     @post = Post.find_by(id: params[:id])
     if @post.nil?
         handle_404
@@ -8,7 +7,6 @@ class GamesController < ApplicationController
     end
 
     Rails.logger.info("ポストID: #{@post.id} を取得")
-    # AIが生成した投稿には動的OGPを生成しない
     if @post.user.name != "OPEN_AI_ANSWER"
       ogp_image_url = generate_and_save_ogp(@post)
       set_meta_tags(og: { image: ogp_image_url }, twitter: { image: ogp_image_url })
@@ -26,11 +24,11 @@ class GamesController < ApplicationController
 
       post.update!(ogp: image_data)
       Rails.logger.info("生成した動的OGP画像を保存: #{post.ogp.url}")
-      post.ogp.url # 生成したOGP画像のURLを返す
+      post.ogp.url
 
     rescue StandardError => e
       Rails.logger.error("動的OGP画像の生成 または保存に失敗: #{e.message}")
-      nil # エラー発生時はnilを返す
+      nil
     end
   end
 end
