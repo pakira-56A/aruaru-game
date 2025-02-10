@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-  # database_authenticatable追加：パスワードなしでユーザー名を変更できる
   devise :database_authenticatable, :omniauthable, omniauth_providers: [ :google_oauth2 ]
 
   validates :name, presence: true, uniqueness: { case_sensitive: false }
@@ -16,12 +15,10 @@ class User < ApplicationRecord
   def self.from_omniauth(auth)
     user = where(provider: auth.provider, uid: auth.uid).first_or_initialize
     if user.new_record?
-      # メールアドレスが既存の場合、そのユーザーを再利用
       existing_user = find_by(email: auth.info.email)
       if existing_user
         user = existing_user
       else
-        # 新しいユーザーを作成
         user.name = auth.info.name
         user.email = auth.info.email
         user.save!
@@ -35,7 +32,6 @@ class User < ApplicationRecord
   end
 
   def like(post)
-    # ユーザーのお気に入りリストに、掲示板を追加
     like_posts << post
   end
 

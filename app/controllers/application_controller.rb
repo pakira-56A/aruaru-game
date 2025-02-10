@@ -1,10 +1,8 @@
 class ApplicationController < ActionController::Base
-  # deviseコントローラを使う前に、deviseコントローラーが真なら以下のアクションを実行する
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_search
   protect_from_forgery with: :exception
 
-  # 存在しないURLにアクセスした際の処理、404ページに遷移するより、メッセージで済ませる
   def handle_404
     flash[:alert] = "存在しないURLにアクセスしたみたいだよ"
     redirect_to posts_path
@@ -13,7 +11,6 @@ class ApplicationController < ActionController::Base
   private
 
   def configure_permitted_parameters
-    # 情報更新時にnameの取得を許可
     devise_parameter_sanitizer.permit(:account_update, keys: [ :name ])
   end
 
@@ -25,7 +22,6 @@ class ApplicationController < ActionController::Base
     posts_path
   end
 
-  # 未ログイン状態でログイン必須ページにアクセスした際の処理
   def custom_authenticate_user!
     return if user_signed_in?
     flash[:alert] = I18n.t("devise.failure.unauthenticated")

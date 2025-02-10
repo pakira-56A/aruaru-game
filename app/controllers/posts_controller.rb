@@ -1,17 +1,14 @@
 class PostsController < ApplicationController
-  # ApplicationControllerのメソッドを使う
   before_action :custom_authenticate_user!, only: %i[myindex new edit update create]
 
   def index
     @q = Post.ransack(params[:q])
     @posts = if user_signed_in?
                 @q.result(distinct: true).where.not(user_id: current_user.id)
-                    # AIが生成した投稿は（userテーブルと結合して検索し、投稿IDを取得してから）除外
                     .where.not(id: Post.joins(:user).where(users: { name: "OPEN_AI_ANSWER" }).select(:id))
                     .includes(:user).order(created_at: :desc)
     else
                 @q.result(distinct: true)
-                    # AIが生成した投稿は（userテーブルと結合して検索し、投稿IDを取得してから）除外
                     .where.not(id: Post.joins(:user).where(users: { name: "OPEN_AI_ANSWER" }).select(:id))
                     .includes(:user).order(created_at: :desc)
     end

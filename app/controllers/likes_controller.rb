@@ -13,7 +13,6 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    # postメソッドによってpostオブジェクトが取得
     @post = current_user.likes.find(params[:id]).post
     current_user.unlike(@post)
   end

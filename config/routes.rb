@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  # OmniAuth：認証成功時の処理
   devise_for :users, controllers: {
     omniauth_callbacks: "users/omniauth_callbacks",
     sessions: "users/sessions", # カスタムコントローラーを使用
@@ -42,13 +41,11 @@ Rails.application.routes.draw do
     end
   end
 
-  # AI機能
   resources :openai_posts, only: [] do
     collection do
       post :answer
     end
   end
 
-  # 404ページに遷移するより、メッセージで済ませておく。
   match "*path", to: "application#handle_404", via: :all
 end
