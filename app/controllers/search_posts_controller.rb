@@ -1,7 +1,6 @@
 class SearchPostsController < ApplicationController
   def search
     @q = Post.ransack(params[:q])
-    # AIが生成した投稿は除外
     @posts = @q.result(distinct: true).where.not(user: User.find_by(name: "OPEN_AI_ANSWER"))
     respond_to do |format|
       format.js
@@ -11,7 +10,6 @@ class SearchPostsController < ApplicationController
   end
 
   def autocomplete
-    # AIが生成した投稿は除外
     @posts = search_posts(params[:q]).where.not(user: User.find_by(name: "OPEN_AI_ANSWER"))
     respond_to do |format|
       format.js
@@ -35,7 +33,6 @@ class SearchPostsController < ApplicationController
       "%#{query.tr('a-zA-Z', '')}%" ]
 
     posts = Post.where(conditions.join(" OR "), *search_queries)
-            # AIが生成した投稿は（userテーブルと結合して検索し、投稿IDを取得してから）除外
             .where.not(id: Post.joins(:user).where(users: { name: "OPEN_AI_ANSWER" }).select(:id))
 
     if query.match?(/[a-zA-Z]/)

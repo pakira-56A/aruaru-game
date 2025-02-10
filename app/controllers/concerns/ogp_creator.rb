@@ -3,17 +3,17 @@ class OgpCreator
 
   BASE_IMAGE_PATH = "./app/assets/images/OGP_game.png"
   GRAVITY = "center"
-  TEXT_POSITION = "0,-170" # 中央から少し上に配置
+  TEXT_POSITION = "0,-170"
   FONT = "./app/assets/fonts/MPLUSRounded1c-Medium.ttf"
   FONT_SIZE = 50
   INDENTION_COUNT = 20
   ROW_LIMIT = 8
 
   def self.build(text)
-    text_a, text_b = text.split("\n", 2) # AとBに分離
-    text_a = text_a.gsub("'", "’").force_encoding("UTF-8") # シングルクォーテーションは右シングルクォーテーションに変換、minimagick用に、UTF-8に変換
+    text_a, text_b = text.split("\n", 2)
+    text_a = text_a.gsub("'", "’").force_encoding("UTF-8")
     text_b = prepare_text(text_b)
-    text_b = text_b.gsub("'", "’").force_encoding("UTF-8") # シングルクォーテーションは右シングルクォーテーションに変換、minimagick用に、UTF-8に変換
+    text_b = text_b.gsub("'", "’").force_encoding("UTF-8")
     image = MiniMagick::Image.open(BASE_IMAGE_PATH)
 
     image.combine_options do |config|
@@ -37,7 +37,7 @@ class OgpCreator
   end
 
   def self.prepare_text(text)
-    text = text.to_s.gsub("'", "’").force_encoding("UTF-8") # シングルクォーテーションは右シングルクォーテーションに変換、minimagick用に、UTF-8に変換
+    text = text.to_s.gsub("'", "’").force_encoding("UTF-8")
     text.scan(/.{1,#{INDENTION_COUNT}}/)[0...ROW_LIMIT].join("\n")
   end
 end
