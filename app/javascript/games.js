@@ -74,7 +74,7 @@ const handleNoMatch = (div) => {
     cardFirst.innerHTML = '';
     cardFirst = null;
     isLocked = false;
-  }, 700);  // 0.7秒の速度でノーペアのカードが伏せられる
+  }, 900);  // 0.9秒の速度でノーペアのカードが伏せられる
 };
 
 // カードをクリックした時の処理
