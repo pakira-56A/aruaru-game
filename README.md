@@ -1,6 +1,7 @@
 # [あるある神経衰弱：界隈探求ゲーム](https://aruaru-games.com/)
-- **OGP**　[RUNTEQ | ソーシャルポートフォリオ](https://school.runteq.jp/v3/social_portfolios/1093/web_applications/13)
-<img src="https://i.gyazo.com/f974550f90299f41f0773b6c31fc3db3.png" alt="Image from Gyazo" width="650"/>
+- このサービスを詳しく解説した Qiita記事も公開しました！
+  - [【個人開発】様々な界隈のあるあるを神経衰弱で遊び、Xで交流するサービスを作りました！](https://qiita.com/pakira-56A/items/8fde551e0e14520d6f3c)  
+    <img src="https://i.gyazo.com/f974550f90299f41f0773b6c31fc3db3.png" alt="Image from Gyazo" width="650"/>
 
 
 # ■ サービス概要
