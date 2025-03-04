@@ -14,7 +14,7 @@
 『`界隈のあるある`を、神経衰弱で遊ぶ』とはどういうことか、イメージしづらいかと思います。  
 以下が、『投稿された`コナンくん映画`という界隈のあるあるを、神経衰弱で遊ぶ』様子です！🃏
 
-<img src="https://i.gyazo.com/892f21e7ada508929638e838cc00d8f4.gif" alt="Image from Gyazo" width="450"/>
+<img src="https://i.gyazo.com/892f21e7ada508929638e838cc00d8f4.gif" alt="Image from Gyazo" width="500"/>
 
 以下に詳しく機能ごとの動画を貼ってますが
 ## [こちらは当サービスの全体の操作の流れを撮影したもの](https://drive.google.com/file/d/1ANewasmQ9Rs_Pi6g4G_ywwmX-Y41VhOE/preview)です
