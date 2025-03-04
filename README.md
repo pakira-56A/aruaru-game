@@ -1,6 +1,6 @@
 # [あるある神経衰弱：界隈探求ゲーム](https://aruaru-games.com/)
-- このサービスを詳しく解説した Qiita記事も公開しました！
-  - [【個人開発】様々な界隈のあるあるを神経衰弱で遊び、Xで交流するサービスを作りました！](https://qiita.com/pakira-56A/items/8fde551e0e14520d6f3c)  
+- 補足：このサービスを詳しく解説した Qiita記事も公開しています！
+  - [【個人開発】**様々な界隈のあるあるを神経衰弱で遊び、Xで交流するサービス**を作りました！](https://qiita.com/pakira-56A/items/8fde551e0e14520d6f3c)  
     <img src="https://i.gyazo.com/f974550f90299f41f0773b6c31fc3db3.png" alt="Image from Gyazo" width="650"/>
 
 
@@ -17,7 +17,7 @@
 <img src="https://i.gyazo.com/892f21e7ada508929638e838cc00d8f4.gif" alt="Image from Gyazo" width="500"/>
 
 以下に詳しく機能ごとの動画を貼ってますが
-## [こちらは当サービスの全体の操作の流れを撮影したもの](https://drive.google.com/file/d/1ANewasmQ9Rs_Pi6g4G_ywwmX-Y41VhOE/preview)です
+## [こちらのリンクは当サービスの全体の操作の流れを撮影したもの](https://drive.google.com/file/d/1ANewasmQ9Rs_Pi6g4G_ywwmX-Y41VhOE/preview)です
 ____
 # ■ このサービスへの思い・作った理由
 **コミュニケーションツールとして**
