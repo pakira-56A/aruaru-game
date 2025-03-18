@@ -1,6 +1,7 @@
 <div class="twitter">
   <%= link_to "https://twitter.com/intent/tweet?url=#{request.base_url}/games/#{post.id}/start&text=#{ERB::Util.url_encode("\n\n\n#{post.user.name}さんが思う\n##{post.title.gsub(/[^\p{Alnum}　\s]/u, '').gsub(/([ 　]+)/, '')} あるあるをシェア！\n#あるある神経衰弱\n")}",
       target: '_blank',
+      rel: 'noopener',   # 念の為追記
       data: { toggle: "tooltip", placement: "bottom" },
       title: "Xでシェア" do %>
     <%= image_tag 'xshare.svg', class: "h-6 w-6 drop-shadow-md hover:drop-shadow-none", id: 'image-xshare' %>
