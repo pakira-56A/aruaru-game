@@ -200,11 +200,12 @@ ___
 | フロントエンド | Rails 7.1.3, TailwindCSS, DaisyUI, JavaScript, Stimulus |
 | バックエンド | Rails 7.1.3 (Ruby 3.2.3 ) |
 | データベース | PostgreSQL |
-| インフラ | Render.com, [Uptime Robot](https://uptimerobot.com/), AWS S3 |
+| インフラ | Render.com, AWS S3 |
 | 認証 | [gem 'devise'](https://github.com/heartcombo/devise), [Omniauth](omniauth), Google認証 |
 | 開発環境 | Docker |
 | API | OpenAI |
 | アナリティクス | [Google Analytics](https://developers.google.com/analytics?hl=ja) |
+| スリープ対策 | [Uptime Robot](https://uptimerobot.com/)|
 
 ## [画面遷移図](https://www.figma.com/design/7i6BdzFdxvh2EU5cKqbr7q/%E3%81%82%E3%82%8B%E3%81%82%E3%82%8B%E7%A5%9E%E7%B5%8C%E8%A1%B0%E5%BC%B1%EF%BC%88%E6%9C%AC%E3%83%AA%E3%83%AA%E7%89%88%EF%BC%89?node-id=0-1&t=30LoFr3hdgxxuKdq-1)
 [![Image from Gyazo](https://i.gyazo.com/370df50dcc8384335f46adf9ec1943cb.jpg)](https://gyazo.com/370df50dcc8384335f46adf9ec1943cb)
@@ -213,5 +214,5 @@ ___
 - `遊んだみんなの感想をXで見る`ボタン：Xに遷移し、[#あるある神経衰弱](https://x.com/hashtag/%E3%81%82%E3%82%8B%E3%81%82%E3%82%8B%E7%A5%9E%E7%B5%8C%E8%A1%B0%E5%BC%B1?src=hashtag_click&f=live) がついたポストを見れます
 
 ## [ER図](https://dbdiagram.io/d/あるある神経衰弱-670531e2fb079c7ebdbde9aa)
-[![Image from Gyazo](https://i.gyazo.com/b7c00230b096af7a39f110cb9d8b3192.png)](https://gyazo.com/b7c00230b096af7a39f110cb9d8b3192)
+[![Image from Gyazo](https://i.gyazo.com/8101dc0aeeb517665877ea726ebbec2c.png)](https://gyazo.com/8101dc0aeeb517665877ea726ebbec2c)
 - あくまで投稿は`○○さんが思う△△あるある`という形で扱うため、`Posts`テーブルに`aruaru_one`~`aruaru_five`までを設けています
