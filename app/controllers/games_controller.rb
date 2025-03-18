@@ -20,9 +20,10 @@ class GamesController < ApplicationController
   def generate_and_save_ogp(post)
     begin
       image_data = OgpCreator.build("#{post.user.name}さんが思う\n#{post.title}")
-      Rails.logger.info("生成した動的OGP画像URL: #{post.ogp.url}")
+      # Rails.logger.info("生成した動的OGP画像URL: #{post.ogp.url}")
 
       post.update!(ogp: image_data)
+      # 動的OGPに不具合があった時用に、loggerを残してます
       Rails.logger.info("生成した動的OGP画像を保存: #{post.ogp.url}")
       post.ogp.url
 
