@@ -19,57 +19,57 @@
 
 /* ゲーム画面 （Tailwindに書き換えられず） */
 #panel {
-    background-color: rgba(233, 252, 255, 0.995);
-    border-radius: 10px;
-    width: 400px;
-    height: 550px;
-    overflow: hidden; }
+  background-color: rgba(233, 252, 255, 0.995);
+  border-radius: 10px;
+  width: 400px;
+  height: 550px;
+  overflow: hidden; }
 
 .card {
-    width: 180px;
-    height: 98px;
-    border-radius: 10px;
+  width: 180px;
+  height: 98px;
+  border-radius: 10px;
 
-    box-shadow: rgb(255, 115, 0) 0px 4px;
-    float: left;
-    margin: 5px 0px 6px 13px;
-    cursor: pointer;
+  box-shadow: rgb(255, 115, 0) 0px 4px;
+  float: left;
+  margin: 5px 0px 6px 13px;
+  cursor: pointer;
 
-    color: rgb(244, 0, 175);
-    text-align: center;
-    justify-content: center;
-    text-wrap: balance;
-    font-size: 15px;
-    font-weight: bold;
-    background: rgb(255, 255, 247);
+  color: rgb(244, 0, 175);
+  text-align: center;
+  justify-content: center;
+  text-wrap: balance;
+  font-size: 15px;
+  font-weight: bold;
+  background: rgb(255, 255, 247);
 
-    transform-style: preserve-3d; /* 3D効果を維持 */
-    -webkit-transform: rotateY(0.5turn);  /* 横に回転(古いブラウザ用) */
-    transform: rotateY(0.5turn);  /* 横に回転 */
-    -webkit-transition: transform 0.5s;  /* 回転する速度(古いブラウザ用) */
-    transition: transform 0.5s; } /* 回転する速度 */
+  transform-style: preserve-3d; /* 3D効果を維持 */
+  -webkit-transform: rotateY(0.5turn);  /* 横に回転(古いブラウザ用) */
+  transform: rotateY(0.5turn);  /* 横に回転 */
+  -webkit-transition: transform 0.5s;  /* 回転する速度(古いブラウザ用) */
+  transition: transform 0.5s; } /* 回転する速度 */
 
 /* カードが裏の状態 */
 .back {
-    background-size: 180px 98px;
-    background-image: url('game-cardback.png'); }
+  background-size: 180px 98px;
+  background-image: url('game-cardback.png'); }
 
 .back:hover {
-    box-shadow: none;
-    border: 2px solid rgb(255, 132, 0, 0.827); }
+  box-shadow: none;
+  border: 2px solid rgb(255, 132, 0, 0.827); }
 
 /* カードが表の状態 */
 .card:not(.back) { transform: rotateY(0); } /* 反転させない */
 
 /* ペアになったカード */
 .finish {
-    background-color: white;
-    box-shadow: none;
-    border: 2px solid rgb(255, 132, 0, 0.827); }
+  background-color: white;
+  box-shadow: none;
+  border: 2px solid rgb(255, 132, 0, 0.827); }
 
 
 
 /* ローディングアニメーション */
 .loaded {
-    opacity: 0;
-    display: none; }
+  opacity: 0;
+  display: none; }

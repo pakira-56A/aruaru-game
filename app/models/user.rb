@@ -3,9 +3,6 @@ class User < ApplicationRecord
 
   validates :name, presence: true, uniqueness: { case_sensitive: false }
 
-  has_one_attached :avatar
-  attr_accessor :remove_avatar
-
   validates :uid, presence: true, uniqueness: { scope: :provider }, if: -> { uid.present? }
 
   has_many :posts, dependent: :destroy
