@@ -73,4 +73,4 @@ ja:
     failure:
       unauthenticated: "Googleログインが必要だよ〜！"
     omniauth_callbacks:
-      success: "ログインできたよ！どのあるあるで遊ぶ？"
+      success: "ログインできたよ！"
