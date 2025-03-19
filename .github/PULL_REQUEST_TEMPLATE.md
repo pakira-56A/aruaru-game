@@ -1,11 +1,12 @@
 # 
 該当issue：#
+- https://aruaru-games.com/
 **できるようになったこと**
-- 
-  - https://aruaru-games.com/
-- 
-  - https://aruaru-games.com/
 
+| 変更前 | 変更後 |
+|--------|--------|
+|  |  |
+| <img src=".gif" alt="Image from Gyazo" height="500"/> | <img src=".gif" alt="Image from Gyazo" height="500"/> |
 ____
 **実装**
 [参考記事]()
