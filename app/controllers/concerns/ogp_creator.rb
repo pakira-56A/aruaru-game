@@ -16,6 +16,7 @@ class OgpCreator
     text_b = text_b.gsub("'", "’").force_encoding("UTF-8")
     image = MiniMagick::Image.open(BASE_IMAGE_PATH)
 
+    # 緑色はユーザー名、青色は投稿名を表記します
     image.combine_options do |config|
       config.font FONT
       config.fill "green"
