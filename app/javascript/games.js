@@ -101,7 +101,7 @@ const handleCardClick = (event) => {
 };
 
 // ページ読み込み時の処理
-document.addEventListener("turbo: load", () => {
+document.addEventListener("turbo:load", () => {
   resetGame();
 
   const closeButton = document.querySelector('.close-button');
@@ -133,7 +133,7 @@ document.addEventListener("turbo: load", () => {
     const cardNumbers = shuffleArray([...aruaruData, ...aruaruData]);
 
     cardNumbers.forEach((number, index) => {
-      const card = createCardElement(number, index); // 各データに対してカード要素を作成
+      const card = createCardElement(index, number); // 各データに対してカード要素を作成
       panel.appendChild(card);             // 作成したカード要素を、パネルに差し込み
       gameState.cards.push(card); }); }    // 生成したカードを、カードの配列に追加
   else {
