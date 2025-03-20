@@ -32,8 +32,8 @@ document.addEventListener("turbo:load", function() {
   const form = document.getElementById("myForm");
   if (form) {
     // AI生成のフォーム送信時の処理
-    form.addEventListener("submit", function(event) {
-      event.preventDefault(); // フォーム送信を停止
+    form.addEventListener("submit", function(event){
+      event.preventDefault(); // フォーム送信を停止し、アニメを表示する隙を与える
       showLoadingAnimation();
       this.submit();
     });
