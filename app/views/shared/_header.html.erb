@@ -1,16 +1,16 @@
 <div class="items-center">
   <div class="fixed z-50 w-full h-14 bg-yellow-50 shadow-md flex flex-wrap justify-evenly items-center">
 
-    <!-- 左：メニュー -->
-    <%= render 'shared/header/menu' %>
+    <!-- 左：ログイン状態に応じたコンテンツを表示 -->
+    <%= render 'shared/header/googleloginbutton_or_logo' %>
 
     <!-- 中央：検索フォーム -->
     <div class="h-8">
       <%= render 'shared/header/search_form', url: search_search_posts_path %>
     </div>
 
-    <!-- 右：ログイン状態に応じたコンテンツを表示 -->
-    <%= render 'shared/header/googleloginbutton_or_logo' %>
+    <!-- 右：メニュー -->
+    <%= render 'shared/header/menu' %>
 
   </div>
 </div>
