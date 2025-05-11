@@ -61,7 +61,7 @@ const handlePairMatch = (matchedCard) => {
     gameState.currentColorIndex   = (gameState.currentColorIndex + 1) % COLORS.length;
 
     if (gameState.countUnit === TOTAL_PAIRS) {
-      setTimeout(showModal, 5000);
+      setTimeout(showModal, 2500);
     }
     gameState.isLocked = false;
   }, 500);  // ペアなら、0.5秒の速度で文字の色が変わる
