@@ -50,7 +50,9 @@
             data-aruaru-five="<%= @post.aruaru_five %>">
     </div>
 
-    <%= render "shared/browser_back_button" %>
+    <% if @post.user.name != "OPEN_AI_ANSWER" %>
+        <%= render "shared/browser_back_button" %>
+    <% end %>
 
   </div>
 </div>
