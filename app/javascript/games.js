@@ -1,4 +1,4 @@
-console.log("games.js が読み込めました");
+// console.log("games.js が読み込めました");
 
 // ペア完成時の色を定義（左から緑、青、黄、オレンジ、赤）
 const COLORS = ['#00C000', '#0000FF', '#c5c500', '#f58500', '#ff0000'];
@@ -108,7 +108,7 @@ document.addEventListener("turbo:load", () => {
   if (closeButton) {
     closeButton.addEventListener('click', hideModal); }
   else {
-    console.warn('閉じるボタン見つかんない');
+    // console.warn('閉じるボタン見つかんない');
   }
 
   const postsDataElement = document.getElementById("posts-data");
@@ -117,13 +117,13 @@ document.addEventListener("turbo:load", () => {
     while (panel.firstChild) {  // 既存のカードを削除
       panel.removeChild(panel.firstChild); } }
   else {
-    console.warn('パネル要素がないよー');
+    // console.warn('パネル要素がないよー');
     return;
   }
 
   if (postsDataElement) {
     const POST_ID = postsDataElement.getAttribute("data-post-id");
-    console.log("投稿データを取得：", POST_ID);
+    // console.log("投稿データを取得：", POST_ID);
 
     // 各投稿データの属性からデータを取得し、配列に入れる
     const aruaruData = ['one', 'two', 'three', 'four', 'five'].map(num =>

@@ -1,4 +1,4 @@
-console.log("loading.js が読み込めました");
+// console.log("loading.js が読み込めました");
 
 document.addEventListener("turbo:load", function() {
   const links = document.querySelectorAll("a[data-loading]");
