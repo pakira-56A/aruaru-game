@@ -1,11 +1,9 @@
 class GamesController < ApplicationController
   def start
     @post = Post.find_by(id: params[:id])
-    # 投稿がないなら、404メッセージを表示
     return handle_404 if @post.nil?
 
     Rails.logger.info("ポストID: #{@post.id} を取得")
-    # AIが生成した投稿でなければ、動的OGPを生成
     generate_ogp if @post.user.name != "OPEN_AI_ANSWER"
   end
 
