@@ -51,6 +51,7 @@ const hideModal = () => {
 
 const handlePairMatch = (matchedCard) => {
   gameState.pairCount++;           // 一致したペアのカウントを1増す
+  const pairMatchDelay = 500;      // ペアなら、0.5秒の速度で文字の色が変わる
   setTimeout(() => {
     matchedCard.className           = CARD_FINISH_CLASS;                   // 完成として表示
     gameState.firstCard.className   = CARD_FINISH_CLASS;                   // 完成として表示
@@ -64,10 +65,11 @@ const handlePairMatch = (matchedCard) => {
       setTimeout(showModal, 2500);
     }
     gameState.isLocked = false;
-  }, 500);  // ペアなら、0.5秒の速度で文字の色が変わる
+  }, pairMatchDelay);
 };
 
 const handleNoMatch = (unmatchedCard) => {
+  const noMatchDelay = 900; // ノーペアなら、0.9秒の速度でカードが伏せられる
   setTimeout(() => {
     unmatchedCard.className = CARD_BACK_CLASS;
     unmatchedCard.innerHTML = '';
@@ -75,11 +77,11 @@ const handleNoMatch = (unmatchedCard) => {
     gameState.firstCard.innerHTML = '';
     gameState.firstCard = null;   // 最初のカードをクリア
     gameState.isLocked  = false;
-  }, 900);  // ノーペアなら、0.9秒の速度でカードが伏せられる
+  }, noMatchDelay);
 };
 
 const handleCardClick = (event) => {
-  const div = event.target;  //クリックされたたカードを取得
+  const div = event.currentTarget;  //クリックされたたカードを取得
 
   // カードがまだ裏向き、ノーペアがあり、ゲームがロックされてない状態かを確認
   if (div.className !== CARD_BACK_CLASS || gameState.pairCount === TOTAL_PAIRS || gameState.isLocked) return;
