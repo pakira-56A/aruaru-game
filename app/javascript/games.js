@@ -72,9 +72,9 @@ const handleNoMatch = (unmatchedCard) => {
   const noMatchDelay = 900; // ノーペアなら、0.9秒の速度でカードが伏せられる
   setTimeout(() => {
     unmatchedCard.className = CARD_BACK_CLASS;
-    unmatchedCard.innerHTML = '';
+    unmatchedCard.textContent = '';
     gameState.firstCard.className = CARD_BACK_CLASS;
-    gameState.firstCard.innerHTML = '';
+    gameState.firstCard.textContent = '';
     gameState.firstCard = null;   // 最初のカードをクリア
     gameState.isLocked  = false;
   }, noMatchDelay);
@@ -87,7 +87,7 @@ const handleCardClick = (event) => {
   if (div.className !== CARD_BACK_CLASS || gameState.pairCount === TOTAL_PAIRS || gameState.isLocked) return;
 
   div.className = CARD_FRONT_CLASS;
-  div.innerHTML = div.number;
+  div.textContent = div.number;
 
   if (gameState.isFirstCard) {
     gameState.firstCard = div;       // 1枚目のカードを保存
