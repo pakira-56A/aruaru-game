@@ -8,10 +8,10 @@ const CARD_FINISH_CLASS = 'card finish';
 const CARD_FRONT_CLASS  = 'card';
 
 const resetGameState = { // 初期値を定義
-  cards:     [],         // 生成されたカード要素を格納する配列は、空
-  flgFirst:  true,       // 1枚目のカードかどうかを示すフラグ
-  cardFirst: null,       // 1枚目にめくられたカードを保持する変数
-  countUnit: 0,          // 見つけたペアの数
+  cards:       [],       // 生成されたカード要素を格納する配列は、空
+  isFirstCard: true,     // 1枚目のカードかどうかを示すフラグ
+  firstCard:   null,     // 1枚目にめくられたカードを保持する変数
+  pairCount:   0,        // 見つけたペアの数
   currentColorIndex: 0,  // どの色を次に使うかを追跡するためのインデックス
   isLocked:  false       // ゲームのカードが選択できない状態（ロック状態）にされているかどうか
 };
@@ -50,17 +50,17 @@ const hideModal = () => {
 };
 
 const handlePairMatch = (matchedCard) => {
-  gameState.countUnit++;           // 一致したペアのカウントを1増す
+  gameState.pairCount++;           // 一致したペアのカウントを1増す
   setTimeout(() => {
     matchedCard.className           = CARD_FINISH_CLASS;                   // 完成として表示
-    gameState.cardFirst.className   = CARD_FINISH_CLASS;                   // 完成として表示
+    gameState.firstCard.className   = CARD_FINISH_CLASS;                   // 完成として表示
     matchedCard.style.color         = COLORS[gameState.currentColorIndex]; // 色を設定
-    gameState.cardFirst.style.color = COLORS[gameState.currentColorIndex];
+    gameState.firstCard.style.color = COLORS[gameState.currentColorIndex];
 
     // 次に使用する色のインデックスを更新し、リストの終わりに達したら最初に戻る
     gameState.currentColorIndex   = (gameState.currentColorIndex + 1) % COLORS.length;
 
-    if (gameState.countUnit === TOTAL_PAIRS) {
+    if (gameState.pairCount === TOTAL_PAIRS) {
       setTimeout(showModal, 2500);
     }
     gameState.isLocked = false;
@@ -71,9 +71,9 @@ const handleNoMatch = (unmatchedCard) => {
   setTimeout(() => {
     unmatchedCard.className = CARD_BACK_CLASS;
     unmatchedCard.innerHTML = '';
-    gameState.cardFirst.className = CARD_BACK_CLASS;
-    gameState.cardFirst.innerHTML = '';
-    gameState.cardFirst = null;   // 最初のカードをクリア
+    gameState.firstCard.className = CARD_BACK_CLASS;
+    gameState.firstCard.innerHTML = '';
+    gameState.firstCard = null;   // 最初のカードをクリア
     gameState.isLocked  = false;
   }, 900);  // ノーペアなら、0.9秒の速度でカードが伏せられる
 };
@@ -82,22 +82,22 @@ const handleCardClick = (event) => {
   const div = event.target;  //クリックされたたカードを取得
 
   // カードがまだ裏向き、ノーペアがあり、ゲームがロックされてない状態かを確認
-  if (div.className !== CARD_BACK_CLASS || gameState.countUnit === TOTAL_PAIRS || gameState.isLocked) return;
+  if (div.className !== CARD_BACK_CLASS || gameState.pairCount === TOTAL_PAIRS || gameState.isLocked) return;
 
   div.className = CARD_FRONT_CLASS;
   div.innerHTML = div.number;
 
-  if (gameState.flgFirst) {
-    gameState.cardFirst = div;     // 1枚目のカードを保存
-    gameState.flgFirst  = false; } // 1枚目のフラグを更新
-  else {                           // ２枚目がクリックされたら
+  if (gameState.isFirstCard) {
+    gameState.firstCard = div;       // 1枚目のカードを保存
+    gameState.isFirstCard = false; } // 1枚目のフラグを更新
+  else {                             // ２枚目がクリックされたら
     gameState.isLocked = true;
-    if (gameState.cardFirst.number === div.number) {
+    if (gameState.firstCard.number === div.number) {
       handlePairMatch(div); }
     else {
       handleNoMatch(div);
     }
-    gameState.flgFirst = true; }   // フラグを戻し、次のクリックが可能にする
+    gameState.isFirstCard = true; }   // フラグを戻し、次のクリックが可能にする
 };
 
 // ページ読み込み時の処理
