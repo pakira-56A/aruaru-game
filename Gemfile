@@ -21,6 +21,7 @@ gem "devise-i18n"
 gem "devise-i18n-views"
 
 gem "ruby-openai"
+gem "rack", ">= 3.2.6"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.2.0"

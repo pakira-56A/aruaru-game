@@ -299,7 +299,7 @@ GEM
     puma (6.4.3)
       nio4r (~> 2.0)
     racc (1.8.1)
-    rack (3.2.5)
+    rack (3.2.6)
     rack-protection (4.0.0)
       base64 (>= 0.1.0)
       rack (>= 3.0.0, < 4)
@@ -506,6 +506,7 @@ DEPENDENCIES
   pg (~> 1.1)
   pry-byebug
   puma (>= 6.4.3)
+  rack (>= 3.2.6)
   rails (~> 7.2.0)
   rails-i18n
   ransack
