@@ -1,0 +1,25 @@
+version: 2
+updates:
+  # 1. JavaScript (package.json) の更新
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+
+  # 2. Ruby (Gemfile) の更新
+  - package-ecosystem: "bundler"
+    directory: "/"
+    schedule:
+      interval: "daily"
+
+  # 3. Docker (Dockerfile) の更新
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "daily"
+
+  # 4. GitHub Actions (.github/workflows/*.yml) の更新
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
