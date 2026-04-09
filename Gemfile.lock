@@ -303,7 +303,7 @@ GEM
     rack-protection (4.0.0)
       base64 (>= 0.1.0)
       rack (>= 3.0.0, < 4)
-    rack-session (2.1.1)
+    rack-session (2.1.2)
       base64 (>= 0.1.0)
       rack (>= 3.0.0)
     rack-test (2.2.0)
@@ -507,6 +507,7 @@ DEPENDENCIES
   pry-byebug
   puma (>= 6.4.3)
   rack (>= 3.2.6)
+  rack-session (>= 2.1.2)
   rails (~> 7.2.0)
   rails-i18n
   ransack
