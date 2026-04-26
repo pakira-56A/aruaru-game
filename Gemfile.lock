@@ -128,7 +128,7 @@ GEM
     diff-lcs (1.5.1)
     dotenv (3.1.4)
     drb (2.2.3)
-    erb (6.0.2)
+    erb (6.0.4)
     erubi (1.13.1)
     event_stream_parser (1.0.0)
     excon (0.112.0)
