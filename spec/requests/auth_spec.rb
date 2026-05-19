@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe "Auth", type: :request do
-
   describe "JWTセキュリティ検証" do
     it '空の秘密鍵で偽造されたJWTトークンを拒否すること' do
       expect {
@@ -41,5 +40,4 @@ RSpec.describe "Auth", type: :request do
       expect(response).to redirect_to('/posts/myindex')
     end
   end
-
 end
