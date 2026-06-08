@@ -12,7 +12,7 @@ gem "dotenv"
 # 動的OGP用
 gem "mini_magick"
 gem "meta-tags", require: "meta_tags"
-gem "carrierwave", "~> 3.0"
+gem "carrierwave", "~> 3.1"
 gem "fog-aws"
 
 gem "ransack"
