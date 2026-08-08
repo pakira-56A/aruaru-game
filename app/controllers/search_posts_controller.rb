@@ -10,7 +10,9 @@ class SearchPostsController < ApplicationController
   end
 
   def autocomplete
-    @posts = search_posts(params[:q]).where.not(user: User.find_by(name: "OPEN_AI_ANSWER"))
+    query = params[:q].to_s
+    # qが未指定・空のときは候補なしを返す（nilのまま search_posts に渡すと tr で落ちるのを防ぐ）
+    @posts = query.blank? ? Post.none : search_posts(query).where.not(user: User.find_by(name: "OPEN_AI_ANSWER"))
     respond_to do |format|
       format.js
       format.json { render json: @posts.pluck(:title) }
