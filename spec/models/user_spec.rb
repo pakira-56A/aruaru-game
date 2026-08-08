@@ -49,6 +49,22 @@ RSpec.describe User, type: :model do
         expect { User.from_omniauth(auth) }.not_to change(User, :count)
         expect(User.from_omniauth(auth)).to eq(existing)
       end
+
+      it '既存ユーザーに provider/uid を紐付ける' do
+        existing = create(:user, email: "omni@example.com", provider: "password", uid: nil)
+        User.from_omniauth(auth)
+        expect(existing.reload.provider).to eq("google_oauth2")
+        expect(existing.uid).to eq("omniauth_uid_1")
+      end
+
+      it '紐付け後は次回以降 uid で本人を特定できる（アカウントが分裂しない）' do
+        create(:user, email: "omni@example.com", provider: "password", uid: nil)
+        first = User.from_omniauth(auth)
+        expect {
+          second = User.from_omniauth(auth)
+          expect(second).to eq(first)
+        }.not_to change(User, :count)
+      end
     end
 
     context '完全に新規のユーザーの場合' do
