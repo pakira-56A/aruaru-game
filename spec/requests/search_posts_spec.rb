@@ -23,5 +23,12 @@ RSpec.describe "SearchPosts", type: :request do
       get autocomplete_search_posts_path(q: "野球"), as: :json
       expect(JSON.parse(response.body)).not_to include("AI野球あるある")
     end
+
+    it 'qが未指定でも500にならず、空のサジェストを返す' do
+      create(:post, title: "野球あるある")
+      get autocomplete_search_posts_path, as: :json
+      expect(response).to be_successful
+      expect(JSON.parse(response.body)).to eq([])
+    end
   end
 end
