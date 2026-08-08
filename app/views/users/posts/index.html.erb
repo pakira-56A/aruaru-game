@@ -12,6 +12,9 @@
   <div class="pb-4">
     <%= render "shared/xreview_button" %>
   </div>
+  <div class="mt-3 pb-4">
+    <%= render "shared/posts/tag_index_button", text: "# 自分のタグ一覧", url: myindex_tags_path %>
+  </div>
 </div>
 
   <%= render 'shared/posts/existence_or_empty', post: @posts %>
