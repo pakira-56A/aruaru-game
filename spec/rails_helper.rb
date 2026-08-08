@@ -71,4 +71,13 @@ RSpec.configure do |config|
 
   # FactoryBotの設定をを追加
   config.include FactoryBot::Syntax::Methods
+
+  # Deviseのテストヘルパー（request specで sign_in / sign_out が使える）
+  config.include Devise::Test::IntegrationHelpers, type: :request
+
+  # OmniAuthのモック設定を各テスト後にリセットし、テスト間の汚染を防ぐ
+  config.after(:each) do
+    OmniAuth.config.test_mode = false
+    OmniAuth.config.mock_auth[:google_oauth2] = nil
+  end
 end
