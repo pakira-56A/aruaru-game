@@ -9,6 +9,10 @@
     </div>
   </div>
 
+  <div class="mt-2 pb-4">
+    <%= render "shared/posts/tag_index_button", text: "# タグから探す", url: tags_path %>
+  </div>
+
   <%= render 'shared/posts/existence_or_empty', post: @posts %>
 
 </div>
