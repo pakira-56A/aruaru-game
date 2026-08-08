@@ -25,6 +25,11 @@ RSpec.describe "Posts", type: :request do
       expect(response.body).not_to include(hidden.title)
     end
 
+    it 'タグ一覧への導線を表示する' do
+      get posts_path
+      expect(response.body).to include(tags_path)
+    end
+
     it 'ログイン中は自分の投稿を除外して表示する' do
       own = create(:post, title: "自分の投稿", user: user)
       other = create(:post, title: "他人の投稿")
@@ -52,6 +57,12 @@ RSpec.describe "Posts", type: :request do
 
       expect(response).to be_successful
       expect(response.body).to include(own.title)
+    end
+
+    it '自分のタグ一覧への導線を表示する' do
+      sign_in user
+      get myindex_posts_path
+      expect(response.body).to include(myindex_tags_path)
     end
   end
 
