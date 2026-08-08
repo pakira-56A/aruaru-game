@@ -1,22 +1,22 @@
 class TagsController < ApplicationController
+  before_action :custom_authenticate_user!, only: :myindex
+
   def index
-    @tags = Tag.all
+    @tags = Tag.with_posts
+    @heading = "タグ一覧"
+    @intro = "気になる界隈のタグを選んで遊んでみよう！"
+    render :index
+  end
+
+  def myindex
+    @tags = Tag.posted_by(current_user)
+    @heading = "自分のタグ一覧"
+    @intro = "自分が投稿した界隈のタグだよ"
+    render :index
   end
 
   def show
     @tag = Tag.find(params[:id])
     @posts = @tag.posts.order(created_at: :desc)
-  end
-
-  def destroy
-    Tag.find(params[:id]).destroy()
-    redirect_to tags_path
-  end
-
-  private
-
-  def post_params
-    params.require(:post)
-    .permit(:title, :aruaru_one, :aruaru_two, :aruaru_three, :aruaru_four, :aruaru_five)
   end
 end
