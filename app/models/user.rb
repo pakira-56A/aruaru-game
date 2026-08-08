@@ -14,6 +14,9 @@ class User < ApplicationRecord
     if user.new_record?
       existing_user = find_by(email: auth.info.email)
       if existing_user
+        # 同じメールの既存ユーザーが見つかった場合、provider/uidを紐付けておく。
+        # これをしないと次回以降も毎回メール照合になり、メール変更時にアカウントが分裂しうる。
+        existing_user.update(provider: auth.provider, uid: auth.uid)
         user = existing_user
       else
         user.name = auth.info.name
