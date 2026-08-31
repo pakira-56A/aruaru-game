@@ -6,9 +6,14 @@ Git / PR / コミット / デプロイ分担・スキルなど**プロダクト�
 
 ## このアプリの前提
 - Rails 7.2.3.2 / Ruby 3.2.3 / PostgreSQL。**Docker Compose で動作**。
-- **コマンドは常時起動中のコンテナ内で実行**する（ホストには gem や curl が無い）。
+- **コマンドはコンテナ内で実行するのが基本**。
   - web コンテナ名: `aruaru-game-web-1`（作業ディレクトリ `/myapp`）、DB ホストは `db`。
+  - ホストからも実行できる（gem・curl はあり、DB は 5433 で公開）。手順は
+    [docs/development.md](docs/development.md#ホストから直接実行することもできる)。
+    テストだけならこちらが速い。
 - テストの外部依存（OpenAI・OGP 生成/MiniMagick）は**必ずスタブ**する。
+- **テストは `bin/test` で流す**（成功時 1 行・失敗時は従来どおり詳細。全文は
+  `tmp/test-logs/` に残る）。対話デバッグが要るときだけ `VERBOSE=1` を付ける。
 - push 前に **rspec 全緑 + rubocop no offenses** を確認。
 
 ## グラウンディング資料（docs/）
