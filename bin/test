@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+#
+# 成功したときは 1 行だけ、失敗したときだけ詳しく出す rspec ラッパー。
+#
+# なぜ: AI コーディングエージェントにテストを回させると、rspec の出力が丸ごと
+# 会話に入る。全部通ったときのログは進捗ドットと環境の警告ばかりで読む値打ちが
+# 無いのに、テストの本数に比例して膨らみ、コンテキスト（トークン）を食う。
+# 成功時は捨てて失敗時だけ出せば、読む必要のある情報は 1 行も減らさずに
+# 消費だけ落とせる。
+#
+# 出力は常に全文をファイルに残すので、隠れるだけで失われへん。
+#
+# 使い方:
+#   bin/test                      # 全部
+#   bin/test spec/models          # 一部だけ
+#   bin/test --seed 1234          # rspec の引数はそのまま渡る
+#   VERBOSE=1 bin/test            # 成功時も全文を出す
+
+set -uo pipefail
+
+cd "$(dirname "$0")/.." || exit 1
+
+LOG_DIR="tmp/test-logs"
+mkdir -p "$LOG_DIR"
+LOG="$LOG_DIR/rspec-$(date +%Y%m%d-%H%M%S).log"
+
+bundle exec rspec "$@" > "$LOG" 2>&1
+status=$?
+
+# 古いログは 10 本だけ残す（ここが無いと tmp が延々太る）
+ls -1t "$LOG_DIR"/rspec-*.log 2>/dev/null | tail -n +11 | xargs -I{} rm -f {}
+
+total_lines=$(wc -l < "$LOG" | tr -d ' ')
+# 「93 examples, 0 failures」の行。rspec のバージョンで表記が揺れても
+# 見つからんかったときは status で判断するので致命的にはならん。
+summary=$(grep -E '^[0-9]+ examples?, [0-9]+ failures?' "$LOG" | tail -1)
+
+if [ "${VERBOSE:-}" = "1" ]; then
+  cat "$LOG"
+  exit "$status"
+fi
+
+if [ "$status" -eq 0 ]; then
+  echo "OK  ${summary:-すべて成功}  （出力 ${total_lines} 行は $LOG に格納）"
+  exit 0
+fi
+
+echo "NG  ${summary:-rspec が失敗}"
+echo
+
+if grep -q '^Failures:' "$LOG"; then
+  # 失敗した example の詳細。ここは削らへん——読む値打ちがあるのはここだけ
+  sed -n '/^Failures:/,/^Finished in/p' "$LOG"
+  echo
+  # 再現用のコマンド
+  sed -n '/^Failed examples:/,$p' "$LOG"
+else
+  # example が 1 本も走らんかった型（読み込みエラー、DB 未接続など）。
+  # この場合 Failures: セクションが出えへんので、別に拾う必要がある
+  echo "--- example が実行されてへん。読み込み時のエラー ---"
+  grep -E 'An error occurred while loading|Failure/Error:|Error:' "$LOG" | head -20
+fi
+
+echo
+echo "全文（${total_lines} 行）: $LOG"
+exit "$status"
