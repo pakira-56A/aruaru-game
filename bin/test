@@ -17,15 +17,14 @@
 #   bin/test                    # 全部流す
 #   bin/test spec/models        # 一部だけ流す
 #   bin/test --seed 1234        # rspec の引数はそのまま渡せる
-#   VERBOSE=1 bin/test          # 成功しても全文を出す（今までと同じ挙動）
+#   VERBOSE=1 bin/test          # 素通し。bundle exec rspec を直接叩いたのと同じ
 #
 # このリポジトリはコンテナ内で動かす前提なので、普段はこう叩く。
 #
 #   docker exec aruaru-game-web-1 bin/test
 #
-# 注意: spec に binding.pry や debugger を書いたまま流すと、rspec の入力待ちが
-# ファイル側に隠れて画面が固まったように見える。デバッガを仕掛けたときは
-# VERBOSE=1 を付けること。
+# binding.pry / debugger を使いたいときは VERBOSE=1 を付ける。
+# 付けずに流した場合、デバッガは止まらずに素通りする（画面が固まることはない）。
 #
 # ============================================================================
 # AI コーディングエージェント（Claude Code など）向け
@@ -42,7 +41,11 @@
 # 判断に使えない部分だけを画面から外す。実測で 8,139 バイト → 103 バイト。
 #
 # 失敗の詳細を読み切れないときや、成功時のログを検分する必要があるときは、
-# 最後の行に出るパスをそのまま読むか、VERBOSE=1 を付けて流し直すこと。
+# 最後の行に出るパスをそのまま読むこと（VERBOSE=1 でも流し直せるが、
+# 素通しモードなので出力が丸ごと会話に入る。節約の意味は無くなる）。
+#
+# なお通常モードは stdin を切ってあるので、spec に binding.pry が残っていても
+# 待ちに入らず素通りする。エージェントの実行が固まることはない。
 #
 # 着想: https://x.com/kenn/status/2093701458445439033
 # ============================================================================
@@ -59,7 +62,18 @@ mkdir -p "$LOG_DIR"
 # 片方がもう片方の結果を自分のものとして報告してしまう。PID で分ける。
 LOG="$LOG_DIR/rspec-$(date +%Y%m%d-%H%M%S)-$$.log"
 
-bundle exec rspec "$@" > "$LOG" 2>&1
+# VERBOSE=1 は素通しモード。rspec をそのまま実行して、出力も入力もこの端末に
+# 直結させる。全文が流れるうえ、binding.pry / debugger も普通に使える。
+# ログは書かない（画面に全部出ているものを二重に持つ意味が無いため）。
+if [ "${VERBOSE:-}" = "1" ]; then
+  exec bundle exec rspec "$@"
+fi
+
+# 通常モードでは stdin を切る。spec に binding.pry が残ったまま流れると、
+# rspec は入力を待つのにプロンプトはログ側へ消えるので、端末から見ると
+# 無言で固まったようにしか見えない。切っておけば待たずに素通りして終わる。
+# 対話デバッグが要るときは上の VERBOSE=1 を使う。
+bundle exec rspec "$@" > "$LOG" 2>&1 < /dev/null
 status=$?
 
 # 古いログは 10 本だけ残す（これが無いと tmp が延々太る）
@@ -69,11 +83,6 @@ total_lines=$(wc -l < "$LOG" | tr -d ' ')
 # 「93 examples, 0 failures」の行。rspec の版で表記が揺れて拾えなくても、
 # 成否の判定自体は終了コードで行うので致命傷にはならない。
 summary=$(grep -E '^[0-9]+ examples?, [0-9]+ failures?' "$LOG" | tail -1)
-
-if [ "${VERBOSE:-}" = "1" ]; then
-  cat "$LOG"
-  exit "$status"
-fi
 
 if [ "$status" -eq 0 ]; then
   echo "OK  ${summary:-すべて成功}  （出力 ${total_lines} 行は $LOG に格納）"
