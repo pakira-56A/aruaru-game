@@ -4,8 +4,29 @@
 - Rails 7.2.3.2 / Ruby 3.2.3 / PostgreSQL。**Docker Compose で動作**。
 - アプリは常時起動しているコンテナ内で動く。
   - web コンテナ名: `aruaru-game-web-1`（作業ディレクトリ `/myapp`）
-  - DB ホストは `db`（`config/database.yml`）。**ホスト直では DB につながらない**。
-- ホストには gem や `curl` が入っていない。**コマンドは必ずコンテナ内で実行する**。
+  - `config/database.yml` の DB ホストは `db`。これはコンテナ内から見た名前。
+- **コンテナ内で実行するのが基本**。以下のコマンド例もその前提で書いている。
+
+### ホストから直接実行することもできる
+以前ここには「ホストには gem や `curl` が入っていない」「ホスト直では DB に
+つながらない」と書いてあったが、**2026-08-31 の実測ではどちらも当てはまらなかった**。
+
+- `bundle` / `ruby`（3.2.3）は rbenv 配下に入っている。`curl` もある
+- `compose.yml` が **5433 → 5432** を公開しているので、`DATABASE_URL` で上書きすれば
+  ホストから DB に届く
+
+テストだけ流したいときは、**web コンテナを起動せずに済むぶんこちらが速い**
+（web の起動は `bundle install` と `yarn` が走る）。
+
+```bash
+docker compose up -d db      # db だけで足りる
+export DATABASE_URL="postgres://postgres:password@localhost:5433/myapp_test"
+export RAILS_ENV=test
+bundle exec rails db:prepare
+bin/test
+```
+
+ホスト側の Ruby やバージョン管理の状態に依存するので、**動かなければコンテナ内で実行する**。
 
 ## よく使うコマンド
 ```bash
