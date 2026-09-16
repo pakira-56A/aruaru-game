@@ -10,7 +10,9 @@ Git / PR / コミット / デプロイ分担・スキルなど**プロダクト�
   - web コンテナ名: `aruaru-game-web-1`（作業ディレクトリ `/myapp`）、DB ホストは `db`。
   - ホストからも実行できる（gem・curl はあり、DB は 5433 で公開）。手順は
     [docs/development.md](docs/development.md#ホストから直接実行することもできる)。
-    テストだけならこちらが速い。
+    テストだけならこちらが速い。**ホスト実行時は `bin/test-host` を使う**
+    （db起動 → DATABASE_URL上書き → db:prepare → bin/test を1コマンド化。
+    手動でやると `DATABASE_URL` の上書き忘れで接続がハングする事故が起きる）。
 - テストの外部依存（OpenAI・OGP 生成/MiniMagick）は**必ずスタブ**する。
 - **テストは `bin/test` で流す**（成功時 1 行・失敗時は従来どおり詳細。全文は
   `tmp/test-logs/` に残る）。対話デバッグが要るときだけ `VERBOSE=1` を付ける。
