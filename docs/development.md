@@ -28,6 +28,16 @@ bin/test
 
 ホスト側の Ruby やバージョン管理の状態に依存するので、**動かなければコンテナ内で実行する**。
 
+上の手順を毎回手打ちすると、`DATABASE_URL` の上書きを忘れて `config/database.yml` の
+デフォルト host（`db`、コンテナ内専用）のまま接続を試み、DNS 解決が外部 IP に飛んで
+タイムアウトするまで気づけない事故が起きる（2026-09-16 に実際発生）。
+**`bin/test-host` はこの手順をまとめたラッパー**なので、通常はこちらを使う。
+
+```bash
+bin/test-host                # 全部流す
+bin/test-host spec/models    # 一部だけ（引数はそのまま bin/test に渡る）
+```
+
 ## よく使うコマンド
 ```bash
 docker exec aruaru-game-web-1 bin/test                     # テスト（推奨。出力を最小化）

@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+#
+# ホストから直接テストだけ流すときの決め打ちラッパー。
+#
+# docs/development.md の「ホストから直接実行することもできる」に書いてある手順
+# （db コンテナだけ起動 → DATABASE_URL を明示的に上書き → db:prepare → bin/test）
+# を1コマンドにまとめたもの。
+#
+# 経緯（2026-09-16）: これを知らずに `bundle exec rails db:prepare` を直接叩くと、
+# config/database.yml のデフォルト host（"db"、コンテナ内専用のサービス名）のまま
+# 接続を試みてしまい、DNS解決が謎の外部IPに繋がってタイムアウトするまで
+# 長時間気づけない。docs を読み忘れても事故らないよう、手順そのものをコマンド化した。
+#
+#   bin/test-host                # 全部流す
+#   bin/test-host spec/models    # 一部だけ流す（引数はそのまま bin/test に渡る）
+#
+set -euo pipefail
+
+cd "$(dirname "$0")/.." || exit 1
+
+# --wait はヘルスチェックが通るまで待ち、通らなければ非ゼロで終了する
+# （手動のポーリングだと、タイムアウトしても気づかず db:prepare に進んでしまう）
+docker compose up -d --wait db
+
+export DATABASE_URL="postgres://postgres:password@localhost:5433/myapp_test"
+export RAILS_ENV=test
+bundle exec rails db:prepare
+
+exec bin/test "$@"
