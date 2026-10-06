@@ -11,6 +11,17 @@ RSpec.describe "Games", type: :request do
       expect(response.body).to include(post.title)  # 投稿データのタイトルが含まれているか確認
     end
 
+    it "ユーザー名とタイトルに含まれるHTMLをエスケープして表示する" do
+      user = create(:user, name: "<script>alert(1)</script>")
+      xss_post = create(:post, user: user, title: "<img src=x onerror=alert(2)>")
+
+      get start_game_path(xss_post.id)
+
+      expect(response.body).not_to include("<script>alert(1)</script>")
+      expect(response.body).not_to include("<img src=x onerror=alert(2)>")
+      expect(response.body).to include("&lt;script&gt;alert(1)&lt;/script&gt;さんが思う<br>")
+    end
+
     it "存在しないIDの場合は404扱いでpostsにリダイレクトする" do
       get start_game_path(id: 999999)
       expect(response).to redirect_to(posts_path)
