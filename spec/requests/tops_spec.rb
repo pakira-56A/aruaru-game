@@ -43,3 +43,20 @@ RSpec.describe "Tops", type: :request do
     end
   end
 end
+
+RSpec.describe "ページタイトル", type: :request do
+  it 'トップページは既定のタイトル' do
+    get root_path
+    expect(response.body).to include("<title>あるある神経衰弱：界隈探求ゲーム</title>")
+  end
+
+  it '規約ページはページ名入りのタイトル' do
+    get "/term"
+    expect(response.body).to include("<title>利用規約 | あるある神経衰弱</title>")
+  end
+
+  it '界隈一覧はページ名入りのタイトル' do
+    get tags_path
+    expect(response.body).to include("<title>タグ一覧 | あるある神経衰弱</title>")
+  end
+end
