@@ -59,4 +59,15 @@ RSpec.describe "ページタイトル", type: :request do
     get tags_path
     expect(response.body).to include("<title>タグ一覧 | あるある神経衰弱</title>")
   end
+
+  it '2つ目の<title>（display_meta_tags由来）も同じページ名を含む' do
+    # レイアウトの<title>とdisplay_meta_tagsが出す<title>、2つの<title>タグが
+    # 存在する。どちらが表示されるかはブラウザの実装に依存して不安定になるため、
+    # 両方が同じページ名を含むことを確認する（2026-10-08、本番環境で片方だけ
+    # 表示される現象が実際に起きた）。
+    get "/term"
+    titles = response.body.scan(%r{<title>(.*?)</title>})
+    expect(titles.size).to eq(2)
+    expect(titles.flatten).to all(include("利用規約"))
+  end
 end
