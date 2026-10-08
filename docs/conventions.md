@@ -18,6 +18,7 @@ aruaru-game を触るときに従う実装パターンと、踏みやすい罠�
 - **`posts#create`/`update` は `params[:post][:tag]` を `save_tags` に渡す**。tag パラメータが nil だと `nil.split` で落ちる。フォーム/テストで tag を渡す。
 - **factory `user` の name/uid は sequence**。固定値で複数生成すると一意性で落ちる。
 - **`tags#destroy` は削除済み**（到達不能な死にコードだった）。復活させない。未認証で危険。
+- **レイアウトに `<title>` を2つ出さない**。`application.html.erb` 自前の `<title>`（`content_for :title`）と、`display_meta_tags(default_meta_tags)` が出す `<title>` が両方存在すると、どちらがタブに表示されるかブラウザの実装に依存して不安定になる（PR #450、本番で`/policy`だけタブが変わらない現象が実際に起きた）。ページごとにタイトルを変えたいときは、`ApplicationHelper#default_meta_tags` の `content_for(:title)` 連動（現状の実装）を維持し、両方の `<title>` の中身を一致させる。テストは `spec/requests/tops_spec.rb`「2つ目の`<title>`（display_meta_tags由来）も同じページ名を含む」を参考に、2つ目のtitleタグも確認する。
 
 ## テスト方針（詳細は development.md）
 - request spec は Devise ヘルパー（`sign_in`）。外部依存（OpenAI / OgpCreator）は必ずスタブ。
