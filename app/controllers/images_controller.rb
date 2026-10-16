@@ -7,6 +7,7 @@ class ImagesController < ApplicationController
       Rails.logger.info("ogpのイメージを出力") # 動的OGPに不具合があった時用に、loggerを残してます
     rescue StandardError => e
       Rails.logger.error("ogpメソッド実行中にエラー発生: #{e.message}")
+      head :internal_server_error
     end
   end
 

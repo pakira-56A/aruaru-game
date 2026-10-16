@@ -7,7 +7,7 @@
 
   <% if alert.present? %>
     <p class="my-2 py-2 px-3 bg-orange-50 text-red-500 font-bold rounded-lg border-2 border-orange-400 inline-block" id="alert">
-    <%= alert.html_safe %></p>
+    <%= safe_join(alert.to_s.split("\n"), tag.br) %></p>
   <% end %>
 
 </div>

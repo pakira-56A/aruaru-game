@@ -11,7 +11,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     elsif resource.update(params)
       true
     else
-      flash.now[:alert] = I18n.t("devise.registrations.edit.name_taken", html: true)
+      flash.now[:alert] = I18n.t("devise.registrations.edit.name_taken")
       false
     end
   end

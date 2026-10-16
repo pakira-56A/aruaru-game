@@ -52,6 +52,15 @@ RSpec.describe "Users::Registrations", type: :request do
       expect(response).not_to redirect_to(myindex_posts_path)
     end
 
+    it '名前が重複したときのアラートは、改行が<br>になり、文言はエスケープされて表示される' do
+      create(:user, name: "先客")
+      sign_in user
+
+      put user_registration_path, params: { user: { name: "先客" } }
+
+      expect(response.body).to include("すでに使われてるお名前だから<br>表記かえたり")
+    end
+
     it '大文字小文字だけ違う名前も重複として拒否される' do
       create(:user, name: "Alice")
       sign_in user

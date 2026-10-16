@@ -30,9 +30,13 @@
 | GET `/likes` | `likes#index` | **要** | html | いいね一覧 |
 | POST `/likes` | `likes#create` | **要** | **turbo_stream** | `params[:post_id]`。`create.turbo_stream.erb` |
 | DELETE `/likes/:id` | `likes#destroy` | **要** | **turbo_stream** | `:id` は Like の id |
-| GET `/images/ogp.png` | `images#ogp` | 不要 | **image/png** | `OgpCreator.build(text)` を `send_data` |
+| GET `/images/ogp.png` | `images#ogp` | 不要 | **image/png** | `OgpCreator.build(text)` を `send_data`。生成で例外が出たら本文なしの **500** |
+| GET `/up` | `rails/health#show` | 不要 | html | ヘルスチェック。本番の Host 制限・HTTPS リダイレクトの対象外 |
 
 ## Devise 関連
+- ログインは Google のみ。メール+パスワードのログイン画面（`sessions#new/create`）のルートは作っていない（`devise_for ... skip: :sessions`）。
+- Google ログインの開始（`/users/auth/google_oauth2`）は **POST のみ**。ログインボタンは `button_to`。
+- ログアウトは **DELETE `/users/sign_out`**（`devise/sessions#destroy`）。ヘッダーのメニューは `button_to ... method: :delete`。GET では受け付けない。
 - `users/omniauth_callbacks#google_oauth2`: `verify_authenticity_token` を skip。`User.from_omniauth`。
 - `users/registrations`: `edit`/`update` は `authenticate_user!`。`update_resource` で name 空チェック。
 - ログイン後の遷移先は `after_sign_in_path_for` = `myindex_posts_path`。

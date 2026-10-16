@@ -12,10 +12,8 @@ Devise.setup do |config|
   config.omniauth :google_oauth2, ENV["GOOGLE_CLIENT_ID"], ENV["GOOGLE_CLIENT_SECRET"], {
     scope: "userinfo.email, userinfo.profile"
   }
-  # OmniAuthがPOSTリクエストを受け付けるようにする
-  OmniAuth.config.allowed_request_methods = [ :post, :get ]
-  # 上記のリクエストしたものの読み取りを許可
-  OmniAuth.config.silence_get_warning = true
+  # Googleログインの開始はPOSTのみ受け付ける（ログインボタンは button_to でPOSTしている）
+  OmniAuth.config.allowed_request_methods = [ :post ]
 
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing

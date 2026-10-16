@@ -83,6 +83,6 @@ VERBOSE=1 bin/test          # 成功時も全文（デバッガを仕掛けた�
 - CI は従来どおり `bundle exec rspec` を直接呼ぶ（ワークフローは変更していない）。
 
 ## CI（GitHub Actions）
-- push で `rspec` と `rubocop` の 2 ジョブが走る（`.github/workflows/main.yml`）。
+- push で `rspec` と `rubocop` の 2 ジョブが走る（`.github/workflows/main.yml`）。`rubocop` ジョブの中で `bundler-audit check --update`（gem の既知の脆弱性チェック）も走る。
 - 追加テストは `bundle exec rspec` で自動的に拾われるのでワークフロー変更は基本不要。
 - ImageMagick は ubuntu-latest に標準搭載だが、OGP はスタブ前提なので依存しない。
