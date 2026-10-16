@@ -40,4 +40,70 @@ RSpec.describe "Auth", type: :request do
       expect(response).to redirect_to('/posts/myindex')
     end
   end
+
+  describe "Googleログインの既存ユーザー・失敗側" do
+    before { OmniAuth.config.test_mode = true }
+
+    it '既存ユーザー（provider/uid一致）はユーザーを増やさずログインできる' do
+      existing = create(:user, provider: 'google_oauth2', uid: 'existing-uid', email: 'exist@example.com')
+      OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new(
+        provider: 'google_oauth2', uid: 'existing-uid',
+        info: { name: existing.name, email: 'exist@example.com' }
+      )
+
+      expect { post '/users/auth/google_oauth2/callback' }.not_to change(User, :count)
+      expect(response).to redirect_to('/posts/myindex')
+
+      follow_redirect!
+      expect(response).to be_successful
+    end
+
+    it '認証データが不正（invalid_credentials）ならユーザーは作られずログインされない' do
+      OmniAuth.config.mock_auth[:google_oauth2] = :invalid_credentials
+      # OmniAuthは失敗時にログ出力するため、テスト出力を汚さないよう黙らせる
+      allow(OmniAuth.config).to receive(:logger).and_return(Logger.new(nil))
+
+      expect { post '/users/auth/google_oauth2/callback' }.not_to change(User, :count)
+      expect(response).not_to redirect_to('/posts/myindex')
+
+      get myindex_posts_path
+      expect(response).to redirect_to(root_path)
+    end
+  end
+
+  describe "Googleログイン: メールが一致する既存ユーザーとの紐付け" do
+    before { OmniAuth.config.test_mode = true }
+
+    after do
+      OmniAuth.config.test_mode = false
+      OmniAuth.config.mock_auth[:google_oauth2] = nil
+    end
+
+    def mock_google(email_verified:)
+      OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new(
+        provider: 'google_oauth2', uid: 'attacker-uid',
+        info: { name: '別人', email: 'owner@example.com', email_verified: email_verified }
+      )
+    end
+
+    it 'メール検証済みなら既存ユーザーに紐付けてログインできる' do
+      owner = create(:user, email: 'owner@example.com', provider: nil, uid: nil)
+      mock_google(email_verified: true)
+
+      expect { post '/users/auth/google_oauth2/callback' }.not_to change(User, :count)
+      expect(owner.reload.uid).to eq('attacker-uid')
+      expect(response).to redirect_to('/posts/myindex')
+    end
+
+    it 'メール未検証なら既存ユーザーに紐付けず、ログインもしない' do
+      owner = create(:user, email: 'owner@example.com', provider: nil, uid: nil)
+      mock_google(email_verified: false)
+
+      expect { post '/users/auth/google_oauth2/callback' }.not_to change(User, :count)
+      expect(owner.reload.uid).to be_nil
+      expect(owner.provider).to be_nil
+      expect(User.where(uid: 'attacker-uid')).to be_empty
+      expect(response).to redirect_to(root_path)
+    end
+  end
 end
