@@ -71,4 +71,21 @@ RSpec.describe Post, type: :model do
       end
     end
   end
+
+  describe '文字数の境界' do
+    it 'titleがちょうど40文字なら有効' do
+      expect(build(:post, title: 'あ' * 40)).to be_valid
+    end
+
+    it 'titleが41文字なら無効' do
+      expect(build(:post, title: 'あ' * 41)).to be_invalid
+    end
+
+    %i[aruaru_one aruaru_two aruaru_three aruaru_four aruaru_five].each do |attr|
+      it "#{attr}がちょうど40文字なら有効、41文字なら無効" do
+        expect(build(:post, attr => 'あ' * 40)).to be_valid
+        expect(build(:post, attr => 'あ' * 41)).to be_invalid
+      end
+    end
+  end
 end

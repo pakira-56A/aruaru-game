@@ -139,4 +139,69 @@ RSpec.describe "Posts", type: :request do
       expect(response).to redirect_to(myindex_posts_path)
     end
   end
+
+  describe "認可: 他人の投稿・未ログイン" do
+    let!(:others) { create(:post, title: "他人のタイトル") }
+
+    it '未ログインでPOST /postsしても作られず、rootにリダイレクトする' do
+      expect { post posts_path, params: post_params }.not_to change(Post, :count)
+      expect(response).to redirect_to(root_path)
+    end
+
+    it '未ログインでPATCH /posts/:idしても更新されず、rootにリダイレクトする' do
+      patch post_path(others), params: post_params(title: "更新後タイトル")
+      expect(response).to redirect_to(root_path)
+      expect(others.reload.title).to eq("他人のタイトル")
+    end
+
+    it 'ログイン中でも他人の投稿は更新できない（404扱いで内容は変わらない）' do
+      sign_in user
+      patch post_path(others), params: post_params(title: "更新後タイトル")
+      expect(response).to have_http_status(:not_found)
+      expect(others.reload.title).to eq("他人のタイトル")
+    end
+
+    it 'ログイン中でも他人の投稿は削除できない' do
+      sign_in user
+      expect { delete post_path(others) }.not_to change(Post, :count)
+      expect(Post.exists?(others.id)).to be true
+    end
+
+    it '未ログインでDELETE /posts/:idしても削除されない' do
+      expect { delete post_path(others) }.not_to change(Post, :count)
+      expect(Post.exists?(others.id)).to be true
+    end
+  end
+
+  describe "タグ空・nilの扱い" do
+    before { sign_in user }
+
+    it '作成時にtagが空文字でも投稿は作られる' do
+      expect { post posts_path, params: post_params(tag: "") }.to change(user.posts, :count).by(1)
+      expect(Post.last.tags).to be_empty
+    end
+
+    it '作成時にtagパラメータが無くても500にならず投稿は作られる' do
+      params = post_params
+      params[:post].delete(:tag)
+      expect { post posts_path, params: params }.to change(user.posts, :count).by(1)
+      expect(response).to redirect_to(myindex_posts_path)
+    end
+
+    it '更新時にtagが空文字なら既存タグが外れる' do
+      own = create(:post, user: user)
+      own.save_tags("野球")
+      patch post_path(own), params: post_params(tag: "")
+      expect(response).to redirect_to(myindex_posts_path)
+      expect(own.reload.tags).to be_empty
+    end
+
+    it '更新時にtagパラメータが無くても500にならない' do
+      own = create(:post, user: user)
+      params = post_params(title: "更新")
+      params[:post].delete(:tag)
+      patch post_path(own), params: params
+      expect(response).to redirect_to(myindex_posts_path)
+    end
+  end
 end

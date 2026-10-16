@@ -14,4 +14,15 @@ RSpec.describe "Images", type: :request do
       expect(response.media_type).to eq("image/png")
     end
   end
+
+  describe "GET /images/ogp.png の例外側" do
+    it 'OGP生成が例外を出しても500にならず、PNGは返さない' do
+      allow(OgpCreator).to receive(:build).and_raise(StandardError, "minimagick failed")
+
+      get images_ogp_path, params: { text: "テスト" }
+
+      expect(response.status).to be < 500
+      expect(response.media_type).not_to eq("image/png")
+    end
+  end
 end

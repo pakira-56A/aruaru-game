@@ -31,4 +31,34 @@ RSpec.describe "Users::Registrations", type: :request do
       expect(response).not_to redirect_to(myindex_posts_path)
     end
   end
+
+  describe "PUT /users の認可・重複" do
+    it '未ログインのPUT /usersでは名前が変わらず、ログインへ誘導される' do
+      target = create(:user, name: "他人の名前")
+
+      put user_registration_path, params: { user: { name: "変更後の名前" } }
+
+      expect(response).not_to be_successful
+      expect(target.reload.name).to eq("他人の名前")
+    end
+
+    it '他のユーザーと同じ名前には変更できない' do
+      create(:user, name: "先客")
+      sign_in user
+
+      put user_registration_path, params: { user: { name: "先客" } }
+
+      expect(user.reload.name).to eq("元の名前")
+      expect(response).not_to redirect_to(myindex_posts_path)
+    end
+
+    it '大文字小文字だけ違う名前も重複として拒否される' do
+      create(:user, name: "Alice")
+      sign_in user
+
+      put user_registration_path, params: { user: { name: "alice" } }
+
+      expect(user.reload.name).to eq("元の名前")
+    end
+  end
 end
