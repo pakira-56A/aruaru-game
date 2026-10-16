@@ -22,8 +22,17 @@ RSpec.describe "本番環境で受け付けるHost", type: :config do
     RUBY
   end
 
+  # 本番設定の database.yml は DATABASE_URL 前提なので、テスト用DBの接続先を渡す
+  let(:database_url) do
+    ENV["DATABASE_URL"].presence || begin
+      c = ActiveRecord::Base.connection_db_config.configuration_hash
+      "postgres://#{c[:username]}:#{c[:password]}@#{c[:host]}:#{c[:port] || 5432}/#{c[:database]}"
+    end
+  end
+
   let(:statuses) do
     env = {
+      "DATABASE_URL" => database_url,
       "RAILS_ENV" => "production",
       "SECRET_KEY_BASE_DUMMY" => "1",
       "RENDER_EXTERNAL_HOSTNAME" => "example-app.onrender.com",
