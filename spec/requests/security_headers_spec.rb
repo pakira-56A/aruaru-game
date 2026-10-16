@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Content-Security-Policy", type: :request do
   let(:csp) do
-    response.headers["Content-Security-Policy-Report-Only"] || response.headers["Content-Security-Policy"]
+    response.headers["Content-Security-Policy"]
   end
 
   it 'トップページでCSPヘッダーを返し、scriptとstyleはnonce付きで自サイトに限定する' do
