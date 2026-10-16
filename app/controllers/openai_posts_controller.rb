@@ -1,6 +1,5 @@
 class OpenaiPostsController < ApplicationController
-  protect_from_forgery  # CSRF対策
-
+  # CSRF対策は ApplicationController の protect_from_forgery with: :exception をそのまま使う
   def answer
     question = params[:question]
 

@@ -34,6 +34,15 @@ RSpec.describe "CSRF保護", type: :request do
     expect(response).to have_http_status(:unprocessable_entity)
   end
 
+  it 'トークン無しのPOST /openai_posts/answerは拒否され、AI生成は呼ばれない' do
+    allow(Post).to receive(:find_or_create_from_openai)
+
+    post answer_openai_posts_path, params: { question: "エンジニア" }
+
+    expect(response).to have_http_status(:unprocessable_entity)
+    expect(Post).not_to have_received(:find_or_create_from_openai)
+  end
+
   it 'トークン無しのDELETE /posts/:idは拒否され、投稿は消えない' do
     own = create(:post, user: user)
 
