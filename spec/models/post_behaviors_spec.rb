@@ -80,4 +80,21 @@ RSpec.describe Post, type: :model do
       end
     end
   end
+
+  describe '#save_tags の空・nil' do
+    let(:post_record) { create(:post) }
+
+    it '空文字ならタグを作らない' do
+      expect { post_record.save_tags("") }.not_to change(Tag, :count)
+      expect(post_record.tags).to be_empty
+    end
+
+    it '空白だけでもタグを作らない' do
+      expect { post_record.save_tags("   ") }.not_to change(Tag, :count)
+    end
+
+    it 'nilでも例外にならない' do
+      expect { post_record.save_tags(nil) }.not_to raise_error
+    end
+  end
 end

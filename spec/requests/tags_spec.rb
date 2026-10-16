@@ -71,4 +71,12 @@ RSpec.describe "Tags", type: :request do
       expect(response.body).to include(post_record.title)
     end
   end
+
+  describe "GET /tags/:id の不正値" do
+    it '存在しないタグIDでは500にならず404扱いになる' do
+      get tag_path(999_999)
+      expect(response.status).to be < 500
+      expect(response).not_to be_successful
+    end
+  end
 end

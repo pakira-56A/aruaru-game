@@ -16,9 +16,13 @@ class Post < ApplicationRecord
     [ "title" ]
   end
 
+  def self.ransackable_associations(_auth_object = nil)
+    []
+  end
+
   def save_tags(tags)
     # .uniqで同じタグ名が複数あれば削除
-    tag_list = tags.split(/[[:blank:]]+|、|。|,|\./).uniq
+    tag_list = tags.to_s.split(/[[:blank:]]+|、|。|,|\./).uniq
     current_tags = self.tags.pluck(:tag_name)
     old_tags = current_tags - tag_list
     new_tags = tag_list - current_tags

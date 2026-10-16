@@ -36,4 +36,35 @@ RSpec.describe "OpenaiPosts", type: :request do
       expect(flash[:alert]).to include("あるある思いつかない")
     end
   end
+
+  describe "Cookie（cookie_count）" do
+    it '生成に成功したら、今日の日付を値にしたcookie_countをhttponly・SameSite=Laxで発行する' do
+      generated = create(:post)
+      allow(Post).to receive(:find_or_create_from_openai).and_return(generated)
+
+      post answer_openai_posts_path, params: { question: "エンジニア" }
+
+      set_cookie = response.headers["Set-Cookie"].to_s
+      expect(set_cookie).to include("cookie_count=#{Time.zone.today}")
+      expect(set_cookie).to match(/httponly/i)
+      expect(set_cookie).to match(/samesite=lax/i)
+      expect(set_cookie).to match(/expires=/i)
+    end
+
+    it 'お題が空のときはcookie_countを発行しない' do
+      post answer_openai_posts_path, params: { question: "" }
+
+      expect(response.headers["Set-Cookie"].to_s).not_to include("cookie_count")
+    end
+
+    it 'cookie_count発行後にトップを開くと、今日の日付のcookie_countは削除されず保持される' do
+      generated = create(:post)
+      allow(Post).to receive(:find_or_create_from_openai).and_return(generated)
+      post answer_openai_posts_path, params: { question: "エンジニア" }
+
+      get root_path
+
+      expect(cookies[:cookie_count]).to eq(Time.zone.today.to_s)
+    end
+  end
 end

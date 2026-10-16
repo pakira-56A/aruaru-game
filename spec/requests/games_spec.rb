@@ -37,4 +37,32 @@ RSpec.describe "Games", type: :request do
       expect(response).to be_successful
     end
   end
+
+  describe "OGP生成に失敗したとき" do
+    let!(:post) { create(:post) }
+
+    it '生成が例外を出しても握りつぶして200でゲーム画面を表示する' do
+      allow(OgpCreator).to receive(:build).and_raise(StandardError, "minimagick failed")
+
+      get start_game_path(post.id)
+
+      expect(response).to be_successful
+      expect(response.body).to include(post.title)
+    end
+
+    it '生成に失敗しても投稿のogpは書き換わらない' do
+      allow(OgpCreator).to receive(:build).and_raise(StandardError, "minimagick failed")
+
+      expect { get start_game_path(post.id) }.not_to change { post.reload.updated_at }
+    end
+
+    it '生成物の保存に失敗した場合も200を返す' do
+      allow(OgpCreator).to receive(:build).and_return(nil)
+      allow_any_instance_of(Post).to receive(:update!).and_raise(ActiveRecord::RecordInvalid)
+
+      get start_game_path(post.id)
+
+      expect(response).to be_successful
+    end
+  end
 end

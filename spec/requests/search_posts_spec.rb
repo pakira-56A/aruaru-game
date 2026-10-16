@@ -31,4 +31,23 @@ RSpec.describe "SearchPosts", type: :request do
       expect(JSON.parse(response.body)).to eq([])
     end
   end
+
+  describe "不正値" do
+    it '許可されていないransack属性で検索しても500にならず、絞り込みもされない' do
+      create(:post, title: "野球あるある")
+      get search_search_posts_path(q: { aruaru_one_cont: "存在しない文字列zzz" })
+      expect(response.status).to be < 500
+      expect(response.body).to include("野球あるある")
+    end
+
+    it '存在しないキーで検索しても500にならない' do
+      get search_search_posts_path(q: { no_such_column_cont: "x" })
+      expect(response.status).to be < 500
+    end
+
+    it 'autocompleteでqが配列やハッシュでも500にならない' do
+      get autocomplete_search_posts_path(q: { a: "b" }), as: :json
+      expect(response.status).to be < 500
+    end
+  end
 end

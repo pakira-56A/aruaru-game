@@ -31,7 +31,7 @@ RSpec.describe User, type: :model do
       OmniAuth::AuthHash.new(
         provider: "google_oauth2",
         uid: "omniauth_uid_1",
-        info: { name: "オムニ 太郎", email: "omni@example.com" }
+        info: { name: "オムニ 太郎", email: "omni@example.com", email_verified: true }
       )
     end
 
@@ -64,6 +64,33 @@ RSpec.describe User, type: :model do
           second = User.from_omniauth(auth)
           expect(second).to eq(first)
         }.not_to change(User, :count)
+      end
+    end
+
+    context '同じemailのユーザーがいるが、emailが未検証の場合' do
+      let(:unverified_auth) do
+        OmniAuth::AuthHash.new(
+          provider: "google_oauth2",
+          uid: "omniauth_uid_2",
+          info: { name: "オムニ 太郎", email: "omni@example.com", email_verified: false }
+        )
+      end
+
+      it '既存ユーザーに紐付けない' do
+        existing = create(:user, email: "omni@example.com", provider: "password", uid: nil)
+        User.from_omniauth(unverified_auth)
+        expect(existing.reload.provider).to eq("password")
+        expect(existing.uid).to be_nil
+      end
+
+      it 'DBに何も作らず、provider/uid を持たない空の未保存ユーザーを返す' do
+        create(:user, email: "omni@example.com", provider: "password", uid: nil)
+        result = nil
+        expect { result = User.from_omniauth(unverified_auth) }.not_to change(User, :count)
+        expect(result).to be_new_record
+        expect(result.provider).to be_blank
+        expect(result.uid).to be_blank
+        expect(result.email).to be_blank
       end
     end
 
