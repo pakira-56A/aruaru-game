@@ -10,7 +10,7 @@ aruaru-game を触るときに従う実装パターンと、踏みやすい罠�
 - **フラッシュメッセージは日本語のカジュアル文体**（例「投稿したよ！遊んでもらおう！」「消したよ〜 また投稿してね！」）。既存トーンに合わせる。
 - **Ransack は `title` のみ許可**（`Post.ransackable_attributes`）。他カラムで検索させたいなら明示追加が必要。
 - **Turbo**: likes は turbo_stream で応答（`*.turbo_stream.erb`）。一覧系は html。
-- **CSP（`config/initializers/content_security_policy.rb`）**: 今は report_only。インラインの `<script>`/`<style>` には `nonce="<%= content_security_policy_nonce %>"` を付ける。`onclick="..."`・`style="..."`・`href="javascript:..."` は書かず、Stimulus の `data-action` か CSS クラスで書く。外部から読み込む先を増やしたら initializer の許可リストにも足す。
+- **CSP（`config/initializers/content_security_policy.rb`）**: 違反したものはブロックする（report_only ではない）。インラインの `<script>`/`<style>` には `nonce="<%= content_security_policy_nonce %>"` を付ける。`onclick="..."`・`style="..."`・`href="javascript:..."` は書かず、Stimulus の `data-action` か CSS クラスで書く。外部から読み込む先を増やしたら initializer の許可リストにも足す。
 - **フラッシュに改行を入れたいときは文言側で `\n`**。`shared/_flash_message` が `safe_join` で `<br>` に変換する（`html_safe` は使わない）。
 
 ## 落とし穴（過去に踏んだ / 踏みやすい）

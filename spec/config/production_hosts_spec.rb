@@ -5,6 +5,7 @@ require 'json'
 # config.hosts / host_authorization は本番環境の設定にしか無いので、
 # 本番環境として別プロセスで起動し、ミドルウェアを通した結果のステータスだけを確かめる。
 RSpec.describe "本番環境で受け付けるHost", type: :config do
+  # 描画を伴わない経路（存在しないURL → 一覧へのリダイレクト）で、Hostの検査だけを確かめる
   let(:script) do
     <<~RUBY
       require "json"
@@ -13,10 +14,10 @@ RSpec.describe "本番環境で受け付けるHost", type: :config do
         Rails.application.call(env)[0]
       end
       puts JSON.dump(
-        apex: check.call("https://aruaru-games.com/policy"),
-        www: check.call("https://www.aruaru-games.com/policy"),
-        render: check.call("https://example-app.onrender.com/policy"),
-        other: check.call("https://other.example/policy"),
+        apex: check.call("https://aruaru-games.com/no-such-page"),
+        www: check.call("https://www.aruaru-games.com/no-such-page"),
+        render: check.call("https://example-app.onrender.com/no-such-page"),
+        other: check.call("https://other.example/no-such-page"),
         up_other: check.call("https://10.0.0.1:10000/up")
       )
     RUBY
@@ -46,9 +47,9 @@ RSpec.describe "本番環境で受け付けるHost", type: :config do
   end
 
   it '独自ドメイン（www有無）とRenderのホスト名は受け付け、それ以外は403、/upはHostに関係なく200' do
-    expect(statuses["apex"]).not_to eq(403)
-    expect(statuses["www"]).not_to eq(403)
-    expect(statuses["render"]).not_to eq(403)
+    expect(statuses["apex"]).to be_between(200, 399)
+    expect(statuses["www"]).to be_between(200, 399)
+    expect(statuses["render"]).to be_between(200, 399)
     expect(statuses["other"]).to eq(403)
     expect(statuses["up_other"]).to eq(200)
   end
