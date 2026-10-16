@@ -1,15 +1,19 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {
+  # ログインはGoogleのみ。メール+パスワードのログイン画面（sessions#new/create）は使わないので、
+  # セッション系は既定のルートを作らず、ログアウト（DELETE）だけを下で定義する。
+  devise_for :users, skip: :sessions, controllers: {
     omniauth_callbacks: "users/omniauth_callbacks",
-    sessions: "users/sessions", # カスタムコントローラーを使用
     registrations: "users/registrations" }
 
   devise_scope :user do
     post "users/auth/google_oauth2/callback", to: "users/omniauth_callbacks#google_oauth2"
-    get "/users/sign_out" => "devise/sessions#destroy"
+    delete "/users/sign_out" => "devise/sessions#destroy", as: :destroy_user_session
     get "/users/edit" => "users/registrations#edit", as: :edit_user_registration
     put "/users" => "users/registrations#update", as: :user_registration
   end
+
+  # Renderのヘルスチェック用（起動して例外なく応答できれば200）
+  get "up" => "rails/health#show", as: :rails_health_check
 
   root "tops#toppage"
 

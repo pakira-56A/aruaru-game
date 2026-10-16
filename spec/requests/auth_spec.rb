@@ -107,3 +107,49 @@ RSpec.describe "Auth", type: :request do
     end
   end
 end
+
+RSpec.describe "ログイン開始・ログアウトのHTTPメソッド", type: :request do
+  let(:user) { create(:user) }
+
+  it 'ログアウトはDELETEで行い、ログアウト後はマイページに入れない' do
+    sign_in user
+
+    delete destroy_user_session_path
+    expect(response).to redirect_to(root_path)
+
+    get myindex_posts_path
+    expect(response).to redirect_to(root_path)
+  end
+
+  it 'GETの/users/sign_outではログアウトされない' do
+    sign_in user
+
+    get "/users/sign_out"
+
+    get myindex_posts_path
+    expect(response).to be_successful
+  end
+
+  it 'ヘッダーのログアウトはDELETEを送るフォームとして描画される' do
+    sign_in user
+
+    get posts_path
+
+    form = Nokogiri::HTML(response.body).at_css("form[action='#{destroy_user_session_path}']")
+    expect(form).to be_present
+    expect(form.at_css("input[name='_method']")["value"]).to eq("delete")
+  end
+
+  it 'Googleログインの開始はGETでは受け付けない' do
+    get user_google_oauth2_omniauth_authorize_path
+
+    expect(response.headers["Location"].to_s).not_to include("accounts.google.com")
+  end
+
+  it 'Googleログインの開始はPOSTならGoogleへリダイレクトする' do
+    post user_google_oauth2_omniauth_authorize_path
+
+    expect(response).to be_redirect
+    expect(response.headers["Location"]).to start_with("https://accounts.google.com/")
+  end
+end
