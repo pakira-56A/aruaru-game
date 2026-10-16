@@ -75,6 +75,13 @@ RSpec.configure do |config|
   # Deviseのテストヘルパー（request specで sign_in / sign_out が使える）
   config.include Devise::Test::IntegrationHelpers, type: :request
 
+  # 回数制限(Rack::Attack)は既定で無効にする（他の spec の連続リクエストで制限に当たらないように）。
+  # 回数制限そのものを試す spec/requests/rack_attack_spec.rb だけが有効にする。
+  config.before(:each) do
+    Rack::Attack.enabled = false
+    Rack::Attack.cache.store.clear
+  end
+
   # OmniAuthのモック設定を各テスト後にリセットし、テスト間の汚染を防ぐ
   config.after(:each) do
     OmniAuth.config.test_mode = false
