@@ -18,7 +18,7 @@
                   flex w-[260px] h-[70px] border-4 border-white rounded-[40px] bg-pink-100 hover:bg-sky-100
                   perspective-[150px] transform-style-[preserve-3d]">
 
-        <style>
+        <style nonce="<%= content_security_policy_nonce %>">
           .start-btn:hover .start-btn-front {opacity: 0; /* 表面文字を非表示 */}
           .start-btn:hover .start-btn-back {opacity: 1; /* 裏面文字を表示 */}
           .start-btn:hover .start-btn-content {

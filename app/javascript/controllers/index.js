@@ -6,3 +6,9 @@ import { application } from "./application"
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import HistoryBackController from "./history_back_controller"
+application.register("history-back", HistoryBackController)
+
+import ModalController from "./modal_controller"
+application.register("modal", ModalController)

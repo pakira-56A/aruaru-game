@@ -1,9 +1,10 @@
-<button class="btn font-bold text-lg drop-shadow-md hover:drop-shadow-md
+<div class="contents" data-controller="modal">
+<button type="button" class="btn font-bold text-lg drop-shadow-md hover:drop-shadow-md
                 border-4 border-white hover:border-orange-300
                 bg-cyan-100 hover:bg-white text-pink-500 hover:text-orange-500"
-    onclick="howto.showModal()">遊び方</button>
+    data-action="modal#open">遊び方</button>
 
-<dialog id="howto" class="modal">
+<dialog id="howto" class="modal" data-modal-target="dialog">
   <div class="modal-box fixed transform bg-white rounded-lg max-w-[600px] max-h-[70vh] z-50 drop-shadow-lg">
     <div class="text-orange-500">
       <h3 class="text-pink-500 font-bold text-xl text-center">🥳　遊び方　🥳</h3>
@@ -29,5 +30,6 @@
     </div>
   </div>
 
-  <form method="dialog" class="modal-backdrop mix-blend-multiply min-h-full bg-orange-300 bg-opacity-50" onclick="howto.close()"></form>
+  <form method="dialog" class="modal-backdrop mix-blend-multiply min-h-full bg-orange-300 bg-opacity-50" data-action="click->modal#close"></form>
 </dialog>
+</div>
