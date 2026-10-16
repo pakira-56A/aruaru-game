@@ -8,12 +8,12 @@ class OgpCreator
   FONT_SIZE = 50
   INDENTION_COUNT = 20
   ROW_LIMIT = 8
+  MAX_TEXT_LENGTH = 400
 
   def self.build(text)
-    text_a, text_b = text.split("\n", 2)
-    text_a = text_a.gsub("'", "’").force_encoding("UTF-8")
+    text_a, text_b = sanitize(text).split("\n", 2)
+    text_a = strip_line_head(text_a.to_s)
     text_b = prepare_text(text_b)
-    text_b = text_b.gsub("'", "’").force_encoding("UTF-8")
     image = MiniMagick::Image.open(BASE_IMAGE_PATH)
 
     # 緑色はユーザー名、青色は投稿名を表記します
@@ -37,8 +37,23 @@ class OgpCreator
     end
   end
 
+  # ImageMagick の draw 構文・文字列展開に解釈されうる文字を取り除く。
+  # 引用符は全角に置き換え、バックスラッシュ・%・行頭の@・制御文字は削除する。
+  def self.sanitize(text)
+    text = text.to_s.dup.force_encoding("UTF-8").scrub("")
+    text = text[0, MAX_TEXT_LENGTH]
+    text = text.gsub(/[\x00-\x09\x0B-\x1F\x7F\\%]/, "").gsub(/["']/, "’")
+    text.split("\n").map { |line| strip_line_head(line) }.join("\n")
+  end
+
+  # 行頭の@（間に空白があっても連続していても）をすべて取り除く。
+  def self.strip_line_head(line)
+    line.sub(/\A(?:\s*@)+/, "")
+  end
+
   def self.prepare_text(text)
-    text = text.to_s.gsub("'", "’").force_encoding("UTF-8")
-    text.scan(/.{1,#{INDENTION_COUNT}}/)[0...ROW_LIMIT].join("\n")
+    text = text.to_s
+    # 20文字ごとの分割で新しく行頭になった@も取り除く
+    text.scan(/.{1,#{INDENTION_COUNT}}/)[0...ROW_LIMIT].map { |line| strip_line_head(line) }.join("\n")
   end
 end
