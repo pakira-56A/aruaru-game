@@ -31,7 +31,12 @@ Rails.application.configure do
 
   # nonce はセッションに1つ持たせて使い回す（Turboで画面遷移しても同じ nonce のまま使えるようにするため）。
   # セッションIDから作る既定の書き方だと、初回訪問でセッションがまだ無いときに空になる。
-  config.content_security_policy_nonce_generator = ->(request) { request.session[:csp_nonce] ||= SecureRandom.base64(16) }
+  # HTML 以外（画像・/up など）ではセッションに書かない（Set-Cookie を付けないため）。
+  config.content_security_policy_nonce_generator = lambda do |request|
+    next SecureRandom.base64(16) unless request.format.html?
+
+    request.session[:csp_nonce] ||= SecureRandom.base64(16)
+  end
   config.content_security_policy_nonce_directives = %w[script-src style-src]
 
   # 違反したものは実際にブロックする（ローカルで全画面を開いて違反が出ないことを確認済み）。
