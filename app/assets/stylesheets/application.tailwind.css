@@ -18,28 +18,32 @@
 
 
 /* ゲーム画面 （Tailwindに書き換えられず） */
+/* 盤面：画面の幅に合わせて縮み、400px を超えては広がらない。カードは2列に並べる */
 #panel {
   background-color: rgba(233, 252, 255, 0.995);
   border-radius: 10px;
-  width: 400px;
-  height: 550px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 400px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 11px 13px;
+  padding: 5px 13px 6px;
   overflow: hidden; }
 
+/* カードの縦横比は 180:98 のまま、列の幅に合わせて大きさが決まる */
 .card {
-  width: 180px;
-  height: 98px;
+  aspect-ratio: 180 / 98;
   border-radius: 10px;
 
   box-shadow: rgb(255, 115, 0) 0px 4px;
-  float: left;
-  margin: 5px 0px 6px 13px;
   cursor: pointer;
 
   color: rgb(244, 0, 175);
   text-align: center;
   justify-content: center;
   text-wrap: balance;
-  font-size: 15px;
+  font-size: clamp(12px, 4vw, 15px);
   font-weight: bold;
   background: rgb(255, 255, 247);
 
@@ -51,7 +55,7 @@
 
 /* カードが裏の状態 */
 .back {
-  background-size: 180px 98px;
+  background-size: 100% 100%;
   background-image: url('game-cardback.png'); }
 
 .back:hover {
