@@ -8,7 +8,7 @@ Mermaid の決まり: 横幅いっぱい・文は短く1行（<br/> で割らな
 上下の枠の幅をそろえるため、短い文の末尾に全角スペース（#12288;）を足す。
 -->
 ```mermaid
-%%{init: {"flowchart": {"wrappingWidth": 900, "rankSpacing": 40, "nodeSpacing": 40}}}%%
+%%{init: {"flowchart": {"wrappingWidth": 900, "rankSpacing": 40, "nodeSpacing": 40, "subGraphTitleMargin": {"top": 28, "bottom": 6}}}}%%
 flowchart TB
   subgraph BEFORE["❌ 修正前"]
     direction LR
