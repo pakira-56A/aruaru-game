@@ -4,21 +4,23 @@
 -->
 ### 修正のビフォーアフター
 <!--
-Mermaid の決まり: 横幅いっぱい・文は短く1行（<br/> で割らない）・状態は ❌/✅ を頭に付ける。
-上下の枠の幅をそろえるため、短い文の末尾に全角スペース（#12288;）を足す。
+図の決まり: 修正前と修正後を別々の図にして、上に太字の見出しを付ける。文は短く1行、頭に ❌/✅ を付ける。
+文字を差し替えるだけでよい（図の書き方を知らなくても、`[" "]` の中の文だけ直せば動く）。
 -->
+**❌ 修正前**
+
 ```mermaid
-%%{init: {"flowchart": {"wrappingWidth": 900, "rankSpacing": 40, "nodeSpacing": 40, "subGraphTitleMargin": {"top": 28, "bottom": 6}}}}%%
-flowchart TB
-  subgraph BEFORE["❌ 修正前"]
-    direction LR
-    B1["❌ 修正前の状態をここに書く"] --> B2["❌ 困ることをここに書く#12288;#12288;#12288;#12288;#12288;#12288;"]
-  end
-  subgraph AFTER["✅ 修正後"]
-    direction LR
-    A1["✅ 修正後の状態をここに書く"] --> A2["✅ できるようになることをここに書く"]
-  end
-  BEFORE ~~~ AFTER
+%%{init: {"flowchart": {"wrappingWidth": 900}}}%%
+flowchart LR
+  B1["❌ 修正前の状態をここに書く"] --> B2["❌ 困ることをここに書く"]
+```
+
+**✅ 修正後**
+
+```mermaid
+%%{init: {"flowchart": {"wrappingWidth": 900}}}%%
+flowchart LR
+  A1["✅ 修正後の状態をここに書く"] --> A2["✅ できるようになることをここに書く"]
 ```
 
 ### 何をしたか
