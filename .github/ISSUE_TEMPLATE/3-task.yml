@@ -1,0 +1,44 @@
+name: タスク
+description: 機能以外の作業（環境整備・調査・ふりかえりの Try など）
+title: "[task] "
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: 種類
+      options: [環境整備, 調査, ドキュメント, 改善（ふりかえりの Try）, その他]
+    validations:
+      required: true
+  - type: textarea
+    id: purpose
+    attributes:
+      label: 目的
+    validations:
+      required: true
+  - type: textarea
+    id: todo
+    attributes:
+      label: やること
+    validations:
+      required: true
+  - type: textarea
+    id: ai-detail
+    attributes:
+      label: Claude 向け詳細
+      description: 人間向けの欄は短く。AI が作業するのに要る手順・制約はここに。
+      value: |
+        <details>
+        <summary>🤖 Claude 向け詳細（人は読まなくてよい）</summary>
+
+        - 手順・対象:
+        - 守る制約:
+
+        </details>
+  - type: textarea
+    id: done
+    attributes:
+      label: 完了条件
+      value: |
+        - [ ]
+    validations:
+      required: true

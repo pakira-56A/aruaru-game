@@ -1,0 +1,61 @@
+name: 不具合
+description: 期待と違う動き
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: actual
+    attributes:
+      label: 起きていること
+      description: エラーメッセージは画像でなく、文字をコピーして貼ってください。
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 再現手順
+      value: |
+        1.
+        2.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期待する動き
+    validations:
+      required: true
+  - type: dropdown
+    id: env
+    attributes:
+      label: 発生した環境
+      options: [ローカル, 本番, CI]
+    validations:
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: ログ・スクリーンショット
+  - type: textarea
+    id: ai-detail
+    attributes:
+      label: Claude 向け詳細
+      description: 人間向けの欄は短く。原因の見当・疑うファイル・試した確認コマンドはここに。
+      value: |
+        <details>
+        <summary>🤖 Claude 向け詳細（人は読まなくてよい）</summary>
+
+        - 疑うファイル・関数:
+        - 試した確認コマンドと結果:
+        - 原因の仮説:
+
+        </details>
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 受入条件
+      value: |
+        - [ ] 上の再現手順で期待どおりに動く
+        - [ ] 再発防止のテストがある
+    validations:
+      required: true

@@ -1,0 +1,64 @@
+name: エピック
+description: 大きな要件（子 Issue に分けて進める）
+title: "[epic] "
+labels: ["epic"]
+body:
+  - type: textarea
+    id: purpose
+    attributes:
+      label: 目的
+    validations:
+      required: true
+  - type: input
+    id: uc
+    attributes:
+      label: 対象ユースケース
+      placeholder: UC-2
+    validations:
+      required: true
+  - type: textarea
+    id: included
+    attributes:
+      label: 含むもの
+    validations:
+      required: true
+  - type: textarea
+    id: excluded
+    attributes:
+      label: 含まないもの
+    validations:
+      required: true
+  - type: textarea
+    id: done
+    attributes:
+      label: 完了条件
+      value: |
+        - [ ]
+    validations:
+      required: true
+  - type: textarea
+    id: ai-detail
+    attributes:
+      label: Claude 向け詳細
+      description: 人間向けの欄は短く。分解の方針・設計の判断・参照する仕様はここに。
+      value: |
+        <details>
+        <summary>🤖 Claude 向け詳細（人は読まなくてよい）</summary>
+
+        - 子 Issue への分け方:
+        - 設計の判断と理由:
+        - 参照する仕様（docs/ のパス）:
+
+        </details>
+  - type: textarea
+    id: depends
+    attributes:
+      label: 依存
+      description: 先に終わっている必要があるエピック。
+  - type: textarea
+    id: children
+    attributes:
+      label: 子 Issue
+      description: 最初は空で構いません。着手時に起票して、チェックリストで追記します。
+      value: |
+        - [ ] #

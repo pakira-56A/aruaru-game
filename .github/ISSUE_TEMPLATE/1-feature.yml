@@ -1,0 +1,66 @@
+name: 機能開発
+description: 1つの機能・変更（半日〜1日で終わる大きさ）
+title: "[feat] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        1つの Issue は半日〜1日で終わる大きさにします。大きいときはエピックに分けてください。
+        受入条件は「テストや画面で確認できる文」で書きます。
+  - type: input
+    id: epic
+    attributes:
+      label: 親エピック
+      placeholder: "#9"
+  - type: textarea
+    id: purpose
+    attributes:
+      label: 背景・目的
+    validations:
+      required: true
+  - type: textarea
+    id: todo
+    attributes:
+      label: やること
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 受入条件
+      value: |
+        - [ ] AC-1:
+        - [ ] AC-2:
+    validations:
+      required: true
+  - type: textarea
+    id: out-of-scope
+    attributes:
+      label: 対象外
+      description: 今回やらないこと。書いておくとレビューでの脱線が減ります。
+    validations:
+      required: true
+  - type: textarea
+    id: ai-detail
+    attributes:
+      label: Claude 向け詳細
+      description: 上の欄は人間向けに短く書き、AI が実装するのに要る情報（対象ファイル・制約・参照する仕様）はここに書きます。
+      value: |
+        <details>
+        <summary>🤖 Claude 向け詳細（人は読まなくてよい）</summary>
+
+        - 対象ファイル・関数:
+        - 守る制約:
+        - 参照する仕様（docs/ のパス）:
+        - 確認コマンド:
+
+        </details>
+  - type: checkboxes
+    id: impact
+    attributes:
+      label: 影響範囲
+      options:
+        - label: 認証・認可・個人情報に関わる
+        - label: DB のテーブル・カラムを足す／変える
+        - label: 仕様書（docs/）の更新が必要
