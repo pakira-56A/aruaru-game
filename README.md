@@ -198,7 +198,7 @@ ___
 | カテゴリ | 技術 |
 | ---- | ---- |
 | フロントエンド | Rails 7.1.3, TailwindCSS, DaisyUI, JavaScript, Stimulus |
-| バックエンド | Rails 7.1.3 (Ruby 3.2.3 ) |
+| バックエンド | Rails 7.1.3 (Ruby 3.2.11 ) |
 | データベース | PostgreSQL |
 | インフラ | Render.com, AWS S3 |
 | 認証 | [gem 'devise'](https://github.com/heartcombo/devise), [Omniauth](omniauth), Google認証 |

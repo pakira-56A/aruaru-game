@@ -15,7 +15,7 @@
 ## 技術スタック
 | カテゴリ | 技術 |
 |---|---|
-| バックエンド | Rails 7.2.3.2 / Ruby 3.2.3 |
+| バックエンド | Rails 7.2.3.2 / Ruby 3.2.11 |
 | DB | PostgreSQL |
 | フロント | esbuild(jsbundling) + Stimulus + Turbo、TailwindCSS + DaisyUI(cssbundling) |
 | 認証 | Devise + OmniAuth（Google OAuth2） |
