@@ -197,8 +197,8 @@ ___
 ## 技術スタック
 | カテゴリ | 技術 |
 | ---- | ---- |
-| フロントエンド | Rails 7.1.3, TailwindCSS, DaisyUI, JavaScript, Stimulus |
-| バックエンド | Rails 7.1.3 (Ruby 3.2.11 ) |
+| フロントエンド | Rails 8.1.4.1, TailwindCSS, DaisyUI, JavaScript, Stimulus |
+| バックエンド | Rails 8.1.4.1 (Ruby 3.4.12 ) |
 | データベース | PostgreSQL |
 | インフラ | Render.com, AWS S3 |
 | 認証 | [gem 'devise'](https://github.com/heartcombo/devise), [Omniauth](omniauth), Google認証 |

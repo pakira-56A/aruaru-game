@@ -111,6 +111,5 @@ jobs:
       - name: Run bundler-audit
         run: bundle exec bundler-audit check --update
 
-      # Ruby 3.2 / Rails 7.2 のサポート終了警告は別途アップグレードで対応するため除外
       - name: Run brakeman
-        run: bundle exec brakeman --no-pager --quiet --except EOLRuby,EOLRails
+        run: bundle exec brakeman --no-pager --quiet

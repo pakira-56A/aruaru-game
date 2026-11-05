@@ -1,4 +1,4 @@
-FROM ruby:3.2.11
+FROM ruby:3.4.12
 ENV LANG C.UTF-8
 ENV TZ Asia/Tokyo
 RUN apt-get update -qq \

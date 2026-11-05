@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-ruby "3.2.11"
+ruby "3.4.12"
 
 gem "devise"
 gem "omniauth"
@@ -26,7 +26,7 @@ gem "rack-session", ">= 2.1.2"
 gem "addressable", ">= 2.9.0"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.2.0", ">= 7.2.3.2"
+gem "rails", "~> 8.1.4", ">= 8.1.4.1"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
