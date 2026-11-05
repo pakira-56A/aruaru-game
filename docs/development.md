@@ -1,7 +1,7 @@
 # 開発環境・コマンド
 
 ## 前提
-- Rails 7.2.3.2 / Ruby 3.2.11 / PostgreSQL。**Docker Compose で動作**。
+- Rails 8.1.4.1 / Ruby 3.4.12 / PostgreSQL。**Docker Compose で動作**。
 - アプリは常時起動しているコンテナ内で動く。
   - web コンテナ名: `aruaru-game-web-1`（作業ディレクトリ `/myapp`）
   - `config/database.yml` の DB ホストは `db`。これはコンテナ内から見た名前。
@@ -11,7 +11,7 @@
 以前ここには「ホストには gem や `curl` が入っていない」「ホスト直では DB に
 つながらない」と書いてあったが、**2026-08-31 の実測ではどちらも当てはまらなかった**。
 
-- `bundle` / `ruby`（3.2.11）は rbenv 配下に入っている。`curl` もある
+- `bundle` / `ruby`（3.4.12）は rbenv 配下に入っている。`curl` もある
 - `compose.yml` が **5433 → 5432** を公開しているので、`DATABASE_URL` で上書きすれば
   ホストから DB に届く
 

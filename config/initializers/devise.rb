@@ -14,6 +14,10 @@ Devise.setup do |config|
   }
   # Googleログインの開始はPOSTのみ受け付ける（ログインボタンは button_to でPOSTしている）
   OmniAuth.config.allowed_request_methods = [ :post ]
+  # Rails 8 は route を最初のリクエストで遅延読み込みする。Devise は route 読み込み時に
+  # path_prefix を設定するため、最初のリクエストでは OmniAuth がコールバックを認識できない。
+  # 起動時に明示して、最初のリクエストでも動くようにする。
+  OmniAuth.config.path_prefix = "/users/auth"
 
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing

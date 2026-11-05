@@ -15,7 +15,7 @@
 ## 技術スタック
 | カテゴリ | 技術 |
 |---|---|
-| バックエンド | Rails 7.2.3.2 / Ruby 3.2.11 |
+| バックエンド | Rails 8.1.4.1 / Ruby 3.4.12 |
 | DB | PostgreSQL |
 | フロント | esbuild(jsbundling) + Stimulus + Turbo、TailwindCSS + DaisyUI(cssbundling) |
 | 認証 | Devise + OmniAuth（Google OAuth2） |
@@ -25,7 +25,6 @@
 | インフラ | Render.com / AWS S3、スリープ対策 Uptime Robot、計測 Google Analytics |
 | 開発環境 | Docker Compose |
 
-> 注: README の技術スタック表は Rails 7.1.3 表記だが、実際のコードは **7.2.3.2**（Gemfile / Gemfile.lock）。
 
 ## ドメインモデル
 ```mermaid

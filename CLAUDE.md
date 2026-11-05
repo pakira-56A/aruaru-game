@@ -5,7 +5,7 @@ Git / PR / コミット / デプロイ分担・スキルなど**プロダクト�
 `~/.claude/CLAUDE.md`（グローバル）**にある（全プロジェクトで自動読み込み）。
 
 ## このアプリの前提
-- Rails 7.2.3.2 / Ruby 3.2.11 / PostgreSQL。**Docker Compose で動作**。
+- Rails 8.1.4.1 / Ruby 3.4.12 / PostgreSQL。**Docker Compose で動作**。
 - **コマンドはコンテナ内で実行するのが基本**。
   - web コンテナ名: `aruaru-game-web-1`（作業ディレクトリ `/myapp`）、DB ホストは `db`。
   - ホストからも実行できる（gem・curl はあり、DB は 5433 で公開）。手順は
