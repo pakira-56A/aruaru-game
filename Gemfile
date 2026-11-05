@@ -81,6 +81,9 @@ group :development, :test do
     # Github Actions用に追加
     gem "bundler-audit"
 
+    # セキュリティの静的解析（Rails向け）
+    gem "brakeman", require: false
+
     gem "rspec-rails"          # Rspec用に追加
     gem "factory_bot_rails"    # Rspec用に追加
     gem "rspec_junit_formatter"
