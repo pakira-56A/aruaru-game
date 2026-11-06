@@ -38,6 +38,18 @@ bin/test-host                # 全部流す
 bin/test-host spec/models    # 一部だけ（引数はそのまま bin/test に渡る）
 ```
 
+開発サーバーをホストで立ち上げるときは **`bin/dev-host`**（`bin/test-host` のサーバー版）を使う。
+
+```bash
+bin/dev-host                 # 3000番で起動（PORT=3001 bin/dev-host で別ポート）
+```
+
+- `DATABASE_URL` を開発用 DB（db コンテナ、`myapp_development`）に向けて起動する
+- 古い `public/assets`（git 管理外）があると、新しい JS より優先して配られ、モーダルが開かないなど
+  コードのバグに見える。**あれば起動を止めて対処（`rm -rf public/assets`）を表示する**
+- 3000番を別のプロセス（web コンテナなど）が使っていれば、使用中の内容を出して止める
+- JS・CSS は自動ではビルドされない。直したら `yarn build` / `yarn build:css` を別途実行する
+
 ## よく使うコマンド
 ```bash
 docker exec aruaru-game-web-1 bin/test                     # テスト（推奨。出力を最小化）

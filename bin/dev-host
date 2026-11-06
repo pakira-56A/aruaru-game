@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+#
+# ホストから開発サーバーを立ち上げる決め打ちラッパー（bin/test-host のサーバー版）。
+#
+# ホストで `bundle exec rails server` を直接叩くと次の2つでつまずく。
+#   1. 古い public/assets（git 管理外）が残っていると、新しくビルドした JS より優先して
+#      配られる。モーダルが開かないなど、コードのバグに見えてしまう（本番は毎回ビルドするので起きない）
+#   2. DATABASE_URL を付け忘れると、コンテナ内専用の host "db" に接続しにいって固まる
+#
+#   bin/dev-host          # 3000番で起動
+#   PORT=3001 bin/dev-host
+#
+set -euo pipefail
+
+cd "$(dirname "$0")/.." || exit 1
+
+port="${PORT:-3000}"
+
+# AC-2: 古い public/assets があれば止める
+if [ -d public/assets ]; then
+  cat >&2 <<MSG
+✋ public/assets が残っているので起動を止めた。
+   理由: これは古いビルド結果で、新しい JS・CSS（app/assets/builds）より優先して配られ、
+         コードを直しても画面に反映されない。
+   対処: rm -rf public/assets を実行してから、もう一度 bin/dev-host を実行する。
+MSG
+  exit 1
+fi
+
+# AC-3: ポートを使っているサーバーがあれば知らせて止める
+if lsof -iTCP:"$port" -sTCP:LISTEN -n -P >/dev/null 2>&1; then
+  echo "✋ ${port}番ポートは別のプロセスが使用中なので起動を止めた。使用中の内容:" >&2
+  lsof -iTCP:"$port" -sTCP:LISTEN -n -P >&2
+  echo "   対処: docker compose stop web などで止めるか、PORT=3001 bin/dev-host のように別のポートで起動する。" >&2
+  exit 1
+fi
+
+# AC-1: 開発用 DB（db コンテナ）に向けて起動する
+docker compose up -d --wait db
+
+export DATABASE_URL="postgres://postgres:password@localhost:5433/myapp_development"
+bundle exec rails db:prepare
+
+exec bin/rails server -p "$port"
