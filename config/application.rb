@@ -9,7 +9,13 @@ Bundler.require(*Rails.groups)
 module Myapp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.2
+    config.load_defaults 8.1
+
+    # 8.1 の既定値のうち、挙動が変わって影響を確かめきれていない2つは従来どおりにしておく。
+    # - JSON 応答の文字をエスケープする（検索の候補が JSON で返るため、HTML として扱われる事故を防ぐ）
+    # - hidden フィールドの autocomplete="off" を残す（ログイン・ログアウトのボタンで戻る操作をしたとき古い値を再送しないため）
+    config.action_controller.escape_json_responses = true
+    config.action_view.remove_hidden_field_autocomplete = false
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
