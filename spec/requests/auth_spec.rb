@@ -5,7 +5,7 @@ RSpec.describe "Auth", type: :request do
     it '空の秘密鍵で偽造されたJWTトークンを拒否すること' do
       expect {
         JWT.encode({ user_id: 1 }, "")
-      }.to raise_error(JWT::DecodeError, /HMAC key cannot be empty/)
+      }.to raise_error(JWT::EncodeError, /HMAC key cannot be empty/)
     end
   end
 
