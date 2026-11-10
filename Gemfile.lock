@@ -233,7 +233,9 @@ GEM
     mini_magick (4.13.2)
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
-    minitest (5.27.0)
+    minitest (6.1.0)
+      drb (~> 2.0)
+      prism (>= 1.5, < 3)
     msgpack (1.8.4)
     multi_json (1.15.0)
     multi_xml (0.9.1)
@@ -530,7 +532,7 @@ DEPENDENCIES
   jsbundling-rails
   meta-tags
   mini_magick
-  minitest (~> 5.27)
+  minitest (~> 6.1)
   omniauth
   omniauth-google-oauth2
   omniauth-rails_csrf_protection

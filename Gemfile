@@ -8,7 +8,7 @@ gem "pry-byebug"
 gem "benchmark"
 gem "ostruct"
 # Rails 8.1 のテスト部品（ActiveSupport::TestCase）が前提にしているのは minitest 5 系。6 系は上限が無いと勝手に上がるため固定する
-gem "minitest", "~> 5.27"
+gem "minitest", "~> 6.1"
 gem "omniauth-google-oauth2"
 gem "omniauth-rails_csrf_protection"
 gem "googleauth"
