@@ -1,6 +1,10 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
+# omniauth-oauth2 の新しい版は client_id が空だと Google へのリダイレクトを拒否する。
+# テストでは CI に Google の鍵が無いので、ダミー値を入れる（本番は Render の環境変数）
+ENV['GOOGLE_CLIENT_ID'] ||= 'test-client-id'
+ENV['GOOGLE_CLIENT_SECRET'] ||= 'test-client-secret'
 require_relative '../config/environment'
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
